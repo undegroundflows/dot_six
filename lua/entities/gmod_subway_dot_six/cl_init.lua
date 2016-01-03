@@ -1040,18 +1040,18 @@ for i=0,3 do
 end
 --24.2 0.2 5.3
 ENT.ClientProps["door1"] = {
-	model = "models/metrostroi_train/81/backdoor.mdl",
-	pos = Vector(-469.0,16.2,-8),
-	ang = Angle(0,-90,0)
+	model = "models/6000/door/door_cab.mdl",
+	pos = Vector(-469.0,16.2,-7),
+	ang = Angle(0,-0,0)
 }
 ENT.ClientProps["door2"] = {
-	model = "models/metrostroi_train/81/passdoor.mdl",
-	pos = Vector(376,28.0,-7),
-	ang = Angle(0,-90,0)
+	model = "models/6000/door/door_s.mdl",
+	pos = Vector(376,28.0,-9.1),
+	ang = Angle(0,180,0)
 }
 ENT.ClientProps["door3"] = {
-	model = "models/metrostroi_train/81/cabindoor.mdl",
-	pos = Vector(444,64,-7),
+	model = "models/6000/door/door_cab.mdl",
+	pos = Vector(444,65,-6.4),
 	ang = Angle(0,-90,0)
 }
 ENT.ClientProps["UAVALever"] = {
