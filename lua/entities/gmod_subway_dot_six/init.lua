@@ -34,7 +34,7 @@ function ENT:Initialize()
 	--self.InstructorsSeat = self:CreateSeat("instructor",Vector(420,43,-28+10),Angle(0,270,0))
 	self.ExtraSeat1 = self:CreateSeat("instructor",Vector(410,-40,-28+1))
 	self.ExtraSeat2 = self:CreateSeat("instructor",Vector(415,-50,-43),Angle(0,180,0),"models/vehicles/prisoner_pod_inner.mdl")
-	self.ExtraSeat3 = self:CreateSeat("instructor",Vector(402,50,-43),Angle(0,-40+90,0),"models/vehicles/prisoner_pod_inner.mdl")
+	self.ExtraSeat3 = self:CreateSeat("instructor",Vector(385,45,-43),Angle(0,0,0))
 
 	-- Hide seats
 	self.DriverSeat:SetColor(Color(0,0,0,0))
@@ -183,6 +183,9 @@ function ENT:Initialize()
 		{	Pos = Vector(391, 14, 10),
 			Radius = 32,
 			ID = "PassengerDoor" },
+		{	Pos = Vector(391, 14, 10),
+			Radius = 32,
+			ID = "CabinFaceDoor" },
 		{	Pos = Vector(415, 65, 30),
 			Radius = 28,
 			ID = "1:CabinDoor" },
@@ -325,6 +328,7 @@ function ENT:Initialize()
 	self.FrontDoor = false
 	self.CabinDoor = false
 	self.PassengerDoor = false
+	self.CabinFaceDoor = false
 	if not self.Map:find("metrostroi") then
 		self.A45:TriggerInput("Set",0)
 	end
@@ -345,6 +349,7 @@ function ENT:Initialize()
 end
 --------------------------------------------------------------------------------
 function ENT:Think()
+
 	if self.Plombs and self.Plombs.Init then
 		self.Plombs.Init = nil
 		for k,v in pairs(self.Plombs) do self[k]:TriggerInput("Block",true) end
@@ -518,11 +523,13 @@ function ENT:Think()
 	self:SetPackedBool("KDLRK",self.KDLRK.Value > 0)
 	self:SetPackedBool("KDPK",self.KDPK.Value > 0)
 	self:SetPackedBool("KAHK",self.KAHK.Value > 0)
-	
+	self:SetPackedBool("InstructorsSeatCheck", IsValid(self.ExtraSeat3:GetDriver()))
+
 	self:SetPackedBool("CustomD",self.CustomD.Value > 0)
 	self:SetPackedBool("CustomE",self.CustomE.Value > 0)
 	self:SetPackedBool("CustomF",self.CustomF.Value > 0)
 	self:SetPackedBool("CustomG",self.CustomG.Value > 0)
+	
 	----self:SetLightPower(27,(self.Panel["HeadLights2"] > 0.5) and (self.DoorSelect.Value == 0) and (self.ARSType < 3 or self.ARSType == 3 and self:ReadTrainWire(16) < 1))
 	----self:SetLightPower(28,(self.Panel["HeadLights2"] > 0.5) and (self.DoorSelect.Value == 0) and (self.ARSType < 3 or self.ARSType == 3 and self:ReadTrainWire(16) < 1))
 	----self:SetLightPower(29,(self.Panel["HeadLights2"] > 0.5) and (self.DoorSelect.Value == 1) and (self.ARSType < 3 or self.ARSType == 3 and self:ReadTrainWire(16) < 1))
@@ -627,6 +634,7 @@ function ENT:Think()
 
 	self:SetPackedBool(156,self.RearDoor)
 	self:SetPackedBool(158,self.PassengerDoor)
+	self:SetPackedBool(158,self.CabinFaceDoor)
 	self:SetPackedBool(159,self.CabinDoor)
 	
 	--self.ARSType = self.ARSType or 1
@@ -974,6 +982,9 @@ function ENT:OnButtonPress(button,state)
 	end
 	if button:find("PassengerDoor") then
 		self.PassengerDoor = not self.PassengerDoor
+	end
+	if button:find("CabinFaceDoor") then
+		self.CabinFaceDoor = not self.CabinFaceDoor
 	end
 	if button == "CabinDoor" then
 		self.CabinDoor = not self.CabinDoor
@@ -1395,3 +1406,5 @@ function ENT:OnTrainWireError(k)
 		----self:PlayOnce("av_off","cabin")
 	end
 end
+
+
