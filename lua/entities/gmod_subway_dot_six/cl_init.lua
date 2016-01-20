@@ -504,7 +504,7 @@ ENT.ButtonMap["InfoRoute"] = {
 	scale = 0.1,
 }
 ENT.ButtonMap["CabinDoor"] = {
-	pos = Vector(414.5,64,56.7),
+	pos = Vector(414.5,63.9,56.7),
 	ang = Angle(0,0,90),
 	width = 642,
 	height = 2000,
@@ -514,7 +514,7 @@ ENT.ButtonMap["CabinDoor"] = {
 	}
 }
 
-ENT.ButtonMap["PassengerDoor"] = {
+--[[ENT.ButtonMap["PassengerDoor"] = {
 	pos = Vector(390,40.6,50.6), --28
 	ang = Angle(0,90,90),
 	width = 642-220,
@@ -523,16 +523,27 @@ ENT.ButtonMap["PassengerDoor"] = {
 	buttons = {
 		{ID = "PassengerDoor",x=0,y=0,w=642-220,h=2000, tooltip="Дверь в кабину машиниста из салона\nPass door door"},
 	}
-}
+}]]
 
 ENT.ButtonMap["CabinFaceDoor"] = {
-	pos = Vector(460,30,30.6), --28
+	pos = Vector(380,40,30.6), --28
 	ang = Angle(0,90,90),
 	width = 642-220,
 	height = 2000,
 	scale = 0.1/2,
 	buttons = {
-		{ID = "CabinFaceDoor",x=0,y=0,w=642-220,h=2000, tooltip="Торцевуха\nPass door door"},
+		{ID = "CabinFaceDoor",x=0,y=0,w=642-220,h=2000, tooltip="Дверь в кабину машиниста из салона\nPass door"},
+	}
+}
+--door_cab_face
+ENT.ButtonMap["Trap"] = {
+	pos = Vector(460,40,30.6), --28
+	ang = Angle(0,-90,90),
+	width = 642-220,
+	height = 2000,
+	scale = 0.1/2,
+	buttons = {
+		{ID = "Trap",x=0,y=0,w=642-220,h=2000, tooltip="Трап\nEmergency Exit"},
 	}
 }
 ENT.ButtonMap["Wiper"] = {
@@ -1058,9 +1069,9 @@ ENT.ClientProps["door1"] = {
 ENT.ClientProps["door2"] = {
 	model = "models/6000/door/door_s.mdl",
 	pos = Vector(376,28.0,-9.1),
-	ang = Angle(0,180,0)
+	ang = Angle(0,90,0)
 }
-ENT.ClientProps["door_cab_face"] = {
+ENT.ClientProps["door4"] = {
 	model = "models/6000/door/door_cab_face.mdl",
 	pos = Vector(476.4,36.9,-56.8),
 	ang = Angle(0,270,0)
@@ -1257,9 +1268,11 @@ function ENT:Think()
 	if self:GetPackedBool(156) and not self.Door1 then self.Door1 = 0.99 end
 	if self:GetPackedBool(158) and not self.Door2 then self.Door2 = 0.99 end
 	if self:GetPackedBool(159) and not self.Door3 then self.Door3 = 0.99 end
+	if self:GetPackedBool(166) and not self.Door4 then self.Door4 = 0.99 end
 	if not self:GetPackedBool(156) and self.Door1 then self.Door1 = false end
 	if not self:GetPackedBool(158) and self.Door2 then self.Door2 = false end
 	if not self:GetPackedBool(159) and self.Door3 then self.Door3 = false end
+	if not self:GetPackedBool(166) and self.Door4 then self.Door4 = 0.99 end
 	--Sid Body Group check
 	self:SetCSBodygroup("door2",1,self:GetPackedBool("InstructorsSeatCheck") and 0 or 1)
 
@@ -1312,10 +1325,14 @@ function ENT:Think()
 		--sendButtonMessage({ID = "CabinDoor",state = true})
 		--sendButtonMessage({ID = "CabinDoor",state = false})
 	end
-	
+	if self.Door4 == 0.99 then
+		--sendButtonMessage({ID = "door4",state = true})
+		--sendButtonMessage({ID = "door4",state = false})
+    end	
 	self:Animate("door1",	self:GetPackedBool(156) and (self.Door1 or 0.99) or 0,0,0.54, 1024, 1)
-	self:Animate("door2",	self:GetPackedBool(158) and (self.Door2 or 0.99) or 0,0,0.51, 1024, 1)
-	self:Animate("door3",	self:GetPackedBool(159) and (self.Door3 or 0.99) or 0,0,0.54, 1024, 1)
+	self:Animate("door2",	self:GetPackedBool(158) and (self.Door2 or 0.99) or 0,1,0, 1024, 1)
+	self:Animate("door3",	self:GetPackedBool(159) and (self.Door3 or 0.99) or 0,0,1, 1024, 1)
+    self:Animate("door4",	self:GetPackedBool(166) and (self.Door4 or 0.99) or 0,0,1, 512, 1)
 
 	self:Animate("FrontBrake", self:GetNWBool("FbI") and 0 or 1,0,0.35, 3, false)
 	self:Animate("FrontTrain",	self:GetNWBool("FtI") and 0 or 1,0,0.35, 3, false)

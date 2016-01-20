@@ -636,6 +636,7 @@ function ENT:Think()
 	self:SetPackedBool(158,self.PassengerDoor)
 	self:SetPackedBool(158,self.CabinFaceDoor)
 	self:SetPackedBool(159,self.CabinDoor)
+	self:SetPackedBool(166,self.Trap)
 	
 	--self.ARSType = self.ARSType or 1
 	self:SetPackedBool(160,self.ParkingBrake.Value > 0)
@@ -988,6 +989,9 @@ function ENT:OnButtonPress(button,state)
 	end
 	if button == "CabinDoor" then
 		self.CabinDoor = not self.CabinDoor
+	end
+	if button == "Trap" then
+	    self.Trap = not self.Trap
 	end
 	if button == "VADToggle" then
 		local drv = self:GetDriverName()
