@@ -1,0 +1,11 @@
+{
+	"title"		:	"81-717.6(k) (Private)",
+	"type"		:	"ServerContent",
+	"tags"		:	[ "roleplay", "realism" ],
+	"ignore"	:
+	[
+		"*.psd",
+		"*.vcproj",
+		"*.svn*"
+	]
+}
