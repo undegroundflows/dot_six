@@ -27,10 +27,10 @@ function ENT:Initialize()
 		VAD = true,
 		OtklAVU = false,
 		TormAT = false,
-		KAH = false,
-		KAHK = false,
-		RC1 = false,
-		UOS = false,
+		KAH = true,
+		KAHK = true,
+		RC1 = true,
+		UOS = true,
 		A5 = false,
 	}
 	-- Set model and initialize
@@ -39,10 +39,10 @@ function ENT:Initialize()
 	self.WorkingLights = 6
 	self:SetModel("models/6000/6000.mdl")
 	self.BaseClass.Initialize(self)
-	self:SetPos(self:GetPos() + Vector(0,0,100))
+	self:SetPos(self:GetPos() + Vector(0,0,140))
 
 	-- Create seat entities
-	self.DriverSeat = self:CreateSeat("driver",Vector(435,-10,-17))
+	self.DriverSeat = self:CreateSeat("driver",Vector(429,-13.8,-18))
 	self.InstructorsSeat = self:CreateSeat("instructor",Vector(435,50,-28+3),Angle(0,270,0))
 	self.ExtraSeat1 = self:CreateSeat("instructor",Vector(410,-40,-28+1))
 	self.ExtraSeat2 = self:CreateSeat("instructor",Vector(415,-50,-43),Angle(0,180,0),"models/vehicles/prisoner_pod_inner.mdl")
@@ -61,7 +61,7 @@ function ENT:Initialize()
 	self.ExtraSeat3:SetRenderMode(RENDERMODE_TRANSALPHA)
 
 	-- Create bogeys
-	self.FrontBogey = self:CreateBogey(Vector( 317-5,0,-75),Angle(0,180,0),true)
+	self.FrontBogey = self:CreateBogey(Vector( 325-5,0,-75),Angle(0,180,0),true)
 	self.RearBogey  = self:CreateBogey(Vector(-317+0,0,-75),Angle(0,0,0),false)
 
 	-- Initialize key mapping
@@ -200,37 +200,38 @@ function ENT:Initialize()
 	local vX = Angle(0,-90-0.2,56.3):Forward() -- For ARS panel
 	local vY = Angle(0,-90-0.2,56.3):Right()
 	self.Lights = {
-		-- Headlight glow
-		[1] = { "headlight",		Vector(465,0,-20), Angle(0,0,0), Color(216,161,92), fov = 100 },
-
+			-- Headlight glow
+		[1] = { "headlight",		Vector(473,0,-20), Angle(0,0,0), Color(216,161,92), fov = 100 },
+		
 		-- Head (type 1)
-		[2] = { "glow",				Vector(470,-51,-19), Angle(0,0,0), Color(255,220,180), brightness = 1, scale = 1.0 },
-		[3] = { "glow",				Vector(472,-40, -19), Angle(0,0,0),Color(255,220,180), brightness = 1, scale = 1.0 },
-		[4] = { "glow",				Vector(0,0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
-		[5] = { "glow",				Vector(0, 0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
-		[6] = { "glow",				Vector(472, 41, -19), Angle(0,0,0),Color(255,220,180), brightness = 1, scale = 1.0 },
-		[7] = { "glow",				Vector(470, 53,-19), Angle(0,0,0), Color(255,220,180), brightness = 1, scale = 1.0 },
+        [2] = { "glow",    Vector(482, 44,-30), Angle(0,0,0), Color(255,220,180), brightness = 1, scale = 0.8 },
+        [3] = { "glow",    Vector(482, 34,-30), Angle(0,0,0),Color(255,220,180), brightness = 1, scale = 0.8 },
+		--[4] = { "glow",				Vector(0,0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
+		--[5] = { "glow",				Vector(0, 0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
+		[4] = { "glow",    Vector(482,-34,-30), Angle(0,0,0),Color(255,220,180), brightness = 1, scale = 0.8 },
+        [5] = { "glow",    Vector(482,-44,-30), Angle(0,0,0), Color(255,220,180), brightness = 1, scale = 0.8 }, 
 
 		-- Reverse
-		[8] = { "light",			Vector(472,-41, 60), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 1 },
-		[9] = { "light",			Vector(472, 45, 60), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 1 },
-
+		[8] = { "light",			Vector(473,-30,70), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 0.5 },
+		[9] = { "light",			Vector(473, 30,70), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 0.5 },
+		[99] = { "light",			Vector(468,-45,-64), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 0.5 },
+		[98] = { "light",			Vector(468, 45,-64), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 0.5 },
 		-- Cabin
 		[10] = { "dynamiclight",	Vector( 430, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.05, distance = 550 },
-
+		
 		-- Interior
 		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400 , fov=180,farz = 128 },
 		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400, fov=180,farz = 128 },
 		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400 , fov=180,farz = 128 },
-
+		
 		-- Side lights
-		[15] = { "light",			Vector(15,   69, 58.3), Angle(0,0,0), Color(150,255,255), brightness = 0.9, scale = 0.10, texture = "sprites/light_glow02.vmt" },
-		[16] = { "light",			Vector(12,   69, 58.3), Angle(0,0,0), Color(50,255,0), brightness = 0.9, scale = 0.10, texture = "sprites/light_glow02.vmt" },
-		[17] = { "light",			Vector(9,  69, 58.3), Angle(0,0,0), Color(255,255,0), brightness = 0.9, scale = 0.10, texture = "sprites/light_glow02.vmt" },
-
-		[19] = { "light",			Vector(15,   -69, 58.3), Angle(0,0,0), Color(150,255,255), brightness = 0.9, scale = 0.10, texture = "sprites/light_glow02.vmt" },
-		[20] = { "light",			Vector(12,   -69, 58.3), Angle(0,0,0), Color(50,255,0), brightness = 0.9, scale = 0.10, texture = "sprites/light_glow02.vmt" },
-		[21] = { "light",			Vector(9,  -69, 58.3), Angle(0,0,0), Color(255,255,0), brightness = 0.9, scale = 0.10, texture = "sprites/light_glow02.vmt" },
+		[15] = { "light",			Vector(15,   69, 58.3), Angle(0,0,0), Color(150,255,255), brightness = 0.9, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
+		[16] = { "light",			Vector(12,   69, 58.3), Angle(0,0,0), Color(50,255,0), brightness = 0.9, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
+		[17] = { "light",			Vector(9,  69, 58.3), Angle(0,0,0), Color(255,255,0), brightness = 0.9, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
+		
+		[19] = { "light",			Vector(15,   -69, 58.3), Angle(0,0,0), Color(150,255,255), brightness = 0.9, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
+		[20] = { "light",			Vector(12,   -69, 58.3), Angle(0,0,0), Color(50,255,0), brightness = 0.9, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
+		[21] = { "light",			Vector(9,  -69, 58.3), Angle(0,0,0), Color(255,255,0), brightness = 0.9, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
 
 	--self.Lights[22]
 		--self.Lights[26]
@@ -246,8 +247,8 @@ function ENT:Initialize()
 		[33] = { "headlight", 		Vector(458.05,-32.8+1.5,21.1), Angle(-90,0,0), Color(216,161,92), farz = 10, nearz = 1, shadows = 0, brightness = 4.0, fov = 60 },
 		-- Voltmeter
 		[34] = { "headlight", 		Vector(458.05,-32.8+1.5,24.85), Angle(-90,0,0), Color(216,161,92), farz = 10, nearz = 1, shadows = 0, brightness = 4.0, fov = 60 },
-		[35] = { "headlight", 		Vector(457,1.51,9.4), Angle(-45,0,0), Color(216,161,92), farz = 3.5, nearz = 1, shadows = 0, brightness = 2, fov = 160 },
 
+	
 		-- ARS panel lights
 		[40] = { "light", Vector(459.4,10.8,13.1)+vY*5.15+vX*3,				Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },
 		[41] = { "light", Vector(459.4,10.8,13.1)+vY*5.15+vX*4.15,				Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },
@@ -267,9 +268,8 @@ function ENT:Initialize()
 		[55] = { "light", Vector(459.4,10.8,13.1)+vY*(1.37+1.27*0)+vX*15.85,	Angle(0,0,0), Color(255,30, 0), brightness = 1.0, scale = 0.008 },
 		[56] = { "light", Vector(459.4,10.8,13.1)+vY*(1.37+1.27*1)+vX*15.86,	Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },
 		[57] = { "light", Vector(459.4,10.8,13.1)+vY*(1.37+1.27*2)+vX*15.87,	Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },
-		[58] = { "light", Vector(459.4,10.8,13.1)+vY*(1.37+1.27*3)+vX*15.88,	Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },
-
-		-- Interior lights
+		[58] = { "light", Vector(459.4,10.8,13.1)+vY*(1.37+1.27*3)+vX*15.88,	Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },		
+		
 		[60+0] = { "headlight", Vector(290-130*0,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
 		[60+1] = { "headlight", Vector(290-130*1,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
 		[60+2] = { "headlight", Vector(290-130*2,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
@@ -280,8 +280,22 @@ function ENT:Initialize()
 		[60+7] = { "headlight", Vector(270-230*1,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
 		[60+8] = { "headlight", Vector(270-230*2,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
 		[60+9] = { "headlight", Vector(270-230*3,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
-		[70    ] = { "headlight",	Vector( 430, -60, -47), Angle(45,-90,0), Color(255,255,255), brightness = 0.5, distance = 400 , fov=120, shadows = 1 },
+--		[60+10] = { "headlight", Vector(290-130*6,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
+--		[60+11] = { "headlight", Vector(270-230*4,0,70), Angle (-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170},
+--		[60+12] = { "headlight", Vector(290-130*7,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
+--		[60+13] = { "headlight", Vector(270-130*5,0,70), Angle (-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170},
+--		[60+14] = { "headlight", Vector(290-130*8,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
+--		[60+15] = { "headlight", Vector(270-130*6,0,70), Angle (-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170},
+--		[60+16] = { "headlight", Vector(290-130*7,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
+--		[60+17] = { "headlight", Vector(270-130*9,0,70), Angle (-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170},
+--		[60+18] = { "headlight", Vector(290-130*8,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
+--		[60+19] = { "headlight", Vector(270-130*10,0,70), Angle (-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170},
+--		[60+20] = { "headlight", Vector(290-130*9,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
 
+
+
+		
+		
 		--[[2-2
 		[97] = { "headlight",		Vector(465,-45,-19), Angle(0,-20,0), Color(216,161,92), fov = 70 },
 		[98] = { "headlight",		Vector(465,45,-19), Angle(0,20,0), Color(216,161,92), fov = 70 },
@@ -293,6 +307,10 @@ function ENT:Initialize()
 		[99] = { "headlight",		Vector(460,45,-10), Angle(-5,20,0), Color(216,161,92), fov = 70 },
 		]]
 	}
+	for i = 1,23 do
+		self.Lights[69+i] = { "light", Vector(-457 + 34.9*i, 0, 70), Angle(180,0,0), Color(255,220,180), brightness = 1, scale = 0.75}
+	end
+	
 	-- Cross connections in train wires
 	self.TrainWireCrossConnections = {
 		[5] = 4, -- Reverser F<->B
@@ -320,7 +338,7 @@ function ENT:Initialize()
 	-- ARS type
 	self.ARSType = 1
 	self:SetNW2Int("ARSType",1)
-
+	
 	self.RearDoor = false
 	self.FrontDoor = false
 	self.CabinDoor = false
@@ -459,21 +477,17 @@ function ENT:Think()
 	if self.YAR_13A.Slope and self.YAR_13A.Slope > 0 and self:GetAngles().pitch*self.SpeedSign > -1 then
 		self.YAR_13A:TriggerInput("Slope",0)
 	end
-	if self.Lights[11] and self.LampType and self.LampType == 1 and self.Lights[11][4] ~= Color(255,175,75) then
+		if self.Lights[70] and self.LampType and self.LampType == 1 and self.Lights[70][4] ~= Color(255,175,50) then
+		for i = 1,23 do
+			self:SetLightPower(69+i,false)
+			self.Lights[69+i][2] = Vector(-457 + 34.9*i, 0, 70)
+			self.Lights[69+i][4] = Color(255,175,50)
+		end
 		for i = 11,13 do
 			self:SetLightPower(i,false)
-			self.Lights[i][4] = Color(255,175,75)
+			self.Lights[i][4] = Color(255,175,50)
 		end
-	end
-	if self.Lights[11] and self.LampType and self.LampType > 1 and ((self.Lights[11][4] ~= Color(200,200,255)  and self.LampType == 2) or (self.Lights[11][4] ~= Color(255,255,255)  and self.LampType == 3)) then
-		for i = 11,13 do
-			self:SetLightPower(i,false)
-			if self.LampType == 2 then
-				self.Lights[i][4] = Color(200,200,255)
-			elseif self.LampType == 3 then
-				self.Lights[i][4] = Color(255,255,255)
-			end
-		end
+		self.LightsReload = true
 	end
 
 	if self.ARSType ~= self.OldARSType then
@@ -517,115 +531,47 @@ function ENT:Think()
 	end
 
 	-- Headlights
-	local brightness = self.Panel["HeadLights1"] and (math.min(1,self.Panel["HeadLights1"])*0.50 +
-						math.min(1,self.Panel["HeadLights2"])*0.25 +
+	local brightness = self.Panel["HeadLights1"] and (math.min(1,self.Panel["HeadLights1"])*0.50 + 
+						math.min(1,self.Panel["HeadLights2"])*0.25 + 
 						math.min(1,self.Panel["HeadLights3"])*0.25)
 						or 0
-	self:SetLightPower(1,self.Panel["HeadLights3"] and (self.Panel["HeadLights3"] > 0.5 or self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5),brightness*self.WorkingLights/6)
+	self:SetLightPower(1,self.Panel["HeadLights3"] and (self.Panel["HeadLights3"] > 0.5) and (self.L_4.Value > 0.5),brightness*self.WorkingLights/6)
+	
+	self:SetLightPower(2, (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+	self:SetLightPower(3, (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+	self:SetLightPower(4, (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+	self:SetLightPower(5, (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
 
-	if self.LED and self.Lights[1][4] ~= Color(127,255,255) then
-		for i = 1,7 do self:SetLightPower(i,false) end
-		self.Lights[1][4] = Color(127,255,255)
-		for i = 2,7 do
-			self.Lights[i][4] = Color(127,255,255)
-			self.Lights[i]["brightness"] = 5
-			self.Lights[i]["scale"] = 2.0
-		end
-	end
-	if not self.LED and self.Lights[1][4] ~= Color(216,161,92) then
-		for i = 1,7 do self:SetLightPower(i,false) end
-		self.Lights[1][4] = Color(216,161,92)
-		for i = 2,7 do
-			self.Lights[i][4] = Color(255,220,180)
-			self.Lights[i]["brightness"] = 1
-			self.Lights[i]["scale"] = 1.0
-		end
-	end
-	if self.MaskType == 2 and self.Lights[4][2] ~= Vector(467,-4, 58) then
-		for i = 1,7 do self:SetLightPower(i,false) end
-		 self.Lights[2][2] = Vector(467,-51,-19)
-		 self.Lights[3][2] = Vector(467,-38, -19)
-		 self.Lights[4][2] = Vector(467,-4, 58)
-		 self.Lights[5][2] = Vector(467, 6, 58)
-		 self.Lights[6][2] = Vector(467, 38, -19)
-		 self.Lights[7][2] = Vector(467, 51,-19)
-		 self.WorkingLights = 6
-	end
-	if self.MaskType == 1 and self.Lights[3][2] ~= Vector(466,-40, -19) then
-		for i = 1,7 do self:SetLightPower(i,false) end
-		 self.Lights[2][2] = Vector(464,-51,-19)
-		 self.Lights[3][2] = Vector(466,-40, -19)
-		 self.Lights[4][2] = Vector(0,0, 0)
-		 self.Lights[5][2] = Vector(0, 0, 0)
-		 self.Lights[6][2] = Vector(466, 41, -19)
-		 self.Lights[7][2] = Vector(464, 53,-19)
-		 self.WorkingLights = 4
-	end
-	if (self.MaskType == 3 or self.MaskType == 4) and self.Lights[4][2] ~= Vector(467,-7, -19) then
-		for i = 1,7 do self:SetLightPower(i,false) end
-		 self.Lights[2][2] = Vector(465,-50,-19)
-		 self.Lights[3][2] = Vector(467,-19,-19)
-		 self.Lights[4][2] = Vector(467,-7, -19)
-		 self.Lights[5][2] = Vector(467, 7, -19)
-		 self.Lights[6][2] = Vector(467, 19,-19)
-		 self.Lights[7][2] = Vector(465, 52,-19)
-		 self.WorkingLights = 6
-	end
-	if self.MaskType == 5 and self.Lights[3][2] ~= Vector(466,-45, -19) then
-		for i = 1,7 do self:SetLightPower(i,false) end
-		 self.Lights[2][2] = Vector(0,0,0)
-		 self.Lights[3][2] = Vector(466,-45, -19)
-		 self.Lights[4][2] = Vector(0,0, 0)
-		 self.Lights[5][2] = Vector(0, 0, 0)
-		 self.Lights[6][2] = Vector(466, 45, -19)
-		 self.Lights[7][2] = Vector(0, 0,0)
-		 self.WorkingLights = 2
-		for i = 1,7 do self:SetLightPower(i,true) end
-	end
-	if self.MaskType == 6 and self.Lights[3][2] ~= Vector(466,-42, -26) then
-		for i = 1,7 do self:SetLightPower(i,false) end
-		 self.Lights[2][2] = Vector(0,0,0)
-		 self.Lights[3][2] = Vector(466,-42, -26)
-		 self.Lights[4][2] = Vector(0,0, 0)
-		 self.Lights[5][2] = Vector(0, 0, 0)
-		 self.Lights[6][2] = Vector(466, 43, -26)
-		 self.Lights[7][2] = Vector(0, 0,0)
-		 self.WorkingLights = 2
-		for i = 1,7 do self:SetLightPower(i,true) end
-	end
-	if self.Panel["HeadLights1"] and self.Panel["HeadLights2"] then
-		if self.MaskType == 3 or self.MaskType == 4 then
-			self:SetLightPower(2, (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(3, (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(4, (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(5, (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(6, (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(7, (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
-		elseif self.MaskType == 2 then
-			self:SetLightPower(2, (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(3, (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(4, (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(5, (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(6, (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(7, (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
-		end
-		if self.MaskType == 1 then
-			self:SetLightPower(2, (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(3, (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(4, false)
-			self:SetLightPower(5, false)
-			self:SetLightPower(6, (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(7, (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
-		end
-		if self.MaskType > 4 then
-			self:SetLightPower(2, false)
-			self:SetLightPower(3, (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(4, false)
-			self:SetLightPower(5, false)
-			self:SetLightPower(6, (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
-			self:SetLightPower(7, false)
-		end
-	end
+	--if self.ARSType == 3 then self.ARSType = 2 end
+--[[
+		self:SetLightPower(3,   self.TrainModel == 2 and not self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(7,   self.TrainModel == 2 and not self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(5,   self.TrainModel == 2 and not self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(4,   self.TrainModel == 2 and not self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(6,   self.TrainModel == 2 and not self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(2,   self.TrainModel == 2 and not self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+
+		self:SetLightPower(93, self.TrainModel == 1 and not self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(94, self.TrainModel == 1 and not self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(95, self.TrainModel == 1 and not self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(96, self.TrainModel == 1 and not self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(97, self.TrainModel == 1 and not self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(92, self.TrainModel == 1 and not self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+
+		self:SetLightPower(99, self.TrainModel == 2 and self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(103, self.TrainModel == 2 and self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(101, self.TrainModel == 2 and self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(100, self.TrainModel == 2 and self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(102, self.TrainModel == 2 and self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(98, self.TrainModel == 2 and self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+		
+		self:SetLightPower(105,  self.TrainModel == 1 and self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(106,  self.TrainModel == 1 and self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(107,  self.TrainModel == 1 and self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(108,  self.TrainModel == 1 and self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(109,  self.TrainModel == 1 and self.LED and (self.Panel["HeadLights2"] > 0.5) and (self.L_4.Value > 0.5))
+		self:SetLightPower(104,  self.TrainModel == 1 and self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
+	]]
 	--if self.ARSType == 3 then self.ARSType = 2 end
 --[[
 		self:SetLightPower(3,   self.TrainModel == 2 and not self.LED and (self.Panel["HeadLights1"] > 0.5) and (self.L_4.Value > 0.5))
@@ -659,45 +605,45 @@ function ENT:Think()
 	-- Reverser lights
 	self:SetLightPower(8, self.Panel["RedLightRight"] > 0.5)
 	self:SetLightPower(9, self.Panel["RedLightLeft"] > 0.5)
+	self:SetLightPower(98,self.Panel["RedLightRight"] > 0.5)
+	self:SetLightPower(99,self.Panel["RedLightLeft"] > 0.5)
 
+		
 	-- Interior/cabin lights
 	self:SetLightPower(10,(self.Panel["CabinLight"] > 0.5) and (self.L_2.Value > 0.5))
 	self:SetLightPower(30, (self.Panel["CabinLight"] > 0.5), 0.03 + 0.97*self.L_2.Value)
-
+	
 	local lightsActive1 = (self.Battery.Voltage > 55.0 and self.Battery.Voltage < 85.0) and
 		((self:ReadTrainWire(33) > 0) or (self:ReadTrainWire(34) > 0))
-	local lightsActive2 = (self.PowerSupply.LightsActive > 0.0) and
+	local lightsActive2 = (self.PowerSupply.XT3_4 > 55.0) and
 		(self:ReadTrainWire(33) > 0)
-	local mul = 0
-
-	local LampCount  = (self.LampType == 1 and 23 or 12)
-	for i = 1,LampCount do
-		local Ip = self.LampType == 1 and 6 or 3
-		if (lightsActive2 or (lightsActive1 and (i+Ip-2)%Ip==1)) then
-			if not self.BrokenLamps[i]  and not self.LampsBlink[i] then self.LampsBlink[i] = CurTime() + math.random() end
-			if self.BrokenLamps[i] == nil and self.LampsBlink[i] and CurTime() - self.LampsBlink[i] > 0 and not self.Lamps[i] then self.Lamps[i] = CurTime() + math.random()*4 end
-		else
-			self.LampsBlink[i] = nil
-			self.Lamps[i] = nil
+	if not self.LightsActive then self.LightsActive = 0 end
+	if (lightsActive1 and not lightsActive2) and self.LightsActive ~= 1 or lightsActive2 and self.LightsActive ~= 2 or (not lightsActive1 and not lightsActive2) and self.LightsActive ~= 0 or self.LightsReload then
+		self:SetLightPower(11, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
+		self:SetLightPower(12, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
+		self:SetLightPower(13, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
+		self.LightsReload = nil
+		local Ip = self.LampType == 1 and 5 or 3
+		for i = 0,9 do
+			self:SetLightPower(60+i,(lightsActive2 or (lightsActive1 and (i+Ip-2)%Ip==1)) and (self.LampType == 1 or i < 14))
 		end
-		if (self.Lamps[i] and CurTime() - self.Lamps[i] > 0) then
-			mul = mul + 1
-		elseif (self.LampsBlink[i] and CurTime() - self.LampsBlink[i] > 0) then
-			mul = mul + 0.5
-		end
-		self:SetPackedBool("lightsActive"..i,(self.Lamps[i] and CurTime() - self.Lamps[i] > 0) or false)
-		self:SetPackedBool("lightsActiveB"..i,(self.LampsBlink[i] and CurTime() - self.LampsBlink[i] > 0) or false)
+		self.LightsActive = (lightsActive2 and 2 or lightsActive1 and 1 or 0)
 	end
-	self:SetLightPower(11, mul > 0,mul/LampCount)
-	self:SetLightPower(12, mul > 0,mul/LampCount)
-	self:SetLightPower(13, mul > 0,mul/LampCount)
-
+	--[[--self:SetLightPower(12, (self.Panel["EmergencyLight"] > 0.5) and ((self.L_1.Value > 0.5) or (self.L_5.Value > 0.5)),
+		0.5*self.L_5.Value + ((self.PowerSupply.XT3_4 > 65.0) and 0.5 or 0))]]
+		
+	--[[for i=60,69 do
+		self:SetLightPower(i,
+			(self.Panel["EmergencyLight"] > 0.5) and ((self.L_1.Value > 0.5) or (self.L_5.Value > 0.5)),
+			0.1*self.L_5.Value + ((self.PowerSupply.XT3_4 > 65.0) and 1 or 0))
+	end]]--
+	----self:SetLightPower(12, self.Panel["EmergencyLight"] > 0.5)
+	----self:SetLightPower(13, self.PowerSupply.XT3_4 > 65.0)	
 	self:SetLightPower(31, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 	self:SetLightPower(32, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 	self:SetLightPower(33, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 	self:SetLightPower(34, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 
-	self:SetLightPower(35,self.ARSType == 4 and (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 	-- Door button lights
 	self:SetPackedBool("Left",(self.Panel["HeadLights2"] > 0.5) and (self.DoorSelect.Value == 0))
 	self:SetPackedBool("Right",(self.Panel["HeadLights2"] > 0.5) and (self.DoorSelect.Value == 1))
@@ -768,10 +714,9 @@ function ENT:Think()
 	self:SetPackedBool(17,self.KRZD.Value == 1.0)
 	self:SetPackedBool(18,self.KSN.Value == 1.0)
 	self:SetPackedBool(19,self.OtklAVU.Value == 1.0)
-	self:SetPackedBool("TormAT",self.TormAT.Value == 1.0)
 	self:SetPackedBool(20,self.Pneumatic.Compressor == 1.0)
 	self:SetPackedBool(21,self.Pneumatic.LeftDoorState[1] > 0.5)
-	self:SetPackedBool(22,self.Pneumatic.ValveType == 2)
+	self:SetPackedBool(22,self.Pneumatic.ValveType == 1)
 	--23
 	self:SetPackedBool(24,self.DURA.Power)
 	self:SetPackedBool(25,self.Pneumatic.RightDoorState[1] > 0.5)
@@ -799,9 +744,7 @@ function ENT:Think()
 	self:SetPackedBool(124,self.CustomC.Value == 1.0)
 	self:SetPackedBool(125,self.R_G.Value == 1.0)
 	self:SetPackedBool(126,self.R_Radio.Value == 1.0)
-	self:SetPackedBool(127,self.R_ZS.Value == 1.0)
-	self:SetPackedBool("R_VPR",self.R_VPR.Value == 1.0)
-	self:SetPackedBool("VPR",self.R_VPR.Value == 1.0 and self.A29.Value == 1.0 and self.Panel["V1"])
+	self:SetPackedBool(127,self.R_UNch.Value == 1.0)
 	self:SetPackedBool(128,self.R_Program1.Value == 1.0)
 	self:SetPackedBool(129,self.R_Program2.Value == 1.0)
 	self:SetPackedBool(130,self.RC1.Value == 1.0)
@@ -818,7 +761,8 @@ function ENT:Think()
 	self:SetPackedBool(156,self.RearDoor)
 	self:SetPackedBool(158,self.PassengerDoor)
 	self:SetPackedBool(159,self.CabinDoor)
-
+	self:SetPackedBool(166,self.Trap)
+	
 	--self.ARSType = self.ARSType or 1
 	self:SetPackedBool(160,self.ParkingBrake.Value > 0)
 	self:SetPackedBool(161,self.ParkingBrakeSign.Value > 0)
@@ -922,50 +866,51 @@ function ENT:Think()
 		end
 	end
 
-	-- Non-standard ARS logic
+-- Non-standard ars logic
+
 
 	if self.ARSType == 2 then
 		-- LSD
-		self:SetLightPower(40, self:GetPackedBool(40) and self:GetPackedBool(32))
-		self:SetLightPower(41, self:GetPackedBool(40) and self:GetPackedBool(32))
+		self:SetLightPower(40,self:GetPackedBool(40) and self:GetPackedBool(32))
+		self:SetLightPower(41,self:GetPackedBool(40) and self:GetPackedBool(32))
 		-- LHRK
-		self:SetLightPower(42, self:GetPackedBool(33) and self:GetPackedBool(32))
+		self:SetLightPower(42,self:GetPackedBool(33) and self:GetPackedBool(32))
 		-- RP LSN
-		self:SetLightPower(43, self:GetPackedBool(35) and self:GetPackedBool(32))
-		self:SetLightPower(44, self:GetPackedBool(131) and self:GetPackedBool(32))
-		self:SetLightPower(43, (self:GetPackedBool(35) or self:GetPackedBool(131)) and self:GetPackedBool(32), self:GetPackedBool(35) and 1 or 0.35)
-		self:SetLightPower(44, self:GetPackedBool(131) and self:GetPackedBool(32))
+		self:SetLightPower(43,self:GetPackedBool(35) and self:GetPackedBool(32))
+		self:SetLightPower(44,self:GetPackedBool(131) and self:GetPackedBool(32))
+		self:SetLightPower(43,(self:GetPackedBool(35) or self:GetPackedBool(131)) and self:GetPackedBool(32),self:GetPackedBool(35) and 1 or 0.35)
+		self:SetLightPower(44,self:GetPackedBool(131) and self:GetPackedBool(32))
 		-- Och
-		self:SetLightPower(45, self:GetPackedBool(41) and self:GetPackedBool(32))
+		self:SetLightPower(45,self:GetPackedBool(41) and self:GetPackedBool(32))
 		-- 0
-		self:SetLightPower(46, self:GetPackedBool(42) and self:GetPackedBool(32))
+		self:SetLightPower(46,self:GetPackedBool(42) and self:GetPackedBool(32))
 		-- 40
-		self:SetLightPower(47, self:GetPackedBool(43) and self:GetPackedBool(32))
+		self:SetLightPower(47,self:GetPackedBool(43) and self:GetPackedBool(32))
 		-- 60
-		self:SetLightPower(48, self:GetPackedBool(44) and self:GetPackedBool(32))
+		self:SetLightPower(48,self:GetPackedBool(44) and self:GetPackedBool(32))
 		-- 70
-		self:SetLightPower(49, self:GetPackedBool(45) and self:GetPackedBool(32))
+		self:SetLightPower(49,self:GetPackedBool(45) and self:GetPackedBool(32))
 		-- 80
-		self:SetLightPower(50, self:GetPackedBool(46) and self:GetPackedBool(32))
+		self:SetLightPower(50,self:GetPackedBool(46) and self:GetPackedBool(32))
 		-- LEKK
-		self:SetLightPower(51, false)
+		self:SetLightPower(51,false)
 		-- LN
-		self:SetLightPower(52, false)
+		self:SetLightPower(52,false)
 		-- LKVD
-		self:SetLightPower(53, self:GetPackedBool(48) and self:GetPackedBool(32))
+		self:SetLightPower(53,self:GetPackedBool(48) and self:GetPackedBool(32))
 		-- LKT
-		self:SetLightPower(54, self:GetPackedBool(47) and self:GetPackedBool(32))
+		self:SetLightPower(54,self:GetPackedBool(47) and self:GetPackedBool(32))
 		-- LKVC
-		self:SetLightPower(55, self:GetPackedBool(51) and self:GetPackedBool(32))
+		self:SetLightPower(55,self:GetPackedBool(51) and self:GetPackedBool(32))
 		-- LRS
-		self:SetLightPower(56, self:GetPackedBool(54) and self:GetPackedBool(32))
+		self:SetLightPower(56,self:GetPackedBool(54) and self:GetPackedBool(32))
 		-- LVD
-		self:SetLightPower(57, self:GetPackedBool(50) and self:GetPackedBool(32))
+		self:SetLightPower(57,self:GetPackedBool(50) and self:GetPackedBool(32))
 		-- LST
-		self:SetLightPower(58, self:GetPackedBool(49) and self:GetPackedBool(32))
+		self:SetLightPower(58,self:GetPackedBool(49) and self:GetPackedBool(32))
 	else
-		for i = 40, 58 do
-			self:SetLightPower(i, false)
+		for i=40,58 do
+			self:SetLightPower(i,false)
 		end
 	end
 
@@ -1181,6 +1126,9 @@ function ENT:OnButtonPress(button,route)
 		self.CabinDoor = not self.CabinDoor
 		if self.CabinDoor then self:PlayOnce("door_open_tor","cabin") else self:PlayOnce("door_close_tor","cabin") end
 	end
+	if button == "Trap" then
+ 	    self.Trap = not self.Trap
+ 	end
 	if button == "UAVAToggle" then
 		local drv = self:GetDriverName()
 		local state = self.UAVA.TargetValue < 0.5 and "enabled" or "disabled"
@@ -1224,7 +1172,7 @@ function ENT:OnButtonPress(button,route)
 			trn.RouteNumber = self.RouteNumber
 			trn:SetNWString("RouteNumber",self.RouteNumber)
 		end
-
+			
 	end
 	if button == "Num1M" then
 		if not self.RouteNumber then self.RouteNumber = "00" end
@@ -1266,15 +1214,15 @@ function ENT:OnButtonPress(button,route)
 		end
 	end
 	if button == "RouteNumberUpdate" then
-		self.RouteNumber = #state == 0 and "00" or #state == 1 and "0"..state or state
-		self:SetNWString("RouteNumber",self.RouteNumber)
+		self.RouteNumber = #route == 0 and "00" or #route == 1 and "0"..route or route
+		self:SetNW2String("RouteNumber",self.RouteNumber)
 		local trn = self.WagonList[#self.WagonList]
 		if IsValid(trn) and trn ~= self then
 			trn.RouteNumber = self.RouteNumber
-			trn:SetNWString("RouteNumber",self.RouteNumber)
+			trn:SetNW2String("RouteNumber",self.RouteNumber)
 		end
 	end
-
+	
 	if button == "KVUp" then
 		if self.KV.ControllerPosition ~= -1 then
 			self.KV:TriggerInput("ControllerUp",1.0)
