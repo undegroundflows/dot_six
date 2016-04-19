@@ -55,6 +55,7 @@ ENT.ButtonMap["Front"] = {
 	
 	buttons = {
 		--{ID = "VAHToggle",x=360, y=15, radius=20, tooltip="ВАХ: Включение аварийного хода (неисправность реле педали безопасности)\nVAH: Emergency driving mode (failure of RPB relay)"},
+		{ID = "Wiper",x=340, y=15,radius=20, tooltip="Дворник\nWiper"},
 		{ID = "VADToggle",x=93, y=15, radius=20, tooltip="Блокировка контроля дверей\nEmergency door close override"},
 		{ID = "KAHSet",x=121,  y=15, radius=20, tooltip="КАХ: Кнопка аварийного хода\nEmergency drive button"},
 		{ID = "KAHPl",x=121, y=7, radius=20, tooltip="Пломба крышки КАХ\nKAH plomb"},
@@ -323,12 +324,12 @@ ENT.ButtonMap["PneumaticPanels"] = {
 	}
 }
 ENT.ButtonMap["DriverValveDisconnect"] = {
-	pos = Vector(421.0,-24,-32),
+	pos = Vector(452,-26,-4),
 	ang = Angle(0,0,0),
 	width = 200,
 	height = 90,
 	scale = 0.0625,
-
+	
 	buttons = {
 		{ID = "DriverValveDisconnectToggle", x=0, y=0, w=200, h=90, tooltip="Клапан разобщения\nDriver valve disconnect valve"},
 	}
@@ -345,8 +346,8 @@ ENT.ButtonMap["ParkingBrake"] = {
 	}
 }
 ENT.ButtonMap["EPKDisconnect"] = {
-	pos = Vector(435,-56,-24),
-	ang = Angle(90,0,270),
+	pos = Vector(452,-35,-4),
+	ang = Angle(0,0,0),
 	width = 200,
 	height = 120,
 	scale = 0.0625,
@@ -397,18 +398,18 @@ ENT.ButtonMap["Schedule"] = {
 	scale = 0.0625/2,
 	
 	buttons = {
-		{x=1, y=1, w=col1w, h=rowtall, tooltip="М №\nRoute number"},
-		{x=1, y=rowtall*2+3, w=col1w, h=rowtall, tooltip="П №\nPath number"},
+		{x=1, y=1, w=col1w, h=rowtall, tooltip="Маршрут №\nRoute number"},
+		{x=1, y=rowtall*2+3, w=col1w, h=rowtall, tooltip="Путь №\nPath number"},
 		
-		{x=col1w+2, y=1, w=col2w*3+2, h=rowtall, tooltip="ВРЕМЯ ХОДА\nTotal schedule time"},
-		{x=col1w+2, y=rowtall+2, w=col2w*3+2, h=rowtall, tooltip="ИНТ\nTrain interval"},
+		{x=col1w+2, y=1, w=col2w*3+2, h=rowtall, tooltip="Время хода\nTotal schedule time"},
+		{x=col1w+2, y=rowtall+2, w=col2w*3+2, h=rowtall, tooltip="Интервал\nTrain interval"},
 		
-		{x=col1w+2, y=rowtall*2+3, w=col2w, h=rowtall, tooltip="ЧАС\nHour"},
-		{x=col1w+col2w+3, y=rowtall*2+3, w=col2w, h=rowtall, tooltip="МИН\nMinute"},
-		{x=col1w+col2w*2+4, y=rowtall*2+3, w=col2w, h=rowtall, tooltip="СЕК\nSecond"},
-		{x=col1w+2, y=rowtall*3+4, w=col2w*3+2, h=(rowtall+1)*(rowamount-3)-1, tooltip="Arrival times"}, -- NEEDS TRANSLATING
+		{x=col1w+2, y=rowtall*2+3, w=col2w, h=rowtall, tooltip="Час\nHour"},
+		{x=col1w+col2w+3, y=rowtall*2+3, w=col2w, h=rowtall, tooltip="Мин\nMinute"},
+		{x=col1w+col2w*2+4, y=rowtall*2+3, w=col2w, h=rowtall, tooltip="Сек\nSecond"},
+		{x=col1w+2, y=rowtall*3+4, w=col2w*3+2, h=(rowtall+1)*(rowamount-3)-1, tooltip="Время прибытия\nArrival times"}, -- NEEDS TRANSLATING
 		
-		{x=1, y=rowtall*3+4, w=col1w, h=(rowtall+1)*(rowamount-3)-1, tooltip="Station name"}, -- NEEDS TRANSLATING
+		{x=1, y=rowtall*3+4, w=col1w, h=(rowtall+1)*(rowamount-3)-1, tooltip="Станция\nStation name"}, -- NEEDS TRANSLATING
 	}
 }
 ENT.ButtonMap["IGLA"] = {
@@ -561,8 +562,8 @@ ENT.ButtonMap["Wiper"] = {
 ENT.ClientPropsInitialized = false
 ENT.ClientProps["brake013"] = {
 	model = "models/metrostroi/81-717/brake.mdl",
-	pos = Vector(454,-29,-5),
-	ang = Angle(0,160,0)
+	pos = Vector(454,-29.5,-5),
+	ang = Angle(0,180,0)
 }
 ENT.ClientProps["controller"] = {
  model = "models/6000/grkv.mdl",
@@ -577,13 +578,13 @@ ENT.ClientProps["reverser"] = {
 }
 ENT.ClientProps["brake_disconnect"] = {
 	model = "models/metrostroi/81-717/uava.mdl",
-	pos = Vector(462,-34,-4),
-	ang = Angle(0,180,270)
+	pos = Vector(462,-32,-4),
+	ang = Angle(0,25,270)
 }
 ENT.ClientProps["EPK_disconnect"] = {
 	model = "models/metrostroi/81-717/uava.mdl",
-	pos = Vector(440,-56.2,-33),
-	ang = Angle(90,180,0),
+	pos = Vector(461,-42,-4),
+	ang = Angle(0,-100,270),
 }
 ENT.ClientProps["ParkingBrake"] = {
 	model = "models/metrostroi/81-717/uava.mdl",
@@ -1152,7 +1153,6 @@ function ENT:Think()
 	end
 	if self.WiperValue > math.pi*2 then self.WiperValue = 0 end
 	-- Simulate pressure gauges getting stuck a little
-	self:Animate("brake334", 		self:GetPackedRatio(0), 			0.00, 0.65,  256,24)
 	self:Animate("wiper", 		(math.sin(self.WiperValue-math.pi/2)+2)/2 - 0.5, 			0, 0.34,  256,24)
 	self:Animate("brake013", 		self:GetPackedRatio(0)^0.5,			0.00, 0.65,  256,24)
 	--print(self:GetPackedBool(163))
@@ -1162,9 +1162,11 @@ function ENT:Think()
 	self:ShowHide("reverser",		self:GetPackedBool(0))
 	self:Animate("krureverser",		0.5+(0.5-self.KRUPos*0.5)-0.5*(self:GetPackedRatio(2)/2),		0.05, 1,  3,false)
 	self:ShowHide("krureverser",	self:GetPackedBool(27))
+	
+	
 	--Sid Body Group check
 
-	self:ShowHide("brake013",		self:GetPackedBool(22))
+--	self:ShowHide("brake013",		self:GetPackedBool(22))
 
 	--self:ShowHide("controller",		self:GetNWBool("NewKV"))
 	--print(self:GetPackedRatio(6))
@@ -1180,7 +1182,7 @@ function ENT:Think()
 	self:Animate("VozvratRP",		self:GetPackedBool(2) and 1 or 0, 	0,1, 16, false)
 	self:Animate("DIPon",			self:GetPackedBool(3) and 1 or 0, 	0,1, 16, false)
 	self:Animate("DIPoff",			self:GetPackedBool(4) and 1 or 0, 	0,1, 16, false)	
-	self:Animate("brake_disconnect",self:GetPackedBool(6) and 1 or 0, 	1,0.5, 3, false)
+	self:Animate("brake_disconnect",self:GetPackedBool(6) and 1 or 0, 	0,0.7, 3, false)
 	self:Animate("battery",			self:GetPackedBool(7) and 0.87 or 1, 	0,1, 1, false)
 	self:Animate("RezMK",			self:GetPackedBool(8) and 1 or 0, 	0,1, 16, false)
 	self:Animate("VMK",				self:GetPackedBool(9) and 1 or 0, 	0,1, 16, false)
@@ -1428,20 +1430,23 @@ function ENT:Think()
 	local brakeLinedPdT = self:GetPackedRatio(9)
 	local dT = self.DeltaTime
 	self.BrakeLineRamp1 = self.BrakeLineRamp1 or 0
-	--print(brakeLinedPdT)
 
 	if (brakeLinedPdT > -0.001)
-	then self.BrakeLineRamp1 = self.BrakeLineRamp1 + 2.0*(0-self.BrakeLineRamp1)*dT
-	else self.BrakeLineRamp1 = self.BrakeLineRamp1 + 2.0*((-0.4*brakeLinedPdT)-self.BrakeLineRamp1)*dT
+	then self.BrakeLineRamp1 = self.BrakeLineRamp1 + 4.0*(0-self.BrakeLineRamp1)*dT
+	else self.BrakeLineRamp1 = self.BrakeLineRamp1 + 4.0*((-0.6*brakeLinedPdT)-self.BrakeLineRamp1)*dT
 	end
-	self:SetSoundState("release2",(self.BrakeLineRamp1^1.35)*0.75,1.0)
+	self.BrakeLineRamp1 = math.Clamp(self.BrakeLineRamp1,0,1)
+	self:SetSoundState("release2",self.BrakeLineRamp1^1.65,1.0)
 
 	self.BrakeLineRamp2 = self.BrakeLineRamp2 or 0
 	if (brakeLinedPdT < 0.001)
-	then self.BrakeLineRamp2 = self.BrakeLineRamp2 + 2.0*(0-self.BrakeLineRamp2)*dT
-	else self.BrakeLineRamp2 = self.BrakeLineRamp2 + 2.0*(0.02*brakeLinedPdT-self.BrakeLineRamp2)*dT
+	then self.BrakeLineRamp2 = self.BrakeLineRamp2 + 4.0*(0-self.BrakeLineRamp2)*dT
+	else self.BrakeLineRamp2 = self.BrakeLineRamp2 + 8.0*(0.1*brakeLinedPdT-self.BrakeLineRamp2)*dT
 	end
-	self:SetSoundState("release3",self.BrakeLineRamp2,1.0)
+	self.BrakeLineRamp2 = math.Clamp(self.BrakeLineRamp2,0,1)
+	self:SetSoundState("release3",self.BrakeLineRamp2 + math.max(0,self.BrakeLineRamp1/2-0.15),1.0)
+
+	self:SetSoundState("cran1",math.min(1,self:GetPackedRatio(4)/50*(self:GetPackedBool(6) and 1 or 0)),1.0)
 
 	-- Compressor
 	local state = self:GetPackedBool(20)
@@ -1456,7 +1461,7 @@ function ENT:Think()
 			self:SetSoundState("compressor_717_end",1,1)
 			--self:PlayOnce("compressor_e_end",nil,1,nil,true)
 		end
-	end
+	end	
 	-- ARS/ringer alert
 	local state = self:GetPackedBool(39)
 	self.PreviousAlertState = self.PreviousAlertState or false

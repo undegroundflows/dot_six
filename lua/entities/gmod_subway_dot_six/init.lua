@@ -35,7 +35,7 @@ function ENT:Initialize()
 	}
 	-- Set model and initialize
 	self.MaskType = 1
-	self.LampType = 1
+	self.LampType = 2
 	self.WorkingLights = 6
 	self:SetModel("models/6000/6000.mdl")
 	self.BaseClass.Initialize(self)
@@ -200,7 +200,7 @@ function ENT:Initialize()
 	local vX = Angle(0,-90-0.2,56.3):Forward() -- For ARS panel
 	local vY = Angle(0,-90-0.2,56.3):Right()
 	self.Lights = {
-			-- Headlight glow
+		-- Headlight glow
 		[1] = { "headlight",		Vector(473,0,-20), Angle(0,0,0), Color(216,161,92), fov = 100 },
 		
 		-- Head (type 1)
@@ -270,6 +270,7 @@ function ENT:Initialize()
 		[57] = { "light", Vector(459.4,10.8,13.1)+vY*(1.37+1.27*2)+vX*15.87,	Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },
 		[58] = { "light", Vector(459.4,10.8,13.1)+vY*(1.37+1.27*3)+vX*15.88,	Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },		
 		
+		-- Interior lights
 		[60+0] = { "headlight", Vector(290-130*0,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
 		[60+1] = { "headlight", Vector(290-130*1,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
 		[60+2] = { "headlight", Vector(290-130*2,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
@@ -280,21 +281,6 @@ function ENT:Initialize()
 		[60+7] = { "headlight", Vector(270-230*1,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
 		[60+8] = { "headlight", Vector(270-230*2,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
 		[60+9] = { "headlight", Vector(270-230*3,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
---		[60+10] = { "headlight", Vector(290-130*6,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
---		[60+11] = { "headlight", Vector(270-230*4,0,70), Angle (-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170},
---		[60+12] = { "headlight", Vector(290-130*7,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
---		[60+13] = { "headlight", Vector(270-130*5,0,70), Angle (-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170},
---		[60+14] = { "headlight", Vector(290-130*8,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
---		[60+15] = { "headlight", Vector(270-130*6,0,70), Angle (-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170},
---		[60+16] = { "headlight", Vector(290-130*7,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
---		[60+17] = { "headlight", Vector(270-130*9,0,70), Angle (-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170},
---		[60+18] = { "headlight", Vector(290-130*8,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
---		[60+19] = { "headlight", Vector(270-130*10,0,70), Angle (-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170},
---		[60+20] = { "headlight", Vector(290-130*9,0,70), Angle (90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 160},
-
-
-
-		
 		
 		--[[2-2
 		[97] = { "headlight",		Vector(465,-45,-19), Angle(0,-20,0), Color(216,161,92), fov = 70 },
@@ -477,17 +463,21 @@ function ENT:Think()
 	if self.YAR_13A.Slope and self.YAR_13A.Slope > 0 and self:GetAngles().pitch*self.SpeedSign > -1 then
 		self.YAR_13A:TriggerInput("Slope",0)
 	end
-		if self.Lights[70] and self.LampType and self.LampType == 1 and self.Lights[70][4] ~= Color(255,175,50) then
-		for i = 1,23 do
-			self:SetLightPower(69+i,false)
-			self.Lights[69+i][2] = Vector(-457 + 34.9*i, 0, 70)
-			self.Lights[69+i][4] = Color(255,175,50)
-		end
+	if self.Lights[11] and self.LampType and self.LampType == 1 and self.Lights[11][4] ~= Color(255,175,75) then
 		for i = 11,13 do
 			self:SetLightPower(i,false)
-			self.Lights[i][4] = Color(255,175,50)
+			self.Lights[i][4] = Color(255,175,75)
 		end
-		self.LightsReload = true
+	end
+	if self.Lights[11] and self.LampType and self.LampType > 1 and ((self.Lights[11][4] ~= Color(200,200,255)  and self.LampType == 2) or (self.Lights[11][4] ~= Color(255,255,255)  and self.LampType == 3)) then
+		for i = 11,13 do
+			self:SetLightPower(i,false)
+			if self.LampType == 2 then
+				self.Lights[i][4] = Color(200,200,255)
+			elseif self.LampType == 3 then
+				self.Lights[i][4] = Color(255,255,255)
+			end
+		end
 	end
 
 	if self.ARSType ~= self.OldARSType then
@@ -643,6 +633,20 @@ function ENT:Think()
 	self:SetLightPower(32, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 	self:SetLightPower(33, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 	self:SetLightPower(34, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
+	--[[--self:SetLightPower(12, (self.Panel["EmergencyLight"] > 0.5) and ((self.L_1.Value > 0.5) or (self.L_5.Value > 0.5)),
+		0.5*self.L_5.Value + ((self.PowerSupply.XT3_4 > 65.0) and 0.5 or 0))]]
+		
+	--[[for i=60,69 do
+		self:SetLightPower(i,
+			(self.Panel["EmergencyLight"] > 0.5) and ((self.L_1.Value > 0.5) or (self.L_5.Value > 0.5)),
+			0.1*self.L_5.Value + ((self.PowerSupply.XT3_4 > 65.0) and 1 or 0))
+	end]]--
+	----self:SetLightPower(12, self.Panel["EmergencyLight"] > 0.5)
+	----self:SetLightPower(13, self.PowerSupply.XT3_4 > 65.0)	
+	self:SetLightPower(31, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
+	self:SetLightPower(32, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
+	self:SetLightPower(33, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
+	self:SetLightPower(34, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 
 	-- Door button lights
 	self:SetPackedBool("Left",(self.Panel["HeadLights2"] > 0.5) and (self.DoorSelect.Value == 0))
@@ -679,7 +683,6 @@ function ENT:Think()
 
 		self.Lights[19][2] = Vector(41.8,   -69, 55.8)
 		self.Lights[20][2] = Vector(41.8,   -69, 53.7)
-		self.Lights[21][2] = Vector(41.8,  -69, 50.2)
 	end
 	-- Side lights
 	self:SetLightPower(15, self.Panel["TrainDoors"] > 0.5)
@@ -1424,9 +1427,6 @@ function ENT:OnButtonPress(button,route)
 end
 
 function ENT:OnButtonRelease(button)
-	if button:find(":") then
-		button = string.Explode(":",button)[2]
-	end
 	if string.find(button,"PneumaticBrakeSet") then
 		return
 	end
@@ -1434,28 +1434,27 @@ function ENT:OnButtonRelease(button)
 	if button == "KDL" then self.KDL:TriggerInput("Open",1) self:OnButtonRelease("KDLSet") end
 	if button == "KDP" then self.KDP:TriggerInput("Open",1) self:OnButtonRelease("KDPSet") end
 	if button == "VDL" then self.VDL:TriggerInput("Open",1) self:OnButtonRelease("VDLSet") end
+
 	if button == "KRP" then
 		self.KRP:TriggerInput("Set",0)
 		self:OnButtonRelease("KRPSet")
 	end
-
-	--if (not string.find(button,"KVT")) and string.find(button,"KV") then return end
-	--if string.find(button,"KRU") then return end
-
-	if button == "R_Program1Helper" then
-		self.R_Program1:TriggerInput("Set",0)
-		----self:PlayOnce("inf_off","instructor",0.7)
-		--return
+	--[[
+	if (button == "PneumaticBrakeDown") and (self.Pneumatic.DriverValvePosition == 1) then
+		self.Pneumatic:TriggerInput("BrakeSet",2)
 	end
-	if button == "R_Program2Helper" then
-		self.R_Program2:TriggerInput("Set",0)
-		----self:PlayOnce("inf_off","instructor",0.7)
-		--return
+	if self.Pneumatic.ValveType == 1 then
+		if (button == "PneumaticBrakeUp") and (self.Pneumatic.DriverValvePosition == 5) then
+			self.Pneumatic:TriggerInput("BrakeSet",4)
+		end
 	end
+	]]
+
 end
 
 function ENT:OnCouple(train,isfront)
 	self.BaseClass.OnCouple(self,train,isfront)
+
 
 	if isfront then
 		self.FrontBrakeLineIsolation:TriggerInput("Open",1.0)
@@ -1466,5 +1465,3 @@ function ENT:OnCouple(train,isfront)
 	end
 end
 
-function ENT:OnTrainWireError(k)
-end
