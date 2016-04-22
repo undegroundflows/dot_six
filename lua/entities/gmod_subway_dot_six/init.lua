@@ -30,7 +30,7 @@ function ENT:Initialize()
 		KAH = true,
 		KAHK = true,
 		RC1 = true,
-		UOS = true,
+		UOS = false,
 		A5 = false,
 	}
 	-- Set model and initialize
@@ -43,10 +43,10 @@ function ENT:Initialize()
 
 	-- Create seat entities
 	self.DriverSeat = self:CreateSeat("driver",Vector(429,-13.8,-18))
-	self.InstructorsSeat = self:CreateSeat("instructor",Vector(435,50,-28+3),Angle(0,270,0))
+	self.InstructorsSeat = self:CreateSeat("instructor",Vector(435,42.69,-28+3),Angle(0,270,0))
 	self.ExtraSeat1 = self:CreateSeat("instructor",Vector(410,-40,-28+1))
-	self.ExtraSeat2 = self:CreateSeat("instructor",Vector(415,-50,-43),Angle(0,180,0),"models/vehicles/prisoner_pod_inner.mdl")
-	self.ExtraSeat3 = self:CreateSeat("instructor",Vector(402,50,-43),Angle(0,-40+90,0),"models/vehicles/prisoner_pod_inner.mdl")
+	self.ExtraSeat2 = self:CreateSeat("instructor",Vector(427,-50,-43),Angle(0,180,0),"models/vehicles/prisoner_pod_inner.mdl")
+	self.ExtraSeat3 = self:CreateSeat("instructor",Vector(416,40,-43),Angle(0,-40+90,0),"models/vehicles/prisoner_pod_inner.mdl")
 
 	-- Hide seats
 	self.DriverSeat:SetColor(Color(0,0,0,0))
@@ -61,7 +61,7 @@ function ENT:Initialize()
 	self.ExtraSeat3:SetRenderMode(RENDERMODE_TRANSALPHA)
 
 	-- Create bogeys
-	self.FrontBogey = self:CreateBogey(Vector( 325-5,0,-75),Angle(0,180,0),true)
+	self.FrontBogey = self:CreateBogey(Vector( 326-5,0,-75),Angle(0,180,0),true)
 	self.RearBogey  = self:CreateBogey(Vector(-317+0,0,-75),Angle(0,0,0),false)
 
 	-- Initialize key mapping
@@ -760,6 +760,8 @@ function ENT:Think()
 	self:SetPackedBool(153,self.DURA.Channel1Alternate)
 	self:SetPackedBool(154,self.DURA.Channel2Alternate)
 	self:SetPackedBool(155,self.EPK.Value == 1.0)
+	self:SetPackedBool(169,self.Wiper.Value == 1)
+
 
 	self:SetPackedBool(156,self.RearDoor)
 	self:SetPackedBool(158,self.PassengerDoor)
@@ -773,6 +775,7 @@ function ENT:Think()
 	self:SetPackedBool(163,self.KAH.Value == 1.0)
 	self:SetPackedBool(164,self.OldKVPos)
 	self:SetPackedBool(165,self.PB.Value > 0)
+--	self:SetPackedBool(169,self.Wiper.Value == 1.0)
 	self:SetPackedBool("VZ1",self.VZ1.Value == 1)
 	self:SetPackedBool("Wiper",self.Wiper.Value == 1)
 	self:SetPackedBool("ConverterProtection",self.ConverterProtection.Value == 1)

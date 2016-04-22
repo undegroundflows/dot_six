@@ -55,7 +55,8 @@ ENT.ButtonMap["Front"] = {
 	
 	buttons = {
 		--{ID = "VAHToggle",x=360, y=15, radius=20, tooltip="ВАХ: Включение аварийного хода (неисправность реле педали безопасности)\nVAH: Emergency driving mode (failure of RPB relay)"},
-		{ID = "Wiper",x=340, y=15,radius=20, tooltip="Дворник\nWiper"},
+--		{ID = "UAVAContactSet",x=380, y=15, h=170, tooltip="УАВА: Универсальный Автоматический Выключатель Автостопа (восстановление контактов)\nUAVA: Universal Automatic Autostop Disabler(contacts reset)"},		
+		{ID = "WiperToggle",x=340, y=15,radius=20, tooltip="Дворник\nWiper"},
 		{ID = "VADToggle",x=93, y=15, radius=20, tooltip="Блокировка контроля дверей\nEmergency door close override"},
 		{ID = "KAHSet",x=121,  y=15, radius=20, tooltip="КАХ: Кнопка аварийного хода\nEmergency drive button"},
 		{ID = "KAHPl",x=121, y=7, radius=20, tooltip="Пломба крышки КАХ\nKAH plomb"},
@@ -66,7 +67,7 @@ ENT.ButtonMap["Front"] = {
 	    {ID = "VozvratRPSet",	x=260, y=15, radius=20, tooltip="Возврат реле перегрузки\nReset overload relay"},
 		
 		{ID = "GreenRPLight",	x=260, y=35, radius=20, tooltip="РП: Зелёная лампа реле перегрузки\nRP: Green overload relay light (overload relay open on current train)"},
---		{ID = "AVULight",		x=406, y=-47, radius=20, tooltip="АВУ: Автоматический выключатель управления\nAVU: Automatic control disabler active"},
+		{ID = "AVULight",		x=406, y=-47, radius=20, tooltip="АВУ: Автоматический выключатель управления\nAVU: Automatic control disabler active"},
 		{ID = "KVPLight",		x=148, y=35, radius=20, tooltip="КВП: Контроль высоковольного преобразователя\nKVP: High-voltage converter control"},
 		{ID = "SPLight",		x=0, y=15, radius=20, tooltip="ЛСП: Лампа сигнализации пожара\nLSP: Fire emergency (rheostat overheat)"},
 	}
@@ -84,7 +85,7 @@ ENT.ButtonMap["PackSwitch"] = {
 	{ID = "VAHToggle",      x=20, y=100, radius=20, tooltip="ВАХ: Включение аварийного хода (неисправность реле педали безопасности)\nVAH: Emergency driving mode (failure of RPB relay)"},
 	{ID = "ARSToggle",		x=60, y=100, radius=20, tooltip="АРС: Включение системы автоматического регулирования скорости\nARS: Automatic speed regulation"},
     {ID = "ALSToggle",		x=60, y=150, radius=20, tooltip="АЛС: Включение системы автоматической локомотивной сигнализации\nALS: Automatic locomotive signalling"},
---	{ID = "OtklAVUToggle",	x=20, y=50,  radius=20, tooltip="Отключение автоматического выключения управления (неисправность АВУ)\nTurn off automatic control disable relay (failure of AVU)"},
+	{ID = "OtklAVUToggle",	x=20, y=50,  radius=20, tooltip="Отключение автоматического выключения управления (неисправность АВУ)\nTurn off automatic control disable relay (failure of AVU)"},
 	{ID = "UOSToggle",      x=20, y=150, radius=70, tooltip="РЦ-УОС: Устройство ограничения скорости\nRC-UOS: Speed Limitation Device"},
 	}
 }
@@ -119,7 +120,7 @@ ENT.ButtonMap["BPSNrear"] = {
 		{ID = "L_3Toggle",		x=244, y=50, radius=20, tooltip="Освещение пульта\nPanel lighting"},
 		--{ID = "L_5Toggle",x=126, y=28, radius=20, tooltip="Аварийное освещение\nEmergency lighting"},
 		{ID = "R_UNchToggle",	x=308, y=50, radius=20, tooltip="УНЧ: Усилитель низких частот (информатор салона)\nUNCh: Low frequency amplifier(sound in wagons enable)"},
-		{ID = "R_GToggle",		x=277, y=50, radius=20, tooltip="Информатор\nAnnouncer"},		
+		{ID = "R_GToggle",		x=277, y=50, radius=20, tooltip="Информатор(Звук)\nAnnouncer(Sound)"},		
 	}
 }
 	
@@ -335,18 +336,18 @@ ENT.ButtonMap["DriverValveDisconnect"] = {
 	}
 }
 ENT.ButtonMap["ParkingBrake"] = {
-	pos = Vector(432,-55,-26),
+	pos = Vector(465,-42,-4),
 	ang = Angle(0,180,90),
 	width = 200,
 	height = 120,
 	scale = 0.0625,
 	
 	buttons = {
-		{ID = "ParkingBrakeToggle", x=0, y=0, w=200, h=120, tooltip="Стояночный тормоз\nParking brake"},
+		{ID = "ParkingBrakeToggle", x=0, y=0, w=70, h=120, tooltip="Стояночный тормоз\nParking brake"},
 	}
 }
 ENT.ButtonMap["EPKDisconnect"] = {
-	pos = Vector(452,-35,-4),
+	pos = Vector(445,-39,-4),
 	ang = Angle(0,0,0),
 	width = 200,
 	height = 120,
@@ -480,6 +481,14 @@ ENT.ButtonMap["TrainNumber2"] = {
 	scale = 0.20,
 }
 
+ENT.ButtonMap["InfoTable"] = {
+	pos = Vector(469.1,-36.0,43.0),
+	ang = Angle(0,90,90),
+	width = 646,
+	height = 100,
+	scale = 0.1/2,
+}
+
 ENT.ButtonMap["InfoTableSelect"] = {
 	pos = Vector(464.0,27.0,22.0),
 	ang = Angle(0,-90,90),
@@ -489,8 +498,8 @@ ENT.ButtonMap["InfoTableSelect"] = {
 		
 	
 	buttons = {
-		{ID = "PrevSign",x=0,y=0,w=50,h=100, tooltip="Предыдущая надпись\nPrevious sign"},
-		{ID = "NextSign",x=50,y=0,w=50,h=100, tooltip="Следующая надпись\nNext sign"},
+		{ID = "PrevSign",x=150,y=0,w=50,h=100, tooltip="Предыдущая надпись\nPrevious sign"},
+		{ID = "NextSign",x=200,y=0,w=50,h=100, tooltip="Следующая надпись\nNext sign"},
 
 		{ID = "Num2P",x=450,y=0,w=50,h=50, tooltip="Маршрут: Увеличить число 2\nRoute: Increase 2nd number"},
 		{ID = "Num2M",x=450,y=50,w=50,h=50, tooltip="Маршрут: Уменьшить число 2\nRoute: Decrease 2nd number"},
@@ -500,7 +509,7 @@ ENT.ButtonMap["InfoTableSelect"] = {
 }
 
 ENT.ButtonMap["InfoRoute"] = {
-	pos = Vector(480,39.75,19.2),
+	pos = Vector(469.1,-42.75,61),
 	ang = Angle(0,90,90),
 	width = 100,
 	height = 100,
@@ -548,32 +557,32 @@ ENT.ButtonMap["Trap"] = {
 		{ID = "Trap",x=0,y=0,w=642-220,h=2000, tooltip="Трап\nEmergency Exit"},
 	}
 }
-ENT.ButtonMap["Wiper"] = {
-	pos = Vector(455.80,7,57.5),
-	ang = Angle(180,90,0.0),
-	width = 750,
-	height = 300,
-	scale = 0.0185,
-	buttons = {
-		{ID = "WiperToggle",x=0,y=0,w=750,h=300, tooltip="Дворник\nWiper"},
-	}
-}
+--ENT.ButtonMap["Wiper"] = {
+--	pos = Vector(455.80,7,57.5),
+--	ang = Angle(180,90,0.0),
+--	width = 750,
+--	height = 300,
+--	scale = 0.0185,
+--	buttons = {
+--		{ID = "WiperToggle",x=0,y=0,w=750,h=300, tooltip="Дворник\nWiper"},
+--	}
+--}
 --------------------------------------------------------------------------------
 ENT.ClientPropsInitialized = false
 ENT.ClientProps["brake013"] = {
 	model = "models/metrostroi/81-717/brake.mdl",
 	pos = Vector(454,-29.5,-5),
-	ang = Angle(0,180,0)
+	ang = Angle(0,135,0)
 }
 ENT.ClientProps["controller"] = {
  model = "models/6000/grkv.mdl",
- pos = Vector(462.32,-1.4,-6),
+ pos = Vector(461.3,-1.4,-6),
  ang = Angle(0,-90,15)
 }
 
 ENT.ClientProps["reverser"] = {
 	model = "models/metrostroi/81-717/reverser.mdl",
-	pos = Vector(462.5,15,-4.5),
+	pos = Vector(458.75,15,-6),
 	ang = Angle(-15,0,90)
 }
 ENT.ClientProps["brake_disconnect"] = {
@@ -583,18 +592,18 @@ ENT.ClientProps["brake_disconnect"] = {
 }
 ENT.ClientProps["EPK_disconnect"] = {
 	model = "models/metrostroi/81-717/uava.mdl",
-	pos = Vector(461,-42,-4),
+	pos = Vector(454,-42,-4),
 	ang = Angle(0,-100,270),
 }
 ENT.ClientProps["ParkingBrake"] = {
 	model = "models/metrostroi/81-717/uava.mdl",
-	pos = Vector(430,-56.2,-33),
-	ang = Angle(90,180,0),
+	pos = Vector(461,-42,-4),
+	ang = Angle(0,0,270),
 }
 ENT.ClientProps["krureverser"] = {
 	model = "models/metrostroi/81-717/reverser.mdl",
-	pos = Vector(452.3,-24.0,4.0),
-	ang = Angle(180,90,-30)
+	pos = Vector(461.4,15,-4.5),
+	ang = Angle(-15,0,90)
 }
 --------------------------------------------------------------------------------
 ENT.ClientProps["train_line"] = {
@@ -715,8 +724,8 @@ Metrostroi.ClientPropForButton("KAHK",{
 Metrostroi.ClientPropForButton("VAH",{
 	panel = "PackSwitch",
 	button = "VAHToggle",
-	model = "models/6000/buttonw.mdl",
-	ang = 90
+	model = "models/6000/pult/buttons/button_round.mdl",
+	ang = 50
 })
 
 Metrostroi.ClientPropForButton("VAD",{
@@ -725,24 +734,36 @@ Metrostroi.ClientPropForButton("VAD",{
 	model = "models/6000/buttonw.mdl",
 	ang = 90
 })
+--Metrostroi.ClientPropForButton("UAVAContactSet",{
+--	panel = "Front",
+--	button = "UAVAContactSet",
+--	model = "models/6000/button_s.mdl",
+--	ang = 90
+--})
+Metrostroi.ClientPropForButton("Wiper",{
+	panel = "Front",
+	button = "WiperToggle",
+	model = "models/6000/button_s.mdl",
+	ang = 90
+})
 Metrostroi.ClientPropForButton("ALS",{
 	panel = "PackSwitch",
 	button = "ALSToggle",
-	model = "models/6000/buttonw.mdl",
-	ang = 90
+	model = "models/6000/pult/buttons/button_round.mdl",
+	ang = 50
 })
 Metrostroi.ClientPropForButton("ARS",{
 	panel = "PackSwitch",
 	button = "ARSToggle",
-	model = "models/6000/buttonw.mdl",
-	ang = 90
+	model = "models/6000/pult/buttons/button_round.mdl",
+	ang = 50
 })
---Metrostroi.ClientPropForButton("OtklAVU",{
---	panel = "PackSwitch",
---	button = "OtklAVUToggle",
---	model = "models/6000/buttonw.mdl",
---	ang = 90
---})
+Metrostroi.ClientPropForButton("OtklAVU",{
+	panel = "PackSwitch",
+	button = "OtklAVUToggle",
+	model = "models/6000/pult/buttons/button_round.mdl",
+	ang = 50
+})
 --Metrostroi.ClientPropForButton("OtklAVUPl",{
 --	panel = "Main",
 --	button = "OtklAVUPl",
@@ -824,26 +845,26 @@ Metrostroi.ClientPropForButton("GreenRPLight_light",{
 	ignorepanel = true,
 	z = -10,
 })
---Metrostroi.ClientPropForButton("AVULight",{
---	panel = "Front",
---	button = "AVULight",
---	model = "models/metrostroi/81-717/light02.mdl",
---})
---Metrostroi.ClientPropForButton("AVULight",{
---	panel = "Front",
---	button = "AVULight",
---	model = "models/metrostroi_train/81/lamp.mdl",
---	skin = 1,
---	z = -10,
---})
---Metrostroi.ClientPropForButton("AVULight_light",{
---	panel = "Front",
---	button = "AVULight",
---	model = "models/metrostroi_train/81/lamp_on.mdl",
---	ignorepanel = true,
---	skin = 1,
---	z = -10,
---})
+Metrostroi.ClientPropForButton("AVULight",{
+	panel = "Front",
+	button = "AVULight",
+	model = "models/metrostroi/81-717/light02.mdl",
+})
+Metrostroi.ClientPropForButton("AVULight",{
+	panel = "Front",
+	button = "AVULight",
+	model = "models/metrostroi_train/81/lamp.mdl",
+	skin = 1,
+	z = -10,
+})
+Metrostroi.ClientPropForButton("AVULight_light",{
+	panel = "Front",
+	button = "AVULight",
+	model = "models/metrostroi_train/81/lamp_on.mdl",
+	ignorepanel = true,
+	skin = 1,
+	z = -10,
+})
 Metrostroi.ClientPropForButton("KVPLight",{
 	panel = "Front",
 	button = "KVPLight",
@@ -998,7 +1019,8 @@ Metrostroi.ClientPropForButton("RC1",{
 Metrostroi.ClientPropForButton("UOS",{
 	panel = "PackSwitch",
 	button = "UOSToggle",	
-	model = "models/6000/buttonw.mdl",
+	model = "models/6000/pult/buttons/button_round.mdl",
+	ang = 50
 })
 Metrostroi.ClientPropForButton("RC1Pl",{
 	panel = "Battery",
@@ -1104,15 +1126,15 @@ ENT.ClientProps["UAVALever"] = {
 	ang = Angle(180,0,-65)
 }
 --ENT.ClientProps["teapot"] = {
-    --model = "models/props_interiors/pot01a.mdl",
-	--pos = Vector(441.3,-55,0),
-	--ang = Angle(0,90,0),
+--	model = "models/props_interiors/pot01a.mdl",
+--	pos = Vector(441.3,-55,0),
+--	ang = Angle(0,90,0),
 --}
 
 ENT.ClientProps["wiper"] = {
 	model = "models/metrostroi_train/81/wiper.mdl",
-	pos = Vector(463,0,53.8),
-	ang = Angle(0,-90,0)
+	pos = Vector(480,-13,3.8),
+	ang = Angle(-180,-90,0)
 }
 
 --ENT.AutoPos = {Vector(407.3,-10.5,47),Vector(419.3,-57.5,47.5)}
@@ -1123,7 +1145,10 @@ function ENT:Initialize()
 end
 --------------------------------------------------------------------------------
 function ENT:Think()
+
+		
 	--Sid Body Group check
+
 
 	self.BaseClass.Think(self)
 	if self.ClientProps["KVPLight_light"] and self.ClientProps["KVPLight_light"].skin ~= self:GetNWInt("KVPType") then
@@ -1139,6 +1164,7 @@ function ENT:Think()
 	for i = 0,8 do
 		--print(i,self:GetBodygroupName(i))
 	end
+	
 
 	local transient = (self.Transient or 0)*0.05
 	if (self.Transient or 0) ~= 0.0 then self.Transient = 0.0 end
@@ -1156,13 +1182,13 @@ function ENT:Think()
 	self:Animate("wiper", 		(math.sin(self.WiperValue-math.pi/2)+2)/2 - 0.5, 			0, 0.34,  256,24)
 	self:Animate("brake013", 		self:GetPackedRatio(0)^0.5,			0.00, 0.65,  256,24)
 	--print(self:GetPackedBool(163))
-	self:Animate("controller",		1-self:GetPackedRatio(1),			0.38, 0.78,  2,false)
+	self:Animate("controller",		1-self:GetPackedRatio(1),			0.17, 0.78,  2,false)
 	self:Animate("reverser",		self:GetPackedRatio(2),				0.46, 0.54,  4,false)
 	self:Animate("volt1", 			self:GetPackedRatio(10),			0.381, 0.645,				nil, nil,  256,2,0.01)
 	self:ShowHide("reverser",		self:GetPackedBool(0))
-	self:Animate("krureverser",		0.5+(0.5-self.KRUPos*0.5)-0.5*(self:GetPackedRatio(2)/2),		0.05, 1,  3,false)
+	self:Animate("krureverser",		self:GetPackedRatio(2),				0.54, 0.49,  4,false)
 	self:ShowHide("krureverser",	self:GetPackedBool(27))
-	
+--	self:Animate("Wiper", 	self:GetPackedBool(169))
 	
 	--Sid Body Group check
 
@@ -1200,6 +1226,7 @@ function ENT:Think()
 	self:Animate("KDLRK",				self:GetPackedBool("KDLRK") and 1 or 0, 	0.32,0.67, 4, false)
 	self:Animate("KDLRK",				self:GetPackedBool("KDLRK") and 1 or 0, 	0.32,0.67, 4, false)
 	self:Animate("KDPK",				self:GetPackedBool("KDPK") and 1 or VAD*0.17, 	0.34,0.69, 4, false)
+	self:Animate("Wiper",				self:GetPackedBool(169) and 1 or 0, 	0,1, 8, false)	
 
 	self:SetCSBodygroup("UOSPl",1,self:GetPackedBool("UOSPl") and 0 or 1)
 --	self:SetCSBodygroup("OtklAVUPl",1,self:GetPackedBool("OtklAVUPl") and 0 or 1)
@@ -1307,7 +1334,7 @@ function ENT:Think()
 	self:SetCSBodygroup("door2",1,self:GetPackedBool("InstructorsSeatCheck") and 0 or 1)
 
 	self:ShowHideSmooth("GreenRPLight_light",self:Animate("GreenRPl",self:GetPackedBool(36) and 1 or 0,0,1,10,false))
---	self:ShowHideSmooth("AVULight_light",self:Animate("AVUl",self:GetPackedBool(38) and 1 or 0,0,1,10,false))
+	self:ShowHideSmooth("AVULight_light",self:Animate("AVUl",self:GetPackedBool(38) and 1 or 0,0,1,10,false))
 	self:ShowHideSmooth("KVPLight_light",self:Animate("KVPl",self:GetPackedBool(52) and 1 or 0,0,1,10,false))
 	self:ShowHideSmooth("SPLight_light",self:Animate("SPl",self:GetPackedBool("LSP") and 1 or 0,0,1,10,false))
 	self:ShowHideSmooth("ConverterProtection_light",self:Animate("ConverterProtectionl",self:GetPackedBool("RZP") and 1 or 0,0,1,10,false))
@@ -1497,7 +1524,7 @@ function ENT:Think()
 	self.BPSNType = self:GetNWInt("BPSNType",6)
 	if not self.OldBPSNType then self.OldBPSNType = self.BPSNType end
 	if self.BPSNType ~= self.OldBPSNType then
-		self:SetSoundState("bpsn"..self.OldBPSNType,0,1.0)
+		self:SetSoundState("bpsn"..self.BPSNType,0,1.0)
 	end
 	self:SetSoundState("bpsn"..self.BPSNType,self:GetPackedBool(52) and 2 or 0,1.0,nil,0.9)
 	self.OldBPSNType = self.BPSNType
@@ -1506,10 +1533,21 @@ end
 function ENT:Draw()
 	self.BaseClass.Draw(self)
 end
-ENT.ParkingBrakeMaterial = Material( "models/metrostroi_train/parking_brake.png", "vertexlitgeneric unlitgeneric mips" )
+--ENT.ParkingBrakeMaterial = Material( "models/metrostroi_train/parking_brake.png", "vertexlitgeneric unlitgeneric mips" )
 function ENT:DrawPost(special)
 	--local dc = render.GetLightColor(self:LocalToWorld(Vector(460.0,0.0,5.0)))
-
+	self:DrawOnPanel("InfoTable",function()
+		surface.SetDrawColor(0,0,0) --255*dc.x,250*dc.y,220*dc.z)
+		surface.DrawRect(50,0,54,00)
+		draw.Text({
+			text = self:GetNW2String("FrontText",""),
+			font = "MetrostroiSubway_InfoRoute",--..self:GetNW2Int("Style",1),
+			pos = { 260		, -100 },
+			xalign = TEXT_ALIGN_CENTER,
+			yalign = TEXT_ALIGN_CENTER,
+			color = Color(0,255,0,255)})
+			
+	end)
 	if self.InfoTableTimeout and (CurTime() < self.InfoTableTimeout) then
 		self:DrawOnPanel("InfoTableSelect",function()
 			local text = self:GetNWString("FrontText","")
@@ -1524,6 +1562,24 @@ function ENT:DrawPost(special)
 				yalign = TEXT_ALIGN_CENTER,
 				color = Color(255,0,0,255)})
 
+		end)
+	end
+	if self.InfoTableTimeout and (CurTime() < self.InfoTableTimeout) then
+		self:DrawOnPanel("InfoTableSelect",function()
+			draw.Text({
+				text = self:GetNW2String("RouteNumber",""),
+				font = "MetrostroiSubway_InfoPanel",--..self:GetNW2Int("Style",1),
+				pos = { 140, -50 },
+				xalign = TEXT_ALIGN_CENTER,
+				yalign = TEXT_ALIGN_CENTER,
+				color = Color(255,0,0,255)})
+			draw.Text({
+				text = self:GetNW2String("FrontText",""),
+				font = "MetrostroiSubway_InfoPanel",--..self:GetNW2Int("Style",1),
+				pos = { 140, -100 },
+				xalign = TEXT_ALIGN_CENTER,
+				yalign = TEXT_ALIGN_CENTER,
+				color = Color(255,0,0,255)})
 		end)
 	end
 
