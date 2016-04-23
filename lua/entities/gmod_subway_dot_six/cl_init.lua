@@ -67,7 +67,7 @@ ENT.ButtonMap["Front"] = {
 	    {ID = "VozvratRPSet",	x=260, y=15, radius=20, tooltip="Возврат реле перегрузки\nReset overload relay"},
 		
 		{ID = "GreenRPLight",	x=260, y=35, radius=20, tooltip="РП: Зелёная лампа реле перегрузки\nRP: Green overload relay light (overload relay open on current train)"},
-		{ID = "AVULight",		x=406, y=-47, radius=20, tooltip="АВУ: Автоматический выключатель управления\nAVU: Automatic control disabler active"},
+--		{ID = "AVULight",		x=406, y=-47, radius=20, tooltip="АВУ: Автоматический выключатель управления\nAVU: Automatic control disabler active"},
 		{ID = "KVPLight",		x=148, y=35, radius=20, tooltip="КВП: Контроль высоковольного преобразователя\nKVP: High-voltage converter control"},
 		{ID = "SPLight",		x=0, y=15, radius=20, tooltip="ЛСП: Лампа сигнализации пожара\nLSP: Fire emergency (rheostat overheat)"},
 	}
@@ -845,26 +845,26 @@ Metrostroi.ClientPropForButton("GreenRPLight_light",{
 	ignorepanel = true,
 	z = -10,
 })
-Metrostroi.ClientPropForButton("AVULight",{
-	panel = "Front",
-	button = "AVULight",
-	model = "models/metrostroi/81-717/light02.mdl",
-})
-Metrostroi.ClientPropForButton("AVULight",{
-	panel = "Front",
-	button = "AVULight",
-	model = "models/metrostroi_train/81/lamp.mdl",
-	skin = 1,
-	z = -10,
-})
-Metrostroi.ClientPropForButton("AVULight_light",{
-	panel = "Front",
-	button = "AVULight",
-	model = "models/metrostroi_train/81/lamp_on.mdl",
-	ignorepanel = true,
-	skin = 1,
-	z = -10,
-})
+--Metrostroi.ClientPropForButton("AVULight",{
+--	panel = "Front",
+--	button = "AVULight",
+--	model = "models/metrostroi/81-717/light02.mdl",
+--})
+--Metrostroi.ClientPropForButton("AVULight",{
+--	panel = "Front",
+--	button = "AVULight",
+--	model = "models/metrostroi_train/81/lamp.mdl",
+--	skin = 1,
+--	z = -10,
+--})
+--Metrostroi.ClientPropForButton("AVULight_light",{
+--	panel = "Front",
+--	button = "AVULight",
+--	model = "models/metrostroi_train/81/lamp_on.mdl",
+--	ignorepanel = true,
+--	skin = 1,
+--	z = -10,
+--})
 Metrostroi.ClientPropForButton("KVPLight",{
 	panel = "Front",
 	button = "KVPLight",
