@@ -1,4 +1,17 @@
 "VertexLitGeneric"
 {
 	"$basetexture" "models/6000/b01a"
+        //"$bumpmap"	"models/stalker_res/wall/wall_farm_normal"
+	$halflambert 1
+	$nodecal 1
+    	$bumpmap		models/6000/b01a_bump
+	$phong 1
+	$phongexponent 600
+	$phongexponenttexture models/6000/b01a_b
+	$phongboost	1
+	$phongfresnelranges	"[1 1 1]"
+	$surfaceprop	brick
+	$basemapluminancephongmask 0
+	"$alphatest" "1"
+  	"$allowalphatocoverage" "1
 }

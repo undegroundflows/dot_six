@@ -1,4 +1,4 @@
-include("shared.lua")
+﻿include("shared.lua")
 --------------------------------------------------------------------------------
 ENT.ClientProps = {}
 ENT.ButtonMap = {}
@@ -13,12 +13,12 @@ ENT.ButtonMap["Main"] = {
 	
 	buttons = {
 		--{ID = "R_ZSToggle",		x=36+28*1, y=37, radius=20, tooltip="ЗС\nZS"},
-		{ID = "R_ProgramToggle",x=520, y=99, radius=0, },
+		{ID = "R_ProgramToggle",x=500, y=99, radius=0, },
 		{ID = "R_Program1Set",  x=520, y=99, radius=20, tooltip="Программа 1\nProgram 1"},
-		--{ID = "R_Program2Set",  x=27+28*4.5, y=37-10, w=28,h=20, tooltip="Программа 2\nProgram 2"},
+		{ID = "R_Program2Set",  x=480, y=99, w=28,h=20, tooltip="Программа 2\nProgram 2"},
 		
-		{ID = "1:KVTSet",	    x=450-5, y=92+7, radius=20, tooltip="КВТ: Кнопка восприятия торможения\nKVT: ARS Brake cancel button"},
-		{ID = "2:KVTSet",		x=485-5, y=92+7, radius=20, tooltip="КБ: Кнопка Бдительности\nKB: Attention button"},
+		{ID = "1:KVTSet",	    x=415-5, y=92+7, radius=20, tooltip="КВТ: Кнопка восприятия торможения\nKVT: ARS Brake cancel button"},
+		{ID = "2:KVTSet",		x=450-5, y=92+7, radius=20, tooltip="КБ: Кнопка Бдительности\nKB: Attention button"},
 		{ID = "VZ1Set",			x=520, y=40, radius=20, tooltip="ВЗ1: Вентиль замещения №1\nVZ1: Pneumatic valve #1"},
 		
 		--{ID = "AutodriveToggle",x=420, y=92, radius=20, tooltip="Автоматическая остановка\nAutomatic stop"},
@@ -54,7 +54,7 @@ ENT.ButtonMap["Front"] = {
 	scale = 0.0625,
 	
 	buttons = {
-		--{ID = "VAHToggle",x=360, y=15, radius=20, tooltip="ВАХ: Включение аварийного хода (неисправность реле педали безопасности)\nVAH: Emergency driving mode (failure of RPB relay)"},
+--		{ID = "VAHToggle",x=360, y=15, radius=20, tooltip="ВАХ: Включение аварийного хода (неисправность реле педали безопасности)\nVAH: Emergency driving mode (failure of RPB relay)"},
 --		{ID = "UAVAContactSet",x=380, y=15, h=170, tooltip="УАВА: Универсальный Автоматический Выключатель Автостопа (восстановление контактов)\nUAVA: Universal Automatic Autostop Disabler(contacts reset)"},		
 		{ID = "WiperToggle",x=340, y=15,radius=20, tooltip="Дворник\nWiper"},
 		{ID = "VADToggle",x=93, y=15, radius=20, tooltip="Блокировка контроля дверей\nEmergency door close override"},
