@@ -1102,22 +1102,22 @@ end
 --24.2 0.2 5.3
 ENT.ClientProps["door1"] = {
 	model = "models/6000/door_back.mdl",
-	pos = Vector(-469.0,16.2,-42),
+	pos = Vector(-469.0,16.2,-42.5),
 	ang = Angle(0,90,0)
 }
 ENT.ClientProps["door2"] = {
 	model = "models/6000/door_salon.mdl",
-	pos = Vector(380,28.0,-42),
+	pos = Vector(380,28.0,-42.5),
 	ang = Angle(0,90,0)
 }
 ENT.ClientProps["door4"] = {
 	model = "models/6000/door_front.mdl",
-	pos = Vector(478.5,36.9,-46.31),
+	pos = Vector(478.5,36.9,-46.3),
 	ang = Angle(0,0,0)
 }
 ENT.ClientProps["door3"] = {
 	model = "models/6000/door_cabin.mdl",
-	pos = Vector(448,65,-42),
+	pos = Vector(448,65,-42.5),
 	ang = Angle(0,-90,0)
 }
 ENT.ClientProps["UAVALever"] = {
