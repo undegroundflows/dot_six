@@ -1350,7 +1350,7 @@ function ENT:OnButtonPress(button,route)
 		self.KDLK:TriggerInput("Open",1)
 		self.KDPK:TriggerInput("Close",1)
 	end
-	if (button == "KDP") then
+	if (button == "VDP") or (button == "KDP") then
 		self.DoorSelect:TriggerInput("Close",1)
 		self.KDLK:TriggerInput("Close",1)
 		self.KDPK:TriggerInput("Open",1)
@@ -1467,4 +1467,3 @@ function ENT:OnCouple(train,isfront)
 		self.RearTrainLineIsolation:TriggerInput("Open",1.0)
 	end
 end
-
