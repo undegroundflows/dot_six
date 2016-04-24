@@ -599,18 +599,20 @@ ENT.ClientProps["reverser"] = {
 }
 ENT.ClientProps["brake_disconnect"] = {
 	model = "models/6000/pult/buttons/cran.mdl",
-	pos = Vector(462,-33.75,-7),
+	pos = Vector(462.1,-33.895,-6),
 	ang = Angle(0,180,0),
+	skin = 1
 }
 ENT.ClientProps["EPK_disconnect"] = {
-	model = "models/6000/pult/buttons/cran.mdl",
+	model = "models/6000/pult/buttons/cran_m.mdl",
 	pos = Vector(455,-42.75,-7),
-	ang = Angle(0,-90,0),
+	ang = Angle(0,90,0),
 }
 ENT.ClientProps["ParkingBrake"] = {
 	model = "models/6000/pult/buttons/cran.mdl",
 	pos = Vector(462,-42.75,-7),
 	ang = Angle(0,180,0),
+	skin = 2
 }
 ENT.ClientProps["krureverser"] = {
 	model = "models/metrostroi/81-717/reverser.mdl",
