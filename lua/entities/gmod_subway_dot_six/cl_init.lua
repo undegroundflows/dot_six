@@ -56,7 +56,7 @@ ENT.ButtonMap["Front"] = {
 	buttons = {
 --		{ID = "VAHToggle",x=360, y=15, radius=20, tooltip="ВАХ: Включение аварийного хода (неисправность реле педали безопасности)\nVAH: Emergency driving mode (failure of RPB relay)"},
 --		{ID = "UAVAContactSet",x=380, y=15, h=170, tooltip="УАВА: Универсальный Автоматический Выключатель Автостопа (восстановление контактов)\nUAVA: Universal Automatic Autostop Disabler(contacts reset)"},		
-		{ID = "WiperToggle",x=340, y=15,radius=20, tooltip="Дворник\nWiper"},
+		{ID = "WiperToggle",x=450, y=15,radius=20, tooltip="Дворник\nWiper"},
 		{ID = "VADToggle",x=93, y=15, radius=20, tooltip="Блокировка контроля дверей\nEmergency door close override"},
 		{ID = "KAHSet",x=121,  y=15, radius=20, tooltip="КАХ: Кнопка аварийного хода\nEmergency drive button"},
 		{ID = "KAHPl",x=121, y=7, radius=20, tooltip="Пломба крышки КАХ\nKAH plomb"},
@@ -414,7 +414,7 @@ ENT.ButtonMap["Schedule"] = {
 	}
 }
 ENT.ButtonMap["IGLA"] = {
-	pos = Vector(470.5,-28.2,8.0),
+	pos = Vector(470.5,-28.2,7.8),
 	ang = Angle(0,-90,68.9),
 	width = 440,
 	height = 190,
@@ -1108,7 +1108,7 @@ ENT.ClientProps["door1"] = {
 ENT.ClientProps["door2"] = {
 	model = "models/6000/door_salon.mdl",
 	pos = Vector(380,28.0,-42),
-	ang = Angle(0,-90,0)
+	ang = Angle(0,90,0)
 }
 ENT.ClientProps["door4"] = {
 	model = "models/6000/door_front.mdl",
@@ -1118,7 +1118,7 @@ ENT.ClientProps["door4"] = {
 ENT.ClientProps["door3"] = {
 	model = "models/6000/door_cabin.mdl",
 	pos = Vector(448,65,-42),
-	ang = Angle(0,90,0)
+	ang = Angle(0,-90,0)
 }
 ENT.ClientProps["UAVALever"] = {
 	model = "models/metrostroi_train/81/uavalever.mdl",
@@ -1321,14 +1321,14 @@ function ENT:Think()
 	
 	self:HideButton("KAHSet",self:GetPackedBool("KAHK"))
 	
- 	if self:GetPackedBool(156) and not self.Door1 then self.Door1 = 0.99 end
-  	if self:GetPackedBool(158) and not self.Door2 then self.Door2 = 0.99 end
-  	if self:GetPackedBool(159) and not self.Door3 then self.Door3 = 0.99 end
- 	if self:GetPackedBool(166) and not self.Door4 then self.Door4 = 0.99 end
+ 	if self:GetPackedBool(156) and not self.Door1 then self.Door1 = 1 end
+  	if self:GetPackedBool(158) and not self.Door2 then self.Door2 = 1 end
+  	if self:GetPackedBool(159) and not self.Door3 then self.Door3 = 1 end
+ 	if self:GetPackedBool(166) and not self.Door4 then self.Door4 = 1 end
   	if not self:GetPackedBool(156) and self.Door1 then self.Door1 = false end
   	if not self:GetPackedBool(158) and self.Door2 then self.Door2 = false end
   	if not self:GetPackedBool(159) and self.Door3 then self.Door3 = false end
- 	if not self:GetPackedBool(166) and self.Door4 then self.Door4 = 0.99 end
+ 	if not self:GetPackedBool(166) and self.Door4 then self.Door4 = false end
 	
 	--Sid Body Group check
 	self:SetCSBodygroup("door2",1,self:GetPackedBool("InstructorsSeatCheck") and 0 or 1)
@@ -1370,26 +1370,26 @@ function ENT:Think()
 		--if self.Door2 then self.Door2 = math.min(0.99,math.max(0,self.Door2+accel*self.DeltaTime)) end
 		--if self.Door3 then self.Door3 = math.min(0.99,math.max(0,self.Door3+accel*self.DeltaTime)) end
 	end
-	if self.Door1 == 0.99 then
+	if self.Door1 == 1 then
 		--sendButtonMessage({ID = "BackDoor",state = true})
 		--sendButtonMessage({ID = "BackDoor",state = false})
 	end
-	if self.Door2 == 0.99 then
+	if self.Door2 == 1 then
 		--sendButtonMessage({ID = "PassDoor",state = true})
 		--sendButtonMessage({ID = "PassDoor",state = false})
 	end
-	if self.Door3 == 0.99 then
+	if self.Door3 == 1 then
 		--sendButtonMessage({ID = "CabinDoor",state = true})
 		--sendButtonMessage({ID = "CabinDoor",state = false})
 	end
-	if self.Door4 == 0.99 then
+	if self.Door4 == 1 then
 		--sendButtonMessage({ID = "door4",state = true})
 		--sendButtonMessage({ID = "door4",state = false})
     end	
-	self:Animate("door1",	self:GetPackedBool(156) and (self.Door1 or 0.99) or 0,0,0.54, 1024, 1)
-	self:Animate("door2",	self:GetPackedBool(158) and (self.Door2 or 0.99) or 0,1,0, 1024, 1)
-	self:Animate("door3",	self:GetPackedBool(159) and (self.Door3 or 0.99) or 0,0,1, 1024, 1)
-	self:Animate("door4",	self:GetPackedBool(166) and (self.Door4 or 0.99) or 0,0,1, 512, 1)
+	self:Animate("door1",	self:GetPackedBool(156) and (self.Door1 or 1) or 0,0,0.52, 1024, 1)
+	self:Animate("door2",	self:GetPackedBool(158) and (self.Door2 or 1) or 0,1,0.52, 1024, 1)
+	self:Animate("door3",	self:GetPackedBool(159) and (self.Door3 or 1) or 0,0,0.52, 1024, 1)
+	self:Animate("door4",	self:GetPackedBool(166) and (self.Door4 or 1) or 0,0,1, 512, 1)
 	self:Animate("FrontBrake", self:GetNW2Bool("FbI") and 0 or 1,0,0.35, 3, false)
 	self:Animate("FrontTrain",	self:GetNW2Bool("FtI") and 0 or 1,0,0.35, 3, false)
 	self:Animate("RearBrake",	self:GetNW2Bool("RbI") and 1 or 0,0,0.35, 3, false)
