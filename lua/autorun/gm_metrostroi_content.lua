@@ -2,7 +2,7 @@ if CLIENT then return end
 local workshopid = {
 	261801217,
 	489006102,
-	492134110,
+	672465227,
 }
 print("-Starting adding metrostroi workshop addons...")
 print("-Workshop addons in base:"..#workshopid)
