@@ -5,7 +5,7 @@ ENT.ButtonMap = {}
 			
 -- Main panel
 ENT.ButtonMap["Main"] = {
-	pos = Vector(466,15,-2.7), --446 -- 14 -- -0,5
+	pos = Vector(466,15,-2.58), --446 -- 14 -- -0,5
 	ang = Angle(0,-90,14),
 	width = 700,
 	height = 250,
@@ -38,7 +38,7 @@ ENT.ButtonMap["Main"] = {
 		{ID = "KDPSet",                 x=520, y=160, radius=20, tooltip="КДП: Кнопка правых дверей\nKDP: Right doors open"},
 		
 		{ID = "KRPSet",    x=118, y=140, radius=20, tooltip="КРП: Кнопка резервного пуска\nKRP: Emergency start button"},
-		{ID = "RezMKSet",  x=157,  y=30, radius=20, tooltip="Резервное включение мотор-компрессора\nEmergency motor-compressor startup"},
+		{ID = "RezMKSet",  x=160.5,  y=53.8, radius=20, tooltip="Резервное включение мотор-компрессора\nEmergency motor-compressor startup"},
 		{ID = "KRZDSet",   x=157, y=90, radius=20, tooltip="КРЗД: Кнопка резервного закрытия дверей\nKRZD: Emergency door closing"},
 		{ID = "KDLRSet",   x=200, y=60, radius=20, tooltip="РКДЛ: Резервное открытие дверей левых\nVDL: Left doors open"},
 		{ID = "KDPSet",    x=118, y=60, radius=20, tooltip="РКДП: Резервное открытие дверей правых\nKDP: Right doors open"},
@@ -794,8 +794,8 @@ Metrostroi.ClientPropForButton("KRZD",{
 Metrostroi.ClientPropForButton("RezMK",{
 	panel = "Main",
 	button = "RezMKSet",	
-	model = "models/6000/buttonw.mdl",
-	skin = 4,
+	model = "models/6000/pult/buttons/button_large.mdl",
+	skin = 1,
 	z = 3,
 })
 Metrostroi.ClientPropForButton("VUD1",{
