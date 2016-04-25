@@ -5,7 +5,7 @@ ENT.ButtonMap = {}
 			
 -- Main panel
 ENT.ButtonMap["Main"] = {
-	pos = Vector(466,15,-2.75), --446 -- 14 -- -0,5
+	pos = Vector(466,15,-2.7), --446 -- 14 -- -0,5
 	ang = Angle(0,-90,14),
 	width = 700,
 	height = 250,
@@ -17,8 +17,8 @@ ENT.ButtonMap["Main"] = {
 		{ID = "R_Program1Set",  x=520, y=99, radius=20, tooltip="Программа 1\nProgram 1"},
 		{ID = "R_Program2Set",  x=480, y=99, w=28,h=20, tooltip="Программа 2\nProgram 2"},
 		
-		{ID = "1:KVTSet",	    x=415-5, y=92+7, radius=20, tooltip="КВТ: Кнопка восприятия торможения\nKVT: ARS Brake cancel button"},
-		{ID = "2:KVTSet",		x=450-5, y=92+7, radius=20, tooltip="КБ: Кнопка Бдительности\nKB: Attention button"},
+		{ID = "1:KVTSet",	    x=415-5, y=103+7, radius=20, tooltip="КВТ: Кнопка восприятия торможения\nKVT: ARS Brake cancel button"},
+		{ID = "2:KVTSet",		x=450-5, y=103+7, radius=20, tooltip="КБ: Кнопка Бдительности\nKB: Attention button"},
 		{ID = "VZ1Set",			x=480, y=40, radius=20, tooltip="ВЗ1: Вентиль замещения №1\nVZ1: Pneumatic valve #1"},
 --		{ID = "EmergencyBrake",			x=520, y=40, radius=20, tooltip="Экстренный тормоз\nEmergency Brake"},
 
@@ -128,7 +128,7 @@ ENT.ButtonMap["BPSNrear"] = {
 	
 -- Announcer panel
 ENT.ButtonMap["Announcer"] = {
-	pos = Vector(460,-53,8),
+	pos = Vector(460,-53.4,8),
 	ang = Angle(0,-170,90),
 	width = 265,
 	height = 245,
@@ -144,7 +144,7 @@ ENT.ButtonMap["Announcer"] = {
 		
 		{ID = "Custom1Set",     x=150, y=95, radius=20, tooltip="-"},
 		{ID = "Custom2Set",     x=175, y=95, radius=20, tooltip="+"},
-		{ID = "Custom3Set",     x=95, y=95, radius=20, tooltip="Menu"},
+		{ID = "Custom3Set",     x=105, y=95, radius=20, tooltip="Menu"},
 		{ID = "R_RadioToggle",	x=55, y=57, radius=20, tooltip="Вкл/Выкл\nOn/Off"},
 --55 66
 		--{ID = "CustomD", x=95+29*0, y=18, radius=20, tooltip="D"},
@@ -155,7 +155,7 @@ ENT.ButtonMap["Announcer"] = {
 }
 -- Announcer panel
 ENT.ButtonMap["AnnouncerDisplay"] = {
-	pos = Vector(460.4,-53.0625,7.21),
+	pos = Vector(460.3,-53.3725,7.31),
 	ang = Angle(-0,-170,90),
 	width = 265,
 	height = 245,
@@ -166,7 +166,7 @@ ENT.ButtonMap["AnnouncerDisplay"] = {
 
 --ARS FUCKING PANEL!!!
 ENT.ButtonMap["ARS"] = {
-	pos = Vector(472.5,-3,8.5),
+	pos = Vector(472.46,-2.99,8.5),
 	ang = Angle(0,-90,60.7),
 	width = 300*10,
 	height = 110*10,
@@ -414,15 +414,15 @@ ENT.ButtonMap["Schedule"] = {
 	}
 }
 ENT.ButtonMap["IGLA"] = {
-	pos = Vector(470,-28.8,8),
-	ang = Angle(0,-90,68.9),
+	pos = Vector(470.25,-28.88,8),
+	ang = Angle(0,-90,72),
 	width = 440,
 	height = 190,
 	scale = 0.024,
 }
 
-ENT.ButtonMap["PPult"] = {
-	pos = Vector(441.63,-33.65,-2.2),
+ENT.ButtonMap["PanelPult"] = {
+	pos = Vector(441.63,-33.65,-2.129),
 	ang = Angle(0,0,0),
 	width = 440,
 	height = 190,
@@ -587,9 +587,9 @@ ENT.ClientProps["brake013"] = {
 	ang = Angle(0,135,0)
 }
 ENT.ClientProps["controller"] = {
- model = "models/6000/grkv.mdl",
- pos = Vector(461.3,-1.4,-6),
- ang = Angle(0,-90,15)
+	model = "models/6000/grkv.mdl",
+	pos = Vector(461.3,-1.4,-6),
+	ang = Angle(0,-90,15)
 }
 
 ENT.ClientProps["reverser"] = {
@@ -599,9 +599,9 @@ ENT.ClientProps["reverser"] = {
 }
 ENT.ClientProps["brake_disconnect"] = {
 	model = "models/6000/pult/buttons/cran.mdl",
-	pos = Vector(462.1,-33.895,-6),
+	pos = Vector(462,-33.75,-7),
 	ang = Angle(0,180,0),
-	skin = 1
+	skin = 1,
 }
 ENT.ClientProps["EPK_disconnect"] = {
 	model = "models/6000/pult/buttons/cran_m.mdl",
@@ -612,7 +612,7 @@ ENT.ClientProps["ParkingBrake"] = {
 	model = "models/6000/pult/buttons/cran.mdl",
 	pos = Vector(462,-42.75,-7),
 	ang = Angle(0,180,0),
-	skin = 2
+	skin = 2,
 }
 ENT.ClientProps["krureverser"] = {
 	model = "models/metrostroi/81-717/reverser.mdl",
@@ -622,18 +622,18 @@ ENT.ClientProps["krureverser"] = {
 --------------------------------------------------------------------------------
 ENT.ClientProps["train_line"] = {
 	model = "models/metrostroi/81-717/black_arrow.mdl",
-	pos = Vector(466.7,-45.5,5.5),
+	pos = Vector(466.35,-46,5.56),
 	ang = Angle(90+18,0,180+66)
 }
 ENT.ClientProps["brake_line"] = {
 	model = "models/metrostroi/81-717/red_arrow.mdl",
-    pos = Vector(466.7,-45.45,5.5),
+    pos = Vector(466.35,-45.95,5.56),
 	ang = Angle(90+18,0,180+62)
 }
 ENT.ClientProps["brake_cylinder"] = {
 	model = "models/metrostroi/81-717/black_arrow.mdl",
-	pos = Vector(462,-48.1,5),
-	ang = Angle(90+18,0,180+66)
+	pos = Vector(461.9,-48.9,5.45),
+	ang = Angle(90+18,0,175+66)
 }
 --------------------------------------------------------------------------------
 --ENT.ClientProps["ampermeter"] = {--24.2 0.2 5.3
@@ -646,11 +646,11 @@ ENT.ClientProps["brake_cylinder"] = {
 --	pos = Vector(458.30,-34.0+2.25,26.85),
 --	ang = Angle(90,0,-35+360+70)
 --}
---ENT.ClientProps["volt1"] = {--
---	model = "models/metrostroi/81-717/volt_arrow.mdl",
---	pos = Vector(462.3,-46.15,-0.3),
---	ang = Angle(120,0,360)
---}
+ENT.ClientProps["volt1"] = {--
+	model = "models/metrostroi/81-717/volt_arrow.mdl",
+	pos = Vector(463.3,-46.44,-1.45),
+	ang = Angle(-178,20,55)
+}
 --[[
 "LSD"
 "LOCh"
@@ -1049,7 +1049,7 @@ Metrostroi.ClientPropForButton("RC1Pl",{
 	z = -3,
 })
 Metrostroi.ClientPropForButton("pult",{
-	panel = "PPult",
+	panel = "PanelPult",
 	button = "pult",	
 	model = "models/6000/pult.mdl",
 	ang = 0
@@ -1095,9 +1095,10 @@ ENT.ClientProps["RearTrain"] = {--
 }
 ENT.ClientProps["PB"] = {--
 	model = "models/metrostroi_train/81/pb.mdl",
-	pos = Vector(455.7, 11.5, -27.5),
+	pos = Vector(472.5,-1.5, -27.5),
 	ang = Angle(0,-90,40)
 }
+
 
 ---------------------------------------------------------------------
 -- Add doors
@@ -1852,13 +1853,13 @@ function ENT:DrawPost(special)
 		end
 		for i=1,20 do
 			surface.SetDrawColor(C2)
-			surface.DrawRect(42+(i-1)*17.7+1,42+4,16,22)			
-			draw.DrawText(string.upper(text1[i] or ""),"MetrostroiSubway_IGLA",42+(i-1)*17.7,42+0,C1)
+			surface.DrawRect(42+(i-1)*16.7+1,42+4,16,23)			
+			draw.DrawText(string.upper(text1[i] or ""),"MetrostroiSubway_IGLA",42+(i-1)*16.7,42+0,C1)
 		end
 		for i=1,20 do
 			surface.SetDrawColor(C2)
-			surface.DrawRect(42+(i-1)*17.7+1,42+24+4,16,22)
-			draw.DrawText(string.upper(text2[i] or ""),"MetrostroiSubway_IGLA",42+(i-1)*17.7,42+24,C1)
+			surface.DrawRect(42+(i-1)*16.7+1,42+24+4,16,28)
+			draw.DrawText(string.upper(text2[i] or ""),"MetrostroiSubway_IGLA",42+(i-1)*16.7,42+24,C1)
 		end
 		surface.SetAlphaMultiplier(1)
 	end)
