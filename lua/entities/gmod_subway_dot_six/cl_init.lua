@@ -587,9 +587,9 @@ ENT.ClientProps["brake013"] = {
 	ang = Angle(0,135,0)
 }
 ENT.ClientProps["controller"] = {
-	model = "models/6000/grkv.mdl",
-	pos = Vector(461.3,-1.4,-6),
-	ang = Angle(0,-90,15)
+	model = "models/6000/pult/buttons/grkv.mdl",
+	pos = Vector(461.3,-1.4,0),
+	ang = Angle(0,0,0)
 }
 
 ENT.ClientProps["reverser"] = {
