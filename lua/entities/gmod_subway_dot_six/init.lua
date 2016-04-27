@@ -707,6 +707,7 @@ function ENT:Think()
 	self:SetPackedBool("PN", self.Panel["TrainBrakes"] > 0.5)
 
 	-- Switch and button states
+	self:SetPackedBool(171,self.EmergencyBrake)
 	self:SetPackedBool(0,self:IsWrenchPresent())
 	self:SetPackedBool(1,self.VUS.Value == 1.0)
 	self:SetPackedBool(2,self.VozvratRP.Value == 1.0)

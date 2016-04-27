@@ -5,8 +5,8 @@ ENT.ButtonMap = {}
 			
 -- Main panel
 ENT.ButtonMap["Main"] = {
-	pos = Vector(466,15,-2.58), --446 -- 14 -- -0,5
-	ang = Angle(0,-90,14),
+	pos = Vector	(466,15,-2.58), --446 -- 14 -- -0,5
+	ang = Angle(0,-90,13),
 	width = 700,
 	height = 250,
 	scale = 0.0625,
@@ -32,7 +32,7 @@ ENT.ButtonMap["Main"] = {
 --		{ID = "PS2",	    x=238, y=183, radius=20, tooltip="(placeholder) Emergency brake toggle"},
 --		{ID = "PS2Pl",      x=238, y=210, radius=20, tooltip="(placeholder) Пломба крышки Торможение АТ\nEmergency brake toggle plomb"},
 
-		{ID = "ParkingBrakeSignToggle",	x=203,y=113, radius=20, tooltip="Табличка \"ОТПУСТИ СТОЯНОЧНЫЙ ТОРМОЗ\"\nSign \"RELEASE PARKING BRAKE\""},
+--		{ID = "ParkingBrakeSignToggle",	x=203,y=113, radius=20, tooltip="Табличка \"ОТПУСТИ СТОЯНОЧНЫЙ ТОРМОЗ\"\nSign \"RELEASE PARKING BRAKE\""},
 		{ID = "L_4Toggle",              x=450, y=160, radius=20, tooltip="Фары: 1 группа\nHead lights: 1 group"},
 		{ID = "VUSToggle",              x=485, y=160, radius=20, tooltip="Фары: 2 группа\nHead lights: 2 group"},
 		{ID = "KDPSet",                 x=520, y=160, radius=20, tooltip="КДП: Кнопка правых дверей\nKDP: Right doors open"},
@@ -166,7 +166,7 @@ ENT.ButtonMap["AnnouncerDisplay"] = {
 
 --ARS FUCKING PANEL!!!
 ENT.ButtonMap["ARS"] = {
-	pos = Vector(472.46,-2.99,8.5),
+	pos = Vector(472.46,-2.71,8.515),
 	ang = Angle(0,-90,60.7),
 	width = 300*10,
 	height = 110*10,
@@ -414,8 +414,8 @@ ENT.ButtonMap["Schedule"] = {
 	}
 }
 ENT.ButtonMap["IGLA"] = {
-	pos = Vector(470.25,-28.88,8),
-	ang = Angle(0,-90,72),
+	pos = Vector(470.48,-28.93,8),
+	ang = Angle(0,-90,64),
 	width = 440,
 	height = 190,
 	scale = 0.024,
@@ -588,13 +588,13 @@ ENT.ClientProps["brake013"] = {
 }
 ENT.ClientProps["controller"] = {
 	model = "models/6000/pult/buttons/grkv.mdl",
-	pos = Vector(461.3,-1.4,0),
-	ang = Angle(0,0,0)
+	pos = Vector(455.35,-0.65,-4.5),
+	ang = Angle(-15,0,0)
 }
 
 ENT.ClientProps["reverser"] = {
 	model = "models/metrostroi/81-717/reverser.mdl",
-	pos = Vector(458.75,15,-6),
+	pos = Vector(461.4,15,-4.5),
 	ang = Angle(-15,0,90)
 }
 ENT.ClientProps["brake_disconnect"] = {
@@ -616,7 +616,7 @@ ENT.ClientProps["ParkingBrake"] = {
 }
 ENT.ClientProps["krureverser"] = {
 	model = "models/metrostroi/81-717/reverser.mdl",
-	pos = Vector(461.4,15,-4.5),
+	pos = Vector(458.75,15,-6),
 	ang = Angle(-15,0,90)
 }
 --------------------------------------------------------------------------------
@@ -1207,7 +1207,7 @@ function ENT:Think()
 	self:Animate("wiper", 		(math.sin(self.WiperValue-math.pi/2)+2)/2 - 0.5, 			0, 0.34,  256,24)
 	self:Animate("brake013", 		self:GetPackedRatio(0)^0.5,			0.00, 0.65,  256,24)
 	--print(self:GetPackedBool(163))
-	self:Animate("controller",		1-self:GetPackedRatio(1),			0.17, 0.78,  2,false)
+	self:Animate("controller",		1-self:GetPackedRatio(1),			0.0, 1.1,  2,false)
 	self:Animate("reverser",		self:GetPackedRatio(2),				0.46, 0.54,  4,false)
 	self:Animate("volt1", 			self:GetPackedRatio(10),			0.381, 0.645,				nil, nil,  256,2,0.01)
 	self:ShowHide("reverser",		self:GetPackedBool(0))
@@ -1387,6 +1387,7 @@ function ENT:Think()
 		self:ShowHideSmooth("L80",self:Animate("light_80",self:GetPackedBool(46) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("L70",self:Animate("light_70",self:GetPackedBool(45) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("LRK",self:Animate("light_LhRK",self:GetPackedBool(33) and 1 or 0,0,12,1,false))
+		
 	end
 	local accel = self:GetNWFloat("Accel")
 	
@@ -1547,12 +1548,12 @@ function ENT:Think()
 	
 	-- DIP sound
 	self.BPSNType = self:GetNWInt("BPSNType",6)
-	if not self.OldBPSNType then self.OldBPSNType = self.BPSNType end
-	if self.BPSNType ~= self.OldBPSNType then
-		self:SetSoundState("bpsn"..self.BPSNType,0,1.0)
-	end
-	self:SetSoundState("bpsn"..self.BPSNType,self:GetPackedBool(52) and 2 or 0,1.0,nil,0.9)
-	self.OldBPSNType = self.BPSNType
+--	if not self.OldBPSNType then self.OldBPSNType = self.BPSNType end
+--	if self.BPSNType ~= self.OldBPSNType then
+--		self:SetSoundState("bpsn"..self.BPSNType,0,1.0)
+--	end
+--	self:SetSoundState("bpsn"..self.BPSNType,self:GetPackedBool(52) and 2 or 0,1.0,nil,0.9)
+--	self.OldBPSNType = self.BPSNType
 end
 
 function ENT:Draw()
@@ -1561,18 +1562,8 @@ end
 --ENT.ParkingBrakeMaterial = Material( "models/metrostroi_train/parking_brake.png", "vertexlitgeneric unlitgeneric mips" )
 function ENT:DrawPost(special)
 	--local dc = render.GetLightColor(self:LocalToWorld(Vector(460.0,0.0,5.0)))
-	self:DrawOnPanel("InfoTable",function()
-		surface.SetDrawColor(0,0,0) --255*dc.x,250*dc.y,220*dc.z)
-		surface.DrawRect(50,0,54,00)
-		draw.Text({
-			text = self:GetNW2String("FrontText",""),
-			font = "MetrostroiSubway_InfoRoute",--..self:GetNW2Int("Style",1),
-			pos = { 260		, -100 },
-			xalign = TEXT_ALIGN_CENTER,
-			yalign = TEXT_ALIGN_CENTER,
-			color = Color(0,255,0,255)})
+
 			
-	end)
 	if self.InfoTableTimeout and (CurTime() < self.InfoTableTimeout) then
 		self:DrawOnPanel("InfoTableSelect",function()
 			local text = self:GetNWString("FrontText","")
@@ -1587,24 +1578,6 @@ function ENT:DrawPost(special)
 				yalign = TEXT_ALIGN_CENTER,
 				color = Color(255,0,0,255)})
 
-		end)
-	end
-	if self.InfoTableTimeout and (CurTime() < self.InfoTableTimeout) then
-		self:DrawOnPanel("InfoTableSelect",function()
-			draw.Text({
-				text = self:GetNW2String("RouteNumber",""),
-				font = "MetrostroiSubway_InfoPanel",--..self:GetNW2Int("Style",1),
-				pos = { 140, -50 },
-				xalign = TEXT_ALIGN_CENTER,
-				yalign = TEXT_ALIGN_CENTER,
-				color = Color(255,0,0,255)})
-			draw.Text({
-				text = self:GetNW2String("FrontText",""),
-				font = "MetrostroiSubway_InfoPanel",--..self:GetNW2Int("Style",1),
-				pos = { 140, -100 },
-				xalign = TEXT_ALIGN_CENTER,
-				yalign = TEXT_ALIGN_CENTER,
-				color = Color(255,0,0,255)})
 		end)
 	end
 
@@ -1853,13 +1826,13 @@ function ENT:DrawPost(special)
 		end
 		for i=1,20 do
 			surface.SetDrawColor(C2)
-			surface.DrawRect(42+(i-1)*16.7+1,42+4,16,23)			
-			draw.DrawText(string.upper(text1[i] or ""),"MetrostroiSubway_IGLA",42+(i-1)*16.7,42+0,C1)
+			surface.DrawRect(42+(i-1)*16.5+1,42+3.5,15.75,23)			
+			draw.DrawText(string.upper(text1[i] or ""),"MetrostroiSubway_IGLA",42+(i-1)*16.5,41.5,C1)
 		end
 		for i=1,20 do
 			surface.SetDrawColor(C2)
-			surface.DrawRect(42+(i-1)*16.7+1,42+24+4,16,28)
-			draw.DrawText(string.upper(text2[i] or ""),"MetrostroiSubway_IGLA",42+(i-1)*16.7,42+24,C1)
+			surface.DrawRect(42+(i-1)*16.5+1,42+32+4,15.75,23)
+			draw.DrawText(string.upper(text2[i] or ""),"MetrostroiSubway_IGLA",42+(i-1)*16.5,42+32,C1)
 		end
 		surface.SetAlphaMultiplier(1)
 	end)
