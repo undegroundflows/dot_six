@@ -5,42 +5,42 @@ ENT.ButtonMap = {}
 			
 -- Main panel
 ENT.ButtonMap["Main"] = {
-	pos = Vector	(466,15,-2.58), --446 -- 14 -- -0,5
-	ang = Angle(0,-90,13),
+	pos = Vector(465.3,15,-2.75), --446 -- 14 -- -0,5
+	ang = Angle(0,-90,13.5),
 	width = 700,
 	height = 250,
 	scale = 0.0625,
 	
 	buttons = {
 		--{ID = "R_ZSToggle",		x=36+28*1, y=37, radius=20, tooltip="ЗС\nZS"},
-		{ID = "R_ProgramToggle",x=500, y=99, radius=0, },
-		{ID = "R_Program1Set",  x=520, y=99, radius=20, tooltip="Программа 1\nProgram 1"},
-		{ID = "R_Program2Set",  x=480, y=99, w=28,h=20, tooltip="Программа 2\nProgram 2"},
+		{ID = "R_ProgramToggle",x=497, y=103, radius=0, },
+		{ID = "R_Program1Set",  x=520, y=103, radius=20, tooltip="Программа 1\nProgram 1"},
+		{ID = "R_Program2Set",  x=480, y=103, w=28,h=20, tooltip="Программа 2\nProgram 2"},
 		
-		{ID = "1:KVTSet",	    x=415-5, y=103+7, radius=20, tooltip="КВТ: Кнопка восприятия торможения\nKVT: ARS Brake cancel button"},
-		{ID = "2:KVTSet",		x=450-5, y=103+7, radius=20, tooltip="КБ: Кнопка Бдительности\nKB: Attention button"},
-		{ID = "VZ1Set",			x=480, y=40, radius=20, tooltip="ВЗ1: Вентиль замещения №1\nVZ1: Pneumatic valve #1"},
---		{ID = "EmergencyBrake",			x=520, y=40, radius=20, tooltip="Экстренный тормоз\nEmergency Brake"},
+		{ID = "1:KVTSet",	    x=415-7, y=103+4, radius=20, tooltip="КВТ: Кнопка восприятия торможения\nKVT: ARS Brake cancel button"},
+		{ID = "2:KVTSet",		x=450-7, y=103+4, radius=20, tooltip="КБ: Кнопка Бдительности\nKB: Attention button"},
+		{ID = "VZ1Set",			x=480, y=55, radius=20, tooltip="ВЗ1: Вентиль замещения №1\nVZ1: Pneumatic valve #1"},
+	--	{ID = "EmergencyBrake",			x=511, y=55, radius=20, tooltip="Экстренный тормоз\nEmergency Brake"},
 
 		--{ID = "AutodriveToggle",x=420, y=92, radius=20, tooltip="Автоматическая остановка\nAutomatic stop"},
 		
-		{ID = "VUD1Toggle",		  x=375, y=99, radius=40, tooltip="ВУД: Выключатель управления дверьми\nVUD: Door control toggle (close doors)"},
-		{ID = "KDLSet",			  x=375, y=160, radius=20, tooltip="КДЛ: Кнопка левых дверей\nKDL: Left doors open"},
-		{ID = "DoorSelectToggle", x=390, y=40, radius=20, tooltip="Выбор стороны открытия дверей\nSelect side on which doors will open"},
+		{ID = "VUD1Toggle",		  x=370, y=103+4, radius=40, tooltip="ВУД: Выключатель управления дверьми\nVUD: Door control toggle (close doors)"},
+		{ID = "KDLSet",			  x=370, y=160, radius=20, tooltip="КДЛ: Кнопка левых дверей\nKDL: Left doors open"},
+		{ID = "DoorSelectToggle", x=390, y=55, radius=20, tooltip="Выбор стороны открытия дверей\nSelect side on which doors will open"},
 
 --		{ID = "OtklAVUPl",  x=283, y=210, radius=20, tooltip="Пломба крышки ОтклАВУ\nOtklAVU plomb"},
 --		{ID = "PS2",	    x=238, y=183, radius=20, tooltip="(placeholder) Emergency brake toggle"},
 --		{ID = "PS2Pl",      x=238, y=210, radius=20, tooltip="(placeholder) Пломба крышки Торможение АТ\nEmergency brake toggle plomb"},
 
 --		{ID = "ParkingBrakeSignToggle",	x=203,y=113, radius=20, tooltip="Табличка \"ОТПУСТИ СТОЯНОЧНЫЙ ТОРМОЗ\"\nSign \"RELEASE PARKING BRAKE\""},
-		{ID = "L_4Toggle",              x=450, y=160, radius=20, tooltip="Фары: 1 группа\nHead lights: 1 group"},
-		{ID = "VUSToggle",              x=485, y=160, radius=20, tooltip="Фары: 2 группа\nHead lights: 2 group"},
-		{ID = "KDPSet",                 x=520, y=160, radius=20, tooltip="КДП: Кнопка правых дверей\nKDP: Right doors open"},
+		{ID = "L_4Toggle",              x=445, y=160, radius=20, tooltip="Фары: 1 группа\nHead lights: 1 group"},
+		{ID = "VUSToggle",              x=480, y=160, radius=20, tooltip="Фары: 2 группа\nHead lights: 2 group"},
+		{ID = "KDPSet",                 x=517, y=160, radius=20, tooltip="КДП: Кнопка правых дверей\nKDP: Right doors open"},
 		
 		{ID = "KRPSet",    x=118, y=140, radius=20, tooltip="КРП: Кнопка резервного пуска\nKRP: Emergency start button"},
-		{ID = "RezMKSet",  x=160.5,  y=53.8, radius=20, tooltip="Резервное включение мотор-компрессора\nEmergency motor-compressor startup"},
-		{ID = "KRZDSet",   x=157, y=90, radius=20, tooltip="КРЗД: Кнопка резервного закрытия дверей\nKRZD: Emergency door closing"},
-		{ID = "KDLRSet",   x=200, y=60, radius=20, tooltip="РКДЛ: Резервное открытие дверей левых\nVDL: Left doors open"},
+		{ID = "RezMKSet",  x=156,  y=41.5, radius=20, tooltip="Резервное включение мотор-компрессора\nEmergency motor-compressor startup"},
+		{ID = "KRZDSet",   x=157.5, y=95, radius=20, tooltip="КРЗД: Кнопка резервного закрытия дверей\nKRZD: Emergency door closing"},
+		{ID = "KDLRSet",   x=198, y=62, radius=20, tooltip="РКДЛ: Резервное открытие дверей левых\nVDL: Left doors open"},
 		{ID = "KDPSet",    x=118, y=60, radius=20, tooltip="РКДП: Резервное открытие дверей правых\nKDP: Right doors open"},
 	}
 }
@@ -56,7 +56,7 @@ ENT.ButtonMap["Front"] = {
 	buttons = {
 --		{ID = "VAHToggle",x=360, y=15, radius=20, tooltip="ВАХ: Включение аварийного хода (неисправность реле педали безопасности)\nVAH: Emergency driving mode (failure of RPB relay)"},
 --		{ID = "UAVAContactSet",x=380, y=15, h=170, tooltip="УАВА: Универсальный Автоматический Выключатель Автостопа (восстановление контактов)\nUAVA: Universal Automatic Autostop Disabler(contacts reset)"},		
-		{ID = "WiperToggle",x=430, y=15,radius=20, tooltip="Дворник\nWiper"},
+		{ID = "WiperToggle",x=430, y=15,radius=20, tooltip="Стеклоочиститель/Дворник\nWiper"},
 		{ID = "VADToggle",x=93, y=15, radius=20, tooltip="Блокировка контроля дверей\nEmergency door close override"},
 		{ID = "KAHSet",x=121,  y=15, radius=20, tooltip="КАХ: Кнопка аварийного хода\nEmergency drive button"},
 		{ID = "KAHPl",x=121, y=7, radius=20, tooltip="Пломба крышки КАХ\nKAH plomb"},
@@ -166,8 +166,8 @@ ENT.ButtonMap["AnnouncerDisplay"] = {
 
 --ARS FUCKING PANEL!!!
 ENT.ButtonMap["ARS"] = {
-	pos = Vector(472.46,-2.71,8.515),
-	ang = Angle(0,-90,60.7),
+	pos = Vector(472.45,-2.71,8.515),
+	ang = Angle(0,-90,60.6),
 	width = 300*10,
 	height = 110*10,
 	scale = 0.0625/10,
@@ -291,7 +291,7 @@ ENT.ButtonMap["Battery"] = {
 		{ID = "BPSToggle", x=68, y=71, radius=70, tooltip="РЦ-БПС: Блок ПротивоСкатывания\nRC-BPS: Against Rolling System"},
 		{ID = "RC1Toggle", x=68, y=180, radius=70, tooltip="РЦ-1: Разъединитель цепей АРС\nRC-1: ARS circuits disconnect"},
 		{ID = "RC1Pl",x=49, y=220, radius=20, tooltip="Пломба РЦ-1\nRC-1 plomb"},
-		{ID = "UOSPl",x=169, y=220, radius=20, tooltip="Пломба РЦ-УОС\nRC-UOS plomb"},
+	--	{ID = "UOSPl",x=169, y=220, radius=20, tooltip="Пломба РЦ-УОС\nRC-UOS plomb"},
 		{ID = "VBToggle", x=68, y=294, radius=70, tooltip="ВБ: Выключатель батареи\nVB: Battery on/off"},
 	}
 }
@@ -605,12 +605,12 @@ ENT.ClientProps["brake_disconnect"] = {
 }
 ENT.ClientProps["EPK_disconnect"] = {
 	model = "models/6000/pult/buttons/cran_m.mdl",
-	pos = Vector(455,-42.75,-7),
+	pos = Vector(454.5,-42.55,-7),
 	ang = Angle(0,90,0),
 }
 ENT.ClientProps["ParkingBrake"] = {
 	model = "models/6000/pult/buttons/cran.mdl",
-	pos = Vector(462,-42.75,-7),
+	pos = Vector(462.25,-42.55,-7),
 	ang = Angle(0,180,0),
 	skin = 2,
 }
@@ -1053,12 +1053,13 @@ Metrostroi.ClientPropForButton("pult",{
 	button = "pult",	
 	model = "models/6000/pult.mdl",
 	ang = 0
-})Metrostroi.ClientPropForButton("UOSPl",{
-	panel = "Battery",
-	button = "UOSPl",	
-	model = "models/metrostroi_train/81/plomb.mdl",
-	z = -3,
 })
+--Metrostroi.ClientPropForButton("UOSPl",{
+--	panel = "Battery",
+--	button = "UOSPl",	
+--	model = "models/metrostroi_train/81/plomb.mdl",
+--	z = -3,
+--})
 
 Metrostroi.ClientPropForButton("BPS",{
 	panel = "Battery",
@@ -1253,7 +1254,7 @@ function ENT:Think()
 	self:Animate("KDPK",				self:GetPackedBool("KDPK") and 1 or VAD*0.17, 	0.34,0.69, 4, false)
 	self:Animate("Wiper",				self:GetPackedBool(169) and 1 or 0, 	0,1, 8, false)	
 
-	self:SetCSBodygroup("UOSPl",1,self:GetPackedBool("UOSPl") and 0 or 1)
+--	self:SetCSBodygroup("UOSPl",1,self:GetPackedBool("UOSPl") and 0 or 1)
 --	self:SetCSBodygroup("OtklAVUPl",1,self:GetPackedBool("OtklAVUPl") and 0 or 1)
 --	self:SetCSBodygroup("RC1Pl",1,self:GetPackedBool("RC1Pl") and 0 or 1)
 	self:SetCSBodygroup("A5Pl",1,self:GetPackedBool("A5Pl") and 0 or 1)
@@ -1281,6 +1282,7 @@ function ENT:Think()
 	self:Animate("ARS",				self:GetPackedBool(56) and 1 or 0, 	0,1, 16, false)
 	self:Animate("ALS",				self:GetPackedBool(57) and 1 or 0, 	0,1, 16, false)
 	self:Animate("KVT",				self:GetPackedBool(28) and 1 or 0, 	0,1, 16, false)
+--	self:Animate("EmergencyBrake",				self:GetPackedBool(177) and 1 or 0, 	0,1, 16, false)
 	self:Animate("KB",			self:GetPackedBool(28) and 1 or 0, 	0,1, 16, false)
 	self:Animate("BPSNon",			self:GetPackedBool(59) and 1 or 0, 	0,1, 16, false)
 	self:Animate("L_1",				self:GetPackedBool(60) and 1 or 0, 	0,1, 16, false)
@@ -1309,7 +1311,7 @@ function ENT:Think()
 	self:Animate("Program1",		self:GetPackedBool(128) and 1 or 0, 0,1, 16, false)
 	self:Animate("Program2",		self:GetPackedBool(129) and 1 or 0, 0,1, 16, false)
 	self:Animate("RC1",				self:GetPackedBool(130) and 0.87 or 1, 	0,1, 1, false)
-	self:Animate("UOS",				self:GetPackedBool(134) and 1 or 0.87, 	0,1, 1, false)
+	self:Animate("UOS",				self:GetPackedBool(134) and 1 or 0, 	0,1, 16, false)
 	self:Animate("BPS",				self:GetPackedBool(135) and 0.87 or 1, 	0,1, 1, false)
 	self:Animate("RC1_2",				self:GetPackedBool(130) and 0.87 or 1, 	0,1, 1, false)
 	self:Animate("UOS_2",				self:GetPackedBool(134) and 1 or 0.87, 	0,1, 1, false)
@@ -1364,6 +1366,12 @@ function ENT:Think()
 	self:ShowHideSmooth("SPLight_light",self:Animate("SPl",self:GetPackedBool("LSP") and 1 or 0,0,1,10,false))
 	self:ShowHideSmooth("ConverterProtection_light",self:Animate("ConverterProtectionl",self:GetPackedBool("RZP") and 1 or 0,0,1,10,false))
 	
+	
+	self:ShowHideSmooth("CustomD_light",self:Animate("CustomD",(self:GetPackedBool("CustomD") or self.ASNP.End) and 1 or 0,0,1,10,false))
+	self:ShowHideSmooth("CustomE_light",self:Animate("CustomE",(self:GetPackedBool("CustomE") or self.ASNP.Right) and 1 or 0,0,1,10,false))
+	local State = self:GetNW2Int("Announcer:State",-1)
+	self:ShowHideSmooth("CustomF_light",self:Animate("CustomF",(self:GetPackedBool("CustomF") or State > 0 and State < 7) and 1 or 0,0,1,10,false))
+	self:ShowHideSmooth("CustomG_light",self:Animate("CustomG",(self:GetPackedBool("CustomG") or self:GetNW2Bool("Announcer:Playing",false)) and 1 or 0,0,1,10,false))
 --	self:ShowHideSmooth("CustomD_light",self:Animate("CustomD",self:GetPackedBool("CustomD") and 1 or 0,0,1,10,false))
 --	self:ShowHideSmooth("CustomE_light",self:Animate("CustomE",self:GetPackedBool("CustomE") and 1 or 0,0,1,10,false))
 --	self:ShowHideSmooth("CustomF_light",self:Animate("CustomF",self:GetPackedBool("CustomF") and 1 or 0,0,1,10,false))
@@ -1562,7 +1570,29 @@ end
 --ENT.ParkingBrakeMaterial = Material( "models/metrostroi_train/parking_brake.png", "vertexlitgeneric unlitgeneric mips" )
 function ENT:DrawPost(special)
 	--local dc = render.GetLightColor(self:LocalToWorld(Vector(460.0,0.0,5.0)))
-
+	self:DrawOnPanel("InfoTable",function()
+ 		surface.SetDrawColor(0,0,0) --255*dc.x,250*dc.y,220*dc.z)
+ 		surface.DrawRect(50,0,54,00)
+ 		draw.Text({
+ 			text = self:GetNW2String("FrontText",""),
+ 			font = "MetrostroiSubway_InfoRoute",--..self:GetNW2Int("Style",1),
+ 			pos = { 260	, -100 },
+ 			xalign = TEXT_ALIGN_CENTER,
+ 			yalign = TEXT_ALIGN_CENTER,
+ 			color = Color(0,255,0,255)})
+	end)
+	if self.InfoTableTimeout and (CurTime() < self.InfoTableTimeout) then
+ 		self:DrawOnPanel("InfoTableSelect",function()
+ 			draw.Text({
+ 				text = self:GetNW2String("FrontText",""),
+ 				font = "MetrostroiSubway_InfoPanel",--..self:GetNW2Int("Style",1),
+ 				pos = { 140, -100 },
+ 				xalign = TEXT_ALIGN_CENTER,
+ 				yalign = TEXT_ALIGN_CENTER,
+ 				color = Color(255,0,0,255)})
+ 		end)
+ 	end
+	
 			
 	if self.InfoTableTimeout and (CurTime() < self.InfoTableTimeout) then
 		self:DrawOnPanel("InfoTableSelect",function()
