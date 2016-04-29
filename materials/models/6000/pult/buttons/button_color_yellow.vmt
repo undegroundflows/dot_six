@@ -1,4 +1,4 @@
 "VertexLitGeneric"
 {
-	"$color2" "[255 255 0]"
+	"$basetexture" "models/6000/pult/buttons/button-yellow"
 }
