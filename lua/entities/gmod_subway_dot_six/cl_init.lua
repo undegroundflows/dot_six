@@ -89,6 +89,22 @@ ENT.ButtonMap["PackSwitch"] = {
 	{ID = "UOSToggle",      x=20, y=150, radius=70, tooltip="РЦ-УОС: Устройство ограничения скорости\nRC-UOS: Speed Limitation Device"},
 	}
 }
+
+ENT.ButtonMap["Pepelnitsa"] = {
+    pos = Vector(472.2,14,9),
+	ang = Angle(0,-90,66),
+	width = 200,
+	height = 200,
+	scale = 0.0625,
+	
+	buttons = {
+	{ID = "VAHToggle",      x=20, y=100, radius=20, tooltip="ВАХ: Включение аварийного хода (неисправность реле педали безопасности)\nVAH: Emergency driving mode (failure of RPB relay)"},
+	{ID = "ARSToggle",		x=60, y=100, radius=20, tooltip="АРС: Включение системы автоматического регулирования скорости\nARS: Automatic speed regulation"},
+    {ID = "ALSToggle",		x=60, y=150, radius=20, tooltip="АЛС: Включение системы автоматической локомотивной сигнализации\nALS: Automatic locomotive signalling"},
+	{ID = "OtklAVUToggle",	x=20, y=50,  radius=20, tooltip="Отключение автоматического выключения управления (неисправность АВУ)\nTurn off automatic control disable relay (failure of AVU)"},
+	{ID = "UOSToggle",      x=20, y=150, radius=70, tooltip="РЦ-УОС: Устройство ограничения скорости\nRC-UOS: Speed Limitation Device"},
+	}
+}
     
 
 -- BPSN panel
@@ -106,21 +122,21 @@ ENT.ButtonMap["LowVoltagecontrol"] = {
 
 --BPSNrear
 ENT.ButtonMap["BPSNrear"] = {
-    pos = Vector(400.25,-3,29.8),
+    pos = Vector(400.25,-7.4,27),
     ang = Angle(0,90,90),
-	width = 310,
-	height = 120,
+	width = 395,
+	height = 140,
 	scale = 0.0625,
 
 	buttons = {
-		{ID = "VMKToggle",x=203+10,  y=100, radius=20, tooltip="Основной мотор-компрессор\nMain motor-compressor on"},
-		{ID = "BPSNonToggle",x=234+10,  y=100, radius=20, tooltip="ИП:Источник питания\nIP: Power supply"},
-		{ID = "L_1Toggle",		x=177, y=50, radius=20, tooltip="Освещение салона\nWagon lighting"},
-		{ID = "L_2Toggle",		x=213, y=50, radius=20, tooltip="Освещение кабины\nCabin lighting"},
-		{ID = "L_3Toggle",		x=244, y=50, radius=20, tooltip="Освещение пульта\nPanel lighting"},
+		{ID = "VMKToggle",x=209,  y=100, radius=20, tooltip="Основной мотор-компрессор\nMain motor-compressor on"},
+		{ID = "BPSNonToggle",x=261,  y=100, radius=20, tooltip="ИП:Источник питания\nIP: Power supply"},
+		{ID = "L_1Toggle",		x=156, y=17, radius=20, tooltip="Освещение салона\nWagon lighting"},
+		{ID = "L_2Toggle",		x=218, y=17, radius=20, tooltip="Освещение кабины\nCabin lighting"},
+		{ID = "L_3Toggle",		x=270, y=17, radius=20, tooltip="Освещение пульта\nPanel lighting"},
 		--{ID = "L_5Toggle",x=126, y=28, radius=20, tooltip="Аварийное освещение\nEmergency lighting"},
-		{ID = "R_UNchToggle",	x=308, y=50, radius=20, tooltip="УНЧ: Усилитель низких частот (информатор салона)\nUNCh: Low frequency amplifier(sound in wagons enable)"},
-		{ID = "R_GToggle",		x=277, y=50, radius=20, tooltip="Информатор(Звук)\nAnnouncer(Sound)"},		
+		{ID = "R_UNchToggle",	x=308+45, y=17, radius=20, tooltip="УНЧ: Усилитель низких частот (информатор салона)\nUNCh: Low frequency amplifier(sound in wagons enable)"},
+		{ID = "R_GToggle",		x=277+45, y=17, radius=20, tooltip="Информатор(Звук)\nAnnouncer(Sound)"},		
 	}
 }
 	
@@ -1148,8 +1164,8 @@ ENT.ClientProps["door3"] = {
 }
 ENT.ClientProps["UAVALever"] = {
 	model = "models/metrostroi_train/81/uavalever.mdl",
-	pos = Vector(441.3,-60.8,-16.5),
-	ang = Angle(180,0,-65)
+	pos = Vector(450,-50.5,-9),
+	ang = Angle(180,90,270)
 }
 --ENT.ClientProps["teapot"] = {
 --	model = "models/props_interiors/pot01a.mdl",
