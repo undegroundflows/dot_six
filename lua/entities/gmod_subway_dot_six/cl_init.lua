@@ -1,4 +1,4 @@
-﻿include("shared.lua")
+include("shared.lua")
 --------------------------------------------------------------------------------
 ENT.ClientProps = {}
 ENT.ButtonMap = {}
@@ -41,7 +41,7 @@ ENT.ButtonMap["Main"] = {
 		{ID = "RezMKSet",  x=156,  y=41.5, radius=20, tooltip="Резервное включение мотор-компрессора\nEmergency motor-compressor startup"},
 		{ID = "KRZDSet",   x=156.7, y=95, radius=20, tooltip="КРЗД: Кнопка резервного закрытия дверей\nKRZD: Emergency door closing"},
 		{ID = "KDLRSet",   x=196.7, y=62, radius=20, tooltip="РКДЛ: Резервное открытие дверей левых\nVDL: Left doors open"},
-		{ID = "KDPSet",    x=118, y=60, radius=20, tooltip="РКДП: Резервное открытие дверей правых\nKDP: Right doors open"},
+		{ID = "KDPRSet",    x=118, y=60, radius=20, tooltip="РКДП: Резервное открытие дверей правых\nKDP: Right doors open"},
 	}
 }
 
@@ -354,7 +354,7 @@ ENT.ButtonMap["EPKDisconnect"] = {
 	scale = 0.0625,
 	
 	buttons = {
-		{ID = "EPKToggle", x=0, y=0, w=200, h=120, tooltip="Кран ЭПВ\nEPK disconnect valve"},
+		{ID = "EPKToggle", x=0, y=0, w=200, h=70, tooltip="Кран ЭПВ\nEPK disconnect valve"},
 	}
 }
 ENT.ButtonMap["Meters"] = {
@@ -372,6 +372,18 @@ ENT.ButtonMap["Meters"] = {
 
 -- UAVA
 ENT.ButtonMap["UAVAPanel"] = {
+	pos = Vector(454.4,-55.3,-7.0),
+	ang = Angle(0,180,90),
+	width = 230,
+	height = 170,
+	scale = 0.0625,
+	
+	buttons = {
+		{ID = "UAVAToggle",x=0, y=0, w=230/2, h=270, tooltip="УАВА: Универсальный Автоматический Выключатель Автостопа (отключение автостопа)\nUAVA: Universal Automatic Autostop Disabler (autostop disable)"},
+	}
+}
+
+ENT.ButtonMap["UAVAContactPanel"] = {
 	pos = Vector(445.0,-55.3,-7.0),
 	ang = Angle(0,180,90),
 	width = 230,
@@ -379,8 +391,19 @@ ENT.ButtonMap["UAVAPanel"] = {
 	scale = 0.0625,
 	
 	buttons = {
-		{ID = "UAVAToggle",x=0, y=0, w=230/2, h=170, tooltip="УАВА: Универсальный Автоматический Выключатель Автостопа (отключение автостопа)\nUAVA: Universal Automatic Autostop Disabler (autostop disable)"},
 		{ID = "UAVAContactSet",x=230/2, y=0, w=230/2, h=170, tooltip="УАВА: Универсальный Автоматический Выключатель Автостопа (восстановление контактов)\nUAVA: Universal Automatic Autostop Disabler(contacts reset)"},
+	}
+}
+
+ENT.ButtonMap["peplnitsyaPanel"] = {
+	pos = Vector(452,-23.7,-5),
+	ang = Angle(0,180,90),
+	width = 230,
+	height = 170,
+	scale = 0.0625,
+	
+	buttons = {
+		{ID = "pepl",x=0, y=0, w=230/2, h=470, tooltip="Открыть пепельницу\nOpen ashtray"},
 	}
 }
 
@@ -863,6 +886,14 @@ Metrostroi.ClientPropForButton("KDLR",{
 	skin = 7,
 	z=2
 })
+Metrostroi.ClientPropForButton("KDPR",{
+	panel = "Main",
+	button = "KDPRSet",
+	model = "models/6000/buttonw.mdl",
+	skin = 7,
+	z=2
+})
+
 Metrostroi.ClientPropForButton("GreenRPLight",{
 	panel = "Front",
 	button = "GreenRPLight",
@@ -1166,8 +1197,13 @@ ENT.ClientProps["door3"] = {
 }
 ENT.ClientProps["UAVALever"] = {
 	model = "models/metrostroi_train/81/uavalever.mdl",
-	pos = Vector(441.3,-60.8,-16.5),
-	ang = Angle(180,0,-65)
+	pos = Vector(454,-50.5,-7),
+ 	ang = Angle(180,-90,180)
+}
+ENT.ClientProps["pepl"] = {
+	model = "models/6000/peplnitsa.mdl",
+	pos = Vector(452,-23.7,-9),
+ 	ang = Angle(0,0,0)
 }
 --ENT.ClientProps["teapot"] = {
 --	model = "models/props_interiors/pot01a.mdl",
@@ -1263,6 +1299,7 @@ function ENT:Think()
 	self:Animate("VDL",				self:GetPackedBool(14) and 1 or 0, 	0,1, 16, false)
 	self:Animate("VZ1",				self:GetPackedBool("VZ1") and 1 or 0, 	0,1, 16, false)
 	self:Animate("KDLR",				self:GetPackedBool("KDLR") and 1 or 0, 	0,1, 16, false)	self:AnimateFrom("KDLR_light","KDLR")
+	self:Animate("KDPR",				self:GetPackedBool("KDPR") and 1 or 0, 	0,1, 16, false)
 	self:Animate("KDL",				self:GetPackedBool(15) and 1 or 0, 	0,1, 16, false)	self:AnimateFrom("KDL_light","KDL")
 	self:Animate("KDP",				self:GetPackedBool(16) and 1 or 0, 	0,1, 16, false)	self:AnimateFrom("KDP_light","KDP")
 	self:Animate("KDLK",				self:GetPackedBool("KDLK") and 1 or 0, 	0.32,0.67, 4, false)
@@ -1286,6 +1323,7 @@ function ENT:Think()
 	self:HideButton("KAHPl",not self:GetPackedBool("KAHPl"))
 	
 	local An = self:Animate("KDLRr",self:GetPackedBool("Left") and 1 or 0,0,1,10,false)
+	local An = self:Animate("KDPRr",self:GetPackedBool("Right") and 1 or 0,0,1,10,false)
 	--self:ShowHideSmooth("KDL_light",An)
 	--self:ShowHideSmooth("KDLR_light",An)
 	--self:ShowHideSmooth("KDP_light",self:Animate("KDPr",self:GetPackedBool("Right") and 1 or 0,0,1,10,false))
@@ -1340,6 +1378,7 @@ function ENT:Think()
 	self:Animate("ARS13",			self:GetPackedBool(150) and 1 or 0, 0,1, 16, false)
 	self:Animate("Radio13",			self:GetPackedBool(151) and 1 or 0, 0,1, 16, false)
 	self:Animate("UAVALever",	self:GetPackedBool(152) and 1 or 0, 	0,0.25, 128,  3,false)
+	self:Animate("Pepl",			self:GetPackedBool(181) and 1 or 0, 0,1, 16, false)
 	self:Animate("EPK_disconnect",	self:GetPackedBool(155) and 0 or 1,0,1, 3, false)
 	self:Animate("ParkingBrake",	self:GetPackedBool(160) and 0 or 1,0,1, 3, false)
 	self:Animate("KAH",	self:GetPackedBool(163) and 1 or 0,0,1, 16, false)
