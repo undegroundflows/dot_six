@@ -303,7 +303,7 @@ function ENT:Initialize()
 		]]
 	}
 	for i = 1,23 do
-		self.Lights[69+i] = { "light", Vector(-457 + 34.9*i, 0, 70), Angle(180,0,0), Color(255,220,180), brightness = 0.1, scale = 0.75}
+		self.Lights[69+i] = { "light", Vector(-457 + 34.9*i, 0, 70), Angle(180,0,0), Color(255,220,180), brightness = 1, scale = 0.75}
 	end
 	
 	-- Cross connections in train wires
