@@ -303,7 +303,7 @@ function ENT:Initialize()
 		]]
 	}
 	for i = 1,23 do
-		self.Lights[69+i] = { "light", Vector(-457 + 34.9*i, 0, 70), Angle(180,0,0), Color(255,220,180), brightness = 1, scale = 0.75}
+		self.Lights[69+i] = { "light", Vector(-457 + 34.9*i, 0, 70), Angle(180,0,0), Color(255,220,180), brightness = 0.1, scale = 0.75}
 	end
 	
 	-- Cross connections in train wires
@@ -752,6 +752,7 @@ function ENT:Think()
 	self:SetPackedBool(62,self.L_3.Value == 1.0)
 	self:SetPackedBool(63,self.L_4.Value == 1.0)
 	self:SetPackedBool(53,self.L_5.Value == 1.0)
+	self:SetPackedBool(181,self.Pepl)
 	self:SetPackedBool(55,self.DoorSelect.Value == 1.0)
 	self:SetPackedBool(112,(self.RheostatController.Velocity ~= 0.0))
 	self:SetPackedBool(113,self.KRP.Value == 1.0)
