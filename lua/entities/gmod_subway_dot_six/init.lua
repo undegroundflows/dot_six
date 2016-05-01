@@ -303,7 +303,7 @@ function ENT:Initialize()
 		]]
 	}
 	for i = 1,23 do
-		self.Lights[69+i] = { "light", Vector(-457 + 34.9*i, 0, 70), Angle(180,0,0), Color(255,220,180), brightness = 1, scale = 0.75}
+		self.Lights[69+i] = { "light", Vector(-457 + 34.9*i, 0, 70), Angle(180,0,0), Color(255,220,180), brightness = 0.1, scale = 0.75}
 	end
 	
 	-- Cross connections in train wires
@@ -1445,6 +1445,9 @@ function ENT:OnButtonPress(button,route)
 end
 
 function ENT:OnButtonRelease(button)
+	if button:find(":") then
+		button = string.Explode(":",button)[2]
+	end
 	if string.find(button,"PneumaticBrakeSet") then
 		return
 	end
@@ -1452,27 +1455,28 @@ function ENT:OnButtonRelease(button)
 	if button == "KDL" then self.KDL:TriggerInput("Open",1) self:OnButtonRelease("KDLSet") end
 	if button == "KDP" then self.KDP:TriggerInput("Open",1) self:OnButtonRelease("KDPSet") end
 	if button == "VDL" then self.VDL:TriggerInput("Open",1) self:OnButtonRelease("VDLSet") end
-
 	if button == "KRP" then
 		self.KRP:TriggerInput("Set",0)
 		self:OnButtonRelease("KRPSet")
 	end
-	--[[
-	if (button == "PneumaticBrakeDown") and (self.Pneumatic.DriverValvePosition == 1) then
-		self.Pneumatic:TriggerInput("BrakeSet",2)
-	end
-	if self.Pneumatic.ValveType == 1 then
-		if (button == "PneumaticBrakeUp") and (self.Pneumatic.DriverValvePosition == 5) then
-			self.Pneumatic:TriggerInput("BrakeSet",4)
-		end
-	end
-	]]
 
+	--if (not string.find(button,"KVT")) and string.find(button,"KV") then return end
+	--if string.find(button,"KRU") then return end
+
+	if button == "R_Program1Helper" then
+		self.R_Program1:TriggerInput("Set",0)
+		----self:PlayOnce("inf_off","instructor",0.7)
+		--return
+	end
+	if button == "R_Program2Helper" then
+		self.R_Program2:TriggerInput("Set",0)
+		----self:PlayOnce("inf_off","instructor",0.7)
+		--return
+	end
 end
 
 function ENT:OnCouple(train,isfront)
 	self.BaseClass.OnCouple(self,train,isfront)
-
 
 	if isfront then
 		self.FrontBrakeLineIsolation:TriggerInput("Open",1.0)
@@ -1481,4 +1485,7 @@ function ENT:OnCouple(train,isfront)
 		self.RearBrakeLineIsolation:TriggerInput("Open",1.0)
 		self.RearTrainLineIsolation:TriggerInput("Open",1.0)
 	end
+end
+
+function ENT:OnTrainWireError(k)
 end

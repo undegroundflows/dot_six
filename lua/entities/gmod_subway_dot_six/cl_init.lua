@@ -1,4 +1,4 @@
-include("shared.lua")
+﻿include("shared.lua")
 --------------------------------------------------------------------------------
 ENT.ClientProps = {}
 ENT.ButtonMap = {}
@@ -47,7 +47,7 @@ ENT.ButtonMap["Main"] = {
 
 -- Front panel
 ENT.ButtonMap["Front"] = {
-	pos = Vector(467.90,1.8,0),
+	pos = Vector(468.25,2.1,0),
 	ang = Angle(0,-90,65),
 	width = 450,
 	height = 60,
@@ -57,7 +57,7 @@ ENT.ButtonMap["Front"] = {
 --		{ID = "VAHToggle",x=360, y=15, radius=20, tooltip="ВАХ: Включение аварийного хода (неисправность реле педали безопасности)\nVAH: Emergency driving mode (failure of RPB relay)"},
 --		{ID = "UAVAContactSet",x=380, y=15, h=170, tooltip="УАВА: Универсальный Автоматический Выключатель Автостопа (восстановление контактов)\nUAVA: Universal Automatic Autostop Disabler(contacts reset)"},		
 		{ID = "WiperToggle",x=430, y=15,radius=20, tooltip="Стеклоочиститель/Дворник\nWiper"},
-		{ID = "VADToggle",x=93, y=15, radius=20, tooltip="Блокировка контроля дверей\nEmergency door close override"},
+		{ID = "VADToggle",x=93, y=15, radius=20, tooltip="Блокировка контроля дверей(ВАД)\nEmergency door close override(VAD)"},
 		{ID = "KAHSet",x=121,  y=15, radius=20, tooltip="КАХ: Кнопка аварийного хода\nEmergency drive button"},
 		{ID = "KAHPl",x=121, y=7, radius=20, tooltip="Пломба крышки КАХ\nKAH plomb"},
 		{ID = "KAHKToggle",			x=101, y=25, w=	50,h=25, tooltip="Крышечка"},
@@ -82,11 +82,11 @@ ENT.ButtonMap["PackSwitch"] = {
 	scale = 0.0625,
 	
 	buttons = {
-	{ID = "VAHToggle",      x=20, y=100, radius=20, tooltip="ВАХ: Включение аварийного хода (неисправность реле педали безопасности)\nVAH: Emergency driving mode (failure of RPB relay)"},
-	{ID = "ARSToggle",		x=60, y=100, radius=20, tooltip="АРС: Включение системы автоматического регулирования скорости\nARS: Automatic speed regulation"},
-    {ID = "ALSToggle",		x=60, y=150, radius=20, tooltip="АЛС: Включение системы автоматической локомотивной сигнализации\nALS: Automatic locomotive signalling"},
-	{ID = "OtklAVUToggle",	x=20, y=50,  radius=20, tooltip="Отключение автоматического выключения управления (неисправность АВУ)\nTurn off automatic control disable relay (failure of AVU)"},
-	{ID = "UOSToggle",      x=20, y=150, radius=70, tooltip="РЦ-УОС: Устройство ограничения скорости\nRC-UOS: Speed Limitation Device"},
+	{ID = "VAHToggle",      x=20, y=100, radius=25, tooltip="ВАХ: Включение аварийного хода (неисправность реле педали безопасности)\nVAH: Emergency driving mode (failure of RPB relay)"},
+	{ID = "ARSToggle",		x=60, y=100, radius=25, tooltip="АРС: Включение системы автоматического регулирования скорости\nARS: Automatic speed regulation"},
+    {ID = "ALSToggle",		x=60, y=150, radius=25, tooltip="АЛС: Включение системы автоматической локомотивной сигнализации\nALS: Automatic locomotive signalling"},
+	{ID = "OtklAVUToggle",	x=20, y=50,  radius=25, tooltip="Отключение автоматического выключения управления (неисправность АВУ)\nTurn off automatic control disable relay (failure of AVU)"},
+	{ID = "UOSToggle",      x=20, y=150, radius=25, tooltip="РЦ-УОС: Устройство ограничения скорости\nRC-UOS: Speed Limitation Device"},
 	}
 }
     
@@ -525,7 +525,7 @@ ENT.ButtonMap["InfoTable"] = {
 }
 
 ENT.ButtonMap["InfoTableSelect"] = {
-	pos = Vector(464.0,27.0,22.0),
+	pos = Vector(464.0,20.0,22.0),
 	ang = Angle(0,-90,90),
 	width = 550,
 	height = 100,
@@ -646,17 +646,17 @@ ENT.ClientProps["krureverser"] = {
 ENT.ClientProps["train_line"] = {
 	model = "models/metrostroi/81-717/black_arrow.mdl",
 	pos = Vector(466.35,-46,5.56),
-	ang = Angle(90+18,0,180+66)
+	ang = Angle(90+16.25,0,180+62)
 }
 ENT.ClientProps["brake_line"] = {
 	model = "models/metrostroi/81-717/red_arrow.mdl",
     pos = Vector(466.35,-45.95,5.56),
-	ang = Angle(90+18,0,180+62)
+	ang = Angle(90+16.25,0,180+62)
 }
 ENT.ClientProps["brake_cylinder"] = {
 	model = "models/metrostroi/81-717/black_arrow.mdl",
 	pos = Vector(461.9,-48.9,5.45),
-	ang = Angle(90+18,0,175+66)
+	ang = Angle(90+20.5,0,175+66)
 }
 --------------------------------------------------------------------------------
 --ENT.ClientProps["ampermeter"] = {--24.2 0.2 5.3
@@ -714,7 +714,7 @@ Metrostroi.ClientPropForButton("R_Radio",{
 	model = "models/6000/tumbler1.mdl",
 	ang = 90
 })
-Metrostroi.ClientPropForButton("R_Program",{
+Metrostroi.ClientPropForButton("Program1",{
 	panel = "Main",
 	button = "R_ProgramToggle",
 	model = "models/6000/pult/buttons/button_large.mdl",
@@ -737,9 +737,8 @@ Metrostroi.ClientPropForButton("BPSNon",{
 Metrostroi.ClientPropForButton("VozvratRP",{
 	panel = "Front",
 	button = "VozvratRPSet",
-	model = "models/6000/button_s.mdl",
-	skin = 4,
-	z = 1,
+	model = "models/6000/pult/buttons/button_mini.mdl",
+	skin = 1,
 })
 Metrostroi.ClientPropForButton("VMK",{
 	panel = "BPSNrear",
@@ -750,7 +749,7 @@ Metrostroi.ClientPropForButton("VMK",{
 Metrostroi.ClientPropForButton("KAH",{
 	panel = "Front",
 	button = "KAHSet",
-	model = "models/6000/buttonw.mdl",
+	model = "models/6000/pult/buttons/button_mini.mdl",
 	skin = 1,
 })
 Metrostroi.ClientPropForButton("KAHP1",{
@@ -777,8 +776,9 @@ Metrostroi.ClientPropForButton("VAH",{
 Metrostroi.ClientPropForButton("VAD",{
 	panel = "Front",
 	button = "VADToggle",
-	model = "models/6000/buttonw.mdl",
-	ang = 90
+	model = "models/6000/pult/buttons/button_mini.mdl",
+	ang = 90,
+	skin = 7
 })
 --Metrostroi.ClientPropForButton("UAVAContactSet",{
 --	panel = "Front",
@@ -789,8 +789,9 @@ Metrostroi.ClientPropForButton("VAD",{
 Metrostroi.ClientPropForButton("Wiper",{
 	panel = "Front",
 	button = "WiperToggle",
-	model = "models/6000/button_s.mdl",
-	ang = 90
+	model = "models/6000/pult/buttons/button_mini.mdl",
+	skin = 5,
+	ang = 90,	
 })
 Metrostroi.ClientPropForButton("ALS",{
 	panel = "PackSwitch",
@@ -871,7 +872,8 @@ Metrostroi.ClientPropForButton("VZ1",{
 Metrostroi.ClientPropForButton("KSN",{
 	panel = "Front",
 	button = "KSNSet",
-	model = "models/6000/button_s.mdl"
+	model = "models/6000/pult/buttons/button_mini.mdl",
+	skin = 2
 })
 Metrostroi.ClientPropForButton("KRP",{
 	panel = "Main",
@@ -992,13 +994,14 @@ Metrostroi.ClientPropForButton("L_3",{
 Metrostroi.ClientPropForButton("ConverterProtection",{
 	panel = "Front",
 	button = "ConverterProtectionSet",
-	model = "models/6000/button_s.mdl",
-	skin = 2,
+	model = "models/6000/pult/buttons/button_mini.mdl",
+	skin = 4,--4
 })
 Metrostroi.ClientPropForButton("DIPoff",{
 	panel = "Front",
 	button = "DIPoffSet",
-	model = "models/6000/button_s.mdl"
+	model = "models/6000/pult/buttons/button_mini.mdl",
+	skin = 4,--4
 })
 Metrostroi.ClientPropForButton("KVT",{
 	panel = "Main",
@@ -1154,8 +1157,8 @@ ENT.ClientProps["PB"] = {--
 -- Add doors
 local function GetDoorPosition(i,k,j)
 	if j == 0 
-	then return Vector(359.0 - 35.0*k     - 229.5*i,-65*(1-2*k),6)
-	else return Vector(359.0 - 35.0*(1-k) - 229.5*i,-65*(1-2*k),6)
+	then return Vector(359.75 - 35.0*k     - 229.5*i,-65*(1-2*k),6)
+	else return Vector(359.75 - 35.0*(1-k) - 229.5*i,-65*(1-2*k),6)
 	end
 end
 for i=0,3 do
@@ -1337,8 +1340,8 @@ function ENT:Think()
 	self:Animate("SelectChannel",	self:GetPackedBool(31) and 1 or 0, 	0,1, 16, false)
 	self:Animate("ARS",				self:GetPackedBool(56) and 1 or 0, 	0,1, 16, false)
 	self:Animate("ALS",				self:GetPackedBool(57) and 1 or 0, 	0,1, 16, false)
-	self:Animate("KVT",				self:GetPackedBool(28) and 1 or 0, 	0,1, 16, false)
-	self:Animate("KVT1",				self:GetPackedBool(328) and 1 or 0, 	0,1, 16, false)
+	self:Animate("KVT",				self:GetPackedBool(328) and 1 or 0, 	0,1, 16, false)
+	self:Animate("KVT1",				self:GetPackedBool(28) and 1 or 0, 	0,1, 16, false)
 
 --	self:Animate("EmergencyBrake",				self:GetPackedBool(177) and 1 or 0, 	0,1, 16, false)
 	self:Animate("KB",			self:GetPackedBool(28) and 1 or 0, 	0,1, 16, false)
@@ -1378,7 +1381,7 @@ function ENT:Think()
 	self:Animate("ARS13",			self:GetPackedBool(150) and 1 or 0, 0,1, 16, false)
 	self:Animate("Radio13",			self:GetPackedBool(151) and 1 or 0, 0,1, 16, false)
 	self:Animate("UAVALever",	self:GetPackedBool(152) and 1 or 0, 	0,0.25, 128,  3,false)
-	self:Animate("Pepl",			self:GetPackedBool(181) and 1 or 0, 0,1, 16, false)
+	self:Animate("Pepl",			self:GetPackedBool(181) and 0 or 1,0,1, 3, false)
 	self:Animate("EPK_disconnect",	self:GetPackedBool(155) and 0 or 1,0,1, 3, false)
 	self:Animate("ParkingBrake",	self:GetPackedBool(160) and 0 or 1,0,1, 3, false)
 	self:Animate("KAH",	self:GetPackedBool(163) and 1 or 0,0,1, 16, false)
@@ -1479,9 +1482,9 @@ function ENT:Think()
 		--sendButtonMessage({ID = "door4",state = true})
 		--sendButtonMessage({ID = "door4",state = false})
     end	
-	self:Animate("door1",	self:GetPackedBool(156) and (self.Door1 or 1) or 0,0,0.513, 1024, 1)
-	self:Animate("door2",	self:GetPackedBool(158) and (self.Door2 or 1) or 0,1,0.513, 1024, 1)
-	self:Animate("door3",	self:GetPackedBool(159) and (self.Door3 or 1) or 0,0,0.513, 1024, 1)
+	self:Animate("door1",	self:GetPackedBool(156) and (self.Door1 or 1) or 0,0,0.52, 1024, 1)
+	self:Animate("door2",	self:GetPackedBool(158) and (self.Door2 or 1) or 0,1,0.52, 1024, 1)
+	self:Animate("door3",	self:GetPackedBool(159) and (self.Door3 or 1) or 0,0,0.52, 1024, 1)
 	self:Animate("door4",	self:GetPackedBool(166) and (self.Door4 or 1) or 0,0,1, 512, 1)
 	self:Animate("FrontBrake", self:GetNW2Bool("FbI") and 0 or 1,0,0.35, 3, false)
 	self:Animate("FrontTrain",	self:GetNW2Bool("FtI") and 0 or 1,0,0.35, 3, false)

@@ -24,7 +24,7 @@ function ENT:Initialize()
 	self.LampType = 2
 
 	-- Set model and initialize
-	self:SetModel("models/6000/6000_714.mdl")
+	self:SetModel("models/6000/6000_714_vip.mdl")
 	self.BaseClass.Initialize(self)
 	self:SetPos(self:GetPos() + Vector(0,0,140))
 
