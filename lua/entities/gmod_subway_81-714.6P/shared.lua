@@ -8,8 +8,8 @@ ENT.Purpose         = ""
 ENT.Instructions    = ""
 ENT.Category		= "Metrostroi (trains)"
 
-ENT.Spawnable       = false
-ENT.AdminSpawnable  = true
+ENT.Spawnable       = true
+ENT.AdminSpawnable  = false
 
 function ENT:PassengerCapacity()
 	return 300
