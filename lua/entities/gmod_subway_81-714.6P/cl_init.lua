@@ -156,7 +156,6 @@ ENT.ButtonMap["TrainNumber2"] = {
 	scale = 0.20,
 }
 
-
 --------------------------------------------------------------------------------
 ENT.ClientPropsInitialized = false
 ENT.ClientProps["brake013"] = {
@@ -327,8 +326,8 @@ Metrostroi.ClientPropForButton("BPSNon",{
 -- Add doors
 local function GetDoorPosition(i,k,j)
 	if j == 0 
-	then return Vector(362.5 - 35.0*k     - 229.5*i,-65*(1-2*k),6)
-	else return Vector(362.5 - 35.0*(1-k) - 229.5*i,-65*(1-2*k),6)
+	then return Vector(361.67 - 35.0*k     - 229.5*i,-65*(1-2*k),6)
+	else return Vector(361.67 - 35.0*(1-k) - 229.5*i,-65*(1-2*k),6)
 	end
 end
 for i=0,3 do
@@ -487,8 +486,8 @@ function ENT:Think()
 		if self.Door1 then self.Door1 = math.min(0.99,math.max(0,self.Door1+accel*self.DeltaTime)) end
 		if self.Door2 then self.Door2 = math.min(0.99,math.max(0,self.Door2-accel*self.DeltaTime)) end
 	end
-	self:Animate("door1",	self:GetPackedBool(157) and (self.Door1 or 0.99) or 0,0,0.54, 1024, 1)
-	self:Animate("door2",	self:GetPackedBool(156) and (self.Door2 or 0.99) or 0,0,0.51, 1024, 1)
+	self:Animate("door1",	self:GetPackedBool(157) and (self.Door1 or 0.99) or 0,0,0.52, 1024, 1)
+	self:Animate("door2",	self:GetPackedBool(156) and (self.Door2 or 0.99) or 0,0,0.52, 1024, 1)
 
 	self:Animate("FrontBrake", self:GetNW2Bool("FbI") and 0 or 1,0,0.35, 3, false)
 	self:Animate("FrontTrain",	self:GetNW2Bool("FtI") and 0 or 1,0,0.35, 3, false)

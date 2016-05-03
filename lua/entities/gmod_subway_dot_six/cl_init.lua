@@ -119,8 +119,9 @@ ENT.ButtonMap["BPSNrear"] = {
 		{ID = "L_2Toggle",		x=133, y=30, radius=20, tooltip="Освещение кабины\nCabin lighting"},
 		{ID = "L_3Toggle",		x=180, y=30, radius=20, tooltip="Освещение пульта\nPanel lighting"},
 		--{ID = "L_5Toggle",x=126, y=28, radius=20, tooltip="Аварийное освещение\nEmergency lighting"},
-		{ID = "R_UNchToggle",	x=300, y=30, radius=20, tooltip="УНЧ: Усилитель низких частот (информатор салона)\nUNCh: Low frequency amplifier(sound in wagons enable)"},
-		{ID = "R_GToggle",		x=255, y=30, radius=20, tooltip="Информатор(Звук)\nAnnouncer(Sound)"},		
+		{ID = "R_UNchToggle",	x=300, y=30, radius=20, tooltip="УНЧ: Усилитель низких частот \nUNCh: Low frequency amplifier"},
+		{ID = "R_GToggle",		x=235, y=30, radius=20, tooltip="Громкоговоритель(Звук в кабине)\nLoudspeaker: Sound in cabin enable"},		
+		{ID = "R_ZSToggle",		x=267, y=30, radius=20, tooltip="ЗС: Звук в салоне\nZS: Sound in wagons enable"},
 	}
 }
 	
@@ -141,7 +142,7 @@ ENT.ButtonMap["Announcer"] = {
 		--{ID = "DURAPowerToggle", x=110, y=187, radius=20, tooltip="DURA Power"}, -- NEEDS TRANSLATING
 		
 		--{ID = "CustomCToggle", x=220, y=45, radius=20, tooltip="C"},
-		
+
 		{ID = "Custom1Set",     x=150, y=95, radius=20, tooltip="-"},
 		{ID = "Custom2Set",     x=175, y=95, radius=20, tooltip="+"},
 		{ID = "Custom3Set",     x=105, y=95, radius=20, tooltip="Menu"},
@@ -517,7 +518,7 @@ ENT.ButtonMap["TrainNumber2"] = {
 }
 
 ENT.ButtonMap["InfoTable"] = {
-	pos = Vector(469.1,-36.0,43.0),
+	pos = Vector(469.1,-32.0,43.0),
 	ang = Angle(0,90,90),
 	width = 646,
 	height = 100,
@@ -544,7 +545,7 @@ ENT.ButtonMap["InfoTableSelect"] = {
 }
 
 ENT.ButtonMap["InfoRoute"] = {
-	pos = Vector(469.1,-42.75,61),
+	pos = Vector(469.1,-47,61),
 	ang = Angle(0,90,90),
 	width = 100,
 	height = 100,
@@ -557,7 +558,7 @@ ENT.ButtonMap["CabinDoor"] = {
 	height = 2000,
 	scale = 0.1/2,
 	buttons = {
-		{ID = "CabinDoor",x=0,y=0,w=642,h=2000, tooltip="Дверь в кабину машиниста\nCabin door"},
+		{ID = "CabinDoor",x=0,y=0,w=642,h=1000, tooltip="Дверь в кабину машиниста\nCabin door"},
 	}
 }
 ENT.ButtonMap["PassengerDoor"] = {
@@ -567,7 +568,7 @@ ENT.ButtonMap["PassengerDoor"] = {
 	height = 2000,
 	scale = 0.1/2,
 	buttons = {
-		{ID = "PassengerDoor",x=0,y=0,w=642-220,h=2000, tooltip="Дверь в кабину машиниста из салона\nPass door "},
+		{ID = "PassengerDoor",x=0,y=0,w=642-220,h=1000, tooltip="Дверь в кабину машиниста из салона\nPass door "},
 	}
 }
 
@@ -589,7 +590,7 @@ ENT.ButtonMap["Trap"] = {
 	height = 2000,
 	scale = 0.1/2,
 	buttons = {
-		{ID = "Trap",x=0,y=0,w=642-220,h=2000, tooltip="Трап\nEmergency Exit"},
+		{ID = "Trap",x=0,y=0,w=642-220,h=1000, tooltip="Трап\nEmergency Exit"},
 	}
 }
 --ENT.ButtonMap["Wiper"] = {
@@ -699,6 +700,12 @@ Metrostroi.ClientPropForButton("headlights",{
 Metrostroi.ClientPropForButton("R_UNch",{
 	panel = "BPSNrear",
 	button = "R_UNchToggle",
+	model = "models/metrostroi_train/81/tumbler4.mdl",
+	ang = 90
+})
+Metrostroi.ClientPropForButton("R_ZS",{
+	panel = "BPSNrear",
+	button = "R_ZSToggle",
 	model = "models/metrostroi_train/81/tumbler4.mdl",
 	ang = 90
 })
@@ -1157,8 +1164,8 @@ ENT.ClientProps["PB"] = {--
 -- Add doors
 local function GetDoorPosition(i,k,j)
 	if j == 0 
-	then return Vector(359.75 - 35.0*k     - 229.5*i,-65*(1-2*k),6)
-	else return Vector(359.75 - 35.0*(1-k) - 229.5*i,-65*(1-2*k),6)
+	then return Vector(359.44 - 35.0*k     - 229.5*i,-65*(1-2*k),6)
+	else return Vector(359.44 - 35.0*(1-k) - 229.5*i,-65*(1-2*k),6)
 	end
 end
 for i=0,3 do
@@ -1368,6 +1375,7 @@ function ENT:Think()
 	self:Animate("R_G",				self:GetPackedBool(125) and 1 or 0, 0,1, 16, false)
 	self:Animate("R_Radio",			self:GetPackedBool(126) and 1 or 0, 0,1, 16, false)
 	self:Animate("R_UNch",			self:GetPackedBool(127) and 1 or 0, 0,1, 16, false)
+	self:Animate("R_ZS",			self:GetPackedBool(187) and 1 or 0, 0,1, 16, false)
 	self:Animate("R_Program",		self:GetPackedBool(128) and 0 or (self:GetPackedBool(129) and 1 or 0.5), 0,1, 16, false)
 	self:Animate("Program1",		self:GetPackedBool(128) and 1 or 0, 0,1, 16, false)
 	self:Animate("Program2",		self:GetPackedBool(129) and 1 or 0, 0,1, 16, false)
@@ -1677,7 +1685,7 @@ function ENT:DrawPost(special)
 		surface.SetDrawColor(0,0,0) --255*dc.x,250*dc.y,220*dc.z)
 		surface.DrawRect(0,100,88,70)
 		draw.Text({
-			text = self:GetNWString("RouteNumber",""),
+			text = self:GetNW2String("RouteNumber","00"),
 			font = "MetrostroiSubway_InfoRoute",--..self:GetNWInt("Style",1),
 			pos = { 44, 135 },
 			xalign = TEXT_ALIGN_CENTER,

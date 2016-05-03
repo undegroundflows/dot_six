@@ -763,6 +763,7 @@ function ENT:Think()
 	self:SetPackedBool(125,self.R_G.Value == 1.0)
 	self:SetPackedBool(126,self.R_Radio.Value == 1.0)
 	self:SetPackedBool(127,self.R_UNch.Value == 1.0)
+	self:SetPackedBool(187,self.R_ZS.Value == 1.0)
 	self:SetPackedBool(128,self.R_Program1.Value == 1.0)
 	self:SetPackedBool(129,self.R_Program2.Value == 1.0)
 	self:SetPackedBool(130,self.RC1.Value == 1.0)
@@ -1187,13 +1188,13 @@ function ENT:OnButtonPress(button,route)
 		num = num + 1
 		if num > 9 then num = 0 end
 		self.RouteNumber = string.SetChar(self.RouteNumber,2, num)
-		self:SetNWString("RouteNumber",self.RouteNumber)
+		self:SetNW2String("RouteNumber",self.RouteNumber)
 		local trn = self.WagonList[#self.WagonList]
 		if IsValid(trn) and trn ~= self then
 			trn.RouteNumber = self.RouteNumber
-			trn:SetNWString("RouteNumber",self.RouteNumber)
+			trn:SetNW2String("RouteNumber",self.RouteNumber)
 		end
-			
+
 	end
 	if button == "Num1M" then
 		if not self.RouteNumber then self.RouteNumber = "00" end
@@ -1201,11 +1202,11 @@ function ENT:OnButtonPress(button,route)
 		num = num - 1
 		if num < 0 then num = 9 end
 		self.RouteNumber = string.SetChar(self.RouteNumber,2, num)
-		self:SetNWString("RouteNumber",self.RouteNumber)
+		self:SetNW2String("RouteNumber",self.RouteNumber)
 		local trn = self.WagonList[#self.WagonList]
 		if IsValid(trn) and trn ~= self then
 			trn.RouteNumber = self.RouteNumber
-			trn:SetNWString("RouteNumber",self.RouteNumber)
+			trn:SetNW2String("RouteNumber",self.RouteNumber)
 		end
 	end
 	if button == "Num2P" then
@@ -1214,11 +1215,11 @@ function ENT:OnButtonPress(button,route)
 		num = num + 1
 		if num > 9 then num = 0 end
 		self.RouteNumber = string.SetChar(self.RouteNumber,1, num)
-		self:SetNWString("RouteNumber",self.RouteNumber)
+		self:SetNW2String("RouteNumber",self.RouteNumber)
 		local trn = self.WagonList[#self.WagonList]
 		if IsValid(trn) and trn ~= self then
 			trn.RouteNumber = self.RouteNumber
-			trn:SetNWString("RouteNumber",self.RouteNumber)
+			trn:SetNW2String("RouteNumber",self.RouteNumber)
 		end
 	end
 	if button == "Num2M" then
@@ -1227,11 +1228,11 @@ function ENT:OnButtonPress(button,route)
 		num = num - 1
 		if num < 0 then num = 9 end
 		self.RouteNumber = string.SetChar(self.RouteNumber,1, num)
-		self:SetNWString("RouteNumber",self.RouteNumber)
+		self:SetNW2String("RouteNumber",self.RouteNumber)
 		local trn = self.WagonList[#self.WagonList]
 		if IsValid(trn) and trn ~= self then
 			trn.RouteNumber = self.RouteNumber
-			trn:SetNWString("RouteNumber",self.RouteNumber)
+			trn:SetNW2String("RouteNumber",self.RouteNumber)
 		end
 	end
 	if button == "RouteNumberUpdate" then
