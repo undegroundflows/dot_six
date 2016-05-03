@@ -201,15 +201,15 @@ function ENT:Initialize()
 	local vY = Angle(0,-90-0.2,56.3):Right()
 	self.Lights = {
 		-- Headlight glow
-		[1] = { "headlight",		Vector(473,0,-20), Angle(0,0,0), Color(216,161,92), fov = 100 },
+		[1] = { "headlight",		Vector(473,0,-20), Angle(0,0,0), Color(255,255,255), fov = 100 },
 		
 		-- Head (type 1)
-        [2] = { "glow",    Vector(482, 44,-30), Angle(0,0,0), Color(255,220,180), brightness = 1, scale = 0.8 },
-        [3] = { "glow",    Vector(482, 34,-30), Angle(0,0,0),Color(255,220,180), brightness = 1, scale = 0.8 },
+        [2] = { "glow",    Vector(482, 44,-30), Angle(0,0,0), Color(255,255,255), brightness = 0.8, scale = 0.8 },
+        [3] = { "glow",    Vector(482, 34,-30), Angle(0,0,0),Color(255,255,255), brightness = 0.8, scale = 0.8 },
 		--[4] = { "glow",				Vector(0,0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
 		--[5] = { "glow",				Vector(0, 0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
-		[4] = { "glow",    Vector(482,-34,-30), Angle(0,0,0),Color(255,220,180), brightness = 1, scale = 0.8 },
-        [5] = { "glow",    Vector(482,-44,-30), Angle(0,0,0), Color(255,220,180), brightness = 1, scale = 0.8 }, 
+		[4] = { "glow",    Vector(482,-34,-30), Angle(0,0,0),Color(255,255,255), brightness = 0.8, scale = 0.8 },
+        [5] = { "glow",    Vector(482,-44,-30), Angle(0,0,0), Color(255,255,255), brightness = 0.8, scale = 0.8 }, 
 
 		-- Reverse
 		[8] = { "light",			Vector(463.5,-30,70), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 0.5 },
@@ -217,13 +217,12 @@ function ENT:Initialize()
 		[99] = { "light",			Vector(468,-45,-62), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 0.5 },
 		[98] = { "light",			Vector(468, 45,-62), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 0.5 },
 		-- Cabin
-		[10] = { "dynamiclight",	Vector( 430, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.05, distance = 550 },
+		[10] = { "dynamiclight",	Vector( 450, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.01, distance = 415 },
 		
 		-- Interior
-		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400 , fov=180,farz = 128 },
-		[12] = { "dynamiclight",	Vector(0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400, fov=180,farz = 128 },
-		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400 , fov=180,farz = 128 },
-
+		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.86, distance = 400 , fov=180,farz = 128 },
+		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.86, distance = 400, fov=180,farz = 128 },
+		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.86, distance = 400 , fov=180,farz = 128 },
 
 		
 		-- Side lights
@@ -272,21 +271,19 @@ function ENT:Initialize()
 		[57] = { "light", Vector(459.4,10.8,13.1)+vY*(1.37+1.27*2)+vX*15.87,	Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },
 		[58] = { "light", Vector(459.4,10.8,13.1)+vY*(1.37+1.27*3)+vX*15.88,	Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },		
 		
+		
 		-- Interior lights
-		[60+0] = { "headlight", Vector(290-130*0,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.2, fov = 160 },
-		[60+1] = { "headlight", Vector(290-130*1,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.2, fov = 160 },
-		[60+2] = { "headlight", Vector(290-130*2,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.2, fov = 160 },
-		[60+3] = { "headlight", Vector(290-130*3,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.2, fov = 160 },
-		[60+4] = { "headlight", Vector(290-130*4,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.2, fov = 160 },
-		[60+5] = { "headlight", Vector(290-130*5,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.2, fov = 160 },
-		[60+11] = { "headlight", Vector(290-130*6,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.2, fov = 160 },
-		[60+12] = { "headlight", Vector(290-130*7,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.2, fov = 160 },
-		[60+6] = { "headlight", Vector(270-230*0,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.2, fov = 170 },
-		[60+7] = { "headlight", Vector(270-230*1,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.2, fov = 170 },
-		[60+8] = { "headlight", Vector(270-230*2,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.2, fov = 170 },
-		[60+9] = { "headlight", Vector(270-230*3,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.2, fov = 170 },
-		[60+13] = { "headlight", Vector(270-230*4,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.2, fov = 170 },
-		[60+14] = { "headlight", Vector(270-230*5,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.2, fov = 170 },
+		[60+0] = { "headlight", Vector(290-130*0,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+1] = { "headlight", Vector(290-130*1,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+2] = { "headlight", Vector(290-130*2,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+3] = { "headlight", Vector(290-130*3,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+4] = { "headlight", Vector(290-130*4,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+5] = { "headlight", Vector(290-130*5,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+6] = { "headlight", Vector(270-230*0,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
+		[60+7] = { "headlight", Vector(270-230*1,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
+		[60+8] = { "headlight", Vector(270-230*2,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
+		[60+9] = { "headlight", Vector(270-230*3,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
+		[70    ] = { "headlight",	Vector( 430, -60, -47), Angle(45,-90,0), Color(255,255,255), brightness = 0.5, distance = 400 , fov=120, shadows = 1 },
 
 
 		

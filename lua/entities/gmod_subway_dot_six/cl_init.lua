@@ -24,8 +24,8 @@ ENT.ButtonMap["Main"] = {
 
 		--{ID = "AutodriveToggle",x=420, y=92, radius=20, tooltip="Автоматическая остановка\nAutomatic stop"},
 		
-		{ID = "VUD1Toggle",		  x=370, y=103+4, radius=40, tooltip="ВУД: Выключатель управления дверьми\nVUD: Door control toggle (close doors)"},
-		{ID = "KDLSet",			  x=370, y=160, radius=20, tooltip="КДЛ: Кнопка левых дверей\nKDL: Left doors open"},
+		{ID = "VUD1Toggle",		  x=370, y=103+5.6, radius=40, tooltip="ВУД: Выключатель управления дверьми\nVUD: Door control toggle (close doors)"},
+		{ID = "KDLSet",			  x=370, y=163, radius=20, tooltip="КДЛ: Кнопка левых дверей\nKDL: Left doors open"},
 		{ID = "DoorSelectToggle", x=390, y=55, radius=20, tooltip="Выбор стороны открытия дверей\nSelect side on which doors will open"},
 
 --		{ID = "OtklAVUPl",  x=283, y=210, radius=20, tooltip="Пломба крышки ОтклАВУ\nOtklAVU plomb"},
@@ -47,7 +47,7 @@ ENT.ButtonMap["Main"] = {
 
 -- Front panel
 ENT.ButtonMap["Front"] = {
-	pos = Vector(468.25,2.1,0),
+	pos = Vector(468.25,1.9,0),
 	ang = Angle(0,-90,65),
 	width = 450,
 	height = 60,
@@ -69,7 +69,7 @@ ENT.ButtonMap["Front"] = {
 		{ID = "GreenRPLight",	x=260, y=35, radius=20, tooltip="РП: Зелёная лампа реле перегрузки\nRP: Green overload relay light (overload relay open on current train)"},
 --		{ID = "AVULight",		x=406, y=-47, radius=20, tooltip="АВУ: Автоматический выключатель управления\nAVU: Automatic control disabler active"},
 		{ID = "KVPLight",		x=148, y=35, radius=20, tooltip="КВП: Контроль высоковольного преобразователя\nKVP: High-voltage converter control"},
-		{ID = "SPLight",		x=0, y=15, radius=20, tooltip="ЛСП: Лампа сигнализации пожара\nLSP: Fire emergency (rheostat overheat)"},
+		{ID = "SPLight",		x=0, y=15, radius=100, tooltip="ЛСП: Лампа сигнализации пожара\nLSP: Fire emergency (rheostat overheat)"},
 	}
 }
 
