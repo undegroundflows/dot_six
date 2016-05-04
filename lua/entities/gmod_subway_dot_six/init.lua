@@ -201,7 +201,7 @@ function ENT:Initialize()
 	local vY = Angle(0,-90-0.2,56.3):Right()
 	self.Lights = {
 		-- Headlight glow
-		[1] = { "headlight",		Vector(473,0,-20), Angle(0,0,0), Color(255,255,255), fov = 100 },
+	[1] = { "headlight",		Vector(465,0,-20), Angle(0,0,0), Color(216,181,172), fov = 100 },
 		
 		-- Head (type 1)
         [2] = { "glow",    Vector(482, 44,-30), Angle(0,0,0), Color(255,255,255), brightness = 1, scale = 1 },
