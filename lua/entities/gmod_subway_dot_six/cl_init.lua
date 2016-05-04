@@ -24,7 +24,7 @@ ENT.ButtonMap["Main"] = {
 
 		--{ID = "AutodriveToggle",x=420, y=92, radius=20, tooltip="Автоматическая остановка\nAutomatic stop"},
 		
-		{ID = "VUD1Toggle",		  x=370, y=103+5.6, radius=40, tooltip="ВУД: Выключатель управления дверьми\nVUD: Door control toggle (close doors)"},
+		{ID = "VUD1Toggle",		  x=370, y=103+5.4, radius=40, tooltip="ВУД: Выключатель управления дверьми\nVUD: Door control toggle (close doors)"},
 		{ID = "KDLSet",			  x=370, y=163, radius=20, tooltip="КДЛ: Кнопка левых дверей\nKDL: Left doors open"},
 		{ID = "DoorSelectToggle", x=390, y=55, radius=20, tooltip="Выбор стороны открытия дверей\nSelect side on which doors will open"},
 
@@ -545,7 +545,7 @@ ENT.ButtonMap["InfoTableSelect"] = {
 }
 
 ENT.ButtonMap["InfoRoute"] = {
-	pos = Vector(469.1,-47,61),
+	pos = Vector(469.1,-47,61.01),
 	ang = Angle(0,90,90),
 	width = 100,
 	height = 100,
@@ -584,7 +584,7 @@ ENT.ButtonMap["PassengerDoor"] = {
 --}
 --door_cab_face
 ENT.ButtonMap["Trap"] = {
-	pos = Vector(460,40,30.6), --28
+	pos = Vector(460,39,30.6), --28
 	ang = Angle(0,-90,90),
 	width = 642-220,
 	height = 2000,
@@ -1164,8 +1164,8 @@ ENT.ClientProps["PB"] = {--
 -- Add doors
 local function GetDoorPosition(i,k,j)
 	if j == 0 
-	then return Vector(359.44 - 35.0*k     - 229.5*i,-65*(1-2*k),6)
-	else return Vector(359.44 - 35.0*(1-k) - 229.5*i,-65*(1-2*k),6)
+	then return Vector(359.44 - 35.0*k     - 229.5*i,-65*(1-2*k),6.6)
+	else return Vector(359.44 - 35.0*(1-k) - 229.5*i,-65*(1-2*k),6.6)
 	end
 end
 for i=0,3 do
@@ -1192,12 +1192,12 @@ ENT.ClientProps["door1"] = {
 }
 ENT.ClientProps["door2"] = {
 	model = "models/6000/door_salon.mdl",
-	pos = Vector(380,28.0,-42.5),
+	pos = Vector(380,28.35,-42.5),
 	ang = Angle(0,90,0)
 }
 ENT.ClientProps["door4"] = {
 	model = "models/6000/door_front.mdl",
-	pos = Vector(478.5,36.9,-46.3),
+	pos = Vector(478.5,37.1,-46.3),
 	ang = Angle(0,0,0)
 }
 ENT.ClientProps["door3"] = {
@@ -1354,7 +1354,7 @@ function ENT:Think()
 	self:Animate("KB",			self:GetPackedBool(28) and 1 or 0, 	0,1, 16, false)
 	self:Animate("BPSNon",			self:GetPackedBool(59) and 1 or 0, 	0,1, 16, false)
 	self:Animate("L_1",				self:GetPackedBool(60) and 1 or 0, 	0,1, 16, false)
-	self:Animate("L_2",				self:GetPackedBool(61) and 1 or 0, 	0,1, 16, false)
+	self:Animate("L_2",				self:GetPackedBool(61) and 1 or 0, 	0,0.5, 16, false)
 	self:Animate("L_3",				self:GetPackedBool(62) and 1 or 0, 	0,1, 16, false)
 	self:Animate("L_4",				self:GetPackedBool(63) and 1 or 0, 	0,1, 16, false)
 	self:Animate("L_5",				self:GetPackedBool(53) and 1 or 0,0,1,8,false)

@@ -144,11 +144,11 @@ function ENT:Initialize()
 
 		-- Cabin
 		[10] = { "dynamiclight",	Vector( 440, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.1, distance = 550 },
-
+	
 		-- Interior
-		[11] = { "dynamiclight",	Vector( 270, 0, 5), Angle(0,0,0), Color(255,220,180), brightness = 3, distance = 400 },
-		[12] = { "dynamiclight",	Vector(   00, 0, 5), Angle(0,0,0), Color(255,220,180), brightness = 3, distance = 400 },
-		[13] = { "dynamiclight",	Vector(-350, 0, 5), Angle(0,0,0), Color(255,220,180), brightness = 3, distance = 400 },
+		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.86, distance = 400 , fov=180,farz = 128 },
+		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.86, distance = 400, fov=180,farz = 128 },
+		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.86, distance = 400 , fov=180,farz = 128 },
 
 		-- Side lights
 		[14] = { "light",			Vector(-50, 68, 69.5), Angle(0,0,0), Color(255,0,0), brightness = 0.9, scale = 0.10, texture = "sprites/light_glow02.vmt" },

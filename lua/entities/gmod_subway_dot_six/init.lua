@@ -204,26 +204,26 @@ function ENT:Initialize()
 		[1] = { "headlight",		Vector(473,0,-20), Angle(0,0,0), Color(255,255,255), fov = 100 },
 		
 		-- Head (type 1)
-        [2] = { "glow",    Vector(482, 44,-30), Angle(0,0,0), Color(255,255,255), brightness = 0.8, scale = 0.8 },
-        [3] = { "glow",    Vector(482, 34,-30), Angle(0,0,0),Color(255,255,255), brightness = 0.8, scale = 0.8 },
+        [2] = { "glow",    Vector(482, 44,-30), Angle(0,0,0), Color(255,255,255), brightness = 1, scale = 1 },
+        [3] = { "glow",    Vector(482, 34,-30), Angle(0,0,0),Color(255,255,255), brightness = 1, scale = 1 },
 		--[4] = { "glow",				Vector(0,0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
 		--[5] = { "glow",				Vector(0, 0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
-		[4] = { "glow",    Vector(482,-34,-30), Angle(0,0,0),Color(255,255,255), brightness = 0.8, scale = 0.8 },
-        [5] = { "glow",    Vector(482,-44,-30), Angle(0,0,0), Color(255,255,255), brightness = 0.8, scale = 0.8 }, 
+		[4] = { "glow",    Vector(482,-34,-30), Angle(0,0,0),Color(255,255,255), brightness = 1, scale = 1 },
+        [5] = { "glow",    Vector(482,-44,-30), Angle(0,0,0), Color(255,255,255), brightness = 1, scale = 1 }, 
 
 		-- Reverse
-		[8] = { "light",			Vector(463.5,-30,70), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 0.5 },
-		[9] = { "light",			Vector(463.5, 30,70), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 0.5 },
-		[99] = { "light",			Vector(468,-45,-62), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 0.5 },
-		[98] = { "light",			Vector(468, 45,-62), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 0.5 },
+		[8] = { "light",			Vector(462.5,-30,70), Angle(0,0,0), Color(255,0,0),     brightness = 0.75, scale = 0.5 },
+		[9] = { "light",			Vector(462.5, 30,70), Angle(0,0,0), Color(255,0,0),     brightness = 0.75, scale = 0.5 },
+		[99] = { "light",			Vector(467.5,-46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 0.75, scale = 0.5 },
+		[98] = { "light",			Vector(467.5, 46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 0.75, scale = 0.5 },
 		-- Cabin
 		[10] = { "dynamiclight",	Vector( 450, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.01, distance = 415 },
 		
 		-- Interior
-		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.86, distance = 400 , fov=180,farz = 128 },
-		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.86, distance = 400, fov=180,farz = 128 },
-		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.86, distance = 400 , fov=180,farz = 128 },
-
+		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.8, distance = 400 , fov=180,farz = 128 },
+		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.8, distance = 400, fov=180,farz = 128 },
+		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.8, distance = 400 , fov=180,farz = 128 },
+		[14] = { "dynamiclight",	Vector(-400, 0, 10), Angle(0,0,0), Color(200,200,255), brightness = 2.8, distance = 400 , fov=180,farz = 128 },
 		
 		-- Side lights
 		[15] = { "light",			Vector(15,   69, 58.3), Angle(0,0,0), Color(150,255,255), brightness = 0.9, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
@@ -485,6 +485,8 @@ function ENT:Think()
 			end
 		end
 	end
+	
+	
 
 	if self.ARSType ~= self.OldARSType then
 		self.OldARSType = self.ARSType
@@ -618,6 +620,8 @@ function ENT:Think()
 		self:SetLightPower(11, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
 		self:SetLightPower(12, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
 		self:SetLightPower(13, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
+		self:SetLightPower(14, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
+
 
 
 		self.LightsReload = nil
