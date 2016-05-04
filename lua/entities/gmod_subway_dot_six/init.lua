@@ -212,10 +212,10 @@ function ENT:Initialize()
         [5] = { "glow",    Vector(482,-44,-30), Angle(0,0,0), Color(255,255,255), brightness = 1, scale = 1 }, 
 
 		-- Reverse
-		[8] = { "light",			Vector(462.5,-30,70), Angle(0,0,0), Color(255,0,0),     brightness = 0.75, scale = 0.5 },
-		[9] = { "light",			Vector(462.5, 30,70), Angle(0,0,0), Color(255,0,0),     brightness = 0.75, scale = 0.5 },
-		[99] = { "light",			Vector(467.5,-46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 0.75, scale = 0.5 },
-		[98] = { "light",			Vector(467.5, 46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 0.75, scale = 0.5 },
+		[8] = { "light",			Vector(462.5,-30,70), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
+		[9] = { "light",			Vector(462.5, 30,70), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
+		[99] = { "light",			Vector(467.5,-46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
+		[98] = { "light",			Vector(467.5, 46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
 		-- Cabin
 		[10] = { "dynamiclight",	Vector( 450, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.01, distance = 415 },
 		
