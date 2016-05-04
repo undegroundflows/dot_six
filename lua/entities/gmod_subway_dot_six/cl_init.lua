@@ -167,8 +167,8 @@ ENT.ButtonMap["AnnouncerDisplay"] = {
 
 --ARS FUCKING PANEL!!!
 ENT.ButtonMap["ARS"] = {
-	pos = Vector(472.45,-2.71,8.515),
-	ang = Angle(0,-90,60.6),
+	pos = Vector(472.423,-2.71,8.53),
+	ang = Angle(0,-90,61.5),
 	width = 300*10,
 	height = 110*10,
 	scale = 0.0625/10,
@@ -584,7 +584,7 @@ ENT.ButtonMap["PassengerDoor"] = {
 --}
 --door_cab_face
 ENT.ButtonMap["Trap"] = {
-	pos = Vector(460,39,30.6), --28
+	pos = Vector(460,43,30.6), --28
 	ang = Angle(0,-90,90),
 	width = 642-220,
 	height = 2000,
