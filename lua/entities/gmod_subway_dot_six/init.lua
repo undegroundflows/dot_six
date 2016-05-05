@@ -201,15 +201,15 @@ function ENT:Initialize()
 	local vY = Angle(0,-90-0.2,56.3):Right()
 	self.Lights = {
 		-- Headlight glow
-	[1] = { "headlight",		Vector(465,0,-20), Angle(0,0,0), Color(216,181,172), fov = 100 },
+		[1] = { "headlight",		Vector(465,0,-20), Angle(0,0,0), Color(216,181,172), fov = 100 },
 		
 		-- Head (type 1)
-        [2] = { "glow",    Vector(482, 44,-30), Angle(0,0,0), Color(255,255,255), brightness = 1, scale = 1 },
-        [3] = { "glow",    Vector(482, 34,-30), Angle(0,0,0),Color(255,255,255), brightness = 1, scale = 1 },
+        [2] = { "glow",    Vector(481.5, 44,-30), Angle(0,0,0), Color(220,220,255), brightness = 0.8, scale = 1 },
+        [3] = { "glow",    Vector(481.5, 34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.8, scale = 1 },
 		--[4] = { "glow",				Vector(0,0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
 		--[5] = { "glow",				Vector(0, 0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
-		[4] = { "glow",    Vector(482,-34,-30), Angle(0,0,0),Color(255,255,255), brightness = 1, scale = 1 },
-        [5] = { "glow",    Vector(482,-44,-30), Angle(0,0,0), Color(255,255,255), brightness = 1, scale = 1 }, 
+		[4] = { "glow",    Vector(481.5,-34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.8, scale = 1 },
+        [5] = { "glow",    Vector(481.5,-44,-30), Angle(0,0,0), Color(220,220,255), brightness = 0.8, scale = 1 }, 
 
 		-- Reverse
 		[8] = { "light",			Vector(462.5,-30,70), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
@@ -217,13 +217,13 @@ function ENT:Initialize()
 		[99] = { "light",			Vector(467.5,-46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
 		[98] = { "light",			Vector(467.5, 46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
 		-- Cabin
-		[10] = { "dynamiclight",	Vector( 450, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.01, distance = 415 },
+		[10] = { "dynamiclight",	Vector( 430, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.05, distance = 550 },
 		
 		-- Interior
-		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.8, distance = 400 , fov=180,farz = 128 },
-		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.8, distance = 400, fov=180,farz = 128 },
-		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.8, distance = 400 , fov=180,farz = 128 },
-		[14] = { "dynamiclight",	Vector(-400, 0, 10), Angle(0,0,0), Color(200,200,255), brightness = 2.8, distance = 400 , fov=180,farz = 128 },
+		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.87, distance = 400 , fov=180,farz = 128 },
+		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.87, distance = 400, fov=180,farz = 128 },
+		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.87, distance = 400 , fov=180,farz = 128 },
+		[14] = { "dynamiclight",	Vector(-400, 0, 10), Angle(0,0,0), Color(200,200,255), brightness = 2.87, distance = 400 , fov=180,farz = 128 },
 		
 		-- Side lights
 		[15] = { "light",			Vector(43.05,   69, 56.8), Angle(0,0,0), Color(150,255,255), brightness = 0.2, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
@@ -339,11 +339,7 @@ function ENT:Initialize()
 	self.OldTexture = 0
 	self.LampsBlink = {}
 	self.Lamps = {}
-	self.BrokenLamps = {}
-	local rand = math.random() > 0.5 and 1 or math.random(0.93,0.99)
-	for i = 1,23 do
-		if math.random() > rand then self.BrokenLamps[i] = math.random() > 0.5 end
-	end
+--	self.BrokenLamps = {}
 
 	self:UpdateTextures()
 end
@@ -755,6 +751,7 @@ function ENT:Think()
 	self:SetPackedBool(53,self.L_5.Value == 1.0)
 	self:SetPackedBool(181,self.Pepl)
 	self:SetPackedBool(55,self.DoorSelect.Value == 1.0)
+	self:SetPackedBool(555,self.DoorSelect.Value == 0.0)
 	self:SetPackedBool(112,(self.RheostatController.Velocity ~= 0.0))
 	self:SetPackedBool(113,self.KRP.Value == 1.0)
 	self:SetPackedBool(114,self.Custom1.Value == 1.0)

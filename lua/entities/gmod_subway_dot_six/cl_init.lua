@@ -5,8 +5,8 @@ ENT.ButtonMap = {}
 			
 -- Main panel
 ENT.ButtonMap["Main"] = {
-	pos = Vector(465.3,15,-2.65), --446 -- 14 -- -0,5
-	ang = Angle(0,-90,13.5),
+	pos = Vector(465.3,15,-2.63), --446 -- 14 -- -0,5
+	ang = Angle(0,-90,14),
 	width = 700,
 	height = 250,
 	scale = 0.0625,
@@ -26,7 +26,8 @@ ENT.ButtonMap["Main"] = {
 		
 		{ID = "VUD1Toggle",		  x=370, y=103+5.4, radius=40, tooltip="ВУД: Выключатель управления дверьми\nVUD: Door control toggle (close doors)"},
 		{ID = "KDLSet",			  x=370, y=163, radius=20, tooltip="КДЛ: Кнопка левых дверей\nKDL: Left doors open"},
-		{ID = "DoorSelectToggle", x=390, y=55, radius=20, tooltip="Выбор стороны открытия дверей\nSelect side on which doors will open"},
+		{ID = "DoorSelectL", x=369.2, y=55, radius=20, tooltip="Выбор стороны открытия дверей(Левые)\nSelect side on which doors will open(Right)"},
+		{ID = "DoorSelectR", x=410.4, y=55, radius=20, tooltip="Выбор стороны открытия дверей(Правые)\nSelect side on which doors will open(Left)"},
 
 --		{ID = "OtklAVUPl",  x=283, y=210, radius=20, tooltip="Пломба крышки ОтклАВУ\nOtklAVU plomb"},
 --		{ID = "PS2",	    x=238, y=183, radius=20, tooltip="(placeholder) Emergency brake toggle"},
@@ -156,7 +157,7 @@ ENT.ButtonMap["Announcer"] = {
 }
 -- Announcer panel
 ENT.ButtonMap["AnnouncerDisplay"] = {
-	pos = Vector(460.3,-53.3725,7.31),
+	pos = Vector(460.23,-53.25,7.31),
 	ang = Angle(-0,-170,90),
 	width = 265,
 	height = 245,
@@ -845,9 +846,16 @@ Metrostroi.ClientPropForButton("VUD1",{
 	skin = 1,
 	ang = 0
 })
-Metrostroi.ClientPropForButton("DoorSelect",{
+Metrostroi.ClientPropForButton("DoorSelectL",{
 	panel = "Main",
-	button = "DoorSelectToggle",
+	button = "DoorSelectL",
+	model = "models/6000/pult/buttons/button_large.mdl",
+	skin = 3,
+	ang = 90
+})
+Metrostroi.ClientPropForButton("DoorSelectR",{
+	panel = "Main",
+	button = "DoorSelectR",
 	model = "models/6000/pult/buttons/button_large.mdl",
 	skin = 3,
 	ang = 90
@@ -1359,7 +1367,8 @@ function ENT:Think()
 	self:Animate("L_4",				self:GetPackedBool(63) and 1 or 0, 	0,1, 16, false)
 	self:Animate("L_5",				self:GetPackedBool(53) and 1 or 0,0,1,8,false)
 	self:Animate("L_5_1",				self:GetPackedBool(53) and 1 or 0,0,1,8,false)
-	self:Animate("DoorSelect",		self:GetPackedBool(55) and 1 or 0, 	0,1, 16, false)	
+	self:Animate("DoorSelectR",		self:GetPackedBool(55) and 1 or 0, 	0,1, 16, false)
+	self:Animate("DoorSelectL",		self:GetPackedBool(555) and 1 or 0, 	0,1, 16, false)		
 	self:Animate("KRP",				self:GetPackedBool(113) and 1 or 0, 0,1, 16, false)	
 	self:Animate("Custom1",			self:GetPackedBool(114) and 1 or 0, 0,1, 16, false)
 	self:Animate("Custom2",			self:GetPackedBool(115) and 1 or 0, 0,1, 16, false)
@@ -1643,54 +1652,57 @@ function ENT:DrawPost(special)
 	self:DrawOnPanel("InfoTable",function()
  		surface.SetDrawColor(0,0,0) --255*dc.x,250*dc.y,220*dc.z)
  		surface.DrawRect(50,0,54,00)
- 		draw.Text({
- 			text = self:GetNW2String("FrontText",""),
- 			font = "MetrostroiSubway_InfoRoute",--..self:GetNW2Int("Style",1),
- 			pos = { 260	, -100 },
- 			xalign = TEXT_ALIGN_CENTER,
- 			yalign = TEXT_ALIGN_CENTER,
- 			color = Color(0,255,0,255)})
+ -- 		draw.Text({
+ --			text = self:GetNW2String("FrontText",""),
+ --			font = "MetrostroiSubway_InfoRoute",--..self:GetNW2Int("Style",1),
+ --			pos = { 260	, -100 },
+ --			xalign = TEXT_ALIGN_CENTER,
+ --			yalign = TEXT_ALIGN_CENTER,
+ --			color = Color(0,255,0,255)})
 	end)
 	if self.InfoTableTimeout and (CurTime() < self.InfoTableTimeout) then
  		self:DrawOnPanel("InfoTableSelect",function()
- 			draw.Text({
- 				text = self:GetNW2String("FrontText",""),
- 				font = "MetrostroiSubway_InfoPanel",--..self:GetNW2Int("Style",1),
- 				pos = { 140, -100 },
- 				xalign = TEXT_ALIGN_CENTER,
- 				yalign = TEXT_ALIGN_CENTER,
- 				color = Color(255,0,0,255)})
+ 		--	draw.Text({
+ 		--		text = self:GetNW2String("FrontText",""),
+ 		--		font = "MetrostroiSubway_InfoPanel",--..self:GetNW2Int("Style",1),
+ 		--		pos = { 140, -100 },
+ 		--		xalign = TEXT_ALIGN_CENTER,
+ 		--		yalign = TEXT_ALIGN_CENTER,
+ 		--		color = Color(255,0,0,255)})
  		end)
  	end
 	
-			
 	if self.InfoTableTimeout and (CurTime() < self.InfoTableTimeout) then
 		self:DrawOnPanel("InfoTableSelect",function()
-			local text = self:GetNWString("FrontText","")
-			local col = text:find("ЗЕЛ") and Color(100,200,0) or text:find("СИН") and Color(0,100,200) or text:find("МАЛ") and Color(200,100,200) or text:find("ОРА") and Color(200,200,0) or Color(255,0,0)
-			draw.DrawText(self:GetNWString("RouteNumber","") .. " " .. text,"MetrostroiSubway_InfoPanel",260, -100,col,TEXT_ALIGN_CENTER)
-			
+			local text = self:GetNW2String("FrontText","")
+			local col = text:find("ЗЕЛ") and Color(100,200,0) or text:find("СИН") and Color(0,100,200) or text:find("МАЛ") and Color(200,100,200) or text:find("ОРА") and Color(200,200,0) or text:find("БИР") and Color(48,213,200) or Color(255,0,0)
+			draw.DrawText(self:GetNW2String("RouteNumber","") .. " " .. text,"MetrostroiSubway_InfoPanel",260, -100,col,TEXT_ALIGN_CENTER)
+			--[[
 			draw.Text({
-				text = self:GetNWString("RouteNumber","") .. " " .. self:GetNWString("FrontText",""),
-				font = "MetrostroiSubway_InfoPanel",--..self:GetNWInt("Style",1),
+				text = self:GetNW2String("RouteNumber","") .. " " .. self:GetNW2String("FrontText",""),
+				font = "MetrostroiSubway_InfoPanel",--..self:GetNW2Int("Style",1),
 				pos = { 260, -100 },
 				xalign = TEXT_ALIGN_CENTER,
 				yalign = TEXT_ALIGN_CENTER,
 				color = Color(255,0,0,255)})
-
+			]]
 		end)
 	end
+
+	
+
 
 	self:DrawOnPanel("InfoRoute",function()
 		surface.SetDrawColor(0,0,0) --255*dc.x,250*dc.y,220*dc.z)
 		surface.DrawRect(0,100,88,70)
-		draw.Text({
-			text = self:GetNW2String("RouteNumber","00"),
-			font = "MetrostroiSubway_InfoRoute",--..self:GetNWInt("Style",1),
-			pos = { 44, 135 },
-			xalign = TEXT_ALIGN_CENTER,
-			yalign = TEXT_ALIGN_CENTER,
-			color = Color(0,255,0,255)})
+		local rn = self:GetNW2String("RouteNumber","00")
+	--	draw.Text({
+		--	text = self:GetNW2String("RouteNumber","00"),
+		--	font = "MetrostroiSubway_InfoRoute",--..self:GetNWInt("Style",1),
+		--	pos = { 44, 135 },
+		--	xalign = TEXT_ALIGN_CENTER,
+		--	yalign = TEXT_ALIGN_CENTER,
+		--	color = Color(0,255,0,255)})
 	end)
 
 	local distance = self:GetPos():Distance(LocalPlayer():GetPos())
