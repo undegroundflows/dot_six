@@ -1,4 +1,4 @@
-﻿include("shared.lua")
+include("shared.lua")
 --------------------------------------------------------------------------------
 ENT.ClientProps = {}
 ENT.ButtonMap = {}
@@ -1652,13 +1652,13 @@ function ENT:DrawPost(special)
 	self:DrawOnPanel("InfoTable",function()
  		surface.SetDrawColor(0,0,0) --255*dc.x,250*dc.y,220*dc.z)
  		surface.DrawRect(50,0,54,00)
- -- 		draw.Text({
- --			text = self:GetNW2String("FrontText",""),
- --			font = "MetrostroiSubway_InfoRoute",--..self:GetNW2Int("Style",1),
- --			pos = { 260	, -100 },
- --			xalign = TEXT_ALIGN_CENTER,
- --			yalign = TEXT_ALIGN_CENTER,
- --			color = Color(0,255,0,255)})
+  		draw.Text({
+ 			text = self:GetNW2String("FrontText",""),
+			font = "MetrostroiSubway_InfoRoute",--..self:GetNW2Int("Style",1),
+ 			pos = { 260	, -100 },
+ 			xalign = TEXT_ALIGN_CENTER,
+ 			yalign = TEXT_ALIGN_CENTER,
+ 			color = Color(0,255,0,255)})
 	end)
 	if self.InfoTableTimeout and (CurTime() < self.InfoTableTimeout) then
  		self:DrawOnPanel("InfoTableSelect",function()
@@ -1696,13 +1696,13 @@ function ENT:DrawPost(special)
 		surface.SetDrawColor(0,0,0) --255*dc.x,250*dc.y,220*dc.z)
 		surface.DrawRect(0,100,88,70)
 		local rn = self:GetNW2String("RouteNumber","00")
-	--	draw.Text({
-		--	text = self:GetNW2String("RouteNumber","00"),
-		--	font = "MetrostroiSubway_InfoRoute",--..self:GetNWInt("Style",1),
-		--	pos = { 44, 135 },
-		--	xalign = TEXT_ALIGN_CENTER,
-		--	yalign = TEXT_ALIGN_CENTER,
-		--	color = Color(0,255,0,255)})
+		draw.Text({
+			text = self:GetNW2String("RouteNumber","00"),
+			font = "MetrostroiSubway_InfoRoute",--..self:GetNWInt("Style",1),
+			pos = { 44, 135 },
+			xalign = TEXT_ALIGN_CENTER,
+			yalign = TEXT_ALIGN_CENTER,
+			color = Color(0,255,0,255)})
 	end)
 
 	local distance = self:GetPos():Distance(LocalPlayer():GetPos())
