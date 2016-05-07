@@ -221,9 +221,9 @@ function ENT:Initialize()
 		
 		-- Interior
 		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.97, distance = 400 , fov=180,farz = 128 },
-		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.87, distance = 400, fov=180,farz = 128 },
+		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 1.87, distance = 400, fov=180,farz = 128 },
 		[13] = { "dynamiclight",	Vector( -200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.97, distance = 400, fov=180,farz = 128 },
-		[14] = { "dynamiclight",	Vector( -400, 0, 10), Angle(0,0,0), Color(200,200,255), brightness = 2.87, distance = 400 , fov=180,farz = 128 },
+		[14] = { "dynamiclight",	Vector( -400, 0, 10), Angle(0,0,0), Color(200,200,255), brightness = 1.87, distance = 400 , fov=180,farz = 128 },
 		
 		-- Side lights
 		[15] = { "light",			Vector(43.05,   69, 56.8), Angle(0,0,0), Color(150,255,255), brightness = 0.2, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
