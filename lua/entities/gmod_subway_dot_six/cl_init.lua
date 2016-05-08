@@ -1,5 +1,38 @@
 include("shared.lua")
 --------------------------------------------------------------------------------
+surface.CreateFont("MetrostroiSubway_IGLA6", {
+  font = "IEE2",
+  size = 22,
+  weight = 0,
+  blursize = 0,
+  scanlines = 0,
+  antialias = false,
+  underline = false,
+  italic = false,
+  strikeout = false,
+  symbol = false,
+  rotary = false,
+  shadow = false,
+  additive = false,
+  outline = false
+})
+surface.CreateFont("MetrostroiSubway_InfoRoute6", {
+  font = "Arial",
+  size = 120,
+  weight = 800,
+  blursize = 0,
+  scanlines = 0,
+  antialias = true,
+  underline = false,
+  italic = false,
+  strikeout = false,
+  symbol = false,
+  rotary = false,
+  shadow = false,
+  additive = false,
+  outline = false
+})
+
 ENT.ClientProps = {}
 ENT.ButtonMap = {}
 			
@@ -533,7 +566,7 @@ ENT.ButtonMap["TrainNumber2"] = {
 }
 
 ENT.ButtonMap["InfoTable"] = {
-	pos = Vector(469.1,-32.0,43.0),
+	pos = Vector(469.1,-27.0,43.0),
 	ang = Angle(0,90,90),
 	width = 646,
 	height = 100,
@@ -1670,7 +1703,7 @@ function ENT:DrawPost(special)
  		surface.DrawRect(50,0,54,00)
   		draw.Text({
  			text = self:GetNW2String("FrontText",""),
-			font = "MetrostroiSubway_InfoRoute",--..self:GetNW2Int("Style",1),
+			font = "MetrostroiSubway_InfoRoute6",--..self:GetNW2Int("Style",1),
  			pos = { 260	, -100 },
  			xalign = TEXT_ALIGN_CENTER,
  			yalign = TEXT_ALIGN_CENTER,
@@ -1955,12 +1988,12 @@ function ENT:DrawPost(special)
 		for i=1,20 do
 			surface.SetDrawColor(C2)
 			surface.DrawRect(40+(i-1)*16.5+1,42+3.5,15.75,23)			
-			draw.DrawText(string.upper(text1[i] or ""),"MetrostroiSubway_IGLA",42+(i-1)*16.7,41.5,C1)
+			draw.DrawText(string.upper(text1[i] or ""),"MetrostroiSubway_IGLA6",38.25+(i-1)*16.6,44.85,C1)
 		end
 		for i=1,20 do
 			surface.SetDrawColor(C2)
 			surface.DrawRect(40+(i-1)*16.5+1,42+32+4,15.75,23)
-			draw.DrawText(string.upper(text2[i] or ""),"MetrostroiSubway_IGLA",42+(i-1)*16.7,42+32,C1)
+			draw.DrawText(string.upper(text2[i] or ""),"MetrostroiSubway_IGLA6",38.55+(i-1)*16.6,46+32,C1)
 		end
 		surface.SetAlphaMultiplier(1)
 	end)
