@@ -59,8 +59,8 @@ ENT.ButtonMap["Main"] = {
 		
 		{ID = "VUD1Toggle",		  x=370, y=103+5.4, radius=40, tooltip="ВУД: Выключатель управления дверьми\nVUD: Door control toggle (close doors)"},
 		{ID = "KDLSet",			  x=370, y=163, radius=20, tooltip="КДЛ: Кнопка левых дверей\nKDL: Left doors open"},
-		{ID = "DoorSelectL", x=369.2, y=55, radius=20, tooltip="Выбор стороны открытия дверей(Левые)\nSelect side on which doors will open(Right)"},
-		{ID = "DoorSelectR", x=410.4, y=55, radius=20, tooltip="Выбор стороны открытия дверей(Правые)\nSelect side on which doors will open(Left)"},
+		{ID = "DoorSelectL", x=369.2, y=55, radius=20, tooltip="Выбор стороны открытия дверей(Левые)\nSelect side on which doors will open(Left)"},
+		{ID = "DoorSelectR", x=410.4, y=55, radius=20, tooltip="Выбор стороны открытия дверей(Правые)\nSelect side on which doors will open(Right)"},
 		{ID = "DoorSelectToogle", x=389.2, y=55, radius=0, tooltip="Выбор стороны открытия дверей\nSelect side on which doors will open"},
 
 		
