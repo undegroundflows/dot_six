@@ -32,6 +32,22 @@ surface.CreateFont("MetrostroiSubway_InfoRoute6", {
   additive = false,
   outline = false
 })
+surface.CreateFont("MetrostroiSubway_LargeText6", {
+  font = "Arial",
+  size = 76,
+  weight = 1000,
+  blursize = 0,
+  scanlines = 0,
+  antialias = true,
+  underline = false,
+  italic = false,
+  strikeout = false,
+  symbol = false,
+  rotary = false,
+  shadow = false,
+  additive = false,
+  outline = false
+})
 
 ENT.ClientProps = {}
 ENT.ButtonMap = {}
@@ -215,20 +231,23 @@ ENT.ButtonMap["AnnouncerDisplay"] = {
 
 --ARS FUCKING PANEL!!!
 ENT.ButtonMap["ARS"] = {
-	pos = Vector(472.423,-2.71,8.53),
-	ang = Angle(0,-90,61.5),
+	pos = Vector(472.39,-2.71,8.54),
+	ang = Angle(0,-90,62),
 	width = 300*10,
 	height = 110*10,
 	scale = 0.0625/10,
 
 	buttons = {
-		{x=1100+70,y=160+75,tooltip="Индикатор скорости\nSpeed indicator",radius=130},
-		{x=1780+60,y=780+60,tooltip="ЛСН: Лампа сигнализации неисправности\nLSN: Failure indicator light (power circuits failed to assemble)",radius=120},
-		{x=1520+60,y=780+60,tooltip="РП: Красная лампа реле перегрузки\nRP: Red overload relay light (power circuits failed to assemble)",radius=120},
-		{x=1110+60,y=780+60,tooltip="ЛхРК: Лампа хода реостатного контроллера\nLhRK: Rheostat controller motion light",radius=120},
-		{x=2130+60,y=780+60,tooltip="ЛКТ: Контроль тормоза\nLKT: ARS braking indicator",radius=120},
-		{x=2130+60,y=550+60,tooltip="ЛКВД: Контроль выключения двигателей\nLKVD: ARS engine shutdown indicator",radius=120},
-		{x=2540+60,y=100+60,tooltip="ЛКВЦ: Лампа контактора высоковольтных цепей\nLKVC: High voltage not available",radius=120},
+		{x=410+275*1.5+60+60,y=600+90,tooltip="Индикатор скорости\nSpeed indicator",radius=130},
+		{x=410+275*4.2,y=600+90,tooltip="1: Лампа первого провода (включение двигателей)\n1: 1st train wire lamp(engines engaged)",radius=130},
+		{x=410+275*3,y=600+90,tooltip="2: Лампа второго провода (ход реостатного контроллера)\n2: 2nd train wire lamp(rheostat controller motion)",radius=130},
+
+		{x=1780+60,y=850+60,tooltip="ЛСН: Лампа сигнализации неисправности\nLSN: Failure indicator light (power circuits failed to assemble)",radius=120},
+		{x=1520+60,y=850+60,tooltip="РП: Красная лампа реле перегрузки\nRP: Red overload relay light (power circuits failed to assemble)",radius=120},
+		{x=1110+60,y=850+60,tooltip="ЛхРК: Лампа хода реостатного контроллера\nLhRK: Rheostat controller motion light",radius=120},
+		{x=2130+60,y=800+90,tooltip="ЛКТ: Контроль тормоза\nLKT: ARS braking indicator",radius=120},
+		{x=2130+60,y=680+90,tooltip="ЛКВД: Контроль выключения двигателей\nLKVD: ARS engine shutdown indicator",radius=120},
+		{x=2540+60,y=320+60,tooltip="ЛКВЦ: Лампа контактора высоковольтных цепей\nLKVC: High voltage not available",radius=120},
 	
 		{x=410+275*0+60+60,y=480,tooltip="ОЧ: Отсутствие частоты АРС\nOCh: No ARS frequency",radius=120},
 		{x=410+275*1+60+60,y=480,tooltip="0: Сигнал АРС остановки\n0: ARS stop signal",radius=120},
@@ -240,10 +259,10 @@ ENT.ButtonMap["ARS"] = {
 		{x=580,y=900,tooltip="ЛСД: Сигнализация дверей\nLSD: Door state light (doors are closed)",radius=120},
 		{x=810,y=900,tooltip="ЛСД: Сигнализация дверей\nLSD: Door state light (doors are closed)",radius=120},
 		
-		{x=2540+60,y=780+60,tooltip="ЛСТ: Лампа сигнализации торможения\nLST: Brakes engaged",radius=120},
-		{x=2540+60,y=330+60,tooltip="ЛВД: Лампа включения двигателей\nLVD: Engines engaged",radius=120},
-		{x=2130+60,y=330+60,tooltip="ЛН: Лампа направления\nLN: Direction signal",radius=120},
-		{x=2540+60,y=550+60,tooltip="ЛРС: Лампа равенства скоростей\nLRS: Speed equality light (next segment speed limit equal or greater to current)",radius=120},
+		{x=2540+60,y=800+90,tooltip="ЛСТ: Лампа сигнализации торможения\nLST: Brakes engaged",radius=120},
+		{x=2540+60,y=680+90,tooltip="ЛВД: Лампа включения двигателей\nLVD: Engines engaged",radius=120},
+		{x=2130+60,y=530+60,tooltip="ЛН: Лампа направления\nLN: Direction signal",radius=120},
+		{x=2540+60,y=520+60,tooltip="ЛРС: Лампа равенства скоростей\nLRS: Speed equality light (next segment speed limit equal or greater to current)",radius=120},
 	}
 }
 
@@ -1282,46 +1301,97 @@ ENT.ClientProps["wiper"] = {
 	pos = Vector(480,-13,3.8),
 	ang = Angle(-180,-90,0)
 }
+for i = 1,22 do
+	ENT.ClientProps["lamp1_"..i] = {
+		model = "models/metrostroi_train/81/lamp2.mdl",
+		pos = Vector(-461 + 66.12*i, 35, 71.8),
+		ang = Angle(180,0,0),
+		color = Color(240,240,255),
+	}
+end
+for i = 1,12 do
+	ENT.ClientProps["lamp2_"..i] = {
+		model = "models/metrostroi_train/81/lamp2.mdl",
+		pos = Vector(-461 + 66.12*i, -35, 71.8),
+		ang = Angle(180,0,0),
+		color = Color(240,240,255),
+	}
+end
+
 
 --ENT.AutoPos = {Vector(407.3,-10.5,47),Vector(419.3,-57.5,47.5)}
 --local X = Material( "metrostroi_skins/81-717/6.png")
 
+
 function ENT:Initialize()
 	self.BaseClass.Initialize(self)
 end
+
+function ENT:UpdateTextures()
+	local texture = Metrostroi.Skins["train"][self:GetNW2String("texture")]
+	local passtexture = Metrostroi.Skins["pass"][self:GetNW2String("passtexture")]
+	local cabintexture = Metrostroi.Skins["cab"][self:GetNW2String("cabtexture")]
+	for _,ent in pairs(self.ClientEnts) do
+		if not IsValid(ent) then continue end
+		for k,v in pairs(ent:GetMaterials()) do
+			local tex = string.Explode("/",v)
+			tex = tex[#tex]
+			if cabintexture and cabintexture.textures[tex] then
+				ent:SetSubMaterial(k-1,cabintexture.textures[tex])
+			end
+			if passtexture and passtexture.textures[tex] then
+				ent:SetSubMaterial(k-1,passtexture.textures[tex])
+			end
+			if texture and texture.textures[tex] then
+				ent:SetSubMaterial(k-1,texture.textures[tex])
+			end
+		end
+	end
+end
 --------------------------------------------------------------------------------
 function ENT:Think()
-
-		
-	--Sid Body Group check
-
-
 	self.BaseClass.Think(self)
-	if self.ClientProps["KVPLight_light"] and self.ClientProps["KVPLight_light"].skin ~= self:GetNWInt("KVPType") then
-		self.ClientProps["KVPLight_light"].skin = self:GetNWInt("KVPType")
-		if IsValid(self.ClientEnts["KVPLight_light"]) then self.ClientEnts["KVPLight_light"]:SetSkin(self:GetNWInt("KVPType")) end
+	if self.Texture ~= self:GetNW2String("texture") then
+		self.Texture = self:GetNW2String("texture")
+		self:UpdateTextures()
 	end
-	if self.ClientProps["KVPLight"] and self.ClientProps["KVPLight"].skin ~= self:GetNWInt("KVPType") then
-		self.ClientProps["KVPLight"].skin = self:GetNWInt("KVPType")
-		if IsValid(self.ClientEnts["KVPLight"]) then self.ClientEnts["KVPLight"]:SetSkin(self:GetNWInt("KVPType")) end
+	if self.PassTexture ~= self:GetNW2String("passtexture") then
+		self.PassTexture = self:GetNW2String("passtexture")
+		self:UpdateTextures()
 	end
+	if self.CabinTexture ~= self:GetNW2String("cabtexture") then
+		self.CabinTexture = self:GetNW2String("cabtexture")
+		self:UpdateTextures()
+	end
+	if self.ClientProps["KVPLight_light"] and self.ClientProps["KVPLight_light"].skin ~= self:GetNW2Int("KVPType") then
+		self.ClientProps["KVPLight_light"].skin = self:GetNW2Int("KVPType")
+		if IsValid(self.ClientEnts["KVPLight_light"]) then self.ClientEnts["KVPLight_light"]:SetSkin(self:GetNW2Int("KVPType")) end
+	end
+	if self.ClientProps["KVPLight"] and self.ClientProps["KVPLight"].skin ~= self:GetNW2Int("KVPType") then
+		self.ClientProps["KVPLight"].skin = self:GetNW2Int("KVPType")
+		if IsValid(self.ClientEnts["KVPLight"]) then self.ClientEnts["KVPLight"]:SetSkin(self:GetNW2Int("KVPType")) end
+	end
+	-- Distance cull
 	local distance = self:GetPos():Distance(LocalPlayer():GetPos())
 	if distance > 8192 then return end
-	for i = 0,8 do
-		--print(i,self:GetBodygroupName(i))
-	end
-	
-
-	local transient = (self.Transient or 0)*0.05
+--[[
+	self:SetBodygroup(0,(self.ARSType or 1)-1)
+	self:SetBodygroup(1,(self.LampType or 1)-1)
+	self:SetBodygroup(3,(self.MaskType or 1)-1)
+	self:SetBodygroup(4,(self.SeatType or 1)-1)
+	self:SetBodygroup(5,(self.HandRail or 1)-1)
+	self:SetBodygroup(6,self.MVM and (self.MaskType > 2 and 1 or 0) or 2)
+	self:SetBodygroup(7,(self.BortLampType or 1)-1)
+	]]
 	if (self.Transient or 0) ~= 0.0 then self.Transient = 0.0 end
 	self.KRUPos = self.KRUPos or 0
-	if self:GetPackedBool(27) 
+	if self:GetPackedBool(27)
 	then self.KRUPos = self.KRUPos + (0.0 - self.KRUPos)*8.0*self.DeltaTime
 	else self.KRUPos = 1.0
 	end
 	if not self.WiperValue then self.WiperValue = 0 end
 	if self:GetPackedBool("Wiper") then
-		self.WiperValue = self.WiperValue + 3.14*self.DeltaTime
+		self.WiperValue = self.WiperValue + 3.14*self.DeltaTime*(self:GetPackedRatio(5)*2)
 	end
 	if self.WiperValue > math.pi*2 then self.WiperValue = 0 end
 	-- Simulate pressure gauges getting stuck a little
@@ -1522,7 +1592,9 @@ function ENT:Think()
 		self:ShowHideSmooth("L80",self:Animate("light_80",self:GetPackedBool(46) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("L70",self:Animate("light_70",self:GetPackedBool(45) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("LRK",self:Animate("light_LhRK",self:GetPackedBool(33) and 1 or 0,0,12,1,false))
-		
+		self:ShowHideSmooth("LAVU",self:Animate("light_AVU",self:GetPackedBool(38) and 1 or 0,0,1,8,false))
+		self:ShowHideSmooth("BPSN_light",self:Animate("light_BPSN",self:GetPackedBool(59) and 1 or 0,0,1,8,false))
+		self:ShowHideSmooth("LARS",self:Animate("light_ARS",self:GetPackedBool(174) and 1 or 0,0,1,8,false))
 	end
 	local accel = self:GetNWFloat("Accel")
 	
@@ -1547,6 +1619,29 @@ function ENT:Think()
 		--sendButtonMessage({ID = "door4",state = true})
 		--sendButtonMessage({ID = "door4",state = false})
     end	
+	
+	if self.LampType ~= self:GetNW2Int("LampType",0) then
+		self.LampType = self:GetNW2Int("LampType",1)
+		for i = 1,23 do
+			self:ShowHide("lamp1_"..i,self.LampType == 1)
+			if i < 13 then
+				self:ShowHide("lamp2_"..i,self.LampType == 2)
+				self:ShowHide("lamp3_"..i,self.LampType == 3)
+			end
+		end
+	end
+	if self.LampType == 1 then
+		for i = 1,23 do
+			self:ShowHideSmooth("lamp1_"..i,self:Animate("Lamp1_"..i,	(self:GetPackedBool("lightsActive"..i) or self:GetPackedBool("lightsActiveB"..i) and CurTime()%math.random()*2 > 0.8) and 1 or 0,0,1,6,false))
+		end
+	else
+		for i = 1,23 do
+			if self.LampType == 2 then
+				self:ShowHideSmooth("lamp2_"..i,self:Animate("Lamp2_"..i,	(self:GetPackedBool("lightsActive"..i) or self:GetPackedBool("lightsActiveB"..i) and CurTime()%math.random()*2 > 0.8) and 1 or 0,0,1,6,false))
+				self:ShowHideSmooth("lamp1_"..i,self:Animate("Lamp1_"..i,	(self:GetPackedBool("lightsActive"..i) or self:GetPackedBool("lightsActiveB"..i) and CurTime()%math.random()*2 > 0.8) and 1 or 0,0,1,6,false))
+			end
+		end
+	end
 	self:Animate("door1",	self:GetPackedBool(156) and (self.Door1 or 1) or 0,0,0.52, 1024, 1)
 	self:Animate("door2",	self:GetPackedBool(158) and (self.Door2 or 1) or 0,1,0.52, 1024, 1)
 	self:Animate("door3",	self:GetPackedBool(159) and (self.Door3 or 1) or 0,0,0.52, 1024, 1)
@@ -1794,9 +1889,9 @@ function ENT:DrawPost(special)
 				surface.SetAlphaMultiplier(b)
 				--surface.SetDrawColor(255,120,50)
 				surface.SetDrawColor(255,60,60)
-				surface.DrawRect(148*10,88*10,17*10,9*10)
+				surface.DrawRect(148.3*10,88*10,17*10,9.4*10)
 				surface.SetAlphaMultiplier(1)
-				draw.DrawText("РП","MetrostroiSubway_LargeText2",148*10+30,88*10-5,Color(0,0,0,245))
+				draw.DrawText("РП","MetrostroiSubway_LargeText2",148.3*10+30,88.4*10-5,Color(0,0,0,245))
 			end
 			
 			local b = self:Animate("light_rLSN",self:GetPackedBool(131) and 1 or 0,0,1,15,false)
@@ -1804,8 +1899,8 @@ function ENT:DrawPost(special)
 				surface.SetAlphaMultiplier(b)
 				--surface.SetDrawColor(255,120,50)
 				surface.SetDrawColor(255,60,60)
-				surface.DrawRect(172.5*10,88*10,17*10,9*10)
-				draw.DrawText("ЛСН","MetrostroiSubway_LargeText2",172.5*10+5,88*10-5,Color(0,0,0,245))
+				surface.DrawRect(173*10,88*10,17*10,9.4*10)
+				draw.DrawText("ЛСН","MetrostroiSubway_LargeText2",173*10+5,88.4*10-5,Color(0,0,0,245))
 			end
 			
 			b = self:Animate("light_KT",self:GetPackedBool(47) and 1 or 0,0,1,15,false)
@@ -1829,11 +1924,26 @@ function ENT:DrawPost(special)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(255,160,20)
-				surface.DrawRect(111*10,88*10,17*10,9*10)
-				--draw.DrawText("ЛхРК","MetrostroiSubway_LargeText3",111*10+5,78*10+5,Color(0,0,0,245))
-				draw.DrawText("РК","MetrostroiSubway_LargeText2",111*10+30,88*10-5,Color(0,0,0,245))
+				surface.DrawRect(111.3*10,88*10,17*10,9.4*10)
+			--	draw.DrawText("ЛхРК","MetrostroiSubway_LargeText3",111*10+5,78*10+5,Color(0,0,0,245))
+				draw.DrawText("РК","MetrostroiSubway_LargeText2",111.3*10+30,88.4*10-5,Color(0,0,0,245))
 			end
-			
+			--b = self:Animate("light_EPK",self:GetPackedBool(155) and 1 or 0,0,1,15,false)
+			--if b > 0.0 then
+			--	surface.SetAlphaMultiplier(b)
+			--	surface.SetDrawColor(150,255,50)
+			--	surface.DrawRect(291.8*10,88.5*10,17*10,9*10)
+			--	draw.DrawText("СОТ1","MetrostroiSubway_LargeText6",291.8*10+5,89*10-5,Color(0,0,0,245))
+			--	draw.DrawText("ЭПВ","MetrostroiSubway_LargeText3",294*10+5,99*10+5,Color(0,0,0,245))
+			--end	
+		--	b = self:Animate("light_UAVA",self:GetPackedBool(152) and 1 or 0,0,1,15,false)
+		--	if b > 0.0 then
+		--		surface.SetAlphaMultiplier(b)
+		--		surface.SetDrawColor(150,255,50)
+		--		surface.DrawRect(291.8*10,72*10,17*10,9*10)
+		--		draw.DrawText("ПВУ","MetrostroiSubway_LargeText6",291.8*10+15,73*10-5,Color(0,0,0,245))
+		--		draw.DrawText("УАВА","MetrostroiSubway_LargeText3",294*10-5,82.15*10+5,Color(0,0,0,245))
+		--	end			
 			b = self:Animate("light_LRS",self:GetPackedBool(54) and 1 or 0,0,1,15,false)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
@@ -1850,12 +1960,55 @@ function ENT:DrawPost(special)
 				draw.DrawText("ЛСТ","MetrostroiSubway_LargeText2",242.5*10+5,88*10-5,Color(0,0,0,245))
 			end
 			
+		--	b = self:Animate("light_AVU",self:GetPackedBool(38) and 1 or 0,0,1,15,false)
+		--	if b > 0.0 then
+		--		surface.SetAlphaMultiplier(b)
+		--		surface.SetDrawColor(150,255,50)
+		--		surface.DrawRect(315.8*10,88*10,17*10,9*10)
+		--		draw.DrawText("АВУ","MetrostroiSubway_LargeText2",315.8*10+5,88*10-5,Color(0,0,0,245))
+		--	end
+		--	b = self:Animate("light_BPSN",self:GetPackedBool(59) and 1 or 0,0,1,15,false)
+		--	if b > 0.0 then
+		--		surface.SetAlphaMultiplier(b)
+		--		surface.SetDrawColor(255,60,60)
+		--		surface.DrawRect(340.8*10,88.5*10,17*10,9*10)
+		--		draw.DrawText("ИП","MetrostroiSubway_LargeText2",340.8*10+25,88.5*10-5,Color(0,0,0,245))
+		--	end	
+		--	b = self:Animate("light_BPSN",self:GetPackedBool(59) and 1 or 0,0,1,15,false)
+		--	if b > 0.0 then
+		--		surface.SetAlphaMultiplier(b)
+		--		surface.SetDrawColor(150,255,50)
+		--		surface.DrawRect(340.8*10,71.5*10,17*10,9*10)
+		--		draw.DrawText("ИП","MetrostroiSubway_LargeText2",340.8*10+25,71.5*10-5,Color(0,0,0,245))
+		--	end
+		--	b = self:Animate("light_ARS",self:GetPackedBool(174) and 1 or 0,0,1,15,false)
+		--	if b > 0.0 then
+		--		surface.SetAlphaMultiplier(b)
+		--		surface.SetDrawColor(150,255,50)
+		--		surface.DrawRect(316*10,54*10,17*10,9*10)
+		--		draw.DrawText("АРС","MetrostroiSubway_LargeText2",316*10+10,54*10-5,Color(0,0,0,245))
+		--	end
+
 			b = self:Animate("light_LVD",self:GetPackedBool(50) and 1 or 0,0,1,15,false)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(150,255,50)
-				surface.DrawRect(242.5*10,71.5*10,17*10,9*10)
-				draw.DrawText("ЛВД","MetrostroiSubway_LargeText2",242.5*10+5,71.5*10-5,Color(0,0,0,245))
+				surface.DrawRect(242.5*10,88*8.16,17*10,9*10)
+				draw.DrawText("ЛВД","MetrostroiSubway_LargeText2",242.5*10+5,88*8.16-5,Color(0,0,0,245))
+			end
+			b = self:Animate("light_LVD",self:GetPackedBool(50) and 1 or 0,0,1,15,false)
+			if b > 0.0 then
+				surface.SetAlphaMultiplier(b)
+				surface.SetDrawColor(150,255,50)
+				surface.DrawRect(148*10,88.7*7.9,17*10,9*6.5)
+				draw.DrawText("1","MetrostroiSubway_LargeText3",148.5*10+60,88.7*7.9-5,Color(0,0,0,245))
+			end
+			b = self:Animate("light_LhRK",self:GetPackedBool(33) and 1 or 0,0,1,15,false)
+			if b > 0.0 then
+				surface.SetAlphaMultiplier(b)
+				surface.SetDrawColor(150,255,50)
+				surface.DrawRect(123.5*10,88.7*7.9,17*10,9*6.5)
+				draw.DrawText("2","MetrostroiSubway_LargeText3",124*10+60,88.7*7.9-5,Color(0,0,0,245))
 			end
 			
 			b = self:Animate("light_LKVC",1-(self:GetPackedBool(34) and 1 or 0),0,1,5,false)
@@ -1871,10 +2024,10 @@ function ENT:DrawPost(special)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(150,255,50)
-				surface.DrawRect(50*10,88*10,17*10,9*10)
-				surface.DrawRect(74*10,88*10,17*10,9*10)
-				draw.DrawText("ЛСД","MetrostroiSubway_LargeText2",50*10+5,88*10-5,Color(0,0,0,245))
-				draw.DrawText("ЛСД","MetrostroiSubway_LargeText2",74*10+5,88*10-5,Color(0,0,0,245))
+				surface.DrawRect(50*10,88*10,17*10,9.3*10)
+				surface.DrawRect(74.3*10,88*10,17*10,9.3*10)
+				draw.DrawText("ЛСД","MetrostroiSubway_LargeText2",50.3*10+5,88*10-5,Color(0,0,0,245))
+				draw.DrawText("ЛСД","MetrostroiSubway_LargeText2",74.3*10+5,88*10-5,Color(0,0,0,245))
 			end
 		
 			------------------------------------------------------------------------
@@ -1883,8 +2036,8 @@ function ENT:DrawPost(special)
 				surface.SetAlphaMultiplier(b)
 				--surface.SetDrawColor(255,120,50)
 				surface.SetDrawColor(255,60,60)
-				surface.DrawRect((50+29.5*0)*10,38*10,17*10,9*10)
-				draw.DrawText("ОЧ","MetrostroiSubway_LargeText2",(50+29.5*0)*10+30,38*10-5,Color(0,0,0,245))
+				surface.DrawRect((50+29.5*0)*10,38*9.9,17*10,9*10)
+				draw.DrawText("ОЧ","MetrostroiSubway_LargeText2",(50+29.5*0)*10+30,38*9.9-5,Color(0,0,0,245))
 			end
 			
 			b = self:Animate("light_0",self:GetPackedBool(42) and 1 or 0,0,1,15,false)
@@ -1892,40 +2045,40 @@ function ENT:DrawPost(special)
 				surface.SetAlphaMultiplier(b)
 				--surface.SetDrawColor(255,120,50)
 				surface.SetDrawColor(255,60,60)
-				surface.DrawRect((45+29.5*1)*10,38*10,17*10,9*10)
-				draw.DrawText("0","MetrostroiSubway_LargeText",(45+29.5*1)*10+60,38*10-5,Color(0,0,0,245))
+				surface.DrawRect((45+29.5*1)*10,38*9.9,17*10,9*10)
+				draw.DrawText("0","MetrostroiSubway_LargeText",(45+29.5*1)*10+60,38*9.9-5,Color(0,0,0,245))
 			end
 			
 			b = self:Animate("light_40",self:GetPackedBool(43) and 1 or 0,0,1,15,false)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(255,160,20)
-				surface.DrawRect((45+27.2*2)*10,38*10,17*10,9*10)
-				draw.DrawText("40","MetrostroiSubway_LargeText",(45+27.2*2)*10+35,38*10-5,Color(0,0,0,245))
+				surface.DrawRect((45+27.2*2)*10,38*9.9,17*10,9*10)
+				draw.DrawText("40","MetrostroiSubway_LargeText",(45+27.2*2)*10+35,38*9.9-5,Color(0,0,0,245))
 			end
 				
 			b = self:Animate("light_60",self:GetPackedBool(44) and 1 or 0,0,1,15,false)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(150,255,50)
-				surface.DrawRect((41+27.5*3)*10,38*10,17*10,9*10)
-				draw.DrawText("60","MetrostroiSubway_LargeText",(41+27.5*3)*10+35,38*10-5,Color(0,0,0,245))
+				surface.DrawRect((41+27.5*3)*10,38*9.9,17*10,9*10)
+				draw.DrawText("60","MetrostroiSubway_LargeText",(41+27.5*3)*10+35,38*9.9-5,Color(0,0,0,245))
 			end
 				
 			b = self:Animate("light_70",self:GetPackedBool(45) and 1 or 0,0,1,15,false)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(150,255,50)
-				surface.DrawRect((40+27*4)*10,38*10,17*10,9*10)
-				draw.DrawText("70","MetrostroiSubway_LargeText",(40+27*4)*10+35,38*10-5,Color(0,0,0,245))
+				surface.DrawRect((40+27*4)*10,38*10,17*9.9,9*10)
+				draw.DrawText("70","MetrostroiSubway_LargeText",(40+27*4)*10+35,38*9.9-5,Color(0,0,0,245))
 			end
 				
 			b = self:Animate("light_80",self:GetPackedBool(46) and 1 or 0,0,1,15,false)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(150,255,50)
-				surface.DrawRect((40+26.6*5)*10,38*10,17*10,9*10)
-				draw.DrawText("80","MetrostroiSubway_LargeText",(40+26.6*5)*10+35,38*10-5,Color(0,0,0,245))
+				surface.DrawRect((40+26.6*5)*10,38*9.9,17*10,9*10)
+				draw.DrawText("80","MetrostroiSubway_LargeText",(40+26.6*5)*10+35,38*9.9-5,Color(0,0,0,245))
 			end
 			
 			surface.SetAlphaMultiplier(1.0)

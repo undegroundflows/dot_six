@@ -204,26 +204,25 @@ function ENT:Initialize()
 		[1] = { "headlight",		Vector(465,0,-20), Angle(0,0,0), Color(216,181,172), fov = 100 },
 		
 		-- Head (type 1)
-        [2] = { "glow",    Vector(481.5, 44,-30), Angle(0,0,0), Color(220,220,255), brightness = 0.8, scale = 1 },
-        [3] = { "glow",    Vector(481.5, 34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.8, scale = 1 },
+        [2] = { "glow",    Vector(481.5, 44,-30), Angle(0,0,0), Color(220,220,255), brightness = 0.83, scale = 1 },
+        [3] = { "glow",    Vector(481.5, 34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.83, scale = 1 },
 		--[4] = { "glow",				Vector(0,0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
 		--[5] = { "glow",				Vector(0, 0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
-		[4] = { "glow",    Vector(481.5,-34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.8, scale = 1 },
-        [5] = { "glow",    Vector(481.5,-44,-30), Angle(0,0,0), Color(220,220,255), brightness = 0.8, scale = 1 }, 
+		[4] = { "glow",    Vector(481.5,-34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.83, scale = 1 },
+        [5] = { "glow",    Vector(481.5,-44,-30), Angle(0,0,0), Color(220,220,255), brightness = 0.83, scale = 1 }, 
 
 		-- Reverse
 		[8] = { "light",			Vector(462.5,-30,70), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
 		[9] = { "light",			Vector(462.5, 30,70), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
 		[99] = { "light",			Vector(467.5,-46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
 		[98] = { "light",			Vector(467.5, 46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
-		-- Cabin
+	-- Cabin
 		[10] = { "dynamiclight",	Vector( 430, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.05, distance = 550 },
-		
+
 		-- Interior
-		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.97, distance = 400 , fov=180,farz = 128 },
-		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 1.87, distance = 400, fov=180,farz = 128 },
-		[13] = { "dynamiclight",	Vector( -200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 2.97, distance = 400, fov=180,farz = 128 },
-		[14] = { "dynamiclight",	Vector( -400, 0, 10), Angle(0,0,0), Color(200,200,255), brightness = 1.87, distance = 400 , fov=180,farz = 128 },
+		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400 , fov=180,farz = 128 },
+		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400, fov=180,farz = 128 },
+		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400 , fov=180,farz = 128 },
 		
 		-- Side lights
 		[15] = { "light",			Vector(43.05,   69, 56.8), Angle(0,0,0), Color(150,255,255), brightness = 0.2, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
@@ -273,21 +272,18 @@ function ENT:Initialize()
 		
 		
 		-- Interior lights
-		[60+0] = { "headlight", Vector(290-130*0,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.25, fov = 160 },
-		[60+1] = { "headlight", Vector(290-130*1,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.25, fov = 160 },
-		[60+2] = { "headlight", Vector(290-130*2,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.25, fov = 160 },
-		[60+3] = { "headlight", Vector(290-130*3,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.25, fov = 160 },
-		[60+4] = { "headlight", Vector(290-130*4,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.25, fov = 160 },
-		[60+5] = { "headlight", Vector(290-130*5,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.25, fov = 160 },
-		[60+6] = { "headlight", Vector(270-230*0,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.25, fov = 170 },
-		[60+7] = { "headlight", Vector(270-230*1,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.25, fov = 170 },
-		[60+8] = { "headlight", Vector(270-230*2,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.25, fov = 170 },
-		[60+9] = { "headlight", Vector(270-230*3,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.25, fov = 170 },
+		[60+0] = { "headlight", Vector(290-130*0,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+1] = { "headlight", Vector(290-130*1,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+2] = { "headlight", Vector(290-130*2,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+3] = { "headlight", Vector(290-130*3,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+4] = { "headlight", Vector(290-130*4,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+5] = { "headlight", Vector(290-130*5,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
+		[60+6] = { "headlight", Vector(270-230*0,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
+		[60+7] = { "headlight", Vector(270-230*1,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
+		[60+8] = { "headlight", Vector(270-230*2,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
+		[60+9] = { "headlight", Vector(270-230*3,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
 		[70    ] = { "headlight",	Vector( 430, -60, -47), Angle(45,-90,0), Color(255,255,255), brightness = 0.5, distance = 400 , fov=120, shadows = 1 },
 
-
-		
-		
 		--[[2-2
 		[97] = { "headlight",		Vector(465,-45,-19), Angle(0,-20,0), Color(216,161,92), fov = 70 },
 		[98] = { "headlight",		Vector(465,45,-19), Angle(0,20,0), Color(216,161,92), fov = 70 },
@@ -299,10 +295,6 @@ function ENT:Initialize()
 		[99] = { "headlight",		Vector(460,45,-10), Angle(-5,20,0), Color(216,161,92), fov = 70 },
 		]]
 	}
-	for i = 1,23 do
-		self.Lights[69+i] = { "light", Vector(-457 + 34.9*i, 0, 70), Angle(180,0,0), Color(255,220,180), brightness = 0.1, scale = 0.75}
-	end
-	
 	-- Cross connections in train wires
 	self.TrainWireCrossConnections = {
 		[5] = 4, -- Reverser F<->B
@@ -339,7 +331,11 @@ function ENT:Initialize()
 	self.OldTexture = 0
 	self.LampsBlink = {}
 	self.Lamps = {}
---	self.BrokenLamps = {}
+	self.BrokenLamps = {}
+	local rand = math.random() > 0.5 and 1 or math.random(0.93,0.99)
+	for i = 0,0 do
+		if math.random() > rand then self.BrokenLamps[i] = math.random() > 0.5 end
+	end
 
 	self:UpdateTextures()
 end
@@ -604,53 +600,38 @@ function ENT:Think()
 
 		
 	-- Interior/cabin lights
+		-- Interior/cabin lights
 	self:SetLightPower(10,(self.Panel["CabinLight"] > 0.5) and (self.L_2.Value > 0.5))
 	self:SetLightPower(30, (self.Panel["CabinLight"] > 0.5), 0.03 + 0.97*self.L_2.Value)
-	
+
 	local lightsActive1 = (self.Battery.Voltage > 55.0 and self.Battery.Voltage < 85.0) and
 		((self:ReadTrainWire(33) > 0) or (self:ReadTrainWire(34) > 0))
-	local lightsActive2 = (self.PowerSupply.XT3_4 > 55.0) and
+	local lightsActive2 = (self.PowerSupply.LightsActive > 0.0) and
 		(self:ReadTrainWire(33) > 0)
-	if not self.LightsActive then self.LightsActive = 0 end
-	if (lightsActive1 and not lightsActive2) and self.LightsActive ~= 1 or lightsActive2 and self.LightsActive ~= 2 or (not lightsActive1 and not lightsActive2) and self.LightsActive ~= 0 or self.LightsReload then
-		self:SetLightPower(11, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
-		self:SetLightPower(12, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
-		self:SetLightPower(13, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
-		self:SetLightPower(14, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
+	local mul = 0
 
-
-
-		self.LightsReload = nil
-		local Ip = self.LampType == 1 and 5 or 3
-		for i = 0,9 do
-			self:SetLightPower(60+i,(lightsActive2 or (lightsActive1 and (i+Ip-2)%Ip==1)) and (self.LampType == 1 or i < 14))
+	local LampCount  = (self.LampType == 1 and 23 or 12)
+	for i = 1,LampCount do
+		local Ip = self.LampType == 1 and 6 or 3
+		if (lightsActive2 or (lightsActive1 and (i+Ip-2)%Ip==1)) then
+			if not self.BrokenLamps[i]  and not self.LampsBlink[i] then self.LampsBlink[i] = CurTime() + math.random() end
+			if self.BrokenLamps[i] == nil and self.LampsBlink[i] and CurTime() - self.LampsBlink[i] > 0 and not self.Lamps[i] then self.Lamps[i] = CurTime() + math.random()*4 end
+		else
+			self.LampsBlink[i] = nil
+			self.Lamps[i] = nil
 		end
-		self.LightsActive = (lightsActive2 and 2 or lightsActive1 and 1 or 0)
+		if (self.Lamps[i] and CurTime() - self.Lamps[i] > 0) then
+			mul = mul + 1
+		elseif (self.LampsBlink[i] and CurTime() - self.LampsBlink[i] > 0) then
+			mul = mul + 0.5
+		end
+		self:SetPackedBool("lightsActive"..i,(self.Lamps[i] and CurTime() - self.Lamps[i] > 0) or false)
+		self:SetPackedBool("lightsActiveB"..i,(self.LampsBlink[i] and CurTime() - self.LampsBlink[i] > 0) or false)
 	end
-	--[[--self:SetLightPower(12, (self.Panel["EmergencyLight"] > 0.5) and ((self.L_1.Value > 0.5) or (self.L_5.Value > 0.5)),
-		0.5*self.L_5.Value + ((self.PowerSupply.XT3_4 > 65.0) and 0.5 or 0))]]
-		
-	--[[for i=60,69 do
-		self:SetLightPower(i,
-			(self.Panel["EmergencyLight"] > 0.5) and ((self.L_1.Value > 0.5) or (self.L_5.Value > 0.5)),
-			0.1*self.L_5.Value + ((self.PowerSupply.XT3_4 > 65.0) and 1 or 0))
-	end]]--
-	----self:SetLightPower(12, self.Panel["EmergencyLight"] > 0.5)
-	----self:SetLightPower(13, self.PowerSupply.XT3_4 > 65.0)	
-	self:SetLightPower(31, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
-	self:SetLightPower(32, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
-	self:SetLightPower(33, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
-	self:SetLightPower(34, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
-	--[[--self:SetLightPower(12, (self.Panel["EmergencyLight"] > 0.5) and ((self.L_1.Value > 0.5) or (self.L_5.Value > 0.5)),
-		0.5*self.L_5.Value + ((self.PowerSupply.XT3_4 > 65.0) and 0.5 or 0))]]
-		
-	--[[for i=60,69 do
-		self:SetLightPower(i,
-			(self.Panel["EmergencyLight"] > 0.5) and ((self.L_1.Value > 0.5) or (self.L_5.Value > 0.5)),
-			0.1*self.L_5.Value + ((self.PowerSupply.XT3_4 > 65.0) and 1 or 0))
-	end]]--
-	----self:SetLightPower(12, self.Panel["EmergencyLight"] > 0.5)
-	----self:SetLightPower(13, self.PowerSupply.XT3_4 > 65.0)	
+	self:SetLightPower(11, mul > 0,mul/LampCount)
+	self:SetLightPower(12, mul > 0,mul/LampCount)
+	self:SetLightPower(13, mul > 0,mul/LampCount)
+
 	self:SetLightPower(31, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 	self:SetLightPower(32, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 	self:SetLightPower(33, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
@@ -775,7 +756,7 @@ function ENT:Think()
 	self:SetPackedBool(154,self.DURA.Channel2Alternate)
 	self:SetPackedBool(155,self.EPK.Value == 1.0)
 	self:SetPackedBool(169,self.Wiper.Value == 1)
-
+	self:SetPackedBool(174,self.ARS.Value > 0.5)
 
 	self:SetPackedBool(156,self.RearDoor)
 	self:SetPackedBool(158,self.PassengerDoor)
@@ -872,12 +853,13 @@ function ENT:Think()
 	self:SetPackedBool(51,self.KVC.Value < 0.5)
 	-- BPSN
 	----self:SetLightPower(24,(self.PowerSupply.XT3_1 > 0) and (self.Panel["V1"] > 0.5))
-	self:SetPackedBool(52,self.PowerSupply.XT3_1 > 0)
+	self:SetPackedBool(52,self.BPSNon.Value == 1.0)
 	-- LRS
 	self:SetPackedBool(54,(self.Panel["V1"] > 0.5) and
 		(self.ALS.Value > 0.5) and
 		(GetConVarNumber("metrostroi_ars_sfreq") > 0 and not self.ALS_ARS.RealNoFreq and self.ALS_ARS.NextLimit >= self.ALS_ARS.SpeedLimit))
-
+	--LBPSN
+	
 	-- AV states
 	for i,v in ipairs(self.Panel.AVMap) do
 		if tonumber(v)
@@ -928,6 +910,8 @@ function ENT:Think()
 		self:SetLightPower(57,self:GetPackedBool(50) and self:GetPackedBool(32))
 		-- LST
 		self:SetLightPower(58,self:GetPackedBool(49) and self:GetPackedBool(32))
+		-- LBPSN
+		self:SetLightPower(59,self:GetPackedBool(52) and self:GetPackedBool(32))
 	else
 		for i=40,58 do
 			self:SetLightPower(i,false)
@@ -992,9 +976,9 @@ function ENT:Think()
 	-- Exchange some parameters between engines, pneumatic system, and real world
 	self.Engines:TriggerInput("Speed",self.Speed)
 	if IsValid(self.FrontBogey) and IsValid(self.RearBogey) then
-		self.FrontBogey.MotorForce = 35300
+		self.FrontBogey.MotorForce = 37800
 		self.FrontBogey.Reversed = (self.RKR.Value > 0.5)
-		self.RearBogey.MotorForce  = 35300
+		self.RearBogey.MotorForce  = 37800
 		self.RearBogey.Reversed = (self.RKR.Value < 0.5)
 
 		-- These corrections are required to beat source engine friction at very low values of motor power
@@ -1012,11 +996,11 @@ function ENT:Think()
 		--print(self.Acc)
 
 		-- Apply brakes
-		self.FrontBogey.PneumaticBrakeForce = 40000.0
+		self.FrontBogey.PneumaticBrakeForce = 42500.0
 		self.FrontBogey.BrakeCylinderPressure = self.Pneumatic.BrakeCylinderPressure
 		self.FrontBogey.BrakeCylinderPressure_dPdT = -self.Pneumatic.BrakeCylinderPressure_dPdT
 		self.FrontBogey.ParkingBrake = self.ParkingBrake.Value > 0.5
-		self.RearBogey.PneumaticBrakeForce = 40000.0
+		self.RearBogey.PneumaticBrakeForce = 42500.0
 		self.RearBogey.BrakeCylinderPressure = self.Pneumatic.BrakeCylinderPressure
 		self.RearBogey.BrakeCylinderPressure_dPdT = -self.Pneumatic.BrakeCylinderPressure_dPdT
 		--self.RearBogey.ParkingBrake = self.ParkingBrake.Value > 0.5
