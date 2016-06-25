@@ -61,7 +61,7 @@ function ENT:Initialize()
 	self.ExtraSeat3:SetRenderMode(RENDERMODE_TRANSALPHA)
 
 	-- Create bogeys
-	self.FrontBogey = self:CreateBogey(Vector( 326-5,0,-75),Angle(0,180,0),true)
+	self.FrontBogey = self:CreateBogey(Vector( 328-5,0,-75),Angle(0,180,0),true)
 	self.RearBogey  = self:CreateBogey(Vector(-317+0,0,-75),Angle(0,0,0),false)
 
 	-- Initialize key mapping
@@ -205,10 +205,10 @@ function ENT:Initialize()
 		
 		-- Head (type 1)
         [2] = { "glow",    Vector(481.5, 44,-30), Angle(0,0,0), Color(220,220,255), brightness = 0.83, scale = 1 },
-        [3] = { "glow",    Vector(481.5, 34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.83, scale = 1 },
+        [3] = { "glow",    Vector(481.5, 34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.9, scale = 1 },
 		--[4] = { "glow",				Vector(0,0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
 		--[5] = { "glow",				Vector(0, 0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
-		[4] = { "glow",    Vector(481.5,-34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.83, scale = 1 },
+		[4] = { "glow",    Vector(481.5,-34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.9, scale = 1 },
         [5] = { "glow",    Vector(481.5,-44,-30), Angle(0,0,0), Color(220,220,255), brightness = 0.83, scale = 1 }, 
 
 		-- Reverse
@@ -976,9 +976,9 @@ function ENT:Think()
 	-- Exchange some parameters between engines, pneumatic system, and real world
 	self.Engines:TriggerInput("Speed",self.Speed)
 	if IsValid(self.FrontBogey) and IsValid(self.RearBogey) then
-		self.FrontBogey.MotorForce = 37800
+		self.FrontBogey.MotorForce = 39800
 		self.FrontBogey.Reversed = (self.RKR.Value > 0.5)
-		self.RearBogey.MotorForce  = 37800
+		self.RearBogey.MotorForce  = 39800
 		self.RearBogey.Reversed = (self.RKR.Value < 0.5)
 
 		-- These corrections are required to beat source engine friction at very low values of motor power
@@ -996,11 +996,11 @@ function ENT:Think()
 		--print(self.Acc)
 
 		-- Apply brakes
-		self.FrontBogey.PneumaticBrakeForce = 42500.0
+		self.FrontBogey.PneumaticBrakeForce = 44000.0
 		self.FrontBogey.BrakeCylinderPressure = self.Pneumatic.BrakeCylinderPressure
 		self.FrontBogey.BrakeCylinderPressure_dPdT = -self.Pneumatic.BrakeCylinderPressure_dPdT
 		self.FrontBogey.ParkingBrake = self.ParkingBrake.Value > 0.5
-		self.RearBogey.PneumaticBrakeForce = 42500.0
+		self.RearBogey.PneumaticBrakeForce = 44000.0
 		self.RearBogey.BrakeCylinderPressure = self.Pneumatic.BrakeCylinderPressure
 		self.RearBogey.BrakeCylinderPressure_dPdT = -self.Pneumatic.BrakeCylinderPressure_dPdT
 		--self.RearBogey.ParkingBrake = self.ParkingBrake.Value > 0.5

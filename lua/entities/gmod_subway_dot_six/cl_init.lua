@@ -231,7 +231,7 @@ ENT.ButtonMap["AnnouncerDisplay"] = {
 
 --ARS FUCKING PANEL!!!
 ENT.ButtonMap["ARS"] = {
-	pos = Vector(472.39,-2.71,8.54),
+	pos = Vector(472.40,-2.71,8.54),
 	ang = Angle(0,-90,62),
 	width = 300*10,
 	height = 110*10,
@@ -1277,7 +1277,7 @@ ENT.ClientProps["door4"] = {
 }
 ENT.ClientProps["door3"] = {
 	model = "models/6000/door_cabin.mdl",
-	pos = Vector(448,65,-42.5),
+	pos = Vector(448.12,65,-42.5),
 	ang = Angle(0,-90,0)
 }
 ENT.ClientProps["UAVALever"] = {
@@ -1304,7 +1304,7 @@ ENT.ClientProps["wiper"] = {
 for i = 1,22 do
 	ENT.ClientProps["lamp1_"..i] = {
 		model = "models/metrostroi_train/81/lamp2.mdl",
-		pos = Vector(-461 + 66.12*i, 35, 71.8),
+		pos = Vector(-461 + 65.22*i, 35, 71.8),
 		ang = Angle(180,0,0),
 		color = Color(240,240,255),
 	}
@@ -1312,7 +1312,7 @@ end
 for i = 1,12 do
 	ENT.ClientProps["lamp2_"..i] = {
 		model = "models/metrostroi_train/81/lamp2.mdl",
-		pos = Vector(-461 + 66.12*i, -35, 71.8),
+		pos = Vector(-461 + 65.22*i, -35, 71.8),
 		ang = Angle(180,0,0),
 		color = Color(240,240,255),
 	}

@@ -39,8 +39,8 @@ function ENT:Initialize()
 	--self.InstructorsSeat:SetRenderMode(RENDERMODE_TRANSALPHA)
 
 	-- Create bogeys
-	self.FrontBogey = self:CreateBogey(Vector( 326-5,0,-75),Angle(0,180,0),true)
-	self.RearBogey  = self:CreateBogey(Vector(-317+0,0,-75),Angle(0,0,0),false)
+	self.FrontBogey = self:CreateBogey(Vector( 320-5,0,-75),Angle(0,180,0),true)
+	self.RearBogey  = self:CreateBogey(Vector(-315+0,0,-75),Angle(0,0,0),false)
 
 	-- Initialize key mapping
 	self.KeyMap = {
@@ -144,12 +144,11 @@ function ENT:Initialize()
 
 		-- Cabin
 		[10] = { "dynamiclight",	Vector( 440, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.1, distance = 550 },
-	
+
 		-- Interior
-		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3.86, distance = 400 , fov=180,farz = 128 },
-		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3.86, distance = 400, fov=180,farz = 128 },
-		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3.86, distance = 400 , fov=180,farz = 128 },
-	--	[14] = { "dynamiclight",	Vector(-400, 0, 10), Angle(0,0,0), Color(200,200,255), brightness = 4.86, distance = 400 , fov=180,farz = 128 },
+		[11] = { "dynamiclight",	Vector( 270, 0, 5), Angle(0,0,0), Color(255,220,180), brightness = 3, distance = 400 },
+		[12] = { "dynamiclight",	Vector(   00, 0, 5), Angle(0,0,0), Color(255,220,180), brightness = 3, distance = 400 },
+		[13] = { "dynamiclight",	Vector(-350, 0, 5), Angle(0,0,0), Color(255,220,180), brightness = 3, distance = 400 },
 
 		-- Side lights
 		[14] = { "light",			Vector(-50, 68, 69.5), Angle(0,0,0), Color(255,0,0), brightness = 0.9, scale = 0.10, texture = "sprites/light_glow02.vmt" },
@@ -168,25 +167,10 @@ function ENT:Initialize()
 		[23] = { "light",			Vector(463.0,12.6+1.5-20.3,1.15), Angle(0,0,0), Color(255,40,0), brightness = 1.0, scale = 0.020 },
 		-- LKVP
 		[24] = { "light",			Vector(463.0,12.6+1.5-23.1,1.15), Angle(0,0,0), Color(255,160,0), brightness = 1.0, scale = 0.020 },
-		
-				
-		-- Interior lights
-		[60+0] = { "headlight", Vector(290-130*0,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
-		[60+1] = { "headlight", Vector(290-130*1,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
-		[60+2] = { "headlight", Vector(290-130*2,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
-		[60+3] = { "headlight", Vector(290-130*3,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
-		[60+4] = { "headlight", Vector(290-130*4,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
-		[60+5] = { "headlight", Vector(290-130*5,0,70), Angle(90,0,0),  Color(255,255,255), farz = 150, nearz = 1, shadows = 0, brightness = 0.1, fov = 160 },
-		[60+6] = { "headlight", Vector(270-230*0,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
-		[60+7] = { "headlight", Vector(270-230*1,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
-		[60+8] = { "headlight", Vector(270-230*2,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
-		[60+9] = { "headlight", Vector(270-230*3,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
-		[70    ] = { "headlight",	Vector( 430, -60, -47), Angle(45,-90,0), Color(255,255,255), brightness = 0.5, distance = 400 , fov=120, shadows = 1 },
 	}
 	for i = 1,23 do
 		self.Lights[69+i] = { "light", Vector(-470 + 35.8*i, 0, 70), Angle(180,0,0), Color(255,220,180), brightness = 1, scale = 0.75}
 	end
-
 
 	-- Cross connections in train wires
 	self.TrainWireCrossConnections = {
@@ -209,11 +193,11 @@ function ENT:Initialize()
 
 	self.LampsBlink = {}
 	self.Lamps = {}
---	self.BrokenLamps = {}
---	local rand = math.random() > 0.5 and 1 or math.random(0.93,0.99)
---	for i = 1,23 do
---		if math.random() > rand then self.BrokenLamps[i] = math.random() > 0.5 end
---	end
+	self.BrokenLamps = {}
+	local rand = math.random() > 0.5 and 1 or math.random(0.93,0.99)
+	for i = 0,0 do
+		if math.random() > rand then self.BrokenLamps[i] = math.random() > 0.5 end
+	end
 
 	self:UpdateTextures()
 end
@@ -297,30 +281,33 @@ function ENT:Think()
 	--seat:SetAngles(self:GetAngles()+Angle(0,-90,0)+seat_info.angle)
 
 	-- Interior/cabin lights
--- Interior/cabin lights
---	self:SetLightPower(10,(self.Panel["CabinLight"] > 0.5) and (self.L_2.Value > 0.5))
---	self:SetLightPower(30, (self.Panel["CabinLight"] > 0.5), 0.03 + 0.97*self.L_2.Value)
-	
 	local lightsActive1 = (self.Battery.Voltage > 55.0 and self.Battery.Voltage < 85.0) and
 		((self:ReadTrainWire(33) > 0) or (self:ReadTrainWire(34) > 0))
-	local lightsActive2 = (self.PowerSupply.XT3_4 > 55.0) and
+	local lightsActive2 = (self.PowerSupply.LightsActive > 0.0) and
 		(self:ReadTrainWire(33) > 0)
-	if not self.LightsActive then self.LightsActive = 0 end
-	if (lightsActive1 and not lightsActive2) and self.LightsActive ~= 1 or lightsActive2 and self.LightsActive ~= 2 or (not lightsActive1 and not lightsActive2) and self.LightsActive ~= 0 or self.LightsReload then
-		self:SetLightPower(11, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
-		self:SetLightPower(12, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
-		self:SetLightPower(13, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
-		self:SetLightPower(14, lightsActive1, 0.2*self:ReadTrainWire(34) + 0.8*self:ReadTrainWire(33))
+	local mul = 0
 
-
-
-		self.LightsReload = nil
-		local Ip = self.LampType == 1 and 5 or 3
-		for i = 0,9 do
-			self:SetLightPower(60+i,(lightsActive2 or (lightsActive1 and (i+Ip-2)%Ip==1)) and (self.LampType == 1 or i < 14))
+	local LampCount  = (self.LampType == 1 and 25 or 13)
+	for i = 1,LampCount do
+		local Ip = self.LampType == 1 and 6 or 3
+		if (lightsActive2 or (lightsActive1 and (i+Ip-2)%Ip==1)) then
+			if not self.BrokenLamps[i]  and not self.LampsBlink[i] then self.LampsBlink[i] = CurTime() + math.random() end
+			if self.BrokenLamps[i] == nil and self.LampsBlink[i] and CurTime() - self.LampsBlink[i] > 0 and not self.Lamps[i] then self.Lamps[i] = CurTime() + math.random()*4 end
+		else
+			self.LampsBlink[i] = nil
+			self.Lamps[i] = nil
 		end
-		self.LightsActive = (lightsActive2 and 2 or lightsActive1 and 1 or 0)
+		if (self.Lamps[i] and CurTime() - self.Lamps[i] > 0) then
+			mul = mul + 1
+		elseif (self.LampsBlink[i] and CurTime() - self.LampsBlink[i] > 0) then
+			mul = mul + 0.5
+		end
+		self:SetPackedBool("lightsActive"..i,(self.Lamps[i] and CurTime() - self.Lamps[i] > 0) or false)
+		self:SetPackedBool("lightsActiveB"..i,(self.LampsBlink[i] and CurTime() - self.LampsBlink[i] > 0) or false)
 	end
+	self:SetLightPower(11, mul > 0,mul/LampCount)
+	self:SetLightPower(12, mul > 0,mul/LampCount)
+	self:SetLightPower(13, mul > 0,mul/LampCount)
 	-- Side lights
 	self:SetLightPower(15, self.Panel["TrainDoors"] > 0.5)
 	self:SetLightPower(19, self.Panel["TrainDoors"] > 0.5)
@@ -431,9 +418,9 @@ function ENT:Think()
 	-- Exchange some parameters between engines, pneumatic system, and real world
 	self.Engines:TriggerInput("Speed",self.Speed)
 	if IsValid(self.FrontBogey) and IsValid(self.RearBogey) then
-		self.FrontBogey.MotorForce = 35300
+		self.FrontBogey.MotorForce = 39300
 		self.FrontBogey.Reversed = (self.RKR.Value > 0.5)
-		self.RearBogey.MotorForce  = 35300
+		self.RearBogey.MotorForce  = 39300
 		self.RearBogey.Reversed = (self.RKR.Value < 0.5)
 
 		-- These corrections are required to beat source engine friction at very low values of motor power
@@ -446,11 +433,11 @@ function ENT:Think()
 		self.FrontBogey.MotorPower = P*0.5*((A > 0) and 1 or -1)
 
 		-- Apply brakes
-		self.FrontBogey.PneumaticBrakeForce = 40000.0
+		self.FrontBogey.PneumaticBrakeForce = 44000.0
 		self.FrontBogey.BrakeCylinderPressure = self.Pneumatic.BrakeCylinderPressure
 		self.FrontBogey.BrakeCylinderPressure_dPdT = -self.Pneumatic.BrakeCylinderPressure_dPdT
 		self.FrontBogey.ParkingBrake = self.ParkingBrake.Value > 0.5
-		self.RearBogey.PneumaticBrakeForce = 40000.0
+		self.RearBogey.PneumaticBrakeForce = 44000.0
 		self.RearBogey.BrakeCylinderPressure = self.Pneumatic.BrakeCylinderPressure
 		self.RearBogey.BrakeCylinderPressure_dPdT = -self.Pneumatic.BrakeCylinderPressure_dPdT
 		--self.RearBogey.ParkingBrake = self.ParkingBrake.Value > 0.5
