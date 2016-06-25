@@ -193,8 +193,8 @@ ENT.ButtonMap["BPSNrear"] = {
 	
 -- Announcer panel
 ENT.ButtonMap["Announcer"] = {
-	pos = Vector(460.06,-53.38,8.1),
-	ang = Angle(0,-169.7,90),
+	pos = Vector(460.06,-53.30,8.1),
+	ang = Angle(0,-169.8,90),
 	width = 265,
 	height = 245,
 	scale = 0.0625,
@@ -713,18 +713,18 @@ ENT.ClientProps["krureverser"] = {
 --------------------------------------------------------------------------------
 ENT.ClientProps["train_line"] = {
 	model = "models/metrostroi/81-717/black_arrow.mdl",
-	pos = Vector(466.35,-46,5.56),
-	ang = Angle(90+16.25,0,180+62)
+	pos = Vector(466.55,-46.2,5.56),
+	ang = Angle(93.05+16.25,0,180+62)
 }
 ENT.ClientProps["brake_line"] = {
 	model = "models/metrostroi/81-717/red_arrow.mdl",
-    pos = Vector(466.35,-45.95,5.56),
-	ang = Angle(90+16.25,0,180+62)
+    pos = Vector(466.55,-46.15,5.56),
+	ang = Angle(93.05+16.25,0,180+62)
 }
 ENT.ClientProps["brake_cylinder"] = {
 	model = "models/metrostroi/81-717/black_arrow.mdl",
-	pos = Vector(461.9,-48.9,5.45),
-	ang = Angle(90+20.5,0,175+66)
+	pos = Vector(461.95,-48.99,5.45),
+	ang = Angle(88.5+20.5,0,174.55+66)
 }
 --------------------------------------------------------------------------------
 --ENT.ClientProps["ampermeter"] = {--24.2 0.2 5.3
@@ -844,7 +844,7 @@ Metrostroi.ClientPropForButton("VAH",{
 	panel = "PackSwitch",
 	button = "VAHToggle",
 	model = "models/6000/pult/buttons/button_round.mdl",
-	ang = 50
+	ang = 75
 })
 
 Metrostroi.ClientPropForButton("VAD",{
@@ -871,19 +871,19 @@ Metrostroi.ClientPropForButton("ALS",{
 	panel = "PackSwitch",
 	button = "ALSToggle",
 	model = "models/6000/pult/buttons/button_round.mdl",
-	ang = 50
+	ang = 75
 })
 Metrostroi.ClientPropForButton("ARS",{
 	panel = "PackSwitch",
 	button = "ARSToggle",
 	model = "models/6000/pult/buttons/button_round.mdl",
-	ang = 50
+	ang = 75
 })
 Metrostroi.ClientPropForButton("OtklAVU",{
 	panel = "PackSwitch",
 	button = "OtklAVUToggle",
 	model = "models/6000/pult/buttons/button_round.mdl",
-	ang = 50
+	ang = 75
 })
 --Metrostroi.ClientPropForButton("OtklAVUPl",{
 --	panel = "Main",
@@ -1174,7 +1174,7 @@ Metrostroi.ClientPropForButton("UOS",{
 	panel = "PackSwitch",
 	button = "UOSToggle",	
 	model = "models/6000/pult/buttons/button_round.mdl",
-	ang = 50
+	ang = 90
 })
 Metrostroi.ClientPropForButton("RC1Pl",{
 	panel = "Battery",

@@ -44,8 +44,8 @@ function ENT:Initialize()
 	-- Create seat entities
 	self.DriverSeat = self:CreateSeat("driver",Vector(429,-13.8,-18))
 	self.InstructorsSeat = self:CreateSeat("instructor",Vector(435,42.69,-28+3),Angle(0,270,0))
-	self.ExtraSeat1 = self:CreateSeat("instructor",Vector(410,-40,-28+1))
-	self.ExtraSeat2 = self:CreateSeat("instructor",Vector(427,-50,-43),Angle(0,180,0),"models/vehicles/prisoner_pod_inner.mdl")
+	self.ExtraSeat1 = self:CreateSeat("instructor",Vector(420,-40,-23+1))
+	self.ExtraSeat2 = self:CreateSeat("instructor",Vector(430,-50,-43),Angle(0,180,0),"models/vehicles/prisoner_pod_inner.mdl")
 	self.ExtraSeat3 = self:CreateSeat("instructor",Vector(416,40,-43),Angle(0,-40+90,0),"models/vehicles/prisoner_pod_inner.mdl")
 
 	-- Hide seats
