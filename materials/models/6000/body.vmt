@@ -1,6 +1,6 @@
 "VertexLitGeneric"
 {
-	"$basetexture" "models/6000/body"
+	"$basetexture" "models/6000/6000_texture_body_Color"
         //"$bumpmap"	"models/stalker_res/wall/wall_farm_normal"
 	$halflambert 1
 	$nodecal 1
