@@ -62,12 +62,12 @@ ENT.ButtonMap["Main"] = {
 	
 	buttons = {
 		--{ID = "R_ZSToggle",		x=36+28*1, y=37, radius=20, tooltip="ЗС\nZS"},
-		{ID = "R_ProgramToggle",x=515, y=103+3, radius=0, },
-		{ID = "R_Program1Set",  x=520, y=103+3, radius=20, tooltip="Программа 1\nProgram 1"},
-		{ID = "R_Program2Set",  x=464.5, y=96, w=28,h=20, tooltip="Программа 2\nProgram 2"},
+		{ID = "R_ProgramToggle",x=515, y=103+5.5, radius=0, },
+		{ID = "R_Program1Set",  x=520, y=98.5, radius=20, tooltip="Программа 1\nProgram 1"},
+		{ID = "R_Program2Set",  x=464.5, y=98.5, w=28,h=20, tooltip="Программа 2\nProgram 2"},
 		
-		{ID = "1:KVTSet",	    x=417-7, y=103+4, radius=20, tooltip="КВТ: Кнопка восприятия торможения\nKVT: ARS Brake cancel button"},
-		{ID = "2:KVTSet",		x=450-7, y=103+4, radius=20, tooltip="КБ: Кнопка Бдительности\nKB: Attention button"},
+		{ID = "1:KVTSet",	    x=417-6, y=103+5.2, radius=20, tooltip="КВТ: Кнопка восприятия торможения\nKVT: ARS Brake cancel button"},
+		{ID = "2:KVTSet",		x=450-6, y=103+5.2, radius=20, tooltip="КБ: Кнопка Бдительности\nKB: Attention button"},
 		{ID = "VZ1Set",			x=480, y=55, radius=20, tooltip="ВЗ1: Вентиль замещения №1\nVZ1: Pneumatic valve #1"},
 	--	{ID = "EmergencyBrake",			x=511, y=55, radius=20, tooltip="Экстренный тормоз\nEmergency Brake"},
 
@@ -85,8 +85,8 @@ ENT.ButtonMap["Main"] = {
 --		{ID = "PS2Pl",      x=238, y=210, radius=20, tooltip="(placeholder) Пломба крышки Торможение АТ\nEmergency brake toggle plomb"},
 
 --		{ID = "ParkingBrakeSignToggle",	x=203,y=113, radius=20, tooltip="Табличка \"ОТПУСТИ СТОЯНОЧНЫЙ ТОРМОЗ\"\nSign \"RELEASE PARKING BRAKE\""},
-		{ID = "L_4Toggle",              x=444, y=160, radius=20, tooltip="Фары: 1 группа\nHead lights: 1 group"},
-		{ID = "VUSToggle",              x=479, y=160, radius=20, tooltip="Фары: 2 группа\nHead lights: 2 group"},
+		{ID = "L_4Toggle",              x=444, y=160.68, radius=20, tooltip="Фары: 1 группа\nHead lights: 1 group"},
+		{ID = "VUSToggle",              x=479, y=160.68, radius=20, tooltip="Фары: 2 группа\nHead lights: 2 group"},
 		{ID = "KDPSet",                 x=515, y=160, radius=20, tooltip="КДП: Кнопка правых дверей\nKDP: Right doors open"},
 		
 	}
@@ -101,9 +101,9 @@ ENT.ButtonMap["LeftPanel"] = {
 	
 	buttons = {
 		{ID = "KRPSet",    x=116.7, y=141, radius=20, tooltip="КРП: Кнопка резервного пуска\nKRP: Emergency start button"},
-		{ID = "RezMKSet",  x=156,  y=41.5, radius=20, tooltip="Резервное включение мотор-компрессора\nEmergency motor-compressor startup"},
+		{ID = "RezMKSet",  x=156.7,  y=42.5, radius=20, tooltip="Резервное включение мотор-компрессора\nEmergency motor-compressor startup"},
 		{ID = "KRZDSet",   x=156.7, y=95, radius=20, tooltip="КРЗД: Кнопка резервного закрытия дверей\nKRZD: Emergency door closing"},
-		{ID = "KDLRSet",   x=117, y=62, radius=20, tooltip="РКДЛ: Резервное открытие дверей левых\nVDL: Left doors open"},
+		{ID = "KDLRSet",   x=117, y=62.25, radius=20, tooltip="РКДЛ: Резервное открытие дверей левых\nVDL: Left doors open"},
 		{ID = "KDPRSet",    x=196.7, y=62, radius=20, tooltip="РКДП: Резервное открытие дверей правых\nKDP: Right doors open"},
 	}
 }
@@ -679,7 +679,7 @@ ENT.ClientProps["brake013"] = {
 }
 ENT.ClientProps["controller"] = {
 	model = "models/6000/pult/buttons/grkv.mdl",
-	pos = Vector(455.35,-0.65,-4.5),
+	pos = Vector(455.34,-0.65,-4.55),
 	ang = Angle(-15,0,0)
 }
 
@@ -1430,7 +1430,7 @@ function ENT:Think()
 	self:Animate("VMK",				self:GetPackedBool(9) and 1 or 0, 	0,1, 16, false)
 	self:Animate("VAH",				self:GetPackedBool(10) and 1 or 0, 	0,1, 16, false)
 	local VAD = self:Animate("VAD",				self:GetPackedBool(11) and 1 or 0, 	0,1, 16, false)
-	local A = self:Animate("VUD1",			(self:GetPackedBool(12) and 1 or 0), 	0,1, 16, false)
+	local A = self:Animate("VUD1",			(self:GetPackedBool(12) and 0 or 1), 	0,1, 16, false)
 	self:Animate("VUD2",			self:GetPackedBool(13) and 1 or 0, 	0,1, 16, false)
 	self:Animate("VDL",				self:GetPackedBool(14) and 1 or 0, 	0,1, 16, false)
 	self:Animate("VZ1",				self:GetPackedBool("VZ1") and 1 or 0, 	0,1, 16, false)
@@ -1689,8 +1689,8 @@ function ENT:Think()
 		for k=0,1 do
 			local n_l = "door"..i.."x"..k.."a"
 			local n_r = "door"..i.."x"..k.."b"
-			self:Animate(n_l,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.8 + (-0.2+0.4*math.random()),0)
-			self:Animate(n_r,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.8 + (-0.2+0.4*math.random()),0)
+			self:Animate(n_l,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.75 + (-0.2+0.4*math.random()),0)
+			self:Animate(n_r,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.75 + (-0.2+0.4*math.random()),0)
 		end
 	end
 	--if self.ClientEnts["door1"] then self.ClientEnts["door1"]:SetSkin(self:GetSkin()) end
