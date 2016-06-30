@@ -1304,7 +1304,7 @@ ENT.ClientProps["wiper"] = {
 for i = 1,22 do
 	ENT.ClientProps["lamp1_"..i] = {
 		model = "models/metrostroi_train/81/lamp2.mdl",
-		pos = Vector(-461 + 65.22*i, 35, 71.8),
+		pos = Vector(-461 + 65.22*i, 35.8, 71.75),
 		ang = Angle(180,0,0),
 		color = Color(240,240,255),
 	}
@@ -1312,7 +1312,7 @@ end
 for i = 1,12 do
 	ENT.ClientProps["lamp2_"..i] = {
 		model = "models/metrostroi_train/81/lamp2.mdl",
-		pos = Vector(-461 + 65.22*i, -35, 71.8),
+		pos = Vector(-461 + 65.22*i, -35.8, 71.75),
 		ang = Angle(180,0,0),
 		color = Color(240,240,255),
 	}

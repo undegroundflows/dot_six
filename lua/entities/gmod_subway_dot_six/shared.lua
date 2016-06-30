@@ -22,14 +22,16 @@ end
 function ENT:InitializeSounds()
 	self.BaseClass.InitializeSounds(self)
 	self.SoundNames["r1_5_close"] = {"subway_trains/drive_on3.wav","subway_trains/drive_on4.wav"}
-	self.SoundNames["door_close1"]  = "dcls2.wav"
-	self.SoundNames["door_open1"] = {"dopen4.wav"}
-	self.SoundNames["inf_on"]		= "subway_trains/but_on6.wav"
-	self.SoundNames["inf_off"]		= "subway_trains/but_off6.wav"
+	self.SoundNames["door_close1"]  = "doorsclose4.wav"
+	self.SoundNames["door_open1"] = "doorsopen4.wav"
+	self.SoundNames["inf_on"]		= "subway_trains/but_on4.wav"
+	self.SoundNames["inf_off"]		= "subway_trains/but_off4.wav"
 	self.SoundNames["vu22_on"]	= "subway_trains/but_off5.wav"
 	self.SoundNames["vu22_off"]	= "subway_trains/but_on5.wav"
 	self.SoundNames["kr_open"]			= ""
 	self.SoundNames["kr_close"]			= ""
+	self.SoundNames["switch3"]	= ""
+	self.SoundNames["relay_open"] = ""
 end
 function ENT:InitializeSystems()
 	-- Электросистема 81-710
