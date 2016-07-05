@@ -592,7 +592,7 @@ function ENT:Think()
 	end
 
 	-- BPSN sound
-	self.BPSNType = self:GetNWInt("BPSNType",6)
+	self.BPSNType = self:GetNW2Int("BPSNType",6)
 --	if not self.OldBPSNType then self.OldBPSNType = self.BPSNType end
 --	if self.BPSNType ~= self.OldBPSNType then
 --		if self.OldBPSNType ~= 7 then

@@ -23,8 +23,8 @@ ENT.SubwayTrain = {
 
 function ENT:Initialize()
 	self.Plombs = {
-		VAH = true,
-		VAD = true,
+		VAH = false,
+		VAD = false,
 		OtklAVU = false,
 		TormAT = false,
 		KAH = true,
@@ -730,7 +730,6 @@ function ENT:Think()
 	self:SetPackedBool(62,self.L_3.Value == 1.0)
 	self:SetPackedBool(63,self.L_4.Value == 1.0)
 	self:SetPackedBool(53,self.L_5.Value == 1.0)
-	self:SetPackedBool(181,self.Pepl)
 	self:SetPackedBool(55,self.DoorSelect.Value == 1.0)
 	self:SetPackedBool(555,self.DoorSelect.Value == 0.0)
 	self:SetPackedBool(112,(self.RheostatController.Velocity ~= 0.0))
@@ -762,7 +761,7 @@ function ENT:Think()
 	self:SetPackedBool(158,self.PassengerDoor)
 	self:SetPackedBool(159,self.CabinDoor)
 	self:SetPackedBool(166,self.Trap)
-	
+	self:SetPackedBool(181,self.Pepl)
 	--self.ARSType = self.ARSType or 1
 	self:SetPackedBool(160,self.ParkingBrake.Value > 0)
 	self:SetPackedBool(161,self.ParkingBrakeSign.Value > 0)
