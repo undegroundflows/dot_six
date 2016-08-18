@@ -2,7 +2,7 @@ include("shared.lua")
 --------------------------------------------------------------------------------
 surface.CreateFont("MetrostroiSubway_IGLA6", {
   font = "IEE2",
-  size = 22,
+  size = 23,
   weight = 0,
   blursize = 0,
   scanlines = 0,
@@ -14,7 +14,8 @@ surface.CreateFont("MetrostroiSubway_IGLA6", {
   rotary = false,
   shadow = false,
   additive = false,
-  outline = false
+  outline = false,
+  extended = true
 })
 surface.CreateFont("MetrostroiSubway_InfoRoute6", {
   font = "Arial",
@@ -249,31 +250,23 @@ ENT.ButtonMap["ARS"] = {
 		{x=2130+60,y=680+90,tooltip="ЛКВД: Контроль выключения двигателей\nLKVD: ARS engine shutdown indicator",radius=120},
 		{x=2540+60,y=320+60,tooltip="ЛКВЦ: Лампа контактора высоковольтных цепей\nLKVC: High voltage not available",radius=120},
 	
-		{x=410+275*0+60+60,y=480,tooltip="ОЧ: Отсутствие частоты АРС\nOCh: No ARS frequency",radius=120},
-		{x=410+275*1+60+60,y=480,tooltip="0: Сигнал АРС остановки\n0: ARS stop signal",radius=120},
-		{x=410+275*2+60+60,y=480,tooltip="40: Ограничение скорости 40 км/ч\nSpeed limit 40 kph",radius=120},
-		{x=410+275*3+60+60,y=480,tooltip="60: Ограничение скорости 60 км/ч\nSpeed limit 60 kph",radius=120},
-		{x=410+275*4+60+60,y=480,tooltip="70: Ограничение скорости 70 км/ч\nSpeed limit 70 kph",radius=120},
-		{x=410+275*5+60+60,y=480,tooltip="80: Ограничение скорости 80 км/ч\nSpeed limit 80 kph",radius=120},
+		{x=420+275*0+60+60,y=480,tooltip="ОЧ: Отсутствие частоты АРС\nOCh: No ARS frequency",radius=120},
+		{x=420+275*1+60+60,y=480,tooltip="0: Сигнал АРС остановки\n0: ARS stop signal",radius=120},
+		{x=420+275*2+60+60,y=480,tooltip="40: Ограничение скорости 40 км/ч\nSpeed limit 40 kph",radius=120},
+		{x=420+275*3+60+60,y=480,tooltip="60: Ограничение скорости 60 км/ч\nSpeed limit 60 kph",radius=120},
+		{x=420+275*4+60+60,y=480,tooltip="70: Ограничение скорости 70 км/ч\nSpeed limit 70 kph",radius=120},
+		{x=420+275*5+60+60,y=480,tooltip="80: Ограничение скорости 80 км/ч\nSpeed limit 80 kph",radius=120},
 
 		{x=580,y=900,tooltip="ЛСД: Сигнализация дверей\nLSD: Door state light (doors are closed)",radius=120},
 		{x=810,y=900,tooltip="ЛСД: Сигнализация дверей\nLSD: Door state light (doors are closed)",radius=120},
 		
+		{x=2540+60,y=1000+90,tooltip="АВУ: Автоматический выключатель управления\nAVU: Automatic control disabler active",radius=120},	
 		{x=2540+60,y=800+90,tooltip="ЛСТ: Лампа сигнализации торможения\nLST: Brakes engaged",radius=120},
 		{x=2540+60,y=680+90,tooltip="ЛВД: Лампа включения двигателей\nLVD: Engines engaged",radius=120},
 		{x=2130+60,y=530+60,tooltip="ЛН: Лампа направления\nLN: Direction signal",radius=120},
 		{x=2540+60,y=520+60,tooltip="ЛРС: Лампа равенства скоростей\nLRS: Speed equality light (next segment speed limit equal or greater to current)",radius=120},
 	}
 }
-
-ENT.ButtonMap["ARSKyiv"] = {
-	pos = Vector(459.59,10.98,13.10),
-	ang = Angle(0,-90-0.2,56.3),
-	width = 300*10,
-	height = 110*10,
-	scale = 0.0625/10,
-}
-
 -- Parking Brake Sign
 ENT.ButtonMap["ParkingBrakeSign"] = {
 	pos = Vector(458.8,10.9,13),
@@ -509,9 +502,21 @@ ENT.ButtonMap["IGLA"] = {
 	ang = Angle(0,-90,64),
 	width = 440,
 	height = 190,
-	scale = 0.024,
+	scale = 0.017,
 }
-
+ENT.ButtonMap["IGLAButtons"] = {
+	pos = Vector(470.93,-28.93,7.5),
+	ang = Angle(0,-90,64),
+	width = 165,
+	height = 70,
+	scale = 0.0625,
+		buttons = {
+			{ID = "IGLA1Set",x=26+34*0, y=48, w=14, h=12, tooltip="ИГЛА: Первая кнопка\nIGLA: First button"},
+			{ID = "IGLA2Set",x=26+34*1, y=48, w=14, h=12, tooltip="ИГЛА: Вторая кнопка\nIGLA: Second button"},
+			{ID = "IGLA3Set",x=26+34*2, y=48, w=14, h=12, tooltip="ИГЛА: Третья кнопка\nIGLA: Third button"},
+			{ID = "IGLA4Set",x=26+34*2.8, y=48, w=14, h=12, tooltip="ИГЛА: Четвёртая кнопка\nIGLA: Fourth button"},
+		}
+}
 ENT.ButtonMap["PanelPult"] = {
 	pos = Vector(441.63,-33.65,-2.129),
 	ang = Angle(0,0,0),
@@ -750,8 +755,8 @@ ENT.ClientProps["brake_cylinder"] = {
 --}
 ENT.ClientProps["volt1"] = {--
 	model = "models/metrostroi/81-717/volt_arrow.mdl",
-	pos = Vector(463.3,-46.44,-1.45),
-	ang = Angle(-178,20,55)
+    pos = Vector(463.3,-46.44,-1.45),
+    ang = Angle(-178,20,55)
 }
 --[[
 "LSD"
@@ -1281,20 +1286,21 @@ ENT.ClientProps["door2"] = {
 	pos = Vector(380,28.35,-42.5),
 	ang = Angle(0,90,0)
 }
-ENT.ClientProps["door4"] = {
-	model = "models/6000/door_front.mdl",
-	pos = Vector(478.5,37.1,-46.3),
-	ang = Angle(0,0,0)
-}
+
 ENT.ClientProps["door3"] = {
 	model = "models/6000/door_cabin.mdl",
 	pos = Vector(448.12,65,-42.5),
 	ang = Angle(0,-90,0)
 }
+ENT.ClientProps["door4"] = {
+	model = "models/6000/door_front.mdl",
+	pos = Vector(478.5,37.1,-46.3),
+	ang = Angle(0,0,0)
+}
 ENT.ClientProps["UAVALever"] = {
 	model = "models/metrostroi_train/81/uavalever.mdl",
-	pos = Vector(455,-50.2,-6.9),
- 	ang = Angle(360,-90,180)
+	pos = Vector(455,-50.2,-8),
+ 	ang = Angle(360,-90,90)
 }
 ENT.ClientProps["pepl"] = {
 	model = "models/6000/peplnitsa.mdl",
@@ -1409,7 +1415,7 @@ function ENT:Think()
 	self:Animate("wiper", 		(math.sin(self.WiperValue-math.pi/2)+2)/2 - 0.5, 			0, 0.34,  256,24)
 	self:Animate("brake013", 		self:GetPackedRatio(0)^0.5,			0.00, 0.6,  256,24)
 	--print(self:GetPackedBool(163))
-	self:Animate("controller",		1-self:GetPackedRatio(1),			-0.16, 0.995,  1.5,false)
+	self:Animate("controller",		1-self:GetPackedRatio(1),			-0.16, 1,  0.85,false)
 	self:Animate("reverser",		self:GetPackedRatio(2),				0.44, 0.56,  4,false)
 	self:Animate("volt1", 			self:GetPackedRatio(10),			0.381, 0.645,				nil, nil,  256,2,0.01)
 	self:ShowHide("reverser",		self:GetPackedBool(0))
@@ -1457,6 +1463,7 @@ function ENT:Think()
 	self:Animate("Wiper",				self:GetPackedBool(169) and 1 or 0, 	0,1, 8, false)	
 	self:Animate("KAHK",				self:GetPackedBool("KAHK") and 1 or 0, 	0.32,0.68, 8, false)
 
+	
 --	self:SetCSBodygroup("UOSPl",1,self:GetPackedBool("UOSPl") and 0 or 1)
 --	self:SetCSBodygroup("OtklAVUPl",1,self:GetPackedBool("OtklAVUPl") and 0 or 1)
 --	self:SetCSBodygroup("RC1Pl",1,self:GetPackedBool("RC1Pl") and 0 or 1)
@@ -1464,12 +1471,15 @@ function ENT:Think()
 	self:SetCSBodygroup("RC1Pl",1,self:GetPackedBool("RC1Pl") and 0 or 1)
 	self:SetCSBodygroup("KAHPl",1,self:GetPackedBool("KAHPl") and 0 or 1)
 
+	
 	self:HideButton("RC1",self:GetPackedBool("RC1Pl"))
 	self:HideButton("KAH",self:GetPackedBool("KAHPl"))
 	self:HideButton("KAHK",self:GetPackedBool("KAHPl"))
-
+	
 	self:HideButton("RC1Pl",not self:GetPackedBool("RC1Pl"))
-	self:HideButton("KAHPl",not self:GetPackedBool("KAHPl"))	
+	self:HideButton("KAHPl",not self:GetPackedBool("KAHPl"))
+
+	
 	
 	local An = self:Animate("KDLRr",self:GetPackedBool("Left") and 1 or 0,0,1,10,false)
 	local An = self:Animate("KDPRr",self:GetPackedBool("Right") and 1 or 0,0,1,10,false)
@@ -1528,7 +1538,7 @@ function ENT:Think()
 	--self:Animate("Autodrive",		self:GetPackedBool(132) and 1 or 0,	0,1, 16, false)
 	self:Animate("ARS13",			self:GetPackedBool(150) and 1 or 0, 0,1, 16, false)
 	self:Animate("Radio13",			self:GetPackedBool(151) and 1 or 0, 0,1, 16, false)
-	self:Animate("UAVALever",	self:GetPackedBool(152) and 0 or 1, 	0,0.15, 128,  3,false)
+	self:Animate("UAVALever",	self:GetPackedBool(152) and 1 or 0, 	0,0.375, 128,  3,false)
 	self:Animate("Pepl",			self:GetPackedBool(181) and 0 or 1,0,1, 3, false)
 	self:Animate("EPK_disconnect",	self:GetPackedBool(155) and 0 or 1,0,1, 3, false)
 	self:Animate("ParkingBrake",	self:GetPackedBool(160) and 0 or 1,0,1, 3, false)
@@ -1587,7 +1597,7 @@ function ENT:Think()
 --	self:ShowHideSmooth("CustomF_light",self:Animate("CustomF",self:GetPackedBool("CustomF") and 1 or 0,0,1,10,false))
 --	self:ShowHideSmooth("CustomG_light",self:Animate("CustomG",self:GetPackedBool("CustomG") and 1 or 0,0,1,10,false))
 
-	if self:GetNWInt("ARSType",1) == 4 then
+	if self:GetNW2Int("ARSType",1) == 4 then
 		self:ShowHideSmooth("LRP_light",self:Animate("light_rRP",self:GetPackedBool(35) and 1 or 0,0,1,12,false) + self:Animate("light_rLSN",self:GetPackedBool(131) and 1 or 0,0,0.3,12,false))
 		self:ShowHideSmooth("LKT_light",self:Animate("light_KT",self:GetPackedBool(47) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("LKVD_light",self:Animate("light_KVD",self:GetPackedBool(48) and 1 or 0,0,1,8,false))
@@ -1596,7 +1606,7 @@ function ENT:Think()
 		self:ShowHideSmooth("LKVC_light",1-self:Animate("light_LKVC",self:GetPackedBool(34) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("LEKK_light",0)
 		self:ShowHideSmooth("LPU_light",0)
-		self:ShowHideSmooth("LSD",self:Animate("light_SD",self:GetPackedBool(40)and 1 or 0,0,1,8,false))
+		self:ShowHideSmooth("LSD",self:Animate("light_SD",self:GetPackedBool(40) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("LOCh",self:Animate("light_OCh",self:GetPackedBool(41) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("L0",self:Animate("light_0",self:GetPackedBool(42) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("LRS",self:Animate("light_LRS",self:GetPackedBool(54) and 1 or 0,0,1,8,false))
@@ -1605,11 +1615,11 @@ function ENT:Think()
 		self:ShowHideSmooth("L80",self:Animate("light_80",self:GetPackedBool(46) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("L70",self:Animate("light_70",self:GetPackedBool(45) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("LRK",self:Animate("light_LhRK",self:GetPackedBool(33) and 1 or 0,0,12,1,false))
-		self:ShowHideSmooth("LAVU",self:Animate("light_AVU",self:GetPackedBool(38) and 1 or 0,0,1,8,false))
+		self:ShowHideSmooth("AVULight_light",self:Animate("light_AVU",self:GetPackedBool(38) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("BPSN_light",self:Animate("light_BPSN",self:GetPackedBool(59) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("LARS",self:Animate("light_ARS",self:GetPackedBool(174) and 1 or 0,0,1,8,false))
 	end
-	local accel = self:GetNWFloat("Accel")
+	local accel = self:GetNW2Float("Accel")
 	
 	if math.abs(accel) > 0.1 then
 		--if self.Door1 then self.Door1 = math.min(0.99,math.max(0,self.Door1+accel*self.DeltaTime)) end
@@ -1846,9 +1856,9 @@ function ENT:DrawPost(special)
 
 	local distance = self:GetPos():Distance(LocalPlayer():GetPos())
 	if distance > 1024 or special then return end
-	if self:GetNWInt("ARSType",1) ~= 4 then
+	if self:GetNW2Int("ARSType",1) ~= 4 then
 		self:DrawOnPanel("ARS",function()
-			if self:GetNWInt("ARSType",1) ~= 2 then return end
+			if self:GetNW2Int("ARSType",1) ~= 2 then return end
 			surface.SetAlphaMultiplier(0.7)
 			surface.SetDrawColor(0,0,0)
 			surface.DrawRect(48*10,20*10,24*10,24*10)
@@ -1864,7 +1874,7 @@ function ENT:DrawPost(special)
 		end)
 
 		self:DrawOnPanel("ARS",function()
-			if self:GetNWInt("ARSType",1) ~= 1 then return end
+			if self:GetNW2Int("ARSType",1) ~= 1 then return end
 			
 			--[[surface.SetAlphaMultiplier(0.7)
 			surface.SetDrawColor(0,0,0)
@@ -1903,7 +1913,7 @@ function ENT:DrawPost(special)
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(150,255,50)
 				surface.DrawRect(206*10,88.5*10,17*10,9*10)
-				draw.DrawText("ЛКТ","MetrostroiSubway_LargeText2",206*10+8,88.5*10-5,Color(0,0,0,245))
+				draw.DrawText("ЛКТ","MetrostroiSubway_LargeText2",206.5*10+8,89*10-5,Color(0,0,0,245))
 			end			
 			
 			b = self:Animate("light_KVD",self:GetPackedBool(48) and 1 or 0,0,1,15,false)
@@ -1914,14 +1924,23 @@ function ENT:DrawPost(special)
 				surface.DrawRect(205.8*10,71.5*10,17*10,9*10)
 				draw.DrawText("ЛКВД","MetrostroiSubway_LargeText3",205.8*10+5,71.5*10+5,Color(0,0,0,245))
 			end
-			
+
+			b = self:Animate("light_LN",self:GetPackedBool("LN") and 1 or 0,0,1,15,false)
+			if b > 0.0 then
+				surface.SetAlphaMultiplier(b)
+				--surface.SetDrawColor(255,120,50)
+					surface.SetDrawColor(150,255,50)
+				surface.DrawRect(205.7*10,54.5*10,17*10,9*10)
+				draw.DrawText("ЛН","MetrostroiSubway_LargeText2",205.25*10+35,55.5*10-5,Color(0,0,0,245))
+			end
+
 			b = self:Animate("light_LhRK",self:GetPackedBool(33) and 1 or 0,0,1,15,false)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(255,160,20)
 				surface.DrawRect(111.3*10,88*10,17*10,9.4*10)
 			--	draw.DrawText("ЛхРК","MetrostroiSubway_LargeText3",111*10+5,78*10+5,Color(0,0,0,245))
-				draw.DrawText("РК","MetrostroiSubway_LargeText2",111.3*10+30,88.4*10-5,Color(0,0,0,245))
+				draw.DrawText("РК","MetrostroiSubway_LargeText2",111.3*10+30,88.9*10-5,Color(0,0,0,245))
 			end
 			--b = self:Animate("light_EPK",self:GetPackedBool(155) and 1 or 0,0,1,15,false)
 			--if b > 0.0 then
@@ -1944,7 +1963,7 @@ function ENT:DrawPost(special)
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(150,255,50)
 				surface.DrawRect(242.5*10,54.5*10,17*10,9*10)
-				draw.DrawText("РС","MetrostroiSubway_LargeText2",242.5*10+35,54.5*10-5,Color(0,0,0,245))
+				draw.DrawText("РС","MetrostroiSubway_LargeText2",242.5*10+35,55.5*10-5,Color(0,0,0,245))
 			end
 			
 			b = self:Animate("light_LST",self:GetPackedBool(49) and 1 or 0,0,1,15,false)
@@ -2012,7 +2031,7 @@ function ENT:DrawPost(special)
 				--surface.SetDrawColor(255,120,50)
 				surface.SetDrawColor(255,60,60)
 				surface.DrawRect(242.5*10,37.5*10,17*10,9*10)
-				draw.DrawText("ЛКВЦ","MetrostroiSubway_LargeText3",242.5*10+5,37.5*10+5,Color(0,0,0,245))
+				draw.DrawText("ЛКВЦ","MetrostroiSubway_LargeText3",242.5*10+5,38.5*10+5,Color(0,0,0,245))
 			end
 			
 			b = self:Animate("light_SD",(self:GetPackedBool(40) and 1 or 0),0,1,5,false)
@@ -2056,16 +2075,16 @@ function ENT:DrawPost(special)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(150,255,50)
-				surface.DrawRect((41+27.5*3)*10,38*9.9,17*10,9*10)
-				draw.DrawText("60","MetrostroiSubway_LargeText",(41+27.5*3)*10+35,38*9.9-5,Color(0,0,0,245))
+				surface.DrawRect((41+27.5*3)*10,38*9.8,17*10,9*10)
+				draw.DrawText("60","MetrostroiSubway_LargeText",(41+27.5*3)*10+35,38*9.8-5,Color(0,0,0,245))
 			end
 				
 			b = self:Animate("light_70",self:GetPackedBool(45) and 1 or 0,0,1,15,false)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(150,255,50)
-				surface.DrawRect((40+27*4)*10,38*10,17*9.9,9*10)
-				draw.DrawText("70","MetrostroiSubway_LargeText",(40+27*4)*10+35,38*9.9-5,Color(0,0,0,245))
+				surface.DrawRect((40.35+27*4)*10,38*9.8,17*9.9,9*10)
+				draw.DrawText("70","MetrostroiSubway_LargeText",(40.35+27*4)*10+35,38*9.8-5,Color(0,0,0,245))
 			end
 				
 			b = self:Animate("light_80",self:GetPackedBool(46) and 1 or 0,0,1,15,false)
@@ -2079,74 +2098,7 @@ function ENT:DrawPost(special)
 			surface.SetAlphaMultiplier(1.0)
 		end)
 	end
-	self:DrawOnPanel("IGLA",function()
-		if not self:GetPackedBool(32) or not self:GetPackedBool(78) then return end
-		local text1 = ""
-		local text2 = ""
-		local C1 = Color(0,200,255,255)
-		local C2 = Color(0,0,100,155)
-		local flash = false
-		local T = self:GetPackedRatio(11)
-		local Ptrain = self:GetPackedRatio(5)*16.0
-		local Pcyl = self:GetPackedRatio(6)*6.0
-		local date = os.date("!*t",os_time)
-		
-		-- Default IGLA text
-		text1 = "IGLA-01K     RK TEMP"
-		text2 = Format("%02d:%02d:%02d       %3d C",date.hour,date.min,date.sec,T)
-		
-		-- Modifiers and conditions
-		if self:GetPackedBool(25) then text1 = " !!  Right Doors !!" end
-		if self:GetPackedBool(21) then text1 = " !!  Left Doors  !!" end
-
-		-- Modifiers and conditions
-		if T > 300 then text1 = "Temperature warning!" end
-
-		if self:GetPackedBool(50) and (Pcyl > 1.1) then
-			text1 = "FAIL PNEUMATIC BRAKE"
-			flash = true
-		end
-		if self:GetPackedBool(35) and
-		   self:GetPackedBool(28) then
-			text1 = "FAIL AVU/BRAKE PRESS"
-			flash = true
-		end
-		if self:GetPackedBool(35) and
-		   (not self:GetPackedBool(40)) then
-			text1 = "FAIL SD/DOORS OPEN  "
-			flash = true
-		end
-		if self:GetPackedBool(36) then
-			text1 = "FAIL OVERLOAD RELAY "
-			flash = true
-		end
-		if Ptrain < 5.5 then
-			text1 = "FAIL TRAIN LINE LEAK"
-			flash = true
-		end
-		
-		if T > 400 then flash = true end
-		if T > 500 then text1 = "!Disengage circuits!" end
-		if T > 750 then text1 = " !! PIZDA POEZDU !! " end
-		
-		-- Draw text
-		if flash and ((RealTime() % 1.0) > 0.5) then
-			C2,C1 = C1,C2
-		end
-		for i=1,20 do
-			surface.SetDrawColor(C2)
-			surface.DrawRect(40+(i-1)*16.5+1,42+3.5,15.75,23)			
-			draw.DrawText(string.upper(text1[i] or ""),"MetrostroiSubway_IGLA6",38.25+(i-1)*16.6,44.85,C1)
-		end
-		for i=1,20 do
-			surface.SetDrawColor(C2)
-			surface.DrawRect(40+(i-1)*16.5+1,42+32+4,15.75,23)
-			draw.DrawText(string.upper(text2[i] or ""),"MetrostroiSubway_IGLA6",38.55+(i-1)*16.6,46+32,C1)
-		end
-		surface.SetAlphaMultiplier(1)
-	end)
-	
-		
+	self:DrawOnPanel("IGLA",function(...) self.IGLA:IGLA(self,...) end)
 	self:DrawOnPanel("AnnouncerDisplay",function(...)
 		local plus = (not self:GetPackedBool(32) and 1 or 0)
 		surface.SetDrawColor(83,140,82)
@@ -2156,22 +2108,22 @@ function ENT:DrawPost(special)
 	end)	
 	
 		draw.Text({
-			text = string.Trim(self:GetNWString("CustomStr10")),
+			text = string.Trim(self:GetNW2String("CustomStr10")),
 			font = "MetrostroiSubway_VerySmallText3",
 			pos = { 145,385+0*120},
 			xalign = TEXT_ALIGN_CENTER,yalign = TEXT_ALIGN_CENTER,color = Color(0,0,0,255)})
 		draw.Text({
-			text = string.Trim(self:GetNWString("CustomStr11")),
+			text = string.Trim(self:GetNW2String("CustomStr11")),
 			font = "MetrostroiSubway_VerySmallText3",
 			pos = { 145,385+1*120},
 			xalign = TEXT_ALIGN_CENTER,yalign = TEXT_ALIGN_CENTER,color = Color(0,0,0,255)})
 		draw.Text({
-			text = string.Trim(self:GetNWString("CustomStr12")),
+			text = string.Trim(self:GetNW2String("CustomStr12")),
 			font = "MetrostroiSubway_VerySmallText3",
 			pos = { 735,200},
 			xalign = TEXT_ALIGN_CENTER,yalign = TEXT_ALIGN_CENTER,color = Color(0,0,0,255)})
 		draw.Text({
-			text = string.Trim(self:GetNWString("CustomStr13")),
+			text = string.Trim(self:GetNW2String("CustomStr13")),
 			font = "MetrostroiSubway_VerySmallText3",
 			pos = { 735,100},
 			xalign = TEXT_ALIGN_CENTER,yalign = TEXT_ALIGN_CENTER,color = Color(0,0,0,255)})
@@ -2194,8 +2146,8 @@ function ENT:DrawPost(special)
 		local C1 = Color(0,0,0,210)
 		local C2 = Color(0,0,0,90)
 		local flash = false
-		text1 = self:GetNWString("CustomStr0")
-		text2 = self:GetNWString("CustomStr1")
+		text1 = self:GetNW2String("CustomStr0")
+		text2 = self:GetNW2String("CustomStr1")
 		
 		-- Draw text
 		if flash and ((RealTime() % 1.0) > 0.5) then
@@ -2211,7 +2163,6 @@ function ENT:DrawPost(special)
 			surface.DrawRect(287+(i-1)*17.7+1,125+31+4,16,22)
 			draw.DrawText(string.upper(text2[i] or ""),"MetrostroiSubway_IGLA",287+(i-1)*17.7,125+31,C1)
 		end
-
 	
 
 	self:DrawOnPanel("FrontPneumatic",function()
@@ -2250,8 +2201,8 @@ function ENT:DrawPost(special)
 		--surface.DrawRect(0,0,240,80)
 	--end)
 end
-
 function ENT:OnButtonPressed(button)
+
 	if button == "ShowHelp" then
 		RunConsoleCommand("metrostroi_train_manual")
 	end

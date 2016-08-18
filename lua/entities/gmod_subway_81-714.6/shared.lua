@@ -12,11 +12,19 @@ ENT.Spawnable       = true
 ENT.AdminSpawnable  = false
 
 function ENT:PassengerCapacity()
-	return 300
+	return 330
 end
 
 function ENT:GetStandingArea()
 	return Vector(-450,-30,-45),Vector(380,30,-45)
+end
+
+function ENT:InitializeSounds()
+	self.BaseClass.InitializeSounds(self)
+	self.SoundNames["door_close1"]  = "subway_trains/dot_six/doors/doorsclose4.wav"
+	self.SoundNames["door_open1"] = "subway_trains/dot_six/doors/doorsopen4.wav"
+	self.SoundNames["switch3"]	= ""
+	self.SoundNames["relay_open"] = ""
 end
 
 function ENT:InitializeSystems()

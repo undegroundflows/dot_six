@@ -10,6 +10,7 @@ ENT.Category		= "Metrostroi (trains)"
 
 ENT.Spawnable       = true
 ENT.AdminSpawnable  = false
+ENT.AdminOnly 		= true
 
 function ENT:PassengerCapacity()
 	return 300
@@ -17,6 +18,14 @@ end
 
 function ENT:GetStandingArea()
 	return Vector(-450,-30,-45),Vector(380,30,-45)
+end
+
+function ENT:InitializeSounds()
+	self.BaseClass.InitializeSounds(self)
+	self.SoundNames["door_close1"]  = "doorsclose4.wav"
+	self.SoundNames["door_open1"] = "doorsopen4.wav"
+	self.SoundNames["switch3"]	= ""
+	self.SoundNames["relay_open"] = ""
 end
 
 function ENT:InitializeSystems()

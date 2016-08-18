@@ -39,8 +39,8 @@ function ENT:Initialize()
 	--self.InstructorsSeat:SetRenderMode(RENDERMODE_TRANSALPHA)
 
 	-- Create bogeys
-	self.FrontBogey = self:CreateBogey(Vector( 320-5,0,-75),Angle(0,180,0),true)
-	self.RearBogey  = self:CreateBogey(Vector(-315+0,0,-75),Angle(0,0,0),false)
+	self.FrontBogey = self:CreateBogey(Vector( 313-5,0,-75),Angle(0,180,0),true)
+	self.RearBogey  = self:CreateBogey(Vector(-308.44+0,0,-75),Angle(0,0,0),false)
 
 	-- Initialize key mapping
 	self.KeyMap = {
@@ -139,8 +139,7 @@ function ENT:Initialize()
 		[7] = { "glow",				Vector(470, 53,-19), Angle(0,0,0), Color(255,220,180), brightness = 1, scale = 1.0 },
 
 		-- Reverse
-		[8] = { "light",			Vector(478,-44, 60), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 1.0 },
-		[9] = { "light",			Vector(478, 44, 60), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 1.0 },
+		[9] = { "light",  Vector(461,12.75+1.5-9.6,-0.8), Angle(0,0,0), Color(0,255,0), brightness = 0.0, scale = 0.020 },
 
 		-- Cabin
 		[10] = { "dynamiclight",	Vector( 440, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.1, distance = 550 },
@@ -279,7 +278,7 @@ function ENT:Think()
 	--self.InstructorsSeat:SetLocalPos(Vector(410,47,-27+2.5))
 	--seat:SetPos(self:LocalToWorld(seat_info.offset))
 	--seat:SetAngles(self:GetAngles()+Angle(0,-90,0)+seat_info.angle)
-
+	self:SetLightPower(9, self.Battery.Voltage > 0.0)
 	-- Interior/cabin lights
 	local lightsActive1 = (self.Battery.Voltage > 55.0 and self.Battery.Voltage < 85.0) and
 		((self:ReadTrainWire(33) > 0) or (self:ReadTrainWire(34) > 0))

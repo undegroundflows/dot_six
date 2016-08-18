@@ -13,7 +13,7 @@ ENT.BogeyDistance = 650 -- Needed for gm trainspawner
 ---------------------------------------------------
 ENT.SubwayTrain = {
 	Type = "81",
-	Name = "81-717.6",
+	Name = "81-717.5m",
 	WagType = 1,
 	Manufacturer = "MVM",
 	ARS = {
@@ -61,10 +61,9 @@ function ENT:Initialize()
 	self.ExtraSeat3:SetRenderMode(RENDERMODE_TRANSALPHA)
 
 	-- Create bogeys
-	self.FrontBogey = self:CreateBogey(Vector( 328-5,0,-75),Angle(0,180,0),true)
-	self.RearBogey  = self:CreateBogey(Vector(-317+0,0,-75),Angle(0,0,0),false)
+	self.FrontBogey = self:CreateBogey(Vector( 326.5-5,0,-75),Angle(0,180,0),true)
+	self.RearBogey  = self:CreateBogey(Vector(-310.84+0,0,-75),Angle(0,0,0),false)
 
-	-- Initialize key mapping
 	self.KeyMap = {
 		[KEY_1] = "KVSetX1",
 		[KEY_2] = "KVSetX2",
@@ -109,7 +108,7 @@ function ENT:Initialize()
 		[KEY_SPACE] = "PBSet",
 		[KEY_BACKSPACE] = "EmergencyBrake",
 
-		[KEY_PAD_0] = "DriverValveDisconnect",
+		[KEY_PAD_0] = "DriverValveDisconnectToggle",
 		[KEY_PAD_DECIMAL] = "EPKToggle",
 		[KEY_LSHIFT] = {
 			[KEY_W] = "KVUp_Unlocked",
@@ -201,22 +200,23 @@ function ENT:Initialize()
 	local vY = Angle(0,-90-0.2,56.3):Right()
 	self.Lights = {
 		-- Headlight glow
-		[1] = { "headlight",		Vector(465,0,-20), Angle(0,0,0), Color(216,181,172), fov = 100 },
+		[1] = { "headlight",		Vector(465,0,-20), Angle(0,0,0), Color(216,181,172), fov = 100, farz=6144,brightness = 4},
 		
 		-- Head (type 1)
-        [2] = { "glow",    Vector(481.5, 44,-30), Angle(0,0,0), Color(220,220,255), brightness = 0.83, scale = 1 },
-        [3] = { "glow",    Vector(481.5, 34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.9, scale = 1 },
+        [2] = { "glow",    Vector(481.5, 44,-30), Angle(0,0,0), Color(220,220,220), brightness = 1, scale = 1 },
+        [3] = { "glow",    Vector(481.5, 34,-30), Angle(0,0,0),Color(220,220,220), brightness = 1, scale = 1 },
 		--[4] = { "glow",				Vector(0,0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
 		--[5] = { "glow",				Vector(0, 0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
-		[4] = { "glow",    Vector(481.5,-34,-30), Angle(0,0,0),Color(220,220,255), brightness = 0.9, scale = 1 },
-        [5] = { "glow",    Vector(481.5,-44,-30), Angle(0,0,0), Color(220,220,255), brightness = 0.83, scale = 1 }, 
+		[4] = { "glow",    Vector(481.5,-34,-30), Angle(0,0,0),Color(220,220,220), brightness = 1, scale = 1 },
+        [5] = { "glow",    Vector(481.5,-44,-30), Angle(0,0,0), Color(220,220,220), brightness = 1, scale = 1 }, 
 
 		-- Reverse
 		[8] = { "light",			Vector(462.5,-30,70), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
 		[9] = { "light",			Vector(462.5, 30,70), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
-		[99] = { "light",			Vector(467.5,-46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
 		[98] = { "light",			Vector(467.5, 46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
-	-- Cabin
+		[99] = { "light",			Vector(467.5,-46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
+		
+		-- Cabin
 		[10] = { "dynamiclight",	Vector( 430, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.05, distance = 550 },
 
 		-- Interior
@@ -762,6 +762,7 @@ function ENT:Think()
 	self:SetPackedBool(159,self.CabinDoor)
 	self:SetPackedBool(166,self.Trap)
 	self:SetPackedBool(181,self.Pepl)
+
 	--self.ARSType = self.ARSType or 1
 	self:SetPackedBool(160,self.ParkingBrake.Value > 0)
 	self:SetPackedBool(161,self.ParkingBrakeSign.Value > 0)
@@ -776,16 +777,7 @@ function ENT:Think()
 	self:SetPackedBool("RZP",self:ReadTrainWire(35) == 1)
 	self:SetPackedBool("DriverValveBLDisconnect",self.DriverValveBLDisconnect.Value == 1.0)
 	self:SetPackedBool("DriverValveTLDisconnect",self.DriverValveTLDisconnect.Value == 1.0)
-	if self.DriverValveDisconnect.Blocked > 0 and self.Pneumatic.ValveType == 2 then
-		self.DriverValveDisconnect:TriggerInput("Block",0)
-		self.DriverValveBLDisconnect:TriggerInput("Block",1)
-		self.DriverValveTLDisconnect:TriggerInput("Block",1)
-	end
-	if self.DriverValveDisconnect.Blocked == 0 and self.Pneumatic.ValveType == 1 then
-		self.DriverValveDisconnect:TriggerInput("Block",1)
-		self.DriverValveBLDisconnect:TriggerInput("Block",0)
-		self.DriverValveTLDisconnect:TriggerInput("Block",0)
-	end
+
 	for k,v in pairs(self.Plombs) do
 		self:SetPackedBool(k.."Pl",v)
 		if not v then v = nil end
@@ -842,6 +834,8 @@ function ENT:Think()
 	self:SetPackedBool(46,self.ALS_ARS.Signal80)
 	-- KT
 	self:SetPackedBool(47,self.ALS_ARS.LKT)
+	-- ЛН
+	self:SetPackedBool("LN",self.ALS_ARS.LN)
 	-- KVD
 	self:SetPackedBool(48,self:ReadTrainWire(21) > 0.5)--self.ALS_ARS.LVD)
 	-- LST
@@ -856,9 +850,8 @@ function ENT:Think()
 	-- LRS
 	self:SetPackedBool(54,(self.Panel["V1"] > 0.5) and
 		(self.ALS.Value > 0.5) and
-		(GetConVarNumber("metrostroi_ars_sfreq") > 0 and not self.ALS_ARS.RealNoFreq and self.ALS_ARS.NextLimit >= self.ALS_ARS.SpeedLimit))
-	--LBPSN
-	
+		(GetConVarNumber("metrostroi_ars_sfreq") > 0 and self.ALS_ARS.SpeedLimit > 20 and not self.ALS_ARS.RealNoFreq and self.ALS_ARS.NextLimit >= self.ALS_ARS.SpeedLimit))
+
 	-- AV states
 	for i,v in ipairs(self.Panel.AVMap) do
 		if tonumber(v)
@@ -866,6 +859,7 @@ function ENT:Think()
 		else self:SetPackedBool(64+(i-1),self[v].Value == 1.0)
 		end
 	end
+
 
 -- Non-standard ars logic
 
@@ -896,7 +890,7 @@ function ENT:Think()
 		-- LEKK
 		self:SetLightPower(51,false)
 		-- LN
-		self:SetLightPower(52,false)
+		self:SetLightPower(52, self:GetPackedBool("LN") and self:GetPackedBool(32))
 		-- LKVD
 		self:SetLightPower(53,self:GetPackedBool(48) and self:GetPackedBool(32))
 		-- LKT
@@ -921,7 +915,7 @@ function ENT:Think()
 	self:SetLightPower(70,self.SOSD)
 
 	-- Total temperature
-	local IGLA_Temperature = math.max(self.Electric.T1,self.Electric.T2)
+--	local IGLA_Temperature = math.max(self.Electric.T1,self.Electric.T2)
 
 	-- Feed packed floats
 	self:SetPackedRatio(0, 1-self.Pneumatic.DriverValvePosition/7)
@@ -954,23 +948,22 @@ function ENT:Think()
 		--print(self.Panel["V1"] * self.Battery.Voltage)
 		self:SetPackedRatio(10,(self.Panel["V1"] * self.Battery.Voltage) / 150.0)
 	end
-	self:SetPackedRatio(11,IGLA_Temperature)
+--	self:SetPackedRatio(11,IGLA_Temperature)
 	self:SetPackedBool("LSP",(self.Electric.Overheat1 > 0) or (self.Electric.Overheat2 > 0))
 
 	-- Update ARS system
 	self:SetPackedRatio(3, self.ALS_ARS.Speed/100)
 	self:SetPackedRatio("Speed", self.Speed/100)
-	if (self.ALS_ARS.Ring == true) or --(self:ReadTrainWire(21) > 0) or
-		((IGLA_Temperature > 500) and ((CurTime() % 2.0) > 1.0) and self.A63.Value == 1) then
-		self:SetPackedBool(39,true)
-	end
+	if self.ALS_ARS.Ring == true then
+ 		self:SetPackedBool(39,true)
+ 	end
 
 	-- RUT test
 	--print(self:GetNW2Float("PassengerCount"))
 	local weightRatio = 2.00*math.max(0,math.min(1,(self:GetNW2Float("PassengerCount")/300)))
 	if math.abs(self:GetAngles().pitch) > 2.5 then weightRatio = weightRatio + 1.00 end
-	self.YAR_13A:TriggerInput("WeightLoadRatio",math.max(0,math.min(2.50,weightRatio)))
-	self.YAR_27:TriggerInput("WeightLoadRatio",math.max(0,math.min(2.50,weightRatio)))
+	self.YAR_13A:TriggerInput("WeightLoadRatio",math.max(0,math.min(1.50,weightRatio)))
+	self.YAR_27:TriggerInput("WeightLoadRatio",math.max(0,math.min(1.50,weightRatio)))
 
 	-- Exchange some parameters between engines, pneumatic system, and real world
 	self.Engines:TriggerInput("Speed",self.Speed)
@@ -1368,50 +1361,13 @@ function ENT:OnButtonPress(button,route)
 		end
 		return
 	end
-	if button == "DriverValveDisconnect" then
-		if self.Pneumatic.ValveType == 2 then
-			if self.DriverValveDisconnect.Value == 1.0 then
-				self.DriverValveDisconnect:TriggerInput("Set",0)
-				self:PlayOnce("pneumo_disconnect2","cabin",0.9)
-				if self.EPK.Value == 1 then self:PlayOnce("epv_on","cabin",0.9) end
-			else
-				self.DriverValveDisconnect:TriggerInput("Set",1)
-				self:PlayOnce("pneumo_disconnect1","cabin",0.9)
-				if self.EPK.Value == 1 then self:PlayOnce("epv_off","cabin",0.9) end
-			end
-		else
-			if self.DriverValveBLDisconnect.Value == 0 or self.DriverValveTLDisconnect.Value == 0 then
-				self.DriverValveBLDisconnect:TriggerInput("Set",1)
-				self.DriverValveTLDisconnect:TriggerInput("Set",1)
-			else
-				self.DriverValveBLDisconnect:TriggerInput("Set",0)
-				self.DriverValveTLDisconnect:TriggerInput("Set",0)
-			end
-			if self.DriverValveBLDisconnect.Value == 1.0 then
-				if self.EPK.Value == 1 then self:PlayOnce("epv_off","cabin",0.9) end
-			else
-				if self.EPK.Value == 1 then self:PlayOnce("epv_on","cabin",0.9) end
-			end
-		end
-		return
-	end
-
 	if button == "DriverValveDisconnectToggle" then
 		if self.DriverValveDisconnect.Value == 1.0 then
 			self:PlayOnce("pneumo_disconnect2","cabin",0.9)
-			if self.EPK.Value == 1 then self:PlayOnce("epv_off","cabin",0.9) end
+			if self.EPK.Value == 1 then self:PlayOnce("epv_on","cabin",0.9) end
 		else
 			self:PlayOnce("pneumo_disconnect1","cabin",0.9)
-			if self.EPK.Value == 1 then self:PlayOnce("epv_on","cabin",0.9) end
-		end
-		return
-	end
-
-	if button == "DriverValveBLDisconnectToggle" then
-		if self.DriverValveBLDisconnect.Value == 1.0 then
 			if self.EPK.Value == 1 then self:PlayOnce("epv_off","cabin",0.9) end
-		else
-			if self.EPK.Value == 1 then self:PlayOnce("epv_on","cabin",0.9) end
 		end
 		return
 	end
