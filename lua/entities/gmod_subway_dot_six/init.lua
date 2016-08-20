@@ -20,7 +20,6 @@ ENT.SubwayTrain = {
 		HaveASNP = true,
 	}
 }
-
 function ENT:Initialize()
 	self.Plombs = {
 		VAH = false,
@@ -203,12 +202,12 @@ function ENT:Initialize()
 		[1] = { "headlight",		Vector(465,0,-20), Angle(0,0,0), Color(216,181,172), fov = 100, farz=6144,brightness = 4},
 		
 		-- Head (type 1)
-        [2] = { "glow",    Vector(481.5, 44,-30), Angle(0,0,0), Color(220,220,220), brightness = 1, scale = 1 },
-        [3] = { "glow",    Vector(481.5, 34,-30), Angle(0,0,0),Color(220,220,220), brightness = 1, scale = 1 },
+        [2] = { "glow",    Vector(481.5, 44,-30), Angle(0,0,0), Color(230,216,200), brightness = 1, scale = 1 },
+        [3] = { "glow",    Vector(481.5, 34,-30), Angle(0,0,0),Color(230,216,200), brightness = 1, scale = 1 },
 		--[4] = { "glow",				Vector(0,0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
 		--[5] = { "glow",				Vector(0, 0, 0), Angle(0,0,0),  Color(255,220,180), brightness = 1, scale = 1.0 },
-		[4] = { "glow",    Vector(481.5,-34,-30), Angle(0,0,0),Color(220,220,220), brightness = 1, scale = 1 },
-        [5] = { "glow",    Vector(481.5,-44,-30), Angle(0,0,0), Color(220,220,220), brightness = 1, scale = 1 }, 
+		[4] = { "glow",    Vector(481.5,-34,-30), Angle(0,0,0),Color(230,216,200), brightness = 1, scale = 1 },
+        [5] = { "glow",    Vector(481.5,-44,-30), Angle(0,0,0), Color(230,216,200), brightness = 1, scale = 1 }, 
 
 		-- Reverse
 		[8] = { "light",			Vector(462.5,-30,70), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
@@ -476,13 +475,6 @@ function ENT:Think()
 				self.Lights[i][4] = Color(255,255,255)
 			end
 		end
-	end
-	
-	
-
-	if self.ARSType ~= self.OldARSType then
-		self.OldARSType = self.ARSType
-		self.RVT:TriggerInput("OpenTime",self.ARSType == 4 and 1.3 or 0.3 )
 	end
 
 	self:SetBodygroup(1,(self.Breakers or 0))
@@ -903,8 +895,6 @@ function ENT:Think()
 		self:SetLightPower(57,self:GetPackedBool(50) and self:GetPackedBool(32))
 		-- LST
 		self:SetLightPower(58,self:GetPackedBool(49) and self:GetPackedBool(32))
-		-- LBPSN
-		self:SetLightPower(59,self:GetPackedBool(52) and self:GetPackedBool(32))
 	else
 		for i=40,58 do
 			self:SetLightPower(i,false)
@@ -913,9 +903,6 @@ function ENT:Think()
 
   self.SOSD = self.Panel["SD"] <= 0 and self.Panel["V1"] > 0 and self.KV.ReverserPosition ~= 0
 	self:SetLightPower(70,self.SOSD)
-
-	-- Total temperature
---	local IGLA_Temperature = math.max(self.Electric.T1,self.Electric.T2)
 
 	-- Feed packed floats
 	self:SetPackedRatio(0, 1-self.Pneumatic.DriverValvePosition/7)
@@ -948,7 +935,6 @@ function ENT:Think()
 		--print(self.Panel["V1"] * self.Battery.Voltage)
 		self:SetPackedRatio(10,(self.Panel["V1"] * self.Battery.Voltage) / 150.0)
 	end
---	self:SetPackedRatio(11,IGLA_Temperature)
 	self:SetPackedBool("LSP",(self.Electric.Overheat1 > 0) or (self.Electric.Overheat2 > 0))
 
 	-- Update ARS system

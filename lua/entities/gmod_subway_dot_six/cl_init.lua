@@ -31,7 +31,8 @@ surface.CreateFont("MetrostroiSubway_InfoRoute6", {
   rotary = false,
   shadow = false,
   additive = false,
-  outline = false
+  outline = false,
+  extended = true
 })
 surface.CreateFont("MetrostroiSubway_LargeText6", {
   font = "Arial",
@@ -47,7 +48,8 @@ surface.CreateFont("MetrostroiSubway_LargeText6", {
   rotary = false,
   shadow = false,
   additive = false,
-  outline = false
+  outline = false,
+  extended = true
 })
 
 ENT.ClientProps = {}
@@ -133,7 +135,7 @@ ENT.ButtonMap["Front"] = {
 		
 		{ID = "GreenRPLight",	x=260, y=35, radius=20, tooltip="РП: Зелёная лампа реле перегрузки\nRP: Green overload relay light (overload relay open on current train)"},
 --		{ID = "AVULight",		x=406, y=-47, radius=20, tooltip="АВУ: Автоматический выключатель управления\nAVU: Automatic control disabler active"},
-		{ID = "KVPLight",		x=148, y=35, radius=20, tooltip="КВП: Контроль высоковольного преобразователя\nKVP: High-voltage converter control"},
+		{ID = "KVPLight",		x=148, y=35, radius=20, tooltip="КВП: Контроль высоковольтного преобразователя\nKVP: High-voltage converter control"},
 		{ID = "SPLight",		x=0, y=15, radius=100, tooltip="ЛСП: Лампа сигнализации пожара\nLSP: Fire emergency (rheostat overheat)"},
 	}
 }
@@ -158,7 +160,7 @@ ENT.ButtonMap["PackSwitch"] = {
 
 -- BPSN panel
 ENT.ButtonMap["LowVoltagecontrol"] = {
-	pos = Vector(466,-45,3.5),
+	pos = Vector(422.5,-62.2+1.1,2),
 	ang = Angle(0,-150,79),
 	width = 120,
 	height = 120,
@@ -418,16 +420,26 @@ ENT.ButtonMap["EPKDisconnect"] = {
 		{ID = "EPKToggle", x=0, y=0, w=200, h=70, tooltip="Кран ЭПВ\nEPK disconnect valve"},
 	}
 }
-ENT.ButtonMap["Meters"] = {
-	pos = Vector(459.8,-29.0,32.0),
-	ang = Angle(0,-125,90),
-	width = 95,
-	height = 150,
+ENT.ButtonMap["ampermeter"] = {
+	pos = Vector(432.5,-62.2+1.1,2.5),
+	ang = Angle(0,-150,79),
+	width = 120,
+	height = 120,
 	scale = 0.0625,
 	
 	buttons = {
-		{x=22, y=24, w=55, h=45, tooltip="Вольтметр высокого напряжения (кВ)\nHV voltmeter (kV)"},
-		{x=22, y=85, w=58, h=45, tooltip="Амперметр (А)\nTotal ampermeter (A)"},
+		{x=0, y=24, w=58, h=45, tooltip="Амперметр (А)\nTotal ampermeter (A)"},
+	}
+}
+ENT.ButtonMap["voltmeter"] = {
+	pos = Vector(426.5,-62.2+1.1,2.5),
+	ang = Angle(0,-150,79),
+	width = 120,
+	height = 120,
+	scale = 0.0625,
+	
+	buttons = {
+		{x=0, y=24, w=55, h=45, tooltip="Вольтметр высокого напряжения (кВ)\nHV voltmeter (kV)"},
 	}
 }
 
@@ -743,20 +755,20 @@ ENT.ClientProps["brake_cylinder"] = {
 	ang = Angle(88.5+20.5,0,174.55+66)
 }
 --------------------------------------------------------------------------------
---ENT.ClientProps["ampermeter"] = {--24.2 0.2 5.3
---	model = "models/metrostroi/81-717/volt_arrow.mdl",
---	pos = Vector(458.30,-34.0+2.25,23.2),
---	ang = Angle(90,0,-35+360+70)
---}
---ENT.ClientProps["voltmeter"] = {--
---	model = "models/metrostroi/81-717/volt_arrow.mdl",
---	pos = Vector(458.30,-34.0+2.25,26.85),
---	ang = Angle(90,0,-35+360+70)
---}
+ENT.ClientProps["ampermeter"] = {--24.2 0.2 5.3
+	model = "models/metrostroi/81-717/volt_arrow.mdl",
+	pos = Vector(430.35,-62.2+1.1,-0.75),
+	ang = Angle(90,-90,360)
+}
+ENT.ClientProps["voltmeter"] = {--
+	model = "models/metrostroi/81-717/volt_arrow.mdl",
+	pos = Vector(424.84,-62.2+1.1,-0.75),
+	ang = Angle(90,-90,360)
+}
 ENT.ClientProps["volt1"] = {--
 	model = "models/metrostroi/81-717/volt_arrow.mdl",
-    pos = Vector(463.3,-46.44,-1.45),
-    ang = Angle(-178,20,55)
+	pos = Vector(419.44,-62.2+1.1,-0.75),
+	ang = Angle(90,-90,360)
 }
 --[[
 "LSD"
@@ -1417,7 +1429,7 @@ function ENT:Think()
 	--print(self:GetPackedBool(163))
 	self:Animate("controller",		1-self:GetPackedRatio(1),			-0.16, 1,  0.85,false)
 	self:Animate("reverser",		self:GetPackedRatio(2),				0.44, 0.56,  4,false)
-	self:Animate("volt1", 			self:GetPackedRatio(10),			0.381, 0.645,				nil, nil,  256,2,0.01)
+	self:Animate("volt1", 			self:GetPackedRatio(10),			0.5225,0.68)
 	self:ShowHide("reverser",		self:GetPackedBool(0))
 	self:Animate("krureverser",		self:GetPackedRatio(2),				0.54, 0.49,  6,false)
 	self:ShowHide("krureverser",	self:GetPackedBool(27))
@@ -1434,8 +1446,8 @@ function ENT:Think()
 	self:Animate("brake_cylinder",	self:GetPackedRatio(6),	 			0.215, 0.86,  256,2)--,0.03)
 	--print(self:GetPackedRatio(7))
 	--print((math.sin(CurTime()%4/4/math.pi*30)+2)/2-0.5)
-	self:Animate("voltmeter",		self:GetPackedRatio(7),				0.419, 0.620,				nil, nil)--,  256,2,0.01)
-	self:Animate("ampermeter",		self:GetPackedRatio(8),				0.42, 0.627,				nil, nil,  256,2,0.01)
+	self:Animate("voltmeter",		self:GetPackedRatio(7),				0.399, 0.645,				nil, nil)--,  256,2,0.01)
+	self:Animate("ampermeter",		self:GetPackedRatio(8),				0.38, 0.667,				nil, nil,  256,2,0.01)
 	
 	self:Animate("headlights",		self:GetPackedBool(1) and 1 or 0, 	0,1, 8, false)
 	self:Animate("VozvratRP",		self:GetPackedBool(2) and 1 or 0, 	0,1, 16, false)
@@ -1616,8 +1628,7 @@ function ENT:Think()
 		self:ShowHideSmooth("L70",self:Animate("light_70",self:GetPackedBool(45) and 1 or 0,0,1,8,false))
 		self:ShowHideSmooth("LRK",self:Animate("light_LhRK",self:GetPackedBool(33) and 1 or 0,0,12,1,false))
 		self:ShowHideSmooth("AVULight_light",self:Animate("light_AVU",self:GetPackedBool(38) and 1 or 0,0,1,8,false))
-		self:ShowHideSmooth("BPSN_light",self:Animate("light_BPSN",self:GetPackedBool(59) and 1 or 0,0,1,8,false))
-		self:ShowHideSmooth("LARS",self:Animate("light_ARS",self:GetPackedBool(174) and 1 or 0,0,1,8,false))
+	--	self:ShowHideSmooth("LARS",self:Animate("light_ARS",self:GetPackedBool(174) and 1 or 0,0,1,8,false))
 	end
 	local accel = self:GetNW2Float("Accel")
 	
@@ -1929,7 +1940,7 @@ function ENT:DrawPost(special)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				--surface.SetDrawColor(255,120,50)
-					surface.SetDrawColor(150,255,50)
+				surface.SetDrawColor(150,255,50)
 				surface.DrawRect(205.7*10,54.5*10,17*10,9*10)
 				draw.DrawText("ЛН","MetrostroiSubway_LargeText2",205.25*10+35,55.5*10-5,Color(0,0,0,245))
 			end

@@ -7,7 +7,7 @@ ENT.ButtonMap = {}
 
 -- Temporary panels (possibly temporary)
 ENT.ButtonMap["FrontPneumatic"] = {
-	pos = Vector(465.0,-45.0,-46.5),
+	pos = Vector(468.0,-45.0,-46.5),
 	ang = Angle(0,90,90),
 	width = 1100,
 	height = 100,
@@ -15,11 +15,11 @@ ENT.ButtonMap["FrontPneumatic"] = {
 	buttons = {
 		{ID = "FrontBrakeLineIsolationToggle",x=182, y=57, radius=32, tooltip="Концевой кран тормозной магистрали"},
 		{ID = "FrontTrainLineIsolationToggle",x=710, y=60, radius=32, tooltip="Концевой кран напорной магистрали"},
-		{ID = "ParkingBrakeToggle",x=1000, y=60, radius=32, tooltip="Стояночный тормоз"},
+		{ID = "ParkingBrakeToggle",x=1000, y=50, radius=32, tooltip="Стояночный тормоз"},
 	}
 }
 ENT.ButtonMap["RearPneumatic"] = {
-	pos = Vector(-472.0,45.0,-45.5),
+	pos = Vector(-468.0,45.0,-45.5),
 	ang = Angle(0,270,90),
 	width = 900,
 	height = 100,
@@ -326,8 +326,8 @@ Metrostroi.ClientPropForButton("BPSNon",{
 -- Add doors
 local function GetDoorPosition(i,k,j)
 	if j == 0 
-	then return Vector(361.67 - 35.0*k     - 229.5*i,-65*(1-2*k),6)
-	else return Vector(361.67 - 35.0*(1-k) - 229.5*i,-65*(1-2*k),6)
+	then return Vector(361.67 - 35.0*k     - 229.5*i,-65*(1-2*k),6.66)
+	else return Vector(361.67 - 35.0*(1-k) - 229.5*i,-65*(1-2*k),6.66)
 	end
 end
 for i=0,3 do
@@ -357,25 +357,20 @@ ENT.ClientProps["door1"] = {
 	pos = Vector(466.0,-16.2,-42.5),
 	ang = Angle(0,-90,0)
 }
-for i = 1,25 do
+for i = 0,22 do
 	ENT.ClientProps["lamp1_"..i] = {
-		model = "models/metrostroi_train/81/lamp1.mdl",
-		pos = Vector(-455.8 + 34.801*i, 0, 76.9),
-		ang = Angle(180,0,0),
-		color = Color(255,175,100),
-	}
-end
-for i = 1,13 do
-	ENT.ClientProps["lamp2_"..i] = {
 		model = "models/metrostroi_train/81/lamp2.mdl",
-		pos = Vector(-466 + 66.12*i, 0, 76.7),
+		pos = Vector(-423.75 + 65.32*i, 35, 71.8),
 		ang = Angle(180,0,0),
 		color = Color(240,240,255),
 	}
-	ENT.ClientProps["lamp3_"..i] = {
-		model = "models/metrostroi_train/81/lamp3.mdl",
-		pos = Vector(-466 + 66.12*i, 0, 77.5),
+end
+for i = 0,13 do
+	ENT.ClientProps["lamp2_"..i] = {
+		model = "models/metrostroi_train/81/lamp2.mdl",
+		pos = Vector(-423.75 + 65.32*i, -35, 71.8),
 		ang = Angle(180,0,0),
+		color = Color(240,240,255),
 	}
 end
 ENT.RearDoor = 0
@@ -452,26 +447,25 @@ function ENT:Think()
 	self:Animate("KRP",				self:GetPackedBool(113) and 1 or 0, 0,1, 16, false)
 	self:Animate("BPSNon",			self:GetPackedBool(59) and 1 or 0, 	0,1, 16, false)
 
-	if self.LampType ~= self:GetNW2Int("LampType",1) then
+	if self.LampType ~= self:GetNW2Int("LampType",0) then
 		self.LampType = self:GetNW2Int("LampType",1)
-		for i = 1,25 do
+		for i = 1,23 do
 			self:ShowHide("lamp1_"..i,self.LampType == 1)
-			if i < 14 then
+			if i < 13 then
 				self:ShowHide("lamp2_"..i,self.LampType == 2)
 				self:ShowHide("lamp3_"..i,self.LampType == 3)
 			end
 		end
 	end
 	if self.LampType == 1 then
-		for i = 1,25 do
+		for i = 1,23 do
 			self:ShowHideSmooth("lamp1_"..i,self:Animate("Lamp1_"..i,	(self:GetPackedBool("lightsActive"..i) or self:GetPackedBool("lightsActiveB"..i) and CurTime()%math.random()*2 > 0.8) and 1 or 0,0,1,6,false))
 		end
 	else
-		for i = 1,13 do
+		for i = 1,23 do
 			if self.LampType == 2 then
 				self:ShowHideSmooth("lamp2_"..i,self:Animate("Lamp2_"..i,	(self:GetPackedBool("lightsActive"..i) or self:GetPackedBool("lightsActiveB"..i) and CurTime()%math.random()*2 > 0.8) and 1 or 0,0,1,6,false))
-			else
-				self:ShowHideSmooth("lamp3_"..i,self:Animate("Lamp3_"..i,	(self:GetPackedBool("lightsActive"..i) or self:GetPackedBool("lightsActiveB"..i) and CurTime()%math.random()*2 > 0.8) and 1 or 0,0,1,6,false))
+				self:ShowHideSmooth("lamp1_"..i,self:Animate("Lamp1_"..i,	(self:GetPackedBool("lightsActive"..i) or self:GetPackedBool("lightsActiveB"..i) and CurTime()%math.random()*2 > 0.8) and 1 or 0,0,1,6,false))
 			end
 		end
 	end
@@ -538,8 +532,8 @@ function ENT:Think()
 			--local animation = self:Animate(n_l,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.8 + (-0.2+0.4*math.random()),0)
 			--local offset_l = Vector(math.abs(31*animation),0,0)
 			--local offset_r = Vector(math.abs(32*animation),0,0)
-			self:Animate(n_l,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.8 + (-0.2+0.4*math.random()),0)
-			self:Animate(n_r,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.8 + (-0.2+0.4*math.random()),0)
+			self:Animate(n_l,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.75 + (-0.2+0.4*math.random()),0)
+			self:Animate(n_r,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.75 + (-0.2+0.4*math.random()),0)
 		end
 	end
 	if self.ClientEnts["door1"] then self.ClientEnts["door1"]:SetSkin(self:GetSkin()) end
@@ -598,7 +592,7 @@ function ENT:Think()
 	end
 
 	-- BPSN sound
---	self.BPSNType = self:GetNW2Int("BPSNType",7)
+	self.BPSNType = self:GetNW2Int("BPSNType",6)
 --	if not self.OldBPSNType then self.OldBPSNType = self.BPSNType end
 --	if self.BPSNType ~= self.OldBPSNType then
 --		if self.OldBPSNType ~= 7 then

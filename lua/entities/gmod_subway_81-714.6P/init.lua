@@ -39,8 +39,8 @@ function ENT:Initialize()
 	--self.InstructorsSeat:SetRenderMode(RENDERMODE_TRANSALPHA)
 
 	-- Create bogeys
-	self.FrontBogey = self:CreateBogey(Vector( 326-5,0,-75),Angle(0,180,0),true)
-	self.RearBogey  = self:CreateBogey(Vector(-317+0,0,-75),Angle(0,0,0),false)
+	self.FrontBogey = self:CreateBogey(Vector( 313-5,0,-75),Angle(0,180,0),true)
+	self.RearBogey  = self:CreateBogey(Vector(-308.44+0,0,-75),Angle(0,0,0),false)
 
 	-- Initialize key mapping
 	self.KeyMap = {
@@ -139,8 +139,7 @@ function ENT:Initialize()
 		[7] = { "glow",				Vector(470, 53,-19), Angle(0,0,0), Color(255,220,180), brightness = 1, scale = 1.0 },
 
 		-- Reverse
-		[8] = { "light",			Vector(478,-44, 60), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 1.0 },
-		[9] = { "light",			Vector(478, 44, 60), Angle(0,0,0), Color(255,0,0),     brightness = 10, scale = 1.0 },
+		[9] = { "light",  Vector(461,12.75+1.5-9.6,-0.8), Angle(0,0,0), Color(0,255,0), brightness = 0.0, scale = 0.020 },
 
 		-- Cabin
 		[10] = { "dynamiclight",	Vector( 440, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.1, distance = 550 },
@@ -172,7 +171,6 @@ function ENT:Initialize()
 		self.Lights[69+i] = { "light", Vector(-470 + 35.8*i, 0, 70), Angle(180,0,0), Color(255,220,180), brightness = 1, scale = 0.75}
 	end
 
-
 	-- Cross connections in train wires
 	self.TrainWireCrossConnections = {
 		[5] = 4, -- Reverser F<->B
@@ -196,7 +194,7 @@ function ENT:Initialize()
 	self.Lamps = {}
 	self.BrokenLamps = {}
 	local rand = math.random() > 0.5 and 1 or math.random(0.93,0.99)
-	for i = 1,23 do
+	for i = 0,0 do
 		if math.random() > rand then self.BrokenLamps[i] = math.random() > 0.5 end
 	end
 
@@ -280,7 +278,7 @@ function ENT:Think()
 	--self.InstructorsSeat:SetLocalPos(Vector(410,47,-27+2.5))
 	--seat:SetPos(self:LocalToWorld(seat_info.offset))
 	--seat:SetAngles(self:GetAngles()+Angle(0,-90,0)+seat_info.angle)
-
+	self:SetLightPower(9, self.Battery.Voltage > 0.0)
 	-- Interior/cabin lights
 	local lightsActive1 = (self.Battery.Voltage > 55.0 and self.Battery.Voltage < 85.0) and
 		((self:ReadTrainWire(33) > 0) or (self:ReadTrainWire(34) > 0))
@@ -419,9 +417,9 @@ function ENT:Think()
 	-- Exchange some parameters between engines, pneumatic system, and real world
 	self.Engines:TriggerInput("Speed",self.Speed)
 	if IsValid(self.FrontBogey) and IsValid(self.RearBogey) then
-		self.FrontBogey.MotorForce = 35300
+		self.FrontBogey.MotorForce = 39300
 		self.FrontBogey.Reversed = (self.RKR.Value > 0.5)
-		self.RearBogey.MotorForce  = 35300
+		self.RearBogey.MotorForce  = 39300
 		self.RearBogey.Reversed = (self.RKR.Value < 0.5)
 
 		-- These corrections are required to beat source engine friction at very low values of motor power
@@ -434,11 +432,11 @@ function ENT:Think()
 		self.FrontBogey.MotorPower = P*0.5*((A > 0) and 1 or -1)
 
 		-- Apply brakes
-		self.FrontBogey.PneumaticBrakeForce = 40000.0
+		self.FrontBogey.PneumaticBrakeForce = 44000.0
 		self.FrontBogey.BrakeCylinderPressure = self.Pneumatic.BrakeCylinderPressure
 		self.FrontBogey.BrakeCylinderPressure_dPdT = -self.Pneumatic.BrakeCylinderPressure_dPdT
 		self.FrontBogey.ParkingBrake = self.ParkingBrake.Value > 0.5
-		self.RearBogey.PneumaticBrakeForce = 40000.0
+		self.RearBogey.PneumaticBrakeForce = 44000.0
 		self.RearBogey.BrakeCylinderPressure = self.Pneumatic.BrakeCylinderPressure
 		self.RearBogey.BrakeCylinderPressure_dPdT = -self.Pneumatic.BrakeCylinderPressure_dPdT
 		--self.RearBogey.ParkingBrake = self.ParkingBrake.Value > 0.5
