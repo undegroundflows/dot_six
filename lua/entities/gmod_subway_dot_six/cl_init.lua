@@ -95,7 +95,8 @@ ENT.ButtonMap["Main"] = {
 	}
 }
 
-ENT.ButtonMap["LeftPanel"] = {
+-- Left panel
+ENT.ButtonMap["Left"] = {
 	pos = Vector(465.3,15,-2.9), --446 -- 14 -- -0,5
 	ang = Angle(0,-90,12.3),
 	width = 700,
@@ -212,7 +213,7 @@ ENT.ButtonMap["Announcer"] = {
 
 		{ID = "Custom1Set",     x=150, y=95, radius=20, tooltip="-"},
 		{ID = "Custom2Set",     x=173, y=95, radius=20, tooltip="+"},
-		{ID = "Custom3Set",     x=100, y=95, radius=20, tooltip="Menu"},
+		{ID = "Custom3Set",     x=100, y=95, radius=20, tooltip="Меню\nMenu"},
 		{ID = "R_RadioToggle",	x=57, y=57, radius=20, tooltip="Вкл/Выкл\nOn/Off"},
 --55 66
 		--{ID = "CustomD", x=95+29*0, y=18, radius=20, tooltip="D"},
@@ -361,7 +362,7 @@ ENT.ButtonMap["Battery"] = {
 
 -- Help panel
 ENT.ButtonMap["Help"] = {
-	pos = Vector(420,-48,-4.65),
+	pos = Vector(440,-48,-2),
 	ang = Angle(0,0,0),
 	width = 15,
 	height = 15,
@@ -420,7 +421,7 @@ ENT.ButtonMap["EPKDisconnect"] = {
 		{ID = "EPKToggle", x=0, y=0, w=200, h=70, tooltip="Кран ЭПВ\nEPK disconnect valve"},
 	}
 }
-ENT.ButtonMap["ampermeter"] = {
+ENT.ButtonMap["Ampermeter"] = {
 	pos = Vector(432.5,-62.2+1.1,2.5),
 	ang = Angle(0,-150,79),
 	width = 120,
@@ -431,7 +432,7 @@ ENT.ButtonMap["ampermeter"] = {
 		{x=0, y=24, w=58, h=45, tooltip="Амперметр (А)\nTotal ampermeter (A)"},
 	}
 }
-ENT.ButtonMap["voltmeter"] = {
+ENT.ButtonMap["Voltmeter"] = {
 	pos = Vector(426.5,-62.2+1.1,2.5),
 	ang = Angle(0,-150,79),
 	width = 120,
@@ -444,7 +445,7 @@ ENT.ButtonMap["voltmeter"] = {
 }
 
 -- UAVA
-ENT.ButtonMap["UAVAPanel"] = {
+ENT.ButtonMap["UAVA"] = {
 	pos = Vector(454.4,-55.3,-7.0),
 	ang = Angle(0,180,90),
 	width = 230,
@@ -456,7 +457,7 @@ ENT.ButtonMap["UAVAPanel"] = {
 	}
 }
 
-ENT.ButtonMap["UAVAContactPanel"] = {
+ENT.ButtonMap["UAVAContact"] = {
 	pos = Vector(445.0,-55.3,-7.0),
 	ang = Angle(0,180,90),
 	width = 230,
@@ -468,7 +469,7 @@ ENT.ButtonMap["UAVAContactPanel"] = {
 	}
 }
 
-ENT.ButtonMap["peplnitsyaPanel"] = {
+ENT.ButtonMap["peplnitsya"] = {
 	pos = Vector(452,-23.7,-5),
 	ang = Angle(0,180,90),
 	width = 230,
@@ -488,8 +489,8 @@ local rowtall = 30 -- Row height, includes -only- the usable space and not any l
 
 local rowamount = 16 -- How many rows to show (total)
 ENT.ButtonMap["Schedule"] = {
-	pos = Vector(470,19,27),
-	ang = Angle(-3,-70,95),
+	pos = Vector(473,19,27.25),
+	ang = Angle(0,-70,80),
 	width = (col1w + 2 + (1 + col2w) * 3),
 	height = (rowtall+1)*rowamount+1,
 	scale = 0.0625/2,
@@ -529,7 +530,7 @@ ENT.ButtonMap["IGLAButtons"] = {
 			{ID = "IGLA4Set",x=26+34*2.8, y=48, w=14, h=12, tooltip="ИГЛА: Четвёртая кнопка\nIGLA: Fourth button"},
 		}
 }
-ENT.ButtonMap["PanelPult"] = {
+ENT.ButtonMap["Pult"] = {
 	pos = Vector(441.63,-33.65,-2.129),
 	ang = Angle(0,0,0),
 	width = 440,
@@ -537,7 +538,7 @@ ENT.ButtonMap["PanelPult"] = {
 	scale = 0.024,
 	
 	buttons = {
-		{ID = "pult",    x=800, y=0, radius=0, tooltip="1"},
+		{ID = "pult",    x=800, y=0, radius=0, tooltip=""},
 	}
 }
 ENT.ButtonMap["Reverser"] = {
@@ -621,7 +622,7 @@ ENT.ButtonMap["InfoTable"] = {
 }
 
 ENT.ButtonMap["InfoTableSelect"] = {
-	pos = Vector(464.0,20.0,22.0),
+	pos = Vector(478.0,20.0,22.0),
 	ang = Angle(0,-90,90),
 	width = 550,
 	height = 100,
@@ -830,6 +831,30 @@ Metrostroi.ClientPropForButton("Program2",{
 	skin = 2,
 	ang = 90
 })
+
+--Metrostroi.ClientPropForButton("SelectMain",{
+--	panel = "Announcer",
+--	button = "DURASelectMain",
+--	model = "models/metrostroi_train/81/button.mdl",
+--})
+--Metrostroi.ClientPropForButton("SelectAlternate",{
+--	panel = "Announcer",
+--	button = "DURASelectAlternate",
+--	model = "models/metrostroi_train/81/button.mdl",
+--})
+--Metrostroi.ClientPropForButton("SelectChannel",{
+--	panel = "Announcer",
+--	button = "DURAToggleChannel",
+--	model = "models/metrostroi_train/81/tumbler1.mdl",
+--	ang = 90
+--})
+--Metrostroi.ClientPropForButton("DURAPower",{
+--	panel = "Announcer",
+--	button = "DURAPowerToggle",
+--	model = "models/metrostroi_train/81/tumbler1.mdl",
+--	ang = 90
+--})
+
 Metrostroi.ClientPropForButton("BPSNon",{
 	panel = "BPSNrear",
 	button = "BPSNonToggle",
@@ -920,14 +945,14 @@ Metrostroi.ClientPropForButton("OtklAVU",{
 --	z = -5,
 --})
 Metrostroi.ClientPropForButton("KRZD",{
-	panel = "LeftPanel",
+	panel = "Left",
 	button = "KRZDSet",	
 	model = "models/6000/pult/buttons/button_large.mdl",
 	skin = 1,
 	z = 1.5,
 })
 Metrostroi.ClientPropForButton("RezMK",{
-	panel = "LeftPanel",
+	panel = "Left",
 	button = "RezMKSet",	
 	model = "models/6000/pult/buttons/button_large.mdl",
 	skin = 3,
@@ -985,20 +1010,20 @@ Metrostroi.ClientPropForButton("KSN",{
 	skin = 2
 })
 Metrostroi.ClientPropForButton("KRP",{
-	panel = "LeftPanel",
+	panel = "Left",
 	button = "KRPSet",
 	model = "models/6000/pult/buttons/button_large.mdl",
 	skin = 4,
 })
 Metrostroi.ClientPropForButton("KDLR",{
-	panel = "LeftPanel",
+	panel = "Left",
 	button = "KDLRSet",
 	model = "models/6000/pult/buttons/button_large.mdl",
 	skin = 3,
 	z=2
 })
 Metrostroi.ClientPropForButton("KDPR",{
-	panel = "LeftPanel",
+	panel = "Left",
 	button = "KDPRSet",
 	model = "models/6000/pult/buttons/button_large.mdl",
 	skin = 3,
@@ -1211,7 +1236,7 @@ Metrostroi.ClientPropForButton("RC1Pl",{
 	z = -3,
 })
 Metrostroi.ClientPropForButton("pult",{
-	panel = "PanelPult",
+	panel = "Pult",
 	button = "pult",	
 	model = "models/6000/pult.mdl",
 	ang = 0
@@ -1232,8 +1257,8 @@ Metrostroi.ClientPropForButton("BPS",{
 --------------------------------------------------------------------------------
 ENT.ClientProps["book"] = {
 	model = "models/props_lab/clipboard.mdl",
-	pos = Vector(430.5,-58,-4.65),
-	ang = Angle(0,0,0)
+	pos = Vector(450.5,-60,-0.4),
+	ang = Angle(75,90,0)
 }
 
 ENT.ClientProps["FrontBrake"] = {--
@@ -1333,7 +1358,7 @@ ENT.ClientProps["wiper"] = {
 for i = 1,22 do
 	ENT.ClientProps["lamp1_"..i] = {
 		model = "models/metrostroi_train/81/lamp2.mdl",
-		pos = Vector(-461 + 65.22*i, 35.8, 71.75),
+		pos = Vector(-461 + 65.22*i, 35.8, 71.8),
 		ang = Angle(180,0,0),
 		color = Color(240,240,255),
 	}
@@ -1341,7 +1366,7 @@ end
 for i = 1,12 do
 	ENT.ClientProps["lamp2_"..i] = {
 		model = "models/metrostroi_train/81/lamp2.mdl",
-		pos = Vector(-461 + 65.22*i, -35.8, 71.75),
+		pos = Vector(-461 + 65.22*i, -35.8, 71.8),
 		ang = Angle(180,0,0),
 		color = Color(240,240,255),
 	}
@@ -1637,22 +1662,22 @@ function ENT:Think()
 		--if self.Door2 then self.Door2 = math.min(0.99,math.max(0,self.Door2+accel*self.DeltaTime)) end
 		--if self.Door3 then self.Door3 = math.min(0.99,math.max(0,self.Door3+accel*self.DeltaTime)) end
 	end
-	if self.Door1 == 1 then
+	--if self.Door1 == 1 then
 		--sendButtonMessage({ID = "BackDoor",state = true})
 		--sendButtonMessage({ID = "BackDoor",state = false})
-	end
-	if self.Door2 == 1 then
+	--end
+	--if self.Door2 == 1 then
 		--sendButtonMessage({ID = "PassDoor",state = true})
 		--sendButtonMessage({ID = "PassDoor",state = false})
-	end
-	if self.Door3 == 1 then
+	--end
+	--if self.Door3 == 1 then
 		--sendButtonMessage({ID = "CabinDoor",state = true})
 		--sendButtonMessage({ID = "CabinDoor",state = false})
-	end
-	if self.Door4 == 1 then
+	--end
+	--if self.Door4 == 1 then
 		--sendButtonMessage({ID = "door4",state = true})
 		--sendButtonMessage({ID = "door4",state = false})
-    end	
+    --end	
 	
 	if self.LampType ~= self:GetNW2Int("LampType",0) then
 		self.LampType = self:GetNW2Int("LampType",1)
@@ -1712,7 +1737,6 @@ function ENT:Think()
 	--if self.ClientEnts["door1"] then self.ClientEnts["door1"]:SetSkin(self:GetSkin()) end
 	--if self.ClientEnts["door2"] then self.ClientEnts["door2"]:SetSkin(self:GetSkin()) end
 	--if self.ClientEnts["door3"] then self.ClientEnts["door3"]:SetSkin(self:GetSkin()) end
-	
 	-- Door transient
 	local door_state1 = self:GetPackedBool(21)
 	local door_state2 = self:GetPackedBool(25)
@@ -1792,14 +1816,8 @@ function ENT:Think()
 	--local state = true --self:GetPackedBool(39)
 	--self:SetSoundState("ring2",0.20,1)
 	
-	-- DIP sound
-	self.BPSNType = self:GetNW2Int("BPSNType",6)
---	if not self.OldBPSNType then self.OldBPSNType = self.BPSNType end
---	if self.BPSNType ~= self.OldBPSNType then
---		self:SetSoundState("bpsn"..self.BPSNType,0,1.0)
---	end
---	self:SetSoundState("bpsn"..self.BPSNType,self:GetPackedBool(52) and 2 or 0,1.0,nil,0.9)
---	self.OldBPSNType = self.BPSNType
+	-- BPSN sound
+	self.BPSNType = self:GetNW2Int("BPSNType",7)
 end
 
 
@@ -1809,6 +1827,7 @@ end
 --ENT.ParkingBrakeMaterial = Material( "models/metrostroi_train/parking_brake.png", "vertexlitgeneric unlitgeneric mips" )
 function ENT:DrawPost(special)
 	--local dc = render.GetLightColor(self:LocalToWorld(Vector(460.0,0.0,5.0)))
+
 	self:DrawOnPanel("InfoTable",function()
  		surface.SetDrawColor(0,0,0) --255*dc.x,250*dc.y,220*dc.z)
  		surface.DrawRect(50,0,54,00)
@@ -1820,23 +1839,12 @@ function ENT:DrawPost(special)
  			yalign = TEXT_ALIGN_CENTER,
  			color = Color(0,255,0,255)})
 	end)
-	if self.InfoTableTimeout and (CurTime() < self.InfoTableTimeout) then
- 		self:DrawOnPanel("InfoTableSelect",function()
- 		--	draw.Text({
- 		--		text = self:GetNW2String("FrontText",""),
- 		--		font = "MetrostroiSubway_InfoPanel",--..self:GetNW2Int("Style",1),
- 		--		pos = { 140, -100 },
- 		--		xalign = TEXT_ALIGN_CENTER,
- 		--		yalign = TEXT_ALIGN_CENTER,
- 		--		color = Color(255,0,0,255)})
- 		end)
- 	end
 	
 	if self.InfoTableTimeout and (CurTime() < self.InfoTableTimeout) then
 		self:DrawOnPanel("InfoTableSelect",function()
 			local text = self:GetNW2String("FrontText","")
 			local col = text:find("ЗЕЛ") and Color(100,200,0) or text:find("СИН") and Color(0,100,200) or text:find("МАЛ") and Color(200,100,200) or text:find("ОРА") and Color(200,200,0) or text:find("БИР") and Color(48,213,200) or Color(255,0,0)
-			draw.DrawText(self:GetNW2String("RouteNumber","") .. " " .. text,"MetrostroiSubway_InfoPanel",260, -100,col,TEXT_ALIGN_CENTER)
+			draw.DrawText(self:GetNW2String("RouteNumber","") .. " " .. text,"MetrostroiSubway_InfoPanel",350, -100,col,TEXT_ALIGN_CENTER)
 			--[[
 			draw.Text({
 				text = self:GetNW2String("RouteNumber","") .. " " .. self:GetNW2String("FrontText",""),
@@ -1849,10 +1857,8 @@ function ENT:DrawPost(special)
 		end)
 	end
 
-	
-
-
 	self:DrawOnPanel("InfoRoute",function()
+		surface.SetAlphaMultiplier(1)
 		surface.SetDrawColor(0,0,0) --255*dc.x,250*dc.y,220*dc.z)
 		surface.DrawRect(0,100,88,70)
 		local rn = self:GetNW2String("RouteNumber","00")
@@ -1864,7 +1870,6 @@ function ENT:DrawPost(special)
 			yalign = TEXT_ALIGN_CENTER,
 			color = Color(0,255,0,255)})
 	end)
-
 	local distance = self:GetPos():Distance(LocalPlayer():GetPos())
 	if distance > 1024 or special then return end
 	if self:GetNW2Int("ARSType",1) ~= 4 then
@@ -1953,22 +1958,6 @@ function ENT:DrawPost(special)
 			--	draw.DrawText("ЛхРК","MetrostroiSubway_LargeText3",111*10+5,78*10+5,Color(0,0,0,245))
 				draw.DrawText("РК","MetrostroiSubway_LargeText2",111.3*10+30,88.9*10-5,Color(0,0,0,245))
 			end
-			--b = self:Animate("light_EPK",self:GetPackedBool(155) and 1 or 0,0,1,15,false)
-			--if b > 0.0 then
-			--	surface.SetAlphaMultiplier(b)
-			--	surface.SetDrawColor(150,255,50)
-			--	surface.DrawRect(291.8*10,88.5*10,17*10,9*10)
-			--	draw.DrawText("СОТ1","MetrostroiSubway_LargeText6",291.8*10+5,89*10-5,Color(0,0,0,245))
-			--	draw.DrawText("ЭПВ","MetrostroiSubway_LargeText3",294*10+5,99*10+5,Color(0,0,0,245))
-			--end	
-		--	b = self:Animate("light_UAVA",self:GetPackedBool(152) and 1 or 0,0,1,15,false)
-		--	if b > 0.0 then
-		--		surface.SetAlphaMultiplier(b)
-		--		surface.SetDrawColor(150,255,50)
-		--		surface.DrawRect(291.8*10,72*10,17*10,9*10)
-		--		draw.DrawText("ПВУ","MetrostroiSubway_LargeText6",291.8*10+15,73*10-5,Color(0,0,0,245))
-		--		draw.DrawText("УАВА","MetrostroiSubway_LargeText3",294*10-5,82.15*10+5,Color(0,0,0,245))
-		--	end			
 			b = self:Animate("light_LRS",self:GetPackedBool(54) and 1 or 0,0,1,15,false)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
@@ -1992,27 +1981,6 @@ function ENT:DrawPost(special)
 				surface.DrawRect(316.28*10,88.5*10,17.2*10,9*10)
 				draw.DrawText("АВУ","MetrostroiSubway_LargeText2",316.28*10+10,88.75*10-5,Color(0,0,0,245))
 			end
-		--	b = self:Animate("light_BPSN",self:GetPackedBool(59) and 1 or 0,0,1,15,false)
-		--	if b > 0.0 then
-		--		surface.SetAlphaMultiplier(b)
-		--		surface.SetDrawColor(255,60,60)
-		--		surface.DrawRect(340.8*10,88.5*10,17*10,9*10)
-		--		draw.DrawText("ИП","MetrostroiSubway_LargeText2",340.8*10+25,88.5*10-5,Color(0,0,0,245))
-		--	end	
-		--	b = self:Animate("light_BPSN",self:GetPackedBool(59) and 1 or 0,0,1,15,false)
-		--	if b > 0.0 then
-		--		surface.SetAlphaMultiplier(b)
-		--		surface.SetDrawColor(150,255,50)
-		--		surface.DrawRect(340.8*10,71.5*10,17*10,9*10)
-		--		draw.DrawText("ИП","MetrostroiSubway_LargeText2",340.8*10+25,71.5*10-5,Color(0,0,0,245))
-		--	end
-		--	b = self:Animate("light_ARS",self:GetPackedBool(174) and 1 or 0,0,1,15,false)
-		--	if b > 0.0 then
-		--		surface.SetAlphaMultiplier(b)
-		--		surface.SetDrawColor(150,255,50)
-		--		surface.DrawRect(316*10,54*10,17*10,9*10)
-		--		draw.DrawText("АРС","MetrostroiSubway_LargeText2",316*10+10,54*10-5,Color(0,0,0,245))
-		--	end
 
 			b = self:Animate("light_LVD",self:GetPackedBool(50) and 1 or 0,0,1,15,false)
 			if b > 0.0 then
@@ -2021,7 +1989,7 @@ function ENT:DrawPost(special)
 				surface.DrawRect(242.5*10,88*8.16,17*10,9*10)
 				draw.DrawText("ЛВД","MetrostroiSubway_LargeText2",242.5*10+5,88*8.16-5,Color(0,0,0,245))
 			end
-			b = self:Animate("light_LVD",self:GetPackedBool(50) and 1 or 0,0,1,15,false)
+			b = self:Animate("light_1", self:GetPackedBool(200) and 1 or 0,0,1,15,false)
 			if b > 0.0 then
 				surface.SetAlphaMultiplier(b)
 				surface.SetDrawColor(150,255,50)
@@ -2110,38 +2078,10 @@ function ENT:DrawPost(special)
 		end)
 	end
 	self:DrawOnPanel("IGLA",function(...) self.IGLA:IGLA(self,...) end)
-	self:DrawOnPanel("AnnouncerDisplay",function(...)
+	self:DrawOnPanel("AnnouncerDisplay",function(...)if not self:GetPackedBool(32) then return end
 		local plus = (not self:GetPackedBool(32) and 1 or 0)
 		surface.SetDrawColor(83,140,82)
 		surface.DrawRect(231.6,86,450,150)
-		if not self:GetPackedBool(32) then return end
-		self.ASNP:AnnDisplay(self,true)
-	end)	
-	
-		draw.Text({
-			text = string.Trim(self:GetNW2String("CustomStr10")),
-			font = "MetrostroiSubway_VerySmallText3",
-			pos = { 145,385+0*120},
-			xalign = TEXT_ALIGN_CENTER,yalign = TEXT_ALIGN_CENTER,color = Color(0,0,0,255)})
-		draw.Text({
-			text = string.Trim(self:GetNW2String("CustomStr11")),
-			font = "MetrostroiSubway_VerySmallText3",
-			pos = { 145,385+1*120},
-			xalign = TEXT_ALIGN_CENTER,yalign = TEXT_ALIGN_CENTER,color = Color(0,0,0,255)})
-		draw.Text({
-			text = string.Trim(self:GetNW2String("CustomStr12")),
-			font = "MetrostroiSubway_VerySmallText3",
-			pos = { 735,200},
-			xalign = TEXT_ALIGN_CENTER,yalign = TEXT_ALIGN_CENTER,color = Color(0,0,0,255)})
-		draw.Text({
-			text = string.Trim(self:GetNW2String("CustomStr13")),
-			font = "MetrostroiSubway_VerySmallText3",
-			pos = { 735,100},
-			xalign = TEXT_ALIGN_CENTER,yalign = TEXT_ALIGN_CENTER,color = Color(0,0,0,255)})
-			
-		--draw.DrawText("SELFDESTRUCT","MetrostroiSubway_VerySmallText3",300,480,Color(0,0,0,255))		
-		
-		if not self:GetPackedBool(32) then return end
 		if self:GetPackedBool(24) then
 			local function GetColor(id, text)
 				if text then
@@ -2150,30 +2090,36 @@ function ENT:DrawPost(special)
 					return not self:GetPackedBool(id) and Color(255,255,255) or Color(0,0,0)
 				end
 			end
+		--	surface.SetAlphaMultiplier(0.4)
+		--	surface.SetDrawColor(255,255,255)
+		--	surface.DrawRect(58,617,230,22) -- 120
+		--	surface.SetAlphaMultiplier(1.0)
+		--	draw.DrawText("DURA V 1.0","MetrostroiSubway_FixedSYS",60,613 + 22*0, Color(0,0,0,255))
 
-		end
+		--	surface.SetAlphaMultiplier(0.4)
+		--	surface.SetDrawColor(GetColor(31)) surface.SetAlphaMultiplier(0.4)
+		--	surface.DrawRect(58,617 + 22 * 1,230,22)
+		--	surface.SetAlphaMultiplier(1.0)
+		--	draw.DrawText("Channel:" .. (self:GetPackedBool(31) and "2" or "1"),"MetrostroiSubway_FixedSYS",60,613 + 22*1,GetColor(31, true))
 
-		-- Custom announcer display
-		local C1 = Color(0,0,0,210)
-		local C2 = Color(0,0,0,90)
-		local flash = false
-		text1 = self:GetNW2String("CustomStr0")
-		text2 = self:GetNW2String("CustomStr1")
-		
-		-- Draw text
-		if flash and ((RealTime() % 1.0) > 0.5) then
-			C2,C1 = C1,C2
+		--	surface.SetAlphaMultiplier(0.4)
+		--	surface.SetDrawColor(GetColor(153)) surface.SetAlphaMultiplier(0.4)
+		--	surface.DrawRect(58,617 + 22 * 2,230,22)
+		--	surface.SetAlphaMultiplier(1.0)
+		--	draw.DrawText("Channel1:" .. (self:GetPackedBool(153) and "Alt" or "Main"),"MetrostroiSubway_FixedSYS",60,613 + 22*2,GetColor(153, true))
+
+		--	surface.SetAlphaMultiplier(0.4)
+		--	surface.SetDrawColor(GetColor(154))
+		--	surface.DrawRect(58,617 + 22 * 3,230,22)
+		--	surface.SetAlphaMultiplier(1.0)
+		--	draw.DrawText("Channel2:" .. (self:GetPackedBool(154) and "Alt" or "Main"),"MetrostroiSubway_FixedSYS",60,613 + 22*3,GetColor(154, true))
+		--	surface.SetAlphaMultiplier(0.4)
+		--	surface.SetDrawColor(255,255,255)
+		--	surface.DrawRect(58,617 + 22 * 4,230, 120 - 88) -- 120
+		--		surface.SetAlphaMultiplier(1)
 		end
-		for i=1,20 do
-			surface.SetDrawColor(C2)
-			surface.DrawRect(287+(i-1)*17.7+1,125+4,16,22)			
-			draw.DrawText(string.upper(text1[i] or ""),"MetrostroiSubway_IGLA",287+(i-1)*17.7,125+0,C1)
-		end
-		for i=1,20 do
-			surface.SetDrawColor(C2)
-			surface.DrawRect(287+(i-1)*17.7+1,125+31+4,16,22)
-			draw.DrawText(string.upper(text2[i] or ""),"MetrostroiSubway_IGLA",287+(i-1)*17.7,125+31,C1)
-		end
+		self.ASNP:AnnDisplay(self,true)
+	end)
 	
 
 	self:DrawOnPanel("FrontPneumatic",function()
@@ -2213,7 +2159,6 @@ function ENT:DrawPost(special)
 	--end)
 end
 function ENT:OnButtonPressed(button)
-
 	if button == "ShowHelp" then
 		RunConsoleCommand("metrostroi_train_manual")
 	end

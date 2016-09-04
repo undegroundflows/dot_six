@@ -216,17 +216,17 @@ function ENT:Initialize()
 		[99] = { "light",			Vector(467.5,-46.75,-60), Angle(0,0,0), Color(255,0,0),     brightness = 1, scale = 0.5 },
 		
 		-- Cabin
-		[10] = { "dynamiclight",	Vector( 430, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.05, distance = 550 },
+		[10] = { "dynamiclight",	Vector( 440, 0, 40), Angle(0,0,0), Color(255,255,255), brightness = 0.05, distance = 550 },
 
 		-- Interior
-		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400 , fov=180,farz = 128 },
-		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400, fov=180,farz = 128 },
-		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3, distance = 400 , fov=180,farz = 128 },
-		
+		[11] = { "dynamiclight",	Vector( 200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3.8, distance = 400 , fov=180,farz = 256 },
+		[12] = { "dynamiclight",	Vector(   0, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3.8, distance = 400, fov=180,farz = 256 },
+		[13] = { "dynamiclight",	Vector(-200, 0, 10), Angle(0,0,0), Color(255,175,50), brightness = 3.8, distance = 400 , fov=180,farz = 256 },
+
 		-- Side lights
-		[15] = { "light",			Vector(43.05,   69, 56.8), Angle(0,0,0), Color(150,255,255), brightness = 0.2, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
-		[16] = { "light",			Vector(43.05,   69, 56), Angle(0,0,0), Color(50,255,0), brightness = 0.2, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
-		[17] = { "light",			Vector(43.05,  69, 55.8), Angle(0,0,0), Color(255,255,0), brightness = 0.2, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
+		[15] = { "light",			Vector(-47.05,   69, 56.8), Angle(0,0,0), Color(150,255,255), brightness = 0.2, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
+		[16] = { "light",			Vector(-47.05,   69, 56), Angle(0,0,0), Color(50,255,0), brightness = 0.2, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
+		[17] = { "light",			Vector(-47.05,  69, 55.8), Angle(0,0,0), Color(255,255,0), brightness = 0.2, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
 		
 		[19] = { "light",			Vector(43.25,   -69, 56.8), Angle(0,0,0), Color(150,255,255), brightness = 0.2, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
 		[20] = { "light",			Vector(43.25,   -69, 56), Angle(0,0,0), Color(50,255,0), brightness = 0.2, scale = 0.10, texture = "models/metrostroi_signals/signal_sprite_002.vmt" },
@@ -237,17 +237,14 @@ function ENT:Initialize()
 	--self.Lights[23]
 
 		-- Cabin texture light
-		[30] = { "headlight", 		Vector(412.0,30,60), Angle(60,-50,0), Color(176,161,132), farz = 128, nearz = 1, shadows = 0, brightness = 0.20, fov = 140 },
-		-- Manometers
-		[31] = { "headlight", 		Vector(460.00,3,8.5), Angle(0,-90,0), Color(216,161,92), farz = 32, nearz = 1, shadows = 0, brightness = 0.4, fov = 30 },
-		-- Voltmeter
-		[32] = { "headlight", 		Vector(460.00,10,12.5), Angle(28,90,0), Color(216,161,92), farz = 16, nearz = 1, shadows = 0, brightness = 0.4, fov = 40 },
-		-- Ampermeter
-		[33] = { "headlight", 		Vector(458.05,-32.8+1.5,21.1), Angle(-90,0,0), Color(216,161,92), farz = 10, nearz = 1, shadows = 0, brightness = 4.0, fov = 60 },
-		-- Voltmeter
-		[34] = { "headlight", 		Vector(458.05,-32.8+1.5,24.85), Angle(-90,0,0), Color(216,161,92), farz = 10, nearz = 1, shadows = 0, brightness = 4.0, fov = 60 },
+		[30] = { "headlight", 		Vector(412.0,30,100), Angle(60,-50,0), Color(176,161,132), farz = 256, nearz = 1, shadows = 0, brightness = 0.20, fov = 140 },
+		-- Bort.light
+		[31] = { "headlight", 		Vector(466,-47,8), Angle(93.05+16.25,0,180+62), Color(100,100,255), farz = 14.7, nearz = 1, shadows = 0, brightness = 4, fov = 50 },
+		-- Brake line,train line lights
+		[32] = { "headlight", 		Vector(468.55,-46.3,11.9), Angle(93.05+16.25,0,180+62), Color(100,100,255), farz = 16, nearz = 1, shadows = 0, brightness = 4, fov = 50 },
+		-- Brake Cylinder light
+		[33] = { "headlight", 		Vector(463.95,-48.7,11.9), Angle(88.5+20.5,0,174.55+66), Color(166,167,197), farz = 16, nearz = 1, shadows = 0, brightness = 4, fov = 50 },
 
-	
 		-- ARS panel lights
 		[40] = { "light", Vector(459.4,10.8,13.1)+vY*5.15+vX*3,				Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },
 		[41] = { "light", Vector(459.4,10.8,13.1)+vY*5.15+vX*4.15,				Angle(0,0,0), Color(160,255,0), brightness = 1.0, scale = 0.008 },
@@ -589,10 +586,8 @@ function ENT:Think()
 	self:SetLightPower(9, self.Panel["RedLightLeft"] > 0.5)
 	self:SetLightPower(98,self.Panel["RedLightRight"] > 0.5)
 	self:SetLightPower(99,self.Panel["RedLightLeft"] > 0.5)
-
-		
+	
 	-- Interior/cabin lights
-		-- Interior/cabin lights
 	self:SetLightPower(10,(self.Panel["CabinLight"] > 0.5) and (self.L_2.Value > 0.5))
 	self:SetLightPower(30, (self.Panel["CabinLight"] > 0.5), 0.03 + 0.97*self.L_2.Value)
 
@@ -627,7 +622,6 @@ function ENT:Think()
 	self:SetLightPower(31, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 	self:SetLightPower(32, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 	self:SetLightPower(33, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
-	self:SetLightPower(34, (self.Panel["CabinLight"] > 0.5) and (self.L_3.Value > 0.5))
 
 	-- Door button lights
 	self:SetPackedBool("Left",(self.Panel["HeadLights2"] > 0.5) and (self.DoorSelect.Value == 0))
@@ -712,7 +706,7 @@ function ENT:Think()
 	self:SetPackedBool(30,self.DURA.SelectAlternate == true)
 	self:SetPackedBool(31,self.DURA.Channel == 2)
 	--print(self.KB.Value)
---	self:SetPackedBool(177,self.EmergencyBrake == 1.0)
+	--self:SetPackedBool(177,self.EmergencyBrake == 1.0)
 	self:SetPackedBool(56,self.ARS.Value == 1.0)
 	self:SetPackedBool(57,self.ALS.Value == 1.0)
 	self:SetPackedBool(58,(self.Panel["CabinLight"] > 0.5) and (self.L_2.Value > 0.5))
@@ -838,7 +832,7 @@ function ENT:Think()
 	self:SetPackedBool(51,self.KVC.Value < 0.5)
 	-- BPSN
 	----self:SetLightPower(24,(self.PowerSupply.XT3_1 > 0) and (self.Panel["V1"] > 0.5))
-	self:SetPackedBool(52,self.BPSNon.Value == 1.0)
+	self:SetPackedBool(52,self.PowerSupply.XT3_1 > 0)
 	-- LRS
 	self:SetPackedBool(54,(self.Panel["V1"] > 0.5) and
 		(self.ALS.Value > 0.5) and
@@ -852,56 +846,54 @@ function ENT:Think()
 		end
 	end
 
-
--- Non-standard ars logic
-
+	-- Non-standard ARS logic
 
 	if self.ARSType == 2 then
 		-- LSD
-		self:SetLightPower(40,self:GetPackedBool(40) and self:GetPackedBool(32))
-		self:SetLightPower(41,self:GetPackedBool(40) and self:GetPackedBool(32))
+		self:SetLightPower(40, self:GetPackedBool(40) and self:GetPackedBool(32))
+		self:SetLightPower(41, self:GetPackedBool(40) and self:GetPackedBool(32))
 		-- LHRK
-		self:SetLightPower(42,self:GetPackedBool(33) and self:GetPackedBool(32))
+		self:SetLightPower(42, self:GetPackedBool(33) and self:GetPackedBool(32))
 		-- RP LSN
-		self:SetLightPower(43,self:GetPackedBool(35) and self:GetPackedBool(32))
-		self:SetLightPower(44,self:GetPackedBool(131) and self:GetPackedBool(32))
-		self:SetLightPower(43,(self:GetPackedBool(35) or self:GetPackedBool(131)) and self:GetPackedBool(32),self:GetPackedBool(35) and 1 or 0.35)
-		self:SetLightPower(44,self:GetPackedBool(131) and self:GetPackedBool(32))
+		self:SetLightPower(43, self:GetPackedBool(35) and self:GetPackedBool(32))
+		self:SetLightPower(44, self:GetPackedBool(131) and self:GetPackedBool(32))
+		self:SetLightPower(43, (self:GetPackedBool(35) or self:GetPackedBool(131)) and self:GetPackedBool(32), self:GetPackedBool(35) and 1 or 0.35)
+		self:SetLightPower(44, self:GetPackedBool(131) and self:GetPackedBool(32))
 		-- Och
-		self:SetLightPower(45,self:GetPackedBool(41) and self:GetPackedBool(32))
+		self:SetLightPower(45, self:GetPackedBool(41) and self:GetPackedBool(32))
 		-- 0
-		self:SetLightPower(46,self:GetPackedBool(42) and self:GetPackedBool(32))
+		self:SetLightPower(46, self:GetPackedBool(42) and self:GetPackedBool(32))
 		-- 40
-		self:SetLightPower(47,self:GetPackedBool(43) and self:GetPackedBool(32))
+		self:SetLightPower(47, self:GetPackedBool(43) and self:GetPackedBool(32))
 		-- 60
-		self:SetLightPower(48,self:GetPackedBool(44) and self:GetPackedBool(32))
+		self:SetLightPower(48, self:GetPackedBool(44) and self:GetPackedBool(32))
 		-- 70
-		self:SetLightPower(49,self:GetPackedBool(45) and self:GetPackedBool(32))
+		self:SetLightPower(49, self:GetPackedBool(45) and self:GetPackedBool(32))
 		-- 80
-		self:SetLightPower(50,self:GetPackedBool(46) and self:GetPackedBool(32))
+		self:SetLightPower(50, self:GetPackedBool(46) and self:GetPackedBool(32))
 		-- LEKK
-		self:SetLightPower(51,false)
+		self:SetLightPower(51, false)
 		-- LN
 		self:SetLightPower(52, self:GetPackedBool("LN") and self:GetPackedBool(32))
 		-- LKVD
-		self:SetLightPower(53,self:GetPackedBool(48) and self:GetPackedBool(32))
+		self:SetLightPower(53, self:GetPackedBool(48) and self:GetPackedBool(32))
 		-- LKT
-		self:SetLightPower(54,self:GetPackedBool(47) and self:GetPackedBool(32))
+		self:SetLightPower(54, self:GetPackedBool(47) and self:GetPackedBool(32))
 		-- LKVC
-		self:SetLightPower(55,self:GetPackedBool(51) and self:GetPackedBool(32))
+		self:SetLightPower(55, self:GetPackedBool(51) and self:GetPackedBool(32))
 		-- LRS
-		self:SetLightPower(56,self:GetPackedBool(54) and self:GetPackedBool(32))
+		self:SetLightPower(56, self:GetPackedBool(54) and self:GetPackedBool(32))
 		-- LVD
-		self:SetLightPower(57,self:GetPackedBool(50) and self:GetPackedBool(32))
+		self:SetLightPower(57, self:GetPackedBool(50) and self:GetPackedBool(32))
 		-- LST
-		self:SetLightPower(58,self:GetPackedBool(49) and self:GetPackedBool(32))
+		self:SetLightPower(58, self:GetPackedBool(49) and self:GetPackedBool(32))
 	else
-		for i=40,58 do
-			self:SetLightPower(i,false)
+		for i = 40, 58 do
+			self:SetLightPower(i, false)
 		end
 	end
 
-  self.SOSD = self.Panel["SD"] <= 0 and self.Panel["V1"] > 0 and self.KV.ReverserPosition ~= 0
+	self.SOSD = self.Panel["SD"] <= 0 and self.Panel["V1"] > 0 and self.KV.ReverserPosition ~= 0
 	self:SetLightPower(70,self.SOSD)
 
 	-- Feed packed floats
@@ -948,8 +940,8 @@ function ENT:Think()
 	--print(self:GetNW2Float("PassengerCount"))
 	local weightRatio = 2.00*math.max(0,math.min(1,(self:GetNW2Float("PassengerCount")/300)))
 	if math.abs(self:GetAngles().pitch) > 2.5 then weightRatio = weightRatio + 1.00 end
-	self.YAR_13A:TriggerInput("WeightLoadRatio",math.max(0,math.min(1.50,weightRatio)))
-	self.YAR_27:TriggerInput("WeightLoadRatio",math.max(0,math.min(1.50,weightRatio)))
+	self.YAR_13A:TriggerInput("WeightLoadRatio",math.max(0,math.min(2.00,weightRatio)))
+	self.YAR_27:TriggerInput("WeightLoadRatio",math.max(0,math.min(2.00,weightRatio)))
 
 	-- Exchange some parameters between engines, pneumatic system, and real world
 	self.Engines:TriggerInput("Speed",self.Speed)
@@ -1347,13 +1339,50 @@ function ENT:OnButtonPress(button,route)
 		end
 		return
 	end
+	if button == "DriverValveDisconnect" then
+		if self.Pneumatic.ValveType == 2 then
+			if self.DriverValveDisconnect.Value == 1.0 then
+				self.DriverValveDisconnect:TriggerInput("Set",0)
+				self:PlayOnce("pneumo_disconnect2","cabin",0.9)
+				if self.EPK.Value == 1 then self:PlayOnce("epv_on","cabin",0.9) end
+			else
+				self.DriverValveDisconnect:TriggerInput("Set",1)
+				self:PlayOnce("pneumo_disconnect1","cabin",0.9)
+				if self.EPK.Value == 1 then self:PlayOnce("epv_off","cabin",0.9) end
+			end
+		else
+			if self.DriverValveBLDisconnect.Value == 0 or self.DriverValveTLDisconnect.Value == 0 then
+				self.DriverValveBLDisconnect:TriggerInput("Set",1)
+				self.DriverValveTLDisconnect:TriggerInput("Set",1)
+			else
+				self.DriverValveBLDisconnect:TriggerInput("Set",0)
+				self.DriverValveTLDisconnect:TriggerInput("Set",0)
+			end
+			if self.DriverValveBLDisconnect.Value == 1.0 then
+				if self.EPK.Value == 1 then self:PlayOnce("epv_off","cabin",0.9) end
+			else
+				if self.EPK.Value == 1 then self:PlayOnce("epv_on","cabin",0.9) end
+			end
+		end
+		return
+	end
+
 	if button == "DriverValveDisconnectToggle" then
 		if self.DriverValveDisconnect.Value == 1.0 then
 			self:PlayOnce("pneumo_disconnect2","cabin",0.9)
-			if self.EPK.Value == 1 then self:PlayOnce("epv_on","cabin",0.9) end
+			if self.EPK.Value == 1 then self:PlayOnce("epv_off","cabin",0.9) end
 		else
 			self:PlayOnce("pneumo_disconnect1","cabin",0.9)
+			if self.EPK.Value == 1 then self:PlayOnce("epv_on","cabin",0.9) end
+		end
+		return
+	end
+
+	if button == "DriverValveBLDisconnectToggle" then
+		if self.DriverValveBLDisconnect.Value == 1.0 then
 			if self.EPK.Value == 1 then self:PlayOnce("epv_off","cabin",0.9) end
+		else
+			if self.EPK.Value == 1 then self:PlayOnce("epv_on","cabin",0.9) end
 		end
 		return
 	end

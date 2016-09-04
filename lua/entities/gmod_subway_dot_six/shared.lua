@@ -85,7 +85,7 @@ function ENT:InitializeSystems()
 
 	-- Пневмосистема 81-710
 	self:LoadSystem("Pneumatic","81_717_Pneumatic")
-	-- CranType 013
+	-- Тип крана (№013)
 	self.Pneumatic.ValveType = 2
 	-- Панель управления 81-710
 	self:LoadSystem("Panel","81_717_Panel")
