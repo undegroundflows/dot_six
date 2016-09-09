@@ -511,9 +511,9 @@ ENT.ButtonMap["Schedule"] = {
 	}
 }
 ENT.ButtonMap["IGLA"] = {
-	pos = Vector(470.48,-28.93,8),
+	pos = Vector(470.48,-28.93,7.95),
 	ang = Angle(0,-90,64),
-	width = 440,
+	width = 400,
 	height = 190,
 	scale = 0.017,
 }
@@ -719,7 +719,7 @@ ENT.ClientProps["reverser"] = {
 }
 ENT.ClientProps["brake_disconnect"] = {
 	model = "models/6000/pult/buttons/cran.mdl",
-	pos = Vector(462,-33.75,-7),
+	pos = Vector(462.12,-33.9,-7),
 	ang = Angle(0,180,0),
 	skin = 1,
 }
@@ -730,7 +730,7 @@ ENT.ClientProps["EPK_disconnect"] = {
 }
 ENT.ClientProps["ParkingBrake"] = {
 	model = "models/6000/pult/buttons/cran.mdl",
-	pos = Vector(462.25,-42.55,-7),
+	pos = Vector(462.12,-42.55,-7),
 	ang = Angle(0,180,0),
 	skin = 2,
 }
@@ -1482,7 +1482,7 @@ function ENT:Think()
 	self:Animate("battery",			self:GetPackedBool(7) and 0.87 or 1, 	0,1, 1, false)
 	self:Animate("RezMK",			self:GetPackedBool(8) and 1 or 0, 	0,1, 16, false)
 	self:Animate("VMK",				self:GetPackedBool(9) and 1 or 0, 	0,1, 16, false)
-	self:Animate("VAH",				self:GetPackedBool(10) and 1 or 0, 	0,1, 16, false)
+	self:Animate("VAH",				self:GetPackedBool(10) and 1 or 0, 	0,1, 4, false)
 	local VAD = self:Animate("VAD",				self:GetPackedBool(11) and 1 or 0, 	0,1, 16, false)
 	local A = self:Animate("VUD1",			(self:GetPackedBool(12) and 0 or 1), 	0,1, 16, false)
 	self:Animate("VUD2",			self:GetPackedBool(13) and 1 or 0, 	0,1, 16, false)
@@ -1526,13 +1526,13 @@ function ENT:Think()
 	
 	self:Animate("KRZD",			self:GetPackedBool(17) and 1 or 0, 	0,1, 16, false)
 	self:Animate("KSN",				self:GetPackedBool(18) and 1 or 0, 	0,1, 16, false)
-	self:Animate("OtklAVU",			self:GetPackedBool(19) and 1 or 0, 	0,1, 16, false)
+	self:Animate("OtklAVU",			self:GetPackedBool(19) and 1 or 0, 	0,1, 4, false)
 	self:Animate("DURAPower",		self:GetPackedBool(24) and 1 or 0, 	0,1, 16, false)
 	self:Animate("SelectMain",		self:GetPackedBool(29) and 1 or 0, 	0,1, 16, false)
 	self:Animate("SelectAlternate",	self:GetPackedBool(30) and 1 or 0, 	0,1, 16, false)
 	self:Animate("SelectChannel",	self:GetPackedBool(31) and 1 or 0, 	0,1, 16, false)
-	self:Animate("ARS",				self:GetPackedBool(56) and 1 or 0, 	0,1, 16, false)
-	self:Animate("ALS",				self:GetPackedBool(57) and 1 or 0, 	0,1, 16, false)
+	self:Animate("ARS",				self:GetPackedBool(56) and 1 or 0, 	0,1, 4, false)
+	self:Animate("ALS",				self:GetPackedBool(57) and 1 or 0, 	0,1, 4, false)
 	self:Animate("KVT",				self:GetPackedBool(328) and 1 or 0, 	0,1, 16, false)
 	self:Animate("KVT1",				self:GetPackedBool(28) and 1 or 0, 	0,1, 16, false)
 
@@ -1540,7 +1540,7 @@ function ENT:Think()
 	self:Animate("KB",			self:GetPackedBool(28) and 1 or 0, 	0,1, 16, false)
 	self:Animate("BPSNon",			self:GetPackedBool(59) and 1 or 0, 	0,1, 16, false)
 	self:Animate("L_1",				self:GetPackedBool(60) and 1 or 0, 	0,1, 16, false)
-	self:Animate("L_2",				self:GetPackedBool(61) and 1 or 0, 	0,0.5, 16, false)
+	self:Animate("L_2",				self:GetPackedBool(61) and 1 or 0, 	0,1, 16, false)
 	self:Animate("L_3",				self:GetPackedBool(62) and 1 or 0, 	0,1, 16, false)
 	self:Animate("L_4",				self:GetPackedBool(63) and 1 or 0, 	0,1, 16, false)
 	self:Animate("L_5",				self:GetPackedBool(53) and 1 or 0,0,1,8,false)
@@ -1567,7 +1567,7 @@ function ENT:Think()
 	self:Animate("Program1",		self:GetPackedBool(128) and 1 or 0, 0,1, 16, false)
 	self:Animate("Program2",		self:GetPackedBool(129) and 1 or 0, 0,1, 16, false)
 	self:Animate("RC1",				self:GetPackedBool(130) and 0.87 or 1, 	0,1, 1, false)
-	self:Animate("UOS",				self:GetPackedBool(134) and 1 or 0, 	0,1, 16, false)
+	self:Animate("UOS",				self:GetPackedBool(134) and 1 or 0, 	0,1, 4, false)
 	self:Animate("BPS",				self:GetPackedBool(135) and 0.87 or 1, 	0,1, 1, false)
 	self:Animate("RC1_2",				self:GetPackedBool(130) and 0.87 or 1, 	0,1, 1, false)
 	self:Animate("UOS_2",				self:GetPackedBool(134) and 1 or 0.87, 	0,1, 1, false)
@@ -1575,7 +1575,7 @@ function ENT:Think()
 	--self:Animate("Autodrive",		self:GetPackedBool(132) and 1 or 0,	0,1, 16, false)
 	self:Animate("ARS13",			self:GetPackedBool(150) and 1 or 0, 0,1, 16, false)
 	self:Animate("Radio13",			self:GetPackedBool(151) and 1 or 0, 0,1, 16, false)
-	self:Animate("UAVALever",	self:GetPackedBool(152) and 1 or 0, 	0,0.375, 128,  3,false)
+	self:Animate("UAVALever",	self:GetPackedBool(152) and 1 or 0, 	0,0.375, 16,  3,false)
 	self:Animate("Pepl",			self:GetPackedBool(181) and 0 or 1,0,1, 3, false)
 	self:Animate("EPK_disconnect",	self:GetPackedBool(155) and 0 or 1,0,1, 3, false)
 	self:Animate("ParkingBrake",	self:GetPackedBool(160) and 0 or 1,0,1, 3, false)
@@ -1604,7 +1604,7 @@ function ENT:Think()
 	self:Animate("KAHK",				self:GetPackedBool("KAHK") and 1 or 0, 	0.32,0.68, 8, false)
 	
 	self:HideButton("KAHSet",self:GetPackedBool("KAHK"))
-	
+
  	if self:GetPackedBool(156) and not self.Door1 then self.Door1 = 1 end
   	if self:GetPackedBool(158) and not self.Door2 then self.Door2 = 1 end
   	if self:GetPackedBool(159) and not self.Door3 then self.Door3 = 1 end

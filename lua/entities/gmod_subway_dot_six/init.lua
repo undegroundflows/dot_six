@@ -237,11 +237,11 @@ function ENT:Initialize()
 	--self.Lights[23]
 
 		-- Cabin texture light
-		[30] = { "headlight", 		Vector(412.0,30,100), Angle(60,-50,0), Color(176,161,132), farz = 256, nearz = 1, shadows = 0, brightness = 0.20, fov = 140 },
+		[30] = { "headlight", 		Vector(412.0,30,79), Angle(60,-50,0), Color(176,161,132), farz = 256, nearz = 1, shadows = 0, brightness = 0.20, fov = 140 },
 		-- Bort.light
 		[31] = { "headlight", 		Vector(466,-47,8), Angle(93.05+16.25,0,180+62), Color(100,100,255), farz = 14.7, nearz = 1, shadows = 0, brightness = 4, fov = 50 },
 		-- Brake line,train line lights
-		[32] = { "headlight", 		Vector(468.55,-46.3,11.9), Angle(93.05+16.25,0,180+62), Color(100,100,255), farz = 16, nearz = 1, shadows = 0, brightness = 4, fov = 50 },
+		[32] = { "headlight", 		Vector(468.55,-46.2,11.9), Angle(88.5+20.5,0,174.55+66), Color(100,100,255), farz = 16, nearz = 1, shadows = 0, brightness = 4, fov = 50 },
 		-- Brake Cylinder light
 		[33] = { "headlight", 		Vector(463.95,-48.7,11.9), Angle(88.5+20.5,0,174.55+66), Color(166,167,197), farz = 16, nearz = 1, shadows = 0, brightness = 4, fov = 50 },
 
@@ -278,7 +278,7 @@ function ENT:Initialize()
 		[60+7] = { "headlight", Vector(270-230*1,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
 		[60+8] = { "headlight", Vector(270-230*2,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
 		[60+9] = { "headlight", Vector(270-230*3,0,20), Angle(-90,0,0), Color(255,255,255), farz = 120, nearz = 1, shadows = 0, brightness = 0.1, fov = 170 },
-		[70    ] = { "headlight",	Vector( 430, -60, -47), Angle(45,-90,0), Color(255,255,255), brightness = 0.5, distance = 400 , fov=120, shadows = 1 },
+		[70] = { "headlight",	Vector( 430, -60, -47), Angle(45,-90,0), Color(255,255,255), brightness = 0.5, distance = 400 , fov=120, shadows = 1 },
 
 		--[[2-2
 		[97] = { "headlight",		Vector(465,-45,-19), Angle(0,-20,0), Color(216,161,92), fov = 70 },
@@ -986,11 +986,11 @@ function ENT:Think()
 
 		if ((math.random() > 0.00) or (jerk > 10)) and (CurTime() - self.PrevTriggerTime1 > 1.5) then
 			self.PrevTriggerTime1 = CurTime()
-			self.FrontBogey:EmitSound("subway_trains/chassis_"..math.random(1,3)..".wav", 70, math.random(90,110))
+			self.FrontBogey:EmitSound("subway_trains/bogey/chassis_"..math.random(1,5)..".wav", 70, math.random(96,110))
 		end
 		if ((math.random() > 0.00) or (jerk > 10)) and (CurTime() - self.PrevTriggerTime2 > 1.5) then
 			self.PrevTriggerTime2 = CurTime()
-			self.RearBogey:EmitSound("subway_trains/chassis_"..math.random(1,3)..".wav", 70, math.random(90,110))
+			self.RearBogey:EmitSound("subway_trains/bogey/chassis_"..math.random(1,5)..".wav", 70, math.random(96,110))
 		end
 	end
 	-- Temporary hacks

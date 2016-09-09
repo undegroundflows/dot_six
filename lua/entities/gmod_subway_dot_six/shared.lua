@@ -12,7 +12,7 @@ ENT.Spawnable       = true
 ENT.AdminSpawnable  = false
 
 function ENT:PassengerCapacity()
-	return 308
+	return 300
 end
 
 function ENT:GetStandingArea()
@@ -24,10 +24,25 @@ function ENT:InitializeSounds()
 	self.SoundNames["r1_5_close"] = "subway_trains/drive_on3.wav","subway_trains/drive_on4.wav"
 	self.SoundNames["door_close1"]  = "subway_trains/dot_six/doors/doorsclose4.wav"
 	self.SoundNames["door_open1"] = "subway_trains/dot_six/doors/doorsopen4.wav"
-	self.SoundNames["inf_on"]	= "subway_trains/but_on4.wav"
-	self.SoundNames["inf_off"]	= "subway_trains/but_off4.wav"
-	self.SoundNames["vu22_on"]	= "subway_trains/but_off5.wav"
-	self.SoundNames["vu22_off"]	= "subway_trains/but_on5.wav"
+	self.SoundNames["inf_on"]	= ""
+	self.SoundNames["inf_off"]	= ""
+	self.SoundNames["vu22_on"]	= {
+ 		"subway_trains/but_off1.wav",
+ 		"subway_trains/but_off2.wav",
+ 		"subway_trains/but_off3.wav",
+ 		"subway_trains/but_off4.wav",
+ 		"subway_trains/but_off5.wav",
+ 		"subway_trains/but_off6.wav",
+ 		"subway_trains/but_off7.wav",
+	}
+	self.SoundNames["vu22_off"]	= {
+	"subway_trains/but_on1.wav",
+	"subway_trains/but_on2.wav",
+	"subway_trains/but_on3.wav",
+	"subway_trains/but_on4.wav",
+ 	"subway_trains/but_on5.wav",
+ 	"subway_trains/but_on6.wav",
+	}
 	self.SoundNames["kr_open"]	= ""
 	self.SoundNames["kr_close"]	= ""
 	self.SoundNames["switch3"]	= ""
@@ -44,6 +59,25 @@ function ENT:InitializeSounds()
 	self.SoundNames["kv_x2_x1"]		= "subway_trains/dot_six/grkv/kv_x2_x1.wav"
 	self.SoundNames["kv_x2_x3"]		= "subway_trains/dot_six/grkv/kv_x2_x3.wav"
 	self.SoundNames["kv_x3_x2"]		= "subway_trains/dot_six/grkv/kv_x3_x2.wav"
+	self.SoundNames["auto_on"] =  "subway_trains/dot_six/buttons/packswitch_on.wav"
+	self.SoundNames["auto_off"] = "subway_trains/dot_six/buttons/packswitch_off.wav"
+	self.SoundNames["button_press"]	= {
+		"subway_trains/but_on1.wav",
+ 		"subway_trains/but_on2.wav",
+ 		"subway_trains/but_on3.wav",
+ 		"subway_trains/but_on4.wav",
+ 		"subway_trains/but_on5.wav",
+ 		"subway_trains/but_on6.wav",
+	}
+ 	self.SoundNames["button_release"] = {
+ 		"subway_trains/but_off1.wav",
+ 		"subway_trains/but_off2.wav",
+ 		"subway_trains/but_off3.wav",
+ 		"subway_trains/but_off4.wav",
+ 		"subway_trains/but_off5.wav",
+ 		"subway_trains/but_off6.wav",
+ 		"subway_trains/but_off7.wav",
+	}
 end
 function ENT:InitializeSystems()
 	-- Электросистема 81-710
@@ -88,7 +122,7 @@ function ENT:InitializeSystems()
 	-- Тип крана (№013)
 	self.Pneumatic.ValveType = 2
 	-- Панель управления 81-710
-	self:LoadSystem("Panel","81_717_Panel")
+	self:LoadSystem("Panel","81_7176_Panel")
 	-- Everything else
 	self:LoadSystem("Battery")
 	self:LoadSystem("PowerSupply","BPSN")
