@@ -61,7 +61,7 @@ function ENT:Initialize()
 
 	-- Create bogeys
 	self.FrontBogey = self:CreateBogey(Vector( 326.5-5,0,-75),Angle(0,180,0),true)
-	self.RearBogey  = self:CreateBogey(Vector(-310.84+0,0,-75),Angle(0,0,0),false)
+	self.RearBogey  = self:CreateBogey(Vector(-317+0,0,-75),Angle(0,0,0),false)
 
 	self.KeyMap = {
 		[KEY_1] = "KVSetX1",
@@ -941,7 +941,7 @@ function ENT:Think()
 	local weightRatio = 2.00*math.max(0,math.min(1,(self:GetNW2Float("PassengerCount")/300)))
 	if math.abs(self:GetAngles().pitch) > 2.5 then weightRatio = weightRatio + 1.00 end
 	self.YAR_13A:TriggerInput("WeightLoadRatio",math.max(0,math.min(2.00,weightRatio)))
-	self.YAR_27:TriggerInput("WeightLoadRatio",math.max(0,math.min(2.00,weightRatio)))
+	self.YAR_27A:TriggerInput("WeightLoadRatio",math.max(0,math.min(2.00,weightRatio)))
 
 	-- Exchange some parameters between engines, pneumatic system, and real world
 	self.Engines:TriggerInput("Speed",self.Speed)

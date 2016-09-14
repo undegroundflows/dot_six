@@ -39,8 +39,8 @@ function ENT:Initialize()
 	--self.InstructorsSeat:SetRenderMode(RENDERMODE_TRANSALPHA)
 
 	-- Create bogeys
-	self.FrontBogey = self:CreateBogey(Vector( 313-5,0,-75),Angle(0,180,0),true)
-	self.RearBogey  = self:CreateBogey(Vector(-308.44+0,0,-75),Angle(0,0,0),false)
+	self.FrontBogey = self:CreateBogey(Vector( 319.6-5,0,-75),Angle(0,180,0),true)
+	self.RearBogey  = self:CreateBogey(Vector(-314.6+0,0,-75),Angle(0,0,0),false)
 
 	-- Initialize key mapping
 	self.KeyMap = {
@@ -413,7 +413,7 @@ function ENT:Think()
 	-- RUT test
 	local weightRatio = 2.00*math.max(0,math.min(1,(self:GetNW2Float("PassengerCount",0)/300)))
 	if math.abs(self:GetAngles().pitch) > 2.5 then weightRatio = weightRatio + 1.00 end
-	self.YAR_13A:TriggerInput("WeightLoadRatio",math.max(0,math.min(2.50,weightRatio)))
+	self.YAR_13A:TriggerInput("WeightLoadRatio",math.max(0,math.min(2.00,weightRatio)))
 	-- Exchange some parameters between engines, pneumatic system, and real world
 	self.Engines:TriggerInput("Speed",self.Speed)
 	if IsValid(self.FrontBogey) and IsValid(self.RearBogey) then

@@ -21,8 +21,8 @@ end
 
 function ENT:InitializeSounds()
 	self.BaseClass.InitializeSounds(self)
-	self.SoundNames["door_close1"]  = "subway_trains/dot_six/doors/doorsclose4.wav"
-	self.SoundNames["door_open1"] = "subway_trains/dot_six/doors/doorsopen4.wav"
+	self.SoundNames["door_close1"]  = "subway_trains/dot_six/doors/doorsclose2.wav"
+	self.SoundNames["door_open1"] = "subway_trains/dot_six/doors/doorsopen2.wav"
 	self.SoundNames["switch3"]	= ""
 	self.SoundNames["relay_open"] = ""
 end
@@ -53,7 +53,7 @@ function ENT:InitializeSystems()
 	-- Ящики с реле и контакторами
 	self:LoadSystem("LK_755A")
 	self:LoadSystem("YAR_13A")
-	self:LoadSystem("YAR_27")
+	self:LoadSystem("YAR_27A")
 	self:LoadSystem("YAK_36")
 	self:LoadSystem("YAK_37E")
 	self:LoadSystem("YAS_44V")

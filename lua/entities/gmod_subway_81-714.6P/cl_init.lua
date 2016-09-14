@@ -532,8 +532,8 @@ function ENT:Think()
 			--local animation = self:Animate(n_l,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.8 + (-0.2+0.4*math.random()),0)
 			--local offset_l = Vector(math.abs(31*animation),0,0)
 			--local offset_r = Vector(math.abs(32*animation),0,0)
-			self:Animate(n_l,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.75 + (-0.2+0.4*math.random()),0)
-			self:Animate(n_r,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.75 + (-0.2+0.4*math.random()),0)
+			self:Animate(n_l,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.53 + (-0.2+0.4*math.random()),0)
+			self:Animate(n_r,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.53 + (-0.2+0.4*math.random()),0)
 		end
 	end
 	if self.ClientEnts["door1"] then self.ClientEnts["door1"]:SetSkin(self:GetSkin()) end

@@ -513,7 +513,7 @@ ENT.ButtonMap["Schedule"] = {
 ENT.ButtonMap["IGLA"] = {
 	pos = Vector(470.48,-28.93,7.95),
 	ang = Angle(0,-90,64),
-	width = 400,
+	width = 440,
 	height = 190,
 	scale = 0.017,
 }
@@ -1730,8 +1730,8 @@ function ENT:Think()
 		for k=0,1 do
 			local n_l = "door"..i.."x"..k.."a"
 			local n_r = "door"..i.."x"..k.."b"
-			self:Animate(n_l,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.75 + (-0.2+0.4*math.random()),0)
-			self:Animate(n_r,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.75 + (-0.2+0.4*math.random()),0)
+			self:Animate(n_l,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.53 + (-0.2+0.4*math.random()),0)
+			self:Animate(n_r,self:GetPackedBool(21+(1-k)*4) and 1 or 0,0,1, 0.53 + (-0.2+0.4*math.random()),0)
 		end
 	end
 	--if self.ClientEnts["door1"] then self.ClientEnts["door1"]:SetSkin(self:GetSkin()) end

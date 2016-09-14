@@ -122,7 +122,7 @@ function TRAIN_SYSTEM:Initialize()
 	self.Train:LoadSystem("CustomF","Relay","Switch")
 	self.Train:LoadSystem("CustomG","Relay","Switch")
 	
-	self.Train:LoadSystem("Wiper","Relay","Switch")
+	self.Train:LoadSystem("Wiper","Relay","Switch",{button = true})
 	
 	-- Map of AV switches to indexes on panel
 	self:InitializeAVMap()
